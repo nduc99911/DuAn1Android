@@ -25,51 +25,52 @@
         app:layout_constraintVertical_bias="0.176" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/edEmail"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/border_edt"
         android:ems="10"
         android:hint="Email"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/edPhone"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/border_edt"
         android:ems="10"
         android:hint="Số Điện Thoại"
-        android:inputType="textPassword"
+        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/edEmail" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/edUserName"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/border_edt"
         android:ems="10"
         android:hint="Tên Đăng Nhập"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/edPhone" />
 
     <Button
-        android:id="@+id/button"
+        android:onClick="ForgotPassword"
+        android:id="@+id/btnForgotPassword"
         android:layout_width="360dp"
         android:layout_height="60dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/border_button"
         android:text="OK"
         android:textColor="#FFFF"
@@ -77,13 +78,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintTop_toBottomOf="@+id/edUserName" />
 
     <Button
-        android:id="@+id/button1"
+        android:onClick="Back"
+        android:id="@+id/btnBack"
         android:layout_width="360dp"
         android:layout_height="60dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/border_button"
         android:text="BACK"
         android:textColor="#FFFF"
@@ -91,10 +93,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintTop_toBottomOf="@+id/btnForgotPassword" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
