@@ -35,7 +35,8 @@ public class LoginActivity extends AppCompatActivity {
     }
     //Đăng Nhập
     public void Login(View view) {
-
+intent=new Intent(LoginActivity.this,MatHangActivity.class);
+startActivity(intent);
     }
 
     public void ForgotPassword(View view) {
