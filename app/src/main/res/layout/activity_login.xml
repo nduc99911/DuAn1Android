@@ -10,7 +10,7 @@
 
     <include
         layout="@layout/custom_toolbar"
-        android:alpha="1"></include>
+        ></include>
 
 
     <TextView
