@@ -13,6 +13,7 @@ import com.example.duan1android.Adapter.ViewPageAdapter;
 import com.example.duan1android.Fragment.FragmentBanHang;
 import com.example.duan1android.Fragment.FragmentBaoCao;
 import com.example.duan1android.Fragment.FragmentHoaDon;
+import com.example.duan1android.Fragment.FragmentThem;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
@@ -27,12 +28,10 @@ public class MatHangActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mat_hang);
-        toolbar=findViewById(R.id.too);
         navigationView=findViewById(R.id.NavigationView);
         listView=findViewById(R.id.listView);
         drawerLayout=findViewById(R.id.drawerLayout);
         tabLayout=findViewById(R.id.TabLayout);
-        actionToolBar();
         viewPager=findViewById(R.id.viewPage);
         ViewPageAdapter viewPageAdapter=new ViewPageAdapter(getSupportFragmentManager());
         viewPageAdapter.addFragment(new FragmentBanHang(),"Bán Hàng");
@@ -49,9 +48,7 @@ public class MatHangActivity extends AppCompatActivity {
     }
 
     private void actionToolBar() {
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(R.drawable.ic_menu);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
