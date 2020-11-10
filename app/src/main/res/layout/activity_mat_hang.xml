@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -25,16 +25,17 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewPage"
                     android:layout_width="match_parent"
-                    android:layout_height="550dp" />
+                    android:layout_height="match_parent" />
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/TabLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_gravity="bottom"
+                    android:layout_height="wrap_content">
 
                 </com.google.android.material.tabs.TabLayout>
 
-            </LinearLayout>
+            </FrameLayout>
         </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView

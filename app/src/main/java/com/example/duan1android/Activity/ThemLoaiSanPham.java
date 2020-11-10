@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.duan1android.R;
+
 public class ThemLoaiSanPham extends AppCompatActivity {
 
     @Override
