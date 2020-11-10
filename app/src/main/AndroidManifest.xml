@@ -9,24 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.DonViTinhActivity"></activity>
-        <activity android:name=".Activity.SuaDonViTinh" />
-        <activity android:name=".Activity.ThemDonViTinh" />
-        <activity android:name=".Activity.LoaiSanPhamActivity" />
-        <activity android:name=".Activity.SanPhamActivity" />
-        <activity android:name=".Activity.NguoiDungActivity" />
-        <activity android:name=".Activity.SuaLoaiSanPhamActivity" />
-        <activity android:name=".Activity.ThemLoaiSanPham" />
-        <activity android:name=".Activity.SuaSanPhamActivity" />
-        <activity android:name=".Activity.SuaNguoiDungActivity" />
-        <activity android:name=".Activity.ThemNguoiDungActivity" />
-        <activity android:name=".Activity.ThemSanPhamActivity">
-
-        </activity>
-        <activity android:name=".MatHangActivity" />
+        <activity android:name=".Activity.ThemSanPhamActivity"></activity>
+        <activity android:name=".MatHangActivity"></activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgotPassActivity" />
-        <activity android:name=".LoginActivity" >
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
