@@ -18,21 +18,21 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/margin8"
+
             android:id="@+id/tvMaSanPham"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mã Sản Phẩm :" />
 
         <TextView
-            style="@style/margin8"
+
             android:id="@+id/tvTenSanPham"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tên Sản Phẩm :" />
 
         <TextView
-            style="@style/margin8"
+
             android:id="@+id/tvGiaBan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
 
         <TextView
             android:id="@+id/tvCon"
-            style="@style/margin8"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Còn :"

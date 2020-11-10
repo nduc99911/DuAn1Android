@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar
-    android:id="@+id/toolbar_ban_hang"
+    android:id="@+id/toolbar_thong_tin"
     xmlns:android = "http://schemas.android.com/apk/res/android"
     android:layout_height ="60dp"
     android:background = "#FFFFFF"
@@ -11,28 +11,28 @@
         android:orientation="horizontal"
         android:layout_centerInParent="true">
         <ImageView
+            android:layout_marginRight="10dp"
             android:layout_width = "36dp"
             android:layout_height = "36dp"
-            android:src ="@drawable/icon_toolbar"
-            />
-        <TextView
-            android:id = "@+id/toolbar_title"
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:textSize = "18dp"
-            android:textStyle = "bold"
-            android:layout_gravity = "center"
-            android:layout_marginLeft = "8dp"
-            android:text = "Bán Hàng"
-            android:textColor = "@android:color/holo_green_dark"
+            android:src ="@drawable/leftarrow"
             />
 
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:text="Sửa Sản Phẩm"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
         <ImageView
+            android:layout_marginLeft="100dp"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/shoppingcart" />
+            android:src="@drawable/diskette" />
     </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>

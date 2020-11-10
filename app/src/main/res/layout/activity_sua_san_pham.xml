@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
     <include
-        layout="@layout/custom_toolbar_them_san_pham">
+        layout="@layout/custom_toolbar_sua_san_pham">
 
     </include>
     <ScrollView
@@ -33,7 +33,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edThemMaMatHang"
+                    android:id="@+id/edSuaMaMatHang"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
                     android:background="@drawable/border_edt"
@@ -61,7 +61,7 @@
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edThemSoLuong"
+                    android:id="@+id/edSuaSoLuong"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
                     android:background="@drawable/border_edt"
@@ -74,7 +74,7 @@
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edThemGiaBan"
+                    android:id="@+id/edSuaGiaBan"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
                     android:background="@drawable/border_edt"
@@ -87,7 +87,7 @@
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edThemGiaNhap"
+                    android:id="@+id/edSuaGiaNhap"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
                     android:background="@drawable/border_edt"
