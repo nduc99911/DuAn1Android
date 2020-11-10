@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.example.duan1android.Adapter.ViewPageAdapter;
+import com.example.duan1android.Fragment.FragmentBanHang;
+import com.example.duan1android.Fragment.FragmentBaoCao;
+import com.example.duan1android.Fragment.FragmentHoaDon;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 

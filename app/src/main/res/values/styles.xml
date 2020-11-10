@@ -9,5 +9,7 @@
         <item name="colorControlActivated">#d94ed0</item>
         <item name="colorControlHighlight">#d94ed0</item>
     </style>
-
+    <style name="margin8">
+        <item name="android:layout_margin">8dp</item>
+    </style>
 </resources>

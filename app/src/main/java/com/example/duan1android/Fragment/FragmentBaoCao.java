@@ -1,4 +1,4 @@
-package com.example.duan1android;
+package com.example.duan1android.Fragment;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-public class FragmentThem extends Fragment {
-
+import com.example.duan1android.R;
 
 
-    public FragmentThem() {
+public class FragmentBaoCao extends Fragment {
+
+
+
+    public FragmentBaoCao() {
         // Required empty public constructor
     }
 
@@ -22,7 +24,7 @@ public class FragmentThem extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_them, container, false);
+        View view= inflater.inflate(R.layout.fragment_bao_cao, container, false);
         return view;
     }
 }
