@@ -7,8 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -55,7 +53,6 @@ public class FragmentBanHang extends Fragment {
         spnLocDanhSach.setAdapter(adapter);
     }
     public void anhXaView(View view){
-
         edTimKiem = view.findViewById(R.id.edTimKiemMatHang);
         lvList = view.findViewById(R.id.lvListMatHang);
         spnLocDanhSach = view.findViewById(R.id.spnLocTimKiem);
