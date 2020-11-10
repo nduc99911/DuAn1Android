@@ -19,28 +19,28 @@
 
         <TextView
             android:id="@+id/tvMaSanPham"
-            style="@style/margin8"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mã Sản Phẩm" />
 
         <TextView
             android:id="@+id/tvTenSanPham"
-            style="@style/margin8"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tên Sản Phẩm" />
 
         <TextView
             android:id="@+id/tvGiaBan"
-            style="@style/margin8"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Gia Bán" />
 
         <TextView
             android:id="@+id/textView14"
-            style="@style/margin8"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Còn :" />

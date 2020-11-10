@@ -13,7 +13,7 @@
         tools:srcCompat="@drawable/iocnnguoidung" />
 
     <TextView
-        style="@style/margin8"
+
         android:id="@+id/tvTenKhachHang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         android:text="Tên Khách Hàng" />
 
     <Button
-        style="@style/margin8"
+
         android:id="@+id/btnNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Activity.ThemNguoiDungActivity"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent">
     <include
-        layout="@layout/custom_toolbar_them_san_pham">
+        layout="@layout/custom_sua_nguoi_dung">
 
     </include>
     <ScrollView
@@ -15,6 +15,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" >
@@ -29,30 +30,15 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginLeft="20dp"
                 android:layout_width="370dp"
-                android:layout_height="75dp"
-                >
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edThemMaMatHang"
-                    android:layout_width="360dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/border_edt"
-                    android:hint="Mã mặt hàng" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-
-                android:layout_marginLeft="20dp"
-                android:layout_width="370dp"
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edThemTenMatHang"
+                    android:id="@+id/edSuaTenDangNhap"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
                     android:background="@drawable/border_edt"
-                    android:hint="Tên mặt hàng" />
+                    android:hint="Tên Đăng Nhập" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -61,11 +47,11 @@
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edThemSoLuong"
+                    android:id="@+id/edSuaPassword"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
                     android:background="@drawable/border_edt"
-                    android:hint="Số lượng" />
+                    android:hint="Password" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -74,70 +60,51 @@
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edThemGiaBan"
+                    android:id="@+id/edSuaRePassword"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
                     android:background="@drawable/border_edt"
-                    android:hint="Giá bán" />
+                    android:hint="Nhập Lại Password" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginLeft="20dp"
                 android:layout_width="370dp"
+                android:layout_marginLeft="20dp"
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edThemGiaNhap"
+                    android:id="@+id/edSuaEmail"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
                     android:background="@drawable/border_edt"
-                    android:hint="Giá nhập" />
+                    android:hint="Email" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="370dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="75dp">
 
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:id="@+id/textView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Đơn vị tính" />
-
-                <Spinner
-                    android:id="@+id/spnThemDonViTinh"
-                    android:layout_width="0dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edSuaSoDienThoai"
+                    android:layout_width="360dp"
                     android:layout_height="50dp"
-                    android:layout_weight="3" />
+                    android:background="@drawable/border_edt"
+                    android:hint="Số Điện Thoại" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            </LinearLayout>
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="370dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="75dp">
 
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:id="@+id/textView1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Danh Mục" />
-
-                <Spinner
-                    android:id="@+id/spnThemDanhMuc"
-                    android:layout_width="0dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edSuaDiaChi"
+                    android:layout_width="360dp"
                     android:layout_height="50dp"
-                    android:layout_weight="3" />
-
-            </LinearLayout>
+                    android:background="@drawable/border_edt"
+                    android:hint="Địa Chỉ" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
     </ScrollView>

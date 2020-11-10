@@ -12,6 +12,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -49,7 +51,7 @@ public class FragmentBanHang extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         anhXaView(view);
-
+        setHasOptionsMenu(true);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,danhSachLC);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnLocDanhSach.setAdapter(adapter);
@@ -59,5 +61,10 @@ public class FragmentBanHang extends Fragment {
         edTimKiem = view.findViewById(R.id.edTimKiemMatHang);
         lvList = view.findViewById(R.id.lvListMatHang);
         spnLocDanhSach = view.findViewById(R.id.spnLocTimKiem);
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_ban_hang, menu);
+        super.onCreateOptionsMenu(menu,inflater);
     }
 }
