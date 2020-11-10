@@ -40,6 +40,7 @@ public class FragmentHoaDon extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         anhXaView(view);
     }
+
     public void anhXaView(View view){
         tvLoaiLoc = view.findViewById(R.id.tvLoaiLoc);
         imgBoLoc = view.findViewById(R.id.imgChonLoaiLoc);
