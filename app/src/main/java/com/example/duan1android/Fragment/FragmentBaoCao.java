@@ -40,6 +40,7 @@ public class FragmentBaoCao extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         anhXaView(view);
     }
+
     public void anhXaView(View view){
         tvSoHoaDon = view.findViewById(R.id.tvSoHoaDon);
         tvGiaTriHoaDon = view.findViewById(R.id.tvGiaTriHoaDon);
