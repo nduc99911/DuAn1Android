@@ -11,6 +11,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,14 +53,7 @@ public class FragmentHoaDon extends Fragment {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-        //chọn bộ lọc
-        imgBoLoc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), BoLocActivity.class);
-                startActivity(intent);
-            }
-        });
+
         return view;
 
     }
@@ -68,7 +62,22 @@ public class FragmentHoaDon extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         anhXaView(view);
-
+        //chọn bộ lọc
+        imgBoLoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), BoLocActivity.class);
+                startActivity(intent);
+            }
+        });
+        Bundle bundle = getArguments();
+        if(bundle==null){
+            Log.e("Bunder","Nullll");
+            return;
+        }else {
+            String data = bundle.getString("dataBoLoc");
+            tvLoaiLoc.setText(data);
+        }
     }
 
     public void anhXaView(View view) {

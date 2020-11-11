@@ -5,9 +5,12 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.duan1android.Adapter.ViewPageAdapter;
 import com.example.duan1android.Fragment.FragmentBanHang;
@@ -45,6 +48,8 @@ public class MatHangActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setIcon(R.drawable.iconhoadonactivity);
         tabLayout.getTabAt(2).setIcon(R.drawable.iconbaocaoactivity);
         tabLayout.getTabAt(3).setIcon(R.drawable.iconthemactivity);
+
+
     }
 
     private void actionToolBar() {

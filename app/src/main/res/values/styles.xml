@@ -16,5 +16,8 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">#000</item>
     </style>
-
+    <style name="margin4">
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
 </resources>
