@@ -85,7 +85,7 @@ public class FragmentHoaDon extends Fragment {
         imgBoLoc = view.findViewById(R.id.imgChonLoaiLoc);
         lvListHoaDon = view.findViewById(R.id.lvListHoaDon);
         toolbar = (Toolbar) view.findViewById(R.id.toolbar_hoa_don);
-        drawerLayout = view.findViewById(R.id.drawerLayoutBaoCao);
+        drawerLayout = view.findViewById(R.id.drawerLayoutHoaDon);
     }
 
 }
