@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar
-    android:id="@+id/toolbar_thong_tin"
+    android:id="@+id/toolbar_ban_hang"
     xmlns:android = "http://schemas.android.com/apk/res/android"
     android:layout_height ="60dp"
     android:background = "#FFFFFF"
@@ -10,12 +10,12 @@
         android:layout_height = "wrap_content"
         android:orientation="horizontal"
         android:layout_centerInParent="true">
-        <ImageView
-            android:layout_marginRight="10dp"
-            android:layout_width = "36dp"
-            android:layout_height = "36dp"
-            android:src ="@drawable/leftarrow"
-            />
+<!--        <ImageView-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_width = "36dp"-->
+<!--            android:layout_height = "36dp"-->
+<!--            android:src ="@drawable/leftarrow"-->
+<!--            />-->
 
         <TextView
             android:id="@+id/toolbar_title"
@@ -23,16 +23,24 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
-            android:text="Đơn Vị Tính"
+            android:text="Đơn Hàng"
             android:textColor="@android:color/holo_green_dark"
             android:textSize="24sp"
             android:textStyle="bold" />
-
         <ImageView
-            android:layout_marginLeft="150dp"
+            android:onClick="ThemDonHang"
+            android:id="@+id/imgThemDonHang"
+            android:layout_marginLeft="100dp"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:src="@drawable/add" />
+            android:src="@drawable/shoppingbasket" />
+        <ImageView
+            android:onClick="XoaDonHang"
+            android:id="@+id/imgxoaDonHang"
+            android:layout_marginLeft="20dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/bin" />
     </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>

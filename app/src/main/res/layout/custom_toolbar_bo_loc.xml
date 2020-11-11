@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar
-    android:id="@+id/toolbar_ban_hang"
+    android:id="@+id/toolbar_bo_loc"
     xmlns:android = "http://schemas.android.com/apk/res/android"
     android:layout_height ="60dp"
     android:background = "#FFFFFF"
@@ -11,7 +11,6 @@
         android:orientation="horizontal"
         android:layout_centerInParent="true">
         <ImageView
-            android:layout_marginTop="10dp"
             android:layout_width = "36dp"
             android:layout_height = "36dp"
             android:src ="@drawable/icon_toolbar"
@@ -24,18 +23,17 @@
             android:textStyle = "bold"
             android:layout_gravity = "center"
             android:layout_marginLeft = "8dp"
-            android:text = "Bán Hàng"
+            android:text = "Bộ lọc tìm kiếm"
             android:textColor = "@android:color/holo_green_dark"
             />
 
         <ImageView
-            android:layout_marginBottom="10dp"
-            android:id="@+id/imgBanHang"
+            android:onClick="ToolBarBoLocLuu"
+            android:id="@+id/imgToolBarBoLocLuu"
+            android:layout_marginLeft="100dp"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginLeft="110dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/shoppingcart" />
+            android:src="@drawable/diskette" />
     </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>

@@ -5,13 +5,11 @@
     android:layout_width="match_parent"
     android:background="@drawable/backgrond"
     android:alpha="0.8"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"><![CDATA[
     tools:context=".LoginActivity">
 
-    <include
-        layout="@layout/custom_toolbar"
-        ></include>
 
+    ]]>
 
     <TextView
         android:id="@+id/textView"

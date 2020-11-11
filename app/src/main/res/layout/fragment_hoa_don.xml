@@ -1,16 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Fragment.FragmentHoaDon">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayoutHoaDon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-    <include
-        layout="@layout/custom_toolbar_hoadon"
-        ></include>
-</FrameLayout>
+        android:fitsSystemWindows="true">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical">
+    <!-- TODO: Update blank fragment layout -->
+    <include layout="@layout/custom_toolbar_hoadon"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:startIconDrawable="@drawable/ic_loupe">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edTimKiemHoaDon"
+                style="@style/margin8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tìm kiếm Hóa Đơn"
+                android:padding="8dp"
+                android:textColor="#000000" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/margin8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/fontNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tất cả : " />
+
+        <TextView
+            android:id="@+id/tvLoaiLoc"
+            style="@style/fontNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:paddingLeft="18dp"
+            android:text="TextView"
+            android:textColor="#FF0000" />
+
+        <ImageView
+
+            android:id="@+id/imgChonLoaiLoc"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:src="@drawable/ic_filter"
+            />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvListHoaDon"
+        style="@style/margin8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
+
+<com.google.android.material.navigation.NavigationView
+android:id="@+id/NavigationView"
+android:layout_width="wrap_content"
+android:layout_height="match_parent"
+android:layout_gravity="start"
+app:headerLayout="@layout/navheader"
+app:menu="@menu/drawer_view">
+
+
+
+</com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

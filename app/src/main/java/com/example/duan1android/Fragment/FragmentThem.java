@@ -1,9 +1,14 @@
 package com.example.duan1android.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,13 +17,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.duan1android.Activity.DonViTinhActivity;
+import com.example.duan1android.Activity.LoaiSanPhamActivity;
+import com.example.duan1android.Activity.NguoiDungActivity;
+import com.example.duan1android.Activity.SanPhamActivity;
 import com.example.duan1android.R;
 
 
 public class FragmentThem extends Fragment {
     TextView tvMatHang,tvPhanLoai,tvDonViTinh,tvNguoiDung;
     ImageView imgMatHang,imgPhanLoai,imgDonViTinh,imgNguoiDung;
-
+    androidx.appcompat.widget.Toolbar toolbar;
+    DrawerLayout drawerLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,6 +40,47 @@ public class FragmentThem extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.fragment_them, container, false);
+       anhXaView(view);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        //chuyển sang sản phẩm activity
+        imgMatHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(getActivity(), SanPhamActivity.class);
+                startActivity(intent);
+            }
+        });
+        //chuển sang loại sản phẩm activity
+        imgPhanLoai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(getActivity(), LoaiSanPhamActivity.class);
+                startActivity(intent);
+            }
+        });
+        //chuyển sang đơn vị tính activity
+        imgDonViTinh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), DonViTinhActivity.class);
+                startActivity(intent);
+            }
+        });
+        imgNguoiDung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+Intent intent=new Intent(getActivity(), NguoiDungActivity.class);
+startActivity(intent);
+            }
+        });
         return view;
     }
 
@@ -48,5 +99,7 @@ public class FragmentThem extends Fragment {
         imgPhanLoai = view.findViewById(R.id.imgPhanLoai);
         imgDonViTinh = view.findViewById(R.id.imgDonViTinh);
         imgNguoiDung = view.findViewById(R.id.imgNguoiDung);
+        toolbar = (Toolbar) view.findViewById(R.id.toolbar_thong_tin);
+        drawerLayout = view.findViewById(R.id.drawerLayoutThem);
     }
 }

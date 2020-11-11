@@ -10,17 +10,18 @@ import android.widget.Toast;
 
 import com.example.duan1android.R;
 
-public class ThemLoaiSanPham extends AppCompatActivity {
+public class BoLocActivity extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
-    ImageView imgThemLoaiSanPhamLuu;
+    ImageView  imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_them_loai_san_pham);
+        setContentView(R.layout.activity_bo_loc);
         anhXaView();
-        toolbar = findViewById(R.id.toolbar_them_loai_san_pham);
+        toolbar = findViewById(R.id.toolbar_bo_loc);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -36,11 +37,13 @@ public class ThemLoaiSanPham extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void anhXaView() {
-        imgThemLoaiSanPhamLuu=findViewById(R.id.imgThemLoaiSanPhamLuu);
+    public void anhXaView(){
+        imageView=findViewById(R.id. imgToolBarBoLocLuu);
+
 
     }
-    public void ThemLoaiSanPhamLuu(View view){
-        Toast.makeText(getApplicationContext(),"Lưu Thành Công",Toast.LENGTH_SHORT).show();
+    //luuw bộ lọc
+    public void ToolBarBoLocLuu(View view){
+        Toast.makeText(getApplicationContext(),"Bạn đã lưu thành công",Toast.LENGTH_SHORT).show();
     }
 }

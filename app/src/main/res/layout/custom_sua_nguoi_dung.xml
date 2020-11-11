@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar
-    android:id="@+id/toolbar_thong_tin"
+    android:id="@+id/toolbar_sua_nguoi_dung"
     xmlns:android = "http://schemas.android.com/apk/res/android"
     android:layout_height ="60dp"
     android:background = "#FFFFFF"
@@ -10,12 +10,6 @@
         android:layout_height = "wrap_content"
         android:orientation="horizontal"
         android:layout_centerInParent="true">
-        <ImageView
-            android:layout_marginRight="10dp"
-            android:layout_width = "36dp"
-            android:layout_height = "36dp"
-            android:src ="@drawable/leftarrow"
-            />
 
         <TextView
             android:id="@+id/toolbar_title"
@@ -29,7 +23,7 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="80dp"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/diskette" />

@@ -49,6 +49,7 @@ public class MatHangActivity extends AppCompatActivity {
 
     private void actionToolBar() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

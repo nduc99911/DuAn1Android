@@ -6,7 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Fragment.FragmentThem">
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayoutThem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical">
     <!-- TODO: Update blank fragment layout -->
     <include layout="@layout/custom_toolbar_them">
 
@@ -112,4 +123,17 @@
                 android:text="Người dùng" />
         </LinearLayout>
     </LinearLayout>
+</LinearLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/NavigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/navheader"
+            app:menu="@menu/drawer_view">
+
+
+
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

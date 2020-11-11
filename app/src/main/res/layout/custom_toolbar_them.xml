@@ -28,7 +28,7 @@
             />
 
         <ImageView
-            android:layout_marginLeft="220dp"
+            android:layout_marginLeft="150dp"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/settings" />

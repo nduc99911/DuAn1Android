@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar
-    android:id="@+id/toolbar_thong_tin"
+    android:id="@+id/toolbar_don_vi_tinh"
     xmlns:android = "http://schemas.android.com/apk/res/android"
     android:layout_height ="60dp"
     android:background = "#FFFFFF"
@@ -10,12 +10,7 @@
         android:layout_height = "wrap_content"
         android:orientation="horizontal"
         android:layout_centerInParent="true">
-        <ImageView
-            android:layout_marginRight="10dp"
-            android:layout_width = "36dp"
-            android:layout_height = "36dp"
-            android:src ="@drawable/leftarrow"
-            />
+
 
         <TextView
             android:id="@+id/toolbar_title"
@@ -23,16 +18,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
-            android:text="Sửa Danh Mục"
+            android:text="Sửa Vị Tính"
             android:textColor="@android:color/holo_green_dark"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <ImageView
-            android:layout_marginLeft="120dp"
+            android:onClick="DonViTinhThem"
+            android:id="@+id/imgDonViTinhThem"
+            android:layout_marginLeft="130dp"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:src="@drawable/diskette" />
+            android:src="@drawable/add" />
     </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>
