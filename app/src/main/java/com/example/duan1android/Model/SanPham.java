@@ -3,9 +3,11 @@ package com.example.duan1android.Model;
 public
 class SanPham {
     private String maSanPham,maLoai,ten,donViTinh;
-    private double soLuong,giaNhap,giaBan;
+    private double giaNhap,giaBan;
+    private byte[] image;
+    private int soLuong;
 
-    public SanPham(String maSanPham, String maLoai, String ten, String donViTinh, double soLuong, double giaNhap, double giaBan) {
+    public SanPham(String maSanPham, String maLoai, String ten, String donViTinh, int soLuong, double giaNhap, double giaBan, byte[] image) {
         this.maSanPham = maSanPham;
         this.maLoai = maLoai;
         this.ten = ten;
@@ -13,6 +15,15 @@ class SanPham {
         this.soLuong = soLuong;
         this.giaNhap = giaNhap;
         this.giaBan = giaBan;
+        this.image = image;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public SanPham() {
@@ -50,11 +61,11 @@ class SanPham {
         this.donViTinh = donViTinh;
     }
 
-    public double getSoLuong() {
+    public int getSoLuong() {
         return soLuong;
     }
 
-    public void setSoLuong(double soLuong) {
+    public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
 

@@ -56,4 +56,19 @@ class LoaiSanPhamDAO {
         }
         return list;
     }
+    public List<String> getAllTenLoaiSanPham(){
+        List<String> list = new ArrayList<>();
+        String query = "Select tenLoai from "+TABLE_NAME;
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            while (cursor.isAfterLast()==false){
+                String ten = cursor.getString(0);
+                list.add(ten);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        return list;
+    }
 }

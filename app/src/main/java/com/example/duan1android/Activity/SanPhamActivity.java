@@ -24,8 +24,7 @@ public class SanPhamActivity extends AppCompatActivity {
 
     }
     public void anhXaView() {
-imgSanPham=findViewById(R.id.imgSanPhamThem);
-
+        imgSanPham = findViewById(R.id.imgThemSanPhamLuu);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -33,8 +32,6 @@ imgSanPham=findViewById(R.id.imgSanPhamThem);
             case android.R.id.home:
                 onBackPressed();
                 return true;
-
-
             default:
                 break;
         }
@@ -43,7 +40,7 @@ imgSanPham=findViewById(R.id.imgSanPhamThem);
     }
     //chuyển sang activity thêm sản phẩm
     public void SanPhamThem(View view) {
-        Intent intent=new Intent(SanPhamActivity.this,ThemSanPhamActivity.class);
+        Intent intent = new Intent(this,ThemSanPhamActivity.class);
         startActivity(intent);
 
     }

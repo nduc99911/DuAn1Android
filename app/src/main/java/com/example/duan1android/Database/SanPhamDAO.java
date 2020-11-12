@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.BitmapDrawable;
 
 import com.example.duan1android.Model.SanPham;
 
@@ -20,7 +21,8 @@ class SanPhamDAO {
             "   donViTinh text," +
             "   soLuong number," +
             "   giaNhap number," +
-            "   giaBan number)";
+            "   giaBan number," +
+            "   hinhAnh BLOB)";
     private Mydatabase mydatabase;
     private SQLiteDatabase sqLiteDatabase;
 
@@ -37,6 +39,7 @@ class SanPhamDAO {
         contentValues.put("soLuong",sanPham.getSoLuong());
         contentValues.put("giaNhap",sanPham.getGiaNhap());
         contentValues.put("giaBan",sanPham.getGiaBan());
+        contentValues.put("hinhAnh",sanPham.getImage());
         return sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
     }
     public long updateSanPham(SanPham sanPham,String ma){
@@ -48,6 +51,7 @@ class SanPhamDAO {
         contentValues.put("soLuong",sanPham.getSoLuong());
         contentValues.put("giaNhap",sanPham.getGiaNhap());
         contentValues.put("giaBan",sanPham.getGiaBan());
+        contentValues.put("hinhAnh",sanPham.getImage());
         return sqLiteDatabase.update(TABLE_NAME,contentValues,"maSanPham = ?",new String[]{ma});
     }
     public long deleteSanPham(String ma){
@@ -67,7 +71,8 @@ class SanPhamDAO {
                 int soLuong = cursor.getInt(4);
                 double giaNhap = cursor.getDouble(5);
                 double giaBan = cursor.getDouble(6);
-                SanPham sanPham = new SanPham(maSP,maLoai,ten,donVi,soLuong,giaNhap,giaBan);
+                byte[] img = cursor.getBlob(7);
+                SanPham sanPham = new SanPham(maSP,maLoai,ten,donVi,soLuong,giaNhap,giaBan,img);
                 list.add(sanPham);
                 cursor.moveToNext();
             }

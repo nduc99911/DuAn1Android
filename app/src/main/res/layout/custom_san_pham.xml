@@ -13,22 +13,24 @@
 
         <TextView
             android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
+            android:layout_weight="3"
             android:text="Sản Phẩm"
             android:textColor="@android:color/holo_green_dark"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <ImageView
-            android:onClick="SanPhamThem"
             android:id="@+id/imgSanPhamThem"
-            android:layout_marginLeft="150dp"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/addgoods" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="SanPhamThem"
+            android:padding="15dp"
+            android:src="@drawable/ic_plus" />
     </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>

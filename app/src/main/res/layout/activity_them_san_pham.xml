@@ -5,11 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:id="@+id/lnThem"
     android:layout_height="match_parent">
-    <include
-        layout="@layout/custom_toolbar_them_san_pham">
+
+    <include layout="@layout/custom_toolbar_them_san_pham">
 
     </include>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -21,7 +23,7 @@
 
             <ImageView
                 android:layout_gravity="center"
-                android:id="@+id/imageView"
+                android:id="@+id/imgThemMatHang"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:src="@drawable/ic_add" />
@@ -64,6 +66,7 @@
                     android:id="@+id/edThemSoLuong"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
+                    android:inputType="number"
                     android:background="@drawable/border_edt"
                     android:hint="Số lượng" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -77,6 +80,7 @@
                     android:id="@+id/edThemGiaBan"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
+                    android:inputType="number"
                     android:background="@drawable/border_edt"
                     android:hint="Giá bán" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -90,6 +94,7 @@
                     android:id="@+id/edThemGiaNhap"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
+                    android:inputType="number"
                     android:background="@drawable/border_edt"
                     android:hint="Giá nhập" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -98,44 +103,51 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textStyle="bold"
-                    android:textSize="20dp"
                     android:id="@+id/textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Đơn vị tính" />
+                    android:paddingLeft="5dp"
+                    android:text="Đơn vị tính"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/spnThemDonViTinh"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
-                    android:layout_weight="3" />
+                    android:layout_weight="2" />
 
             </LinearLayout>
+
             <LinearLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textStyle="bold"
-                    android:textSize="20dp"
                     android:id="@+id/textView1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Danh Mục" />
+                    android:paddingLeft="5dp"
+                    android:text="Danh Mục"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/spnThemDanhMuc"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
-                    android:layout_weight="3" />
+                    android:layout_weight="2" />
 
             </LinearLayout>
 

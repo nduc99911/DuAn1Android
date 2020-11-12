@@ -19,6 +19,7 @@ class Mydatabase extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(HoaDonChiTietDAO.SQL_HDCT);
         sqLiteDatabase.execSQL(NguoiDungDAO.SQL_NGUOIDUNG);
         sqLiteDatabase.execSQL(LoaiSanPhamDAO.SQL_LOAISANPHAM);
+        sqLiteDatabase.execSQL(DonViTinhDAO.SQL_DONVI);
     }
 
     @Override
@@ -28,6 +29,8 @@ class Mydatabase extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("Drop table "+HoaDonChiTietDAO.TABLE_NAME);
         sqLiteDatabase.execSQL("Drop table "+NguoiDungDAO.TABLE_NAME);
         sqLiteDatabase.execSQL("Drop table "+LoaiSanPhamDAO.TABLE_NAME);
+        sqLiteDatabase.execSQL("Drop table "+DonViTinhDAO.TABLE_NAME);
+
         onCreate(sqLiteDatabase);
     }
 }
