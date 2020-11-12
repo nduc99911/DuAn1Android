@@ -27,7 +27,13 @@ import android.widget.Toast;
 import com.example.duan1android.Activity.DonHangActivity;
 import com.example.duan1android.Activity.ThemNguoiDungActivity;
 import com.example.duan1android.Activity.ThemSanPhamActivity;
+import com.example.duan1android.Adapter.SanPhamAdapter;
+import com.example.duan1android.Database.SanPhamDAO;
+import com.example.duan1android.Model.SanPham;
 import com.example.duan1android.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class FragmentBanHang extends Fragment {
@@ -44,6 +50,9 @@ public class FragmentBanHang extends Fragment {
     Spinner spnLocDanhSach;
     String danhSachLC[] = {"Theo tên","Giá ↑","Giá ↓"};
     ImageView imageView;
+    List<SanPham> list;
+    SanPhamDAO  sanPhamDAO;
+    SanPhamAdapter sanPhamAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,6 +77,11 @@ public class FragmentBanHang extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         anhXaView(view);
+        sanPhamDAO = new SanPhamDAO(getActivity());
+        list = new ArrayList<>();
+        list = sanPhamDAO.getAllSanPham();
+        sanPhamAdapter = new SanPhamAdapter(getContext(),list);
+        lvList.setAdapter(sanPhamAdapter);
         setHasOptionsMenu(true);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,danhSachLC);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -47,6 +47,7 @@ class SanPhamAdapter extends BaseAdapter {
         ViewHolder viewHolder = null;
         if(view == null){
             view = LayoutInflater.from(context).inflate(R.layout.item_san_pham, viewGroup, false);
+            viewHolder = new ViewHolder();
             viewHolder.tvMa = view.findViewById(R.id.tvMaSanPham_ItemSp);
             viewHolder.tvTen = view.findViewById(R.id.tvTenSanPham_ItemSp);
             viewHolder.tvGia = view.findViewById(R.id.tvGiaBan_ItemSp);
@@ -64,6 +65,7 @@ class SanPhamAdapter extends BaseAdapter {
         byte[] image = sanPham.getImage();
         Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
         viewHolder.imgSanPham.setImageBitmap(bitmap);
+
         return view;
     }
 
