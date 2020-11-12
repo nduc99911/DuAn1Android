@@ -46,10 +46,11 @@ public class BoLocActivity extends AppCompatActivity {
 
     //luuw bộ lọc
     public void ToolBarBoLocLuu(View view){
-        Bundle bundle = new Bundle();
-        bundle.putString("dataBoLoc",luuChon());
-        FragmentHoaDon fragmentHoaDon = new FragmentHoaDon();
-        fragmentHoaDon.setArguments(bundle);
+//        Bundle bundle = new Bundle();
+//        bundle.putString("dataBoLoc",luuChon());
+//        FragmentHoaDon fragmentHoaDon = new FragmentHoaDon();
+//        fragmentHoaDon.setArguments(bundle);
+
         onBackPressed();
 
     }

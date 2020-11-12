@@ -53,7 +53,6 @@ public class FragmentHoaDon extends Fragment {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-
         return view;
 
     }
@@ -70,6 +69,12 @@ public class FragmentHoaDon extends Fragment {
                 startActivity(intent);
             }
         });
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         Bundle bundle = getArguments();
         if(bundle==null){
             Log.e("Bunder","Nullll");
@@ -79,6 +84,7 @@ public class FragmentHoaDon extends Fragment {
             tvLoaiLoc.setText(data);
         }
     }
+
 
     public void anhXaView(View view) {
         tvLoaiLoc = view.findViewById(R.id.tvLoaiLoc);

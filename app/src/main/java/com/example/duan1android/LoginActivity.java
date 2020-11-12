@@ -19,40 +19,41 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText edUserName,edPassWord;
+    EditText edUserName, edPassWord;
     Button btnLogin;
-    TextView tvForgotPassword,tvRegister;
+    TextView tvForgotPassword, tvRegister;
     Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-       edUserName=findViewById(R.id.edUserName);
-        edPassWord=findViewById(R.id.edPassWord);
-        btnLogin=findViewById(R.id.btnLogin);
-        tvForgotPassword=findViewById(R.id.tvForgotPassword);
-        tvRegister=findViewById(R.id.tvRegister);
+        edUserName = findViewById(R.id.edUserName);
+        edPassWord = findViewById(R.id.edPassWord);
+        btnLogin = findViewById(R.id.btnLogin);
+        tvForgotPassword = findViewById(R.id.tvForgotPassword);
+        tvRegister = findViewById(R.id.tvRegister);
         setupFloatingLabelError();
 
     }
 
 
-
     //Đăng Nhập
     public void Login(View view) {
-intent=new Intent(LoginActivity.this,MatHangActivity.class);
-startActivity(intent);
+        intent = new Intent(LoginActivity.this, MatHangActivity.class);
+        startActivity(intent);
     }
 
     public void ForgotPassword(View view) {
-        intent=new Intent(LoginActivity.this,ForgotPassActivity.class);
+        intent = new Intent(LoginActivity.this, ForgotPassActivity.class);
         startActivity(intent);
     }
 
     public void Register(View view) {
-        intent=new Intent(LoginActivity.this,RegisterActivity.class);
+        intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
+
     //Validate EdtUserName
     private void setupFloatingLabelError() {
         final TextInputLayout textInputLayoutUserName = (TextInputLayout) findViewById(R.id.textInputLayoutUserName);
@@ -60,16 +61,17 @@ startActivity(intent);
         textInputLayoutUserName.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() == 0 ) {
+                if (charSequence.length() == 0) {
                     textInputLayoutUserName.setError("Username is required");
                     textInputLayoutUserName.setErrorEnabled(true);
-                } else if (charSequence.length() < 5 ) {
+                } else if (charSequence.length() < 5) {
                     textInputLayoutUserName.setError("Username is required and length must be >= 5");
                     textInputLayoutUserName.setErrorEnabled(true);
                 } else {
                     textInputLayoutUserName.setErrorEnabled(false);
                 }
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -89,10 +91,10 @@ startActivity(intent);
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() == 0 ) {
+                if (charSequence.length() == 0) {
                     textInputLayoutPassWord.setError("PassWord is required");
                     textInputLayoutPassWord.setErrorEnabled(true);
-                } else if (charSequence.length() < 5 ) {
+                } else if (charSequence.length() < 5) {
                     textInputLayoutPassWord.setError("Pass is required and length must be >= 5");
                     textInputLayoutPassWord.setErrorEnabled(true);
                 } else {
