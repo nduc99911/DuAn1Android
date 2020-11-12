@@ -3,9 +3,9 @@ package com.example.duan1android.Model;
 public
 class HoaDonChiTiet {
     private String maHDCT,maHD,maSP;
-    private double soLuong,tongTien;
-
-    public HoaDonChiTiet(String maHDCT, String maHD, String maSP, double soLuong, double tongTien) {
+    private double tongTien;
+    private int soLuong;
+    public HoaDonChiTiet(String maHDCT, String maHD, String maSP, int soLuong, double tongTien) {
         this.maHDCT = maHDCT;
         this.maHD = maHD;
         this.maSP = maSP;
@@ -40,11 +40,11 @@ class HoaDonChiTiet {
         this.maSP = maSP;
     }
 
-    public double getSoLuong() {
+    public int getSoLuong() {
         return soLuong;
     }
 
-    public void setSoLuong(double soLuong) {
+    public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
 

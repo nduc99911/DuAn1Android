@@ -29,7 +29,8 @@
         <activity android:name=".Activity.SuaNguoiDungActivity" />
         <activity android:name=".Activity.NguoiDungActivity" />
 
-        <activity android:name=".MatHangActivity" />
+        <activity android:name=".MatHangActivity"
+           />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgotPassActivity" />
         <activity android:name=".LoginActivity">
