@@ -151,12 +151,15 @@ public class ThemSanPhamActivity extends AppCompatActivity {
             snackbar.show();
             return;
         }
-
+        try {
             BitmapDrawable bitmapDrawable = (BitmapDrawable) imgThemAnh.getDrawable();
             Bitmap bitmap = bitmapDrawable.getBitmap();
             ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
             hinhAnh = byteArray.toByteArray();
+        }catch (Exception e){
+
+        }
         SanPham sanPham = new SanPham(ma,theLoai,ten,donViTinh,Integer.parseInt(soLuong),Double.parseDouble(giaNhap),Double.parseDouble(giaBan),hinhAnh);
         long chk = sanPhamDAO.addSanPham(sanPham);
         if(chk>0) {

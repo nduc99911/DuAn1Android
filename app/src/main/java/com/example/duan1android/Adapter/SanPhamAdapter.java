@@ -63,8 +63,12 @@ class SanPhamAdapter extends BaseAdapter {
         viewHolder.tvGia.setText("Giá bán : "+sanPham.getGiaBan());
         viewHolder.tvConDu.setText("Còn : "+sanPham.getSoLuong());
         byte[] image = sanPham.getImage();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
-        viewHolder.imgSanPham.setImageBitmap(bitmap);
+        try {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+            viewHolder.imgSanPham.setImageBitmap(bitmap);
+        }catch (Exception e){
+            viewHolder.imgSanPham.setImageResource(R.drawable.sanpham);
+        }
 
         return view;
     }
