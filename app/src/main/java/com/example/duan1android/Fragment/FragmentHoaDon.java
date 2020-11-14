@@ -10,33 +10,43 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.duan1android.Activity.BoLocActivity;
+import com.example.duan1android.MatHangActivity;
 import com.example.duan1android.R;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class FragmentHoaDon extends Fragment {
-    TextView tvLoaiLoc;
+    public TextView tvLoaiLoc;
     ImageView imgBoLoc;
     ListView lvListHoaDon;
     androidx.appcompat.widget.Toolbar toolbar;
     DrawerLayout drawerLayout;
-
+String a;
     public FragmentHoaDon() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+
+
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +54,7 @@ public class FragmentHoaDon extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_hoa_don, container, false);
         anhXaView(view);
+        tvLoaiLoc = view.findViewById(R.id.tvLoaiLoc);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
@@ -53,6 +64,35 @@ public class FragmentHoaDon extends Fragment {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+//final MatHangActivity matHangActivity=new MatHangActivity();
+//
+//matHangActivity.tabLayout.findViewById(R.id.TabLayout);
+//matHangActivity.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//    @Override
+//    public void onTabSelected(TabLayout.Tab tab) {
+//        if(tab.getPosition()==1){
+//            String a=matHangActivity.sendata();
+////Toast.makeText(getActivity(),"ed"+a,Toast.LENGTH_SHORT).show();
+//            if(a!=null){
+////     Toast.makeText(getActivity(),"ed"+a,Toast.LENGTH_SHORT).show();
+//                tvLoaiLoc.setText(""+a);
+//            }
+//        }
+//    }
+//
+//    @Override
+//    public void onTabUnselected(TabLayout.Tab tab) {
+//
+//    }
+//
+//    @Override
+//    public void onTabReselected(TabLayout.Tab tab) {
+//
+//    }
+//});
+
+
+
         return view;
 
     }
@@ -72,18 +112,18 @@ public class FragmentHoaDon extends Fragment {
 
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        Bundle bundle = getArguments();
-        if(bundle==null){
-            Log.e("Bunder","Nullll");
-            return;
-        }else {
-            String data = bundle.getString("dataBoLoc");
-            tvLoaiLoc.setText(data);
-        }
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        Bundle bundle = getArguments();
+//        if(bundle==null){
+//            Log.e("Bunder","Nullll");
+//            return;
+//        }else {
+//            String data = bundle.getString("dataBoLoc");
+//            tvLoaiLoc.setText(data);
+//        }
+//    }
 
 
     public void anhXaView(View view) {

@@ -1,10 +1,14 @@
 package com.example.duan1android.Adapter;
 
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.duan1android.Fragment.FragmentHoaDon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,4 +43,6 @@ public class ViewPageAdapter extends FragmentPagerAdapter {
         fragmentList.add(fragment);
         titleList.add(title);
     }
+
+
 }

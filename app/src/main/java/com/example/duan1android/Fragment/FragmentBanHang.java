@@ -101,9 +101,5 @@ public class FragmentBanHang extends Fragment {
 
 
     }
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_ban_hang, menu);
-        super.onCreateOptionsMenu(menu,inflater);
-    }
+
 }

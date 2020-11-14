@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+ android:background="@drawable/anh"
     tools:context=".Activity.DonHangActivity"
     android:orientation="vertical">
 
@@ -150,7 +151,7 @@
                     android:layout_height="20dp"
                     android:layout_weight="1"
                     android:paddingTop="5dp"
-                    android:src="@drawable/ic_mathang" />
+                    android:src="@drawable/add" />
             </LinearLayout>
 
             <LinearLayout

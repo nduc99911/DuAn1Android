@@ -3,6 +3,7 @@ package com.example.duan1android.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,12 +47,16 @@ public class BoLocActivity extends AppCompatActivity {
 
     //luuw bộ lọc
     public void ToolBarBoLocLuu(View view){
+//        FragmentHoaDon fragment = new FragmentHoaDon(); // replace your custom fragment class
 //        Bundle bundle = new Bundle();
-//        bundle.putString("dataBoLoc",luuChon());
-//        FragmentHoaDon fragmentHoaDon = new FragmentHoaDon();
-//        fragmentHoaDon.setArguments(bundle);
+//        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//        bundle.putString("key","value"); // use as per your need
+//        fragment.setArguments(bundle);
+//        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.replace(R.id.id,fragment);
+//        fragmentTransaction.commit();
 
-        onBackPressed();
+
 
     }
     public String luuChon(){
@@ -85,6 +90,8 @@ public class BoLocActivity extends AppCompatActivity {
         rdoChuaThanhToan = findViewById(R.id.radChuaThanhToan);
         rdoDaThanhToan = findViewById(R.id.radDaThanhToan);
     }
-
+public String myData(){
+        return "Duc";
+}
 
 }

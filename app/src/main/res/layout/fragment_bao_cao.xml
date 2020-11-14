@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@drawable/anh"
     tools:context=".Fragment.FragmentBaoCao">
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerLayoutBaoCao"
@@ -12,8 +13,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="50dp"
@@ -23,12 +23,14 @@
     </include>
 
     <LinearLayout
+        android:background="@drawable/border_filter"
         style="@style/margin8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
+            android:textColor="#FFFFFF"
             android:id="@+id/textView2"
             style="@style/fontNormal"
             android:layout_width="wrap_content"
@@ -51,7 +53,7 @@
             android:layout_height="25dp"
             android:layout_weight="1"
             android:gravity="right"
-            android:src="@drawable/ic_filter" />
+            android:src="@drawable/filter" />
     </LinearLayout>
 
     <LinearLayout
@@ -64,12 +66,13 @@
         android:orientation="horizontal">
 
         <Button
+
             android:id="@+id/btnLoiNhuan"
             style="@style/margin8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#FDFCFC"
+            android:background="@drawable/border_filter"
             android:paddingTop="40dp"
             android:paddingBottom="40dp"
             android:text=" 0\nLợi nhuận"
@@ -81,19 +84,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#FDFCFC"
+            android:background="@drawable/border_filter"
             android:paddingTop="40dp"
             android:paddingBottom="40dp"
             android:text="0\nDoanh thu"
             android:textAllCaps="false" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="Hóa đơn " />
+            <TextView
+
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:textSize="15dp"
+                android:text="Hóa đơn "
+                android:textColor="#FFFFFF" />
+            <LinearLayout
+                android:background="@drawable/border_thanh"
+                android:layout_width="match_parent"
+                android:layout_height="5dp">
+
+            </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -111,6 +123,8 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
+
+
                 <TextView
                     android:id="@+id/tvSoHoaDon"
                     android:layout_width="match_parent"
@@ -119,12 +133,22 @@
                     android:text=""
                     android:textColor="#000" />
 
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/invoice" />
+
                 <TextView
+                    android:textStyle="italic"
+                    android:textColor="#FFFFFF"
                     android:id="@+id/textView12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Số hóa đơn" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -132,6 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
 
                 <TextView
                     android:id="@+id/tvGiaTriHoaDon"
@@ -141,7 +166,15 @@
                     android:text=""
                     android:textColor="#000" />
 
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/imageView8"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/payment" />
                 <TextView
+                    android:textColor="#FFFFFF"
+                    android:textStyle="italic"
                     android:id="@+id/textView18"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -151,6 +184,21 @@
 
         </LinearLayout>
 
+        <TextView
+
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:textSize="15dp"
+            android:text="Tiền Tệ "
+            android:textColor="#FFFFFF" />
+        <LinearLayout
+            android:background="@drawable/border_thanh"
+            android:layout_width="match_parent"
+            android:layout_height="5dp">
+
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -162,6 +210,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
+
                 <TextView
                     android:id="@+id/tvTienBan"
                     android:layout_width="match_parent"
@@ -170,7 +219,16 @@
                     android:text=""
                     android:textColor="#000" />
 
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/imageView9"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/dollar" />
                 <TextView
+
+                    android:textStyle="italic"
+                    android:textColor="#FFFFFF"
                     android:id="@+id/textView15"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -184,6 +242,8 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
+
+
                 <TextView
                     android:id="@+id/tvTienVon"
                     android:layout_width="match_parent"
@@ -191,8 +251,15 @@
                     android:gravity="center"
                     android:text=""
                     android:textColor="#000" />
-
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/imageView10"
+                    android:layout_width="55dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/cash" />
                 <TextView
+                    android:textColor="#FFFFFF"
+                    android:textStyle="italic"
                     android:id="@+id/textView20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -151,6 +151,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
             snackbar.show();
             return;
         }
+
             BitmapDrawable bitmapDrawable = (BitmapDrawable) imgThemAnh.getDrawable();
             Bitmap bitmap = bitmapDrawable.getBitmap();
             ByteArrayOutputStream byteArray = new ByteArrayOutputStream();

@@ -3,6 +3,7 @@ package com.example.duan1android;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.duan1android.Activity.BoLocActivity;
 import com.example.duan1android.Adapter.ViewPageAdapter;
 import com.example.duan1android.Fragment.FragmentBanHang;
 import com.example.duan1android.Fragment.FragmentBaoCao;
@@ -26,7 +28,7 @@ public class MatHangActivity extends AppCompatActivity {
     ListView listView;
     DrawerLayout drawerLayout;
     ViewPager viewPager;
-    TabLayout tabLayout;
+   public TabLayout tabLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,18 +51,28 @@ public class MatHangActivity extends AppCompatActivity {
         tabLayout.getTabAt(2).setIcon(R.drawable.iconbaocaoactivity);
         tabLayout.getTabAt(3).setIcon(R.drawable.iconthemactivity);
 
-
+//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
     }
 
-    private void actionToolBar() {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
-    }
+public String sendata(){
+    BoLocActivity  boLocActivity=new BoLocActivity();
+  String data=boLocActivity.myData();
+        return data;
+}
 
 }

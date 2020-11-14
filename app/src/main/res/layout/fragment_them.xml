@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/anh"
     tools:context=".Fragment.FragmentThem">
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerLayoutThem"
@@ -12,8 +13,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="50dp"
@@ -24,18 +24,27 @@
     </include>
 
     <TextView
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
         android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:text="Thiết lập bán hàng" />
+            android:textColor="#FFFFFF" />
+            <LinearLayout
+                android:background="@drawable/border_thanh"
+                android:layout_width="match_parent"
+                android:layout_height="5dp">
 
+            </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
+            android:background="@drawable/border_filter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -43,21 +52,24 @@
 
             <ImageView
                 android:id="@+id/imgMatHang"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="55dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_mathang" />
+                android:src="@drawable/goods" />
 
             <TextView
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="#FFFFFF"
                 android:id="@+id/tvMatHang"
-                style="@style/fontNormal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
+                android:layout_weight="10"
                 android:text="Mặt hàng" />
         </LinearLayout>
 
         <LinearLayout
+            android:background="@drawable/border_filter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -65,21 +77,24 @@
 
             <ImageView
                 android:id="@+id/imgPhanLoai"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="55dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_phanloai" />
+                android:src="@drawable/groceries" />
 
             <TextView
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
                 android:id="@+id/tvPhanLoai"
-                style="@style/fontNormal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
+                android:layout_weight="10"
                 android:text="Phân loại" />
         </LinearLayout>
 
         <LinearLayout
+            android:background="@drawable/border_filter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -87,21 +102,24 @@
 
             <ImageView
                 android:id="@+id/imgDonViTinh"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="55dp"
+                android:layout_height="44dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_donvitinh" />
+                android:src="@drawable/justicescale" />
 
             <TextView
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
                 android:id="@+id/tvDonViTinh"
-                style="@style/fontNormal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
+                android:layout_weight="10"
                 android:text="Đơn vị tính" />
         </LinearLayout>
 
         <LinearLayout
+            android:background="@drawable/border_filter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -109,17 +127,19 @@
 
             <ImageView
                 android:id="@+id/imgNguoiDung"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="55dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_user" />
+                android:src="@drawable/profile" />
 
             <TextView
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
                 android:id="@+id/tvNguoiDung"
-                style="@style/fontNormal"
+               android:layout_marginTop="10dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
+                android:layout_weight="10"
                 android:text="Người dùng" />
         </LinearLayout>
     </LinearLayout>
