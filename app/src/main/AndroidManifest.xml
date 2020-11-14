@@ -9,57 +9,74 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.BoLocActivity"
-            android:windowSoftInputMode="stateHidden"></activity>
-        <activity android:name=".Activity.DialogThemMatHang"
-            android:windowSoftInputMode="stateHidden"
-            />
-        <activity android:name=".Activity.DonHangActivity"
-            android:windowSoftInputMode="stateHidden"/>
-
-        <activity android:name=".Activity.ThemSanPhamActivity"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".Activity.SanPhamActivity"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".Activity.SuaSanPhamActivity"
-            android:windowSoftInputMode="stateHidden"/>
-
-        <activity android:name=".Activity.LoaiSanPhamActivity"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".Activity.ThemLoaiSanPham"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".Activity.SuaLoaiSanPhamActivity"
-            android:windowSoftInputMode="stateHidden"/>
-
-        <activity android:name=".Activity.ThemDonViTinh"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".Activity.SuaDonViTinh"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".Activity.DonViTinhActivity"
-            android:windowSoftInputMode="stateHidden"/>
-
-        <activity android:name=".Activity.ThemNguoiDungActivity" />
-        <activity android:name=".Activity.SuaNguoiDungActivity"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".Activity.NguoiDungActivity"
-            android:windowSoftInputMode="stateHidden"/>
-
-        <activity android:name=".MatHangActivity"
-           android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".RegisterActivity"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".ForgotPassActivity"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".LoginActivity"
-            android:windowSoftInputMode="stateHidden">
+        <activity android:name=".Activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".MainActivity"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".Activity.BoLocActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.DialogThemMatHang"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.DonHangActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.ThemSanPhamActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.SanPhamActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.SuaSanPhamActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.LoaiSanPhamActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.ThemLoaiSanPham"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.SuaLoaiSanPhamActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.ThemDonViTinh"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.SuaDonViTinh"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.DonViTinhActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".Activity.ThemNguoiDungActivity" />
+        <activity
+            android:name=".Activity.SuaNguoiDungActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.NguoiDungActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".MatHangActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".RegisterActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ForgotPassActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="stateHidden">
+
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>
