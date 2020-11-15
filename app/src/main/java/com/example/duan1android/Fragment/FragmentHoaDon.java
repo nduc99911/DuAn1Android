@@ -1,5 +1,7 @@
 package com.example.duan1android.Fragment;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -41,11 +43,6 @@ String a;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
-
     }
 
     @Override
@@ -54,7 +51,6 @@ String a;
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_hoa_don, container, false);
         anhXaView(view);
-        tvLoaiLoc = view.findViewById(R.id.tvLoaiLoc);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
@@ -105,8 +101,9 @@ String a;
         imgBoLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), BoLocActivity.class);
-                startActivity(intent);
+                Dialog dialog = new Dialog(getActivity(), android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+                dialog.setContentView(R.layout.activity_bo_loc);
+                dialog.show();
             }
         });
 

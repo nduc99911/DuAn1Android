@@ -6,102 +6,115 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Activity.BoLocActivity">
-<include
-    layout="@layout/custom_toolbar_bo_loc">
 
-</include>
-    <TextView
-        android:layout_marginTop="50dp"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:gravity="center"
-        android:id="@+id/textView26"
+    <include layout="@layout/custom_toolbar_bo_loc">
+
+    </include>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:background="@color/colorPrimary"
-        android:text="Thời Gian" />
+        android:layout_height="match_parent">
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="250dp">
-        <RadioButton
-            android:id="@+id/radTatCaThoiGian"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tất Cả" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/radHomNay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hôm nay" />
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="Thời Gian"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
-        <RadioButton
-            android:id="@+id/radHomQua"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hôm qua" />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/radTuanNay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tuần này" />
+                <RadioButton
+                    android:id="@+id/radTatCaThoiGian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tất Cả" />
 
-        <RadioButton
-            android:id="@+id/radTuanTruoc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tuần trước" />
+                <RadioButton
+                    android:id="@+id/radHomNay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hôm nay" />
 
-        <RadioButton
-            android:id="@+id/radThangNay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tháng này" />
+                <RadioButton
+                    android:id="@+id/radHomQua"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hôm qua" />
 
-        <RadioButton
-            android:id="@+id/radThangTruoc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tháng Trước" />
-    </RadioGroup>
+                <RadioButton
+                    android:id="@+id/radTuanNay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tuần này" />
 
-    <TextView
-        android:layout_marginTop="50dp"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:gravity="center"
-        android:id="@+id/textView27"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:background="@color/colorPrimary"
-        android:text="Hóa Đơn" />
+                <RadioButton
+                    android:id="@+id/radTuanTruoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tuần trước" />
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="200dp">
+                <RadioButton
+                    android:id="@+id/radThangNay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tháng này" />
 
-        <RadioButton
-            android:id="@+id/radTatCaHoaDon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tất cả" />
+                <RadioButton
+                    android:id="@+id/radThangTruoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tháng Trước" />
+            </RadioGroup>
 
-        <RadioButton
-            android:id="@+id/radChuaThanhToan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Chưa Thanh Toán" />
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="50dp"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="Hóa Đơn"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
-        <RadioButton
-            android:id="@+id/radDaThanhToan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Đã Thanh Toán" />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radTatCaHoaDon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tất cả" />
+
+                <RadioButton
+                    android:id="@+id/radChuaThanhToan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chưa Thanh Toán" />
+
+                <RadioButton
+                    android:id="@+id/radDaThanhToan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Đã Thanh Toán" />
 
 
-    </RadioGroup>
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
