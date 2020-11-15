@@ -24,14 +24,18 @@
             android:textSize="18dp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/imgToolBarBoLocLuu"
+        <TextView
+            android:id="@+id/tvLuuBoLocHD"
             android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:onClick="ToolBarBoLocLuu"
-            android:src="@drawable/ic_diskette" />
+            android:gravity="center"
+            android:onClick="luuBoLoc"
+            android:text="Lưu"
+            android:textColor="#2196F3"
+            android:textSize="24sp" />
+
     </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>

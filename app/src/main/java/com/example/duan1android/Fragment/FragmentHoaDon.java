@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +36,9 @@ public class FragmentHoaDon extends Fragment {
     ListView lvListHoaDon;
     androidx.appcompat.widget.Toolbar toolbar;
     DrawerLayout drawerLayout;
-String a;
+    RadioButton rdoTatCa,rdoHomNay,rdoHomQua,rdoTuanNay,rdoTuanTruoc,rdoThangNay,rdoThangTruoc,rdoTatCaHd,rdoChuaThanhToan,rdoDaThanhToan;
+    TextView tvLuuBoLoc;
+
     public FragmentHoaDon() {
         // Required empty public constructor
     }
@@ -104,6 +107,8 @@ String a;
                 Dialog dialog = new Dialog(getActivity(), android.R.style.Theme_Black_NoTitleBar_Fullscreen);
                 dialog.setContentView(R.layout.activity_bo_loc);
                 dialog.show();
+                anhXaViewDia(dialog);
+
             }
         });
 
@@ -130,5 +135,41 @@ String a;
         toolbar = (Toolbar) view.findViewById(R.id.toolbar_hoa_don);
         drawerLayout = view.findViewById(R.id.drawerLayoutHoaDon);
     }
+    public String luuChon(){
+        String luaChon = null;
+        if(rdoTatCa.isChecked()){
+            luaChon = "Tất cả";
+        }else if(rdoHomQua.isChecked()){
+            luaChon = "Hôm qua";
+        }else if(rdoHomNay.isChecked()){
+            luaChon = "Hôm nay";
+        }else if(rdoThangNay.isChecked()){
+            luaChon = "Tháng này";
+        }else if(rdoThangTruoc.isChecked()){
+            luaChon = "Tháng trước";
+        }else if(rdoTuanTruoc.isChecked()){
+            luaChon = "Tuần trước";
+        }else if(rdoTuanNay.isChecked()){
+            luaChon = "Tuần này";
+        }
+        return luaChon;
+    }
+    public void anhXaViewDia(Dialog dialog){
+        rdoTatCa = dialog.findViewById(R.id.radTatCaThoiGian);
+        rdoHomNay = dialog.findViewById(R.id.radHomNay);
+        rdoHomQua = dialog.findViewById(R.id.radHomQua);
+        rdoTuanNay = dialog.findViewById(R.id.radTuanNay);
+        rdoTuanTruoc = dialog.findViewById(R.id.radTuanTruoc);
+        rdoThangNay = dialog.findViewById(R.id.radThangNay);
+        rdoThangTruoc = dialog.findViewById(R.id.radThangTruoc);
+        rdoTatCaHd = dialog.findViewById(R.id.radTatCaHoaDon);
+        rdoChuaThanhToan = dialog.findViewById(R.id.radChuaThanhToan);
+        rdoDaThanhToan = dialog.findViewById(R.id.radDaThanhToan);
+        tvLuuBoLoc = dialog.findViewById(R.id.tvLuuBoLocHD);
 
+    }
+    public void luuBoLoc(View view){
+        tvLoaiLoc.setText(""+luuChon());
+
+    }
 }

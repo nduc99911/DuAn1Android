@@ -15,10 +15,5 @@ public class DonViTinh {
         this.donViTinh = donViTinh;
     }
 
-    @Override
-    public String toString() {
-        return "DonViTinh{" +
-                "donViTinh='" + donViTinh + '\'' +
-                '}';
-    }
+
 }

@@ -20,13 +20,11 @@ import com.example.duan1android.R;
 
 public class BoLocActivity extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
-    RadioButton rdoTatCa,rdoHomNay,rdoHomQua,rdoTuanNay,rdoTuanTruoc,rdoThangNay,rdoThangTruoc,rdoTatCaHd,rdoChuaThanhToan,rdoDaThanhToan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bo_loc);
-        anhXaView();
         toolbar = findViewById(R.id.toolbar_bo_loc);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -59,37 +57,7 @@ public class BoLocActivity extends AppCompatActivity {
 
 
     }
-    public String luuChon(){
-        String luaChon = null;
-        if(rdoTatCa.isChecked()){
-            luaChon = "Tất cả";
-        }else if(rdoHomQua.isChecked()){
-            luaChon = "Hôm qua";
-        }else if(rdoHomNay.isChecked()){
-            luaChon = "Hôm nay";
-        }else if(rdoThangNay.isChecked()){
-            luaChon = "Tháng này";
-        }else if(rdoThangTruoc.isChecked()){
-            luaChon = "Tháng trước";
-        }else if(rdoTuanTruoc.isChecked()){
-            luaChon = "Tuần trước";
-        }else if(rdoTuanNay.isChecked()){
-            luaChon = "Tuần này";
-        }
-        return luaChon;
-    }
-    public void anhXaView(){
-        rdoTatCa = findViewById(R.id.radTatCaThoiGian);
-        rdoHomNay = findViewById(R.id.radHomNay);
-        rdoHomQua = findViewById(R.id.radHomQua);
-        rdoTuanNay = findViewById(R.id.radTuanNay);
-        rdoTuanTruoc = findViewById(R.id.radTuanTruoc);
-        rdoThangNay = findViewById(R.id.radThangNay);
-        rdoThangTruoc = findViewById(R.id.radThangTruoc);
-        rdoTatCaHd = findViewById(R.id.radTatCaHoaDon);
-        rdoChuaThanhToan = findViewById(R.id.radChuaThanhToan);
-        rdoDaThanhToan = findViewById(R.id.radDaThanhToan);
-    }
+
 public String myData(){
         return "Duc";
 }

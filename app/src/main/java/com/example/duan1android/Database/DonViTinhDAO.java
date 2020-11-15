@@ -32,7 +32,7 @@ class DonViTinhDAO {
         contentValues.put("tenDonVi",tenMoi);
         return sqLiteDatabase.update(TABLE_NAME,contentValues,"tenDonVi = ?",new String[]{tenCu});
     }
-    public long deleteHDCT(String ten){
+    public long deleteDonVi(String ten){
         return sqLiteDatabase.delete(TABLE_NAME,"tenDonVi = ?",new String[]{ten});
     }
     public List<String> getAllDonViTinh(){
