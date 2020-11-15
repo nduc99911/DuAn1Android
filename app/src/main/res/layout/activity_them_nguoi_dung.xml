@@ -5,6 +5,7 @@ xmlns:tools="http://schemas.android.com/tools"
 tools:context=".Activity.ThemNguoiDungActivity"
 android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/anh"
 android:layout_height="match_parent">
     <include
         layout="@layout/custom_toolbar_them_nguoi_dung">
@@ -21,6 +22,7 @@ android:layout_height="match_parent">
         android:orientation="vertical" >
 
         <ImageView
+            android:background="@drawable/border_img"
             android:layout_gravity="center"
             android:id="@+id/imageView"
             android:layout_width="150dp"

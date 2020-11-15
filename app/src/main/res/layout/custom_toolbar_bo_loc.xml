@@ -31,7 +31,7 @@
             android:layout_marginLeft="100dp"
             android:layout_weight="1"
             android:onClick="ToolBarBoLocLuu"
-            android:src="@drawable/diskette" />
+            android:src="@drawable/ic_diskette" />
     </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>

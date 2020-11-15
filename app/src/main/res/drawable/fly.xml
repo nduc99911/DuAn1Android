@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+    <item android:drawable="@drawable/anh1" android:duration="500" />
+    <item android:drawable="@drawable/anh2" android:duration="500" />
+    <item android:drawable="@drawable/anh3" android:duration="500" />
+    <item android:drawable="@drawable/anh4" android:duration="500" />
+    <item android:drawable="@drawable/anh5" android:duration="500" />
+    <item android:drawable="@drawable/anh6" android:duration="500" />
+    <item android:drawable="@drawable/anh7" android:duration="500" />
+    <item android:drawable="@drawable/anh8" android:duration="500" />
+    <item android:drawable="@drawable/anh9" android:duration="500" />
+    <item android:drawable="@drawable/anh10" android:duration="50" />
+    <item android:drawable="@drawable/anh11" android:duration="500" />
+    <item android:drawable="@drawable/anh12" android:duration="500" />
+    <item android:drawable="@drawable/anh13" android:duration="500" />
+    <item android:drawable="@drawable/anh14" android:duration="500" />
+    <item android:drawable="@drawable/anh1" android:duration="500" />
+    <item android:drawable="@drawable/anh2" android:duration="500" />
+    <item android:drawable="@drawable/anh3" android:duration="500" />
+    <item android:drawable="@drawable/anh4" android:duration="500" />
+    <item android:drawable="@drawable/anh5" android:duration="500" />
+    <item android:drawable="@drawable/anh6" android:duration="500" />
+    <item android:drawable="@drawable/anh7" android:duration="500" />
+</animation-list>
