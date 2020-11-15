@@ -77,11 +77,6 @@ public class FragmentBanHang extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
 
-        //setText navHearder
-//        View headerView = navigationView.getHeaderView(0);
-//        TextView navUsername = (TextView) headerView.findViewById(R.id.text);
-//        ImageView img = (ImageView) headerView.findViewById(R.id.image);
-//        navUsername.setText("Your Text Here");
 time();
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

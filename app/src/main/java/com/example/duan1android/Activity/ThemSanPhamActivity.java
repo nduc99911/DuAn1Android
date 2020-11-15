@@ -161,7 +161,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
 
         }
         SanPham sanPham = new SanPham(ma,theLoai,ten,donViTinh,Integer.parseInt(soLuong),Double.parseDouble(giaNhap),Double.parseDouble(giaBan),hinhAnh);
-        long chk = sanPhamDAO.addSanPham(sanPham);
+            long chk = sanPhamDAO.addSanPham(sanPham);
         if(chk>0) {
             Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this,SanPhamActivity.class);

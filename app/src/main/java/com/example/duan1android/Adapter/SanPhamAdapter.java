@@ -48,7 +48,7 @@ class SanPhamAdapter extends BaseAdapter {
         if(view == null){
             view = LayoutInflater.from(context).inflate(R.layout.item_san_pham, viewGroup, false);
             viewHolder = new ViewHolder();
-            viewHolder.tvMa = view.findViewById(R.id.tvMaSanPham_ItemSp);
+//            viewHolder.tvMa = view.findViewById(R.id.tvMaSanPham_ItemSp);
             viewHolder.tvTen = view.findViewById(R.id.tvTenSanPham_ItemSp);
             viewHolder.tvGia = view.findViewById(R.id.tvGiaBan_ItemSp);
             viewHolder.tvConDu = view.findViewById(R.id.tvCon_ItemSp);
@@ -58,16 +58,16 @@ class SanPhamAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
         SanPham sanPham = list.get(i);
-        viewHolder.tvMa.setText("Mã sản phẩm : "+sanPham.getMaSanPham());
+//        viewHolder.tvMa.setText("Mã sản phẩm : "+sanPham.getMaSanPham());
         viewHolder.tvTen.setText("Tên sản phẩm : "+sanPham.getTen());
-        viewHolder.tvGia.setText("Giá bán : "+sanPham.getGiaBan());
+        viewHolder.tvGia.setText("Giá bán : "+Math.round(sanPham.getGiaBan())+ " VNĐ");
         viewHolder.tvConDu.setText("Còn : "+sanPham.getSoLuong());
         byte[] image = sanPham.getImage();
         try {
             Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
             viewHolder.imgSanPham.setImageBitmap(bitmap);
         }catch (Exception e){
-            viewHolder.imgSanPham.setImageResource(R.drawable.sanpham);
+            viewHolder.imgSanPham.setImageResource(R.drawable.ic_sanpham1);
         }
 
         return view;
