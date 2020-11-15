@@ -10,7 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan1android.Activity.BoLocActivity;
@@ -29,6 +31,7 @@ public class MatHangActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ViewPager viewPager;
    public TabLayout tabLayout;
+    String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,12 @@ public class MatHangActivity extends AppCompatActivity {
         drawerLayout=findViewById(R.id.drawerLayout);
         tabLayout=findViewById(R.id.TabLayout);
         viewPager=findViewById(R.id.viewPage);
+//        View headerView = navigationView.getHeaderView(1);
+//        TextView navUsername = (TextView) headerView.findViewById(R.id.text);
+//        navUsername.setText("Hi");
+//        imageView=findViewById(R.id.imageView5);
+////        imageView.setImageResource(R.drawable.anh1);
+
         ViewPageAdapter viewPageAdapter=new ViewPageAdapter(getSupportFragmentManager());
         viewPageAdapter.addFragment(new FragmentBanHang(),"Bán Hàng");
         viewPageAdapter.addFragment(new FragmentHoaDon(),"Hóa Đơn");
@@ -51,28 +60,10 @@ public class MatHangActivity extends AppCompatActivity {
         tabLayout.getTabAt(2).setIcon(R.drawable.iconbaocaoactivity);
         tabLayout.getTabAt(3).setIcon(R.drawable.iconthemactivity);
 
-//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//            }
-//        });
+
+
     }
 
-public String sendata(){
-    BoLocActivity  boLocActivity=new BoLocActivity();
-  String data=boLocActivity.myData();
-        return data;
-}
+
 
 }

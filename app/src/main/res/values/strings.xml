@@ -2,4 +2,5 @@
     <string name="app_name">DuAn1Android</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="facebook_app_id">397594538095394</string>
 </resources>
