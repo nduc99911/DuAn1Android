@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,17 +28,19 @@ import java.util.Date;
 
 public class SplashScreenActivity extends AppCompatActivity {
     LinearLayout linearLayout;
-    private ImageView mImageView;
-    private ImageView mTextView;
+    private ImageView imglogo,fly;
     private Thread mThread;
+    TextView tvLoading;
+    AnimationDrawable rocketAnimation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 linearLayout=findViewById(R.id.splashScreen);
         setContentView(R.layout.activity_splash_screen);
-        mImageView = (ImageView) findViewById(R.id.imageSplashScrenn);
-        mTextView = findViewById(R.id.tvSplashScrenn);
+        imglogo = (ImageView) findViewById(R.id.imageSplashScrenn);
+        fly=findViewById(R.id.imgFlySplashScrenn);
+        tvLoading= findViewById(R.id.tvSplashScren);
         startAnimation();
         DateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd hhmmss");
         dateFormatter.setLenient(false);
@@ -48,7 +51,9 @@ linearLayout=findViewById(R.id.splashScreen);
         int month= c.get(Calendar.MONTH) ;
         int date=c.get(Calendar.DATE);
         int sdk = Build.VERSION.SDK_INT;
-
+        fly.setBackgroundResource(R.drawable.fly);
+        rocketAnimation = (AnimationDrawable) fly.getBackground();
+        rocketAnimation.start();
 
     }
     private void startAnimation() {
@@ -57,15 +62,15 @@ linearLayout=findViewById(R.id.splashScreen);
         rotate.reset();
         translate.reset();
 
-        mImageView.setAnimation(rotate);
-        mTextView.setAnimation(translate);
-
+        imglogo.setAnimation(rotate);
+        fly.setAnimation(translate);
+        tvLoading.setAnimation(translate);
         mThread = new Thread() {
             @Override
             public void run() {
                 super.run();
                 int waited = 0;
-                while (waited < 3500) {
+                while (waited < 10000) {
                     try {
                         sleep(100);
                     } catch (InterruptedException e) {

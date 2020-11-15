@@ -48,7 +48,7 @@ class SanPhamAdapter extends BaseAdapter {
         if(view == null){
             view = LayoutInflater.from(context).inflate(R.layout.item_san_pham, viewGroup, false);
             viewHolder = new ViewHolder();
-            viewHolder.tvMa = view.findViewById(R.id.tvMaSanPham_ItemSp);
+
             viewHolder.tvTen = view.findViewById(R.id.tvTenSanPham_ItemSp);
             viewHolder.tvGia = view.findViewById(R.id.tvGiaBan_ItemSp);
             viewHolder.tvConDu = view.findViewById(R.id.tvCon_ItemSp);

@@ -3,5 +3,6 @@
     android:interpolator="@android:anim/linear_interpolator">
 
     <translate android:fromXDelta="0%p" android:toXDelta="100%p"
-        android:duration = "3000"/>
+        android:repeatCount="infinite"
+        android:duration = "10000"/>
 </set>
