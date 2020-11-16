@@ -23,6 +23,11 @@ class LoaiSanPhamAdapter extends BaseAdapter {
     List<LoaiSanPham> list;
     LinearLayout ln;
 
+    public LoaiSanPhamAdapter(Context context, List<LoaiSanPham> list) {
+        this.context = context;
+        this.list = list;
+    }
+
     @Override
     public int getCount() {
         return list.size();

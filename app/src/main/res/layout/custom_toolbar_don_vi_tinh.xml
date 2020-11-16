@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
-            android:text="Sửa Vị Tính"
+            android:text="Đơn Vị Tính"
             android:textColor="#ffffff"
             android:textSize="24sp"
             android:textStyle="bold" />
