@@ -3,16 +3,26 @@ package com.example.duan1android.Model;
 public
 class NguoiDung {
     private String taiKhoan,matKhau,soDienThoai,email,hoTen;
+    private byte[] hinhAnh;
 
-    public NguoiDung(String taiKhoan, String matKhau, String soDienThoai, String email, String hoTen) {
+    public NguoiDung(String taiKhoan, String matKhau, String soDienThoai, String email, String hoTen, byte[] hinhAnh) {
         this.taiKhoan = taiKhoan;
         this.matKhau = matKhau;
         this.soDienThoai = soDienThoai;
         this.email = email;
         this.hoTen = hoTen;
+        this.hinhAnh = hinhAnh;
     }
 
     public NguoiDung() {
+    }
+
+    public byte[] getHinhAnh() {
+        return hinhAnh;
+    }
+
+    public void setHinhAnh(byte[] hinhAnh) {
+        this.hinhAnh = hinhAnh;
     }
 
     public String getTaiKhoan() {

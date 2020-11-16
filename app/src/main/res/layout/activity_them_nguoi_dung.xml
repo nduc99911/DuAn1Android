@@ -22,12 +22,12 @@ android:layout_height="match_parent">
         android:orientation="vertical" >
 
         <ImageView
-            android:background="@drawable/border_img"
-            android:layout_gravity="center"
-            android:id="@+id/imageView"
+            android:id="@+id/imgThemAnhNguoiDung"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/ic_add" />
+            android:layout_gravity="center"
+            android:src="@drawable/ic_follow"
+             />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_marginLeft="20dp"
@@ -53,6 +53,7 @@ android:layout_height="match_parent">
                 android:layout_width="360dp"
                 android:layout_height="50dp"
                 android:background="@drawable/border_edt"
+                android:inputType="textPassword"
                 android:hint="Password" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,6 +66,7 @@ android:layout_height="match_parent">
                 android:id="@+id/edThemRePassword"
                 android:layout_width="360dp"
                 android:layout_height="50dp"
+                android:inputType="textPassword"
                 android:background="@drawable/border_edt"
                 android:hint="Nhập Lại Password" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -78,6 +80,7 @@ android:layout_height="match_parent">
                 android:id="@+id/edThemEmail"
                 android:layout_width="360dp"
                 android:layout_height="50dp"
+                android:inputType="textEmailAddress"
                 android:background="@drawable/border_edt"
                 android:hint="Email" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -101,11 +104,11 @@ android:layout_height="match_parent">
             android:layout_height="75dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edThemDiaChi"
+                android:id="@+id/edThemHoTen"
                 android:layout_width="360dp"
                 android:layout_height="50dp"
                 android:background="@drawable/border_edt"
-                android:hint="Địa Chỉ" />
+                android:hint="Họ Tên" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>

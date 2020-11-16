@@ -19,7 +19,8 @@ class NguoiDungDAO {
             "   matKhau text," +
             "   soDienThoai text," +
             "   email text," +
-            "   hoTen text)";
+            "   hoTen text," +
+            "   hinhAnh BLOB)";
 
     private Mydatabase mydatabase;
     private SQLiteDatabase sqLiteDatabase;
@@ -35,6 +36,7 @@ class NguoiDungDAO {
         contentValues.put("soDienThoai",nguoiDung.getSoDienThoai());
         contentValues.put("email",nguoiDung.getEmail());
         contentValues.put("hoTen",nguoiDung.getHoTen());
+        contentValues.put("hinhAnh",nguoiDung.getHinhAnh());
         return sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
     }
     public long updateNguoiDung(NguoiDung  nguoiDung,String userName){
@@ -44,6 +46,7 @@ class NguoiDungDAO {
         contentValues.put("soDienThoai",nguoiDung.getSoDienThoai());
         contentValues.put("email",nguoiDung.getEmail());
         contentValues.put("hoTen",nguoiDung.getHoTen());
+        contentValues.put("hinhAnh",nguoiDung.getHinhAnh());
         return sqLiteDatabase.update(TABLE_NAME,contentValues,"taiKhoan = ?",new String[]{userName});
     }
     public long deleteNguoiDung(String userName){
@@ -61,7 +64,9 @@ class NguoiDungDAO {
                 String sdt = cursor.getString(2);
                 String email = cursor.getString(3);
                 String hoTen = cursor.getString(4);
-                NguoiDung nguoiDung = new NguoiDung(taiKhoan,matKhau,sdt,email,hoTen);
+                byte[] img = cursor.getBlob(5);
+
+                NguoiDung nguoiDung = new NguoiDung(taiKhoan,matKhau,sdt,email,hoTen,img);
                 list.add(nguoiDung);
                 cursor.moveToNext();
             }
