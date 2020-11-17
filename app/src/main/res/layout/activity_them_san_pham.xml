@@ -121,6 +121,8 @@
                     android:textStyle="bold" />
 
                 <Spinner
+                    android:background="#FFFFFF"
+                    android:popupBackground="#FFFFFF"
                     android:id="@+id/spnThemDonViTinh"
                     android:layout_width="0dp"
                     android:layout_height="50dp"

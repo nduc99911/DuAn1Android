@@ -139,6 +139,7 @@ CallbackManager callbackManager;
                 if (charSequence.length() == 0) {
                     textInputLayoutUserName.setError("Username is required");
                     textInputLayoutUserName.setErrorEnabled(true);
+
                 } else if (charSequence.length() < 5) {
                     textInputLayoutUserName.setError("Username is required and length must be >= 5");
                     textInputLayoutUserName.setErrorEnabled(true);

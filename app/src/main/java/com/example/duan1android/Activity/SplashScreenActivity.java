@@ -70,7 +70,7 @@ linearLayout=findViewById(R.id.splashScreen);
             public void run() {
                 super.run();
                 int waited = 0;
-                while (waited < 10000) {
+                while (waited < 1000) {
                     try {
                         sleep(100);
                     } catch (InterruptedException e) {

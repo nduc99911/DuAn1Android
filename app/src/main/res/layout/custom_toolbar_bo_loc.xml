@@ -3,7 +3,7 @@
     android:id="@+id/toolbar_bo_loc"
     xmlns:android = "http://schemas.android.com/apk/res/android"
     android:layout_height ="60dp"
-    android:background = "#FFFFFF"
+    android:background = "#2c3c49"
     android:layout_width="match_parent">
 
     <LinearLayout
@@ -20,7 +20,7 @@
             android:layout_weight="4"
             android:gravity="left"
             android:text="Bộ lọc tìm kiếm"
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="#ffffff"
             android:textSize="18dp"
             android:textStyle="bold" />
 

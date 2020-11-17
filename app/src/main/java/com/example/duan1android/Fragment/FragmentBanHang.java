@@ -18,6 +18,7 @@ import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -64,6 +65,7 @@ public class FragmentBanHang extends Fragment {
     SanPhamDAO sanPhamDAO;
     SanPhamAdapter sanPhamAdapter;
     Handler handler = new Handler();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -76,15 +78,31 @@ public class FragmentBanHang extends Fragment {
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
-
-time();
-
+        //onClick item navigatinonView
+navigationView.getMenu().getItem(0).setIcon(R.drawable.ic_delete);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.nav_sendEmail:
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("text/html");
+                        intent.putExtra(Intent.EXTRA_EMAIL, "nduc99911@gmail.com");
+                        intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+                        intent.putExtra(Intent.EXTRA_TEXT, "Phản Hồi Ứng Dụng");
+                        startActivity(Intent.createChooser(intent, "Phản Hồi"));
+                }
+                return false;
+            }
+        });
+        time();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
         return view;
     }
 
@@ -123,40 +141,38 @@ time();
         View headerView = navigationView.getHeaderView(0);
         ImageView img = (ImageView) headerView.findViewById(R.id.image);
         TextView navUsername = (TextView) headerView.findViewById(R.id.text);
-        TextView tvName=headerView.findViewById(R.id.tvNameNavi);
-        ConstraintLayout constraintLayoutt=headerView.findViewById(R.id.test);
-        TextView tvNgay=headerView.findViewById(R.id.tvNgay);
-        final TextView tvGio=headerView.findViewById(R.id.tvGio);
+        TextView tvName = headerView.findViewById(R.id.tvNameNavi);
+        ConstraintLayout constraintLayoutt = headerView.findViewById(R.id.test);
+        TextView tvNgay = headerView.findViewById(R.id.tvNgay);
+        final TextView tvGio = headerView.findViewById(R.id.tvGio);
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH)+1;
+        int month = c.get(Calendar.MONTH) + 1;
         int date = c.get(Calendar.DATE);
-        final int hour= c.get(Calendar.HOUR_OF_DAY);
+        final int hour = c.get(Calendar.HOUR_OF_DAY);
         final int mintute = c.get(Calendar.MINUTE);
         final int second = c.get(Calendar.SECOND);
-        tvNgay.setText(date+"/"+month+"/"+year);
+        tvNgay.setText(date + "/" + month + "/" + year);
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 final Calendar c = Calendar.getInstance();
-               int hour= c.get(Calendar.HOUR_OF_DAY);
+                int hour = c.get(Calendar.HOUR_OF_DAY);
                 int mintute = c.get(Calendar.MINUTE);
                 int second = c.get(Calendar.SECOND);
-                tvGio.setText(hour+"h:"+mintute+"m:"+second+"s");
-                handler.postDelayed(this,0);
+                tvGio.setText(hour + "h:" + mintute + "m:" + second + "s");
+                handler.postDelayed(this, 0);
             }
         };
         runnable.run();
 
-        if(hour<=12){
+        if (hour <= 12) {
             navUsername.setText("Chào Buổi Sáng");
             constraintLayoutt.setBackgroundResource(R.drawable.troisang);
 
-        }
-        else if(hour>12) {
+        } else if (hour > 12) {
             navUsername.setText("Chào Buổi Chiều");
-        }
-        else if(hour>18) {
+        } else if (hour > 18) {
             navUsername.setText("Chào Buổi Tối");
             constraintLayoutt.setBackgroundResource(R.drawable.mattrang);
         }
