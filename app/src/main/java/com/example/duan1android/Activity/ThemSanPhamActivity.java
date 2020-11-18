@@ -44,8 +44,8 @@ import java.util.List;
 public class ThemSanPhamActivity extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
     ImageView imgThemAnh;
-    EditText edMa, edTen, edSoLuong, edGiaBan, edGiaNhap;
     Spinner spnDonViTinh, spnDanhMuc;
+    EditText edMa, edTen, edSoLuong, edGiaBan, edGiaNhap;
     String ma, ten, soLuong, giaBan, giaNhap, donViTinh, theLoai;
     List<String> listDonVi, listTheLoai;
     SanPhamDAO sanPhamDAO;
@@ -70,11 +70,9 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         DonViTinhDAO donViTinhDAO = new DonViTinhDAO(this);
         listDonVi = donViTinhDAO.getAllDonViTinh();
         listTheLoai = loaiSanPhamDAO.getAllTenLoaiSanPham();
-        ArrayAdapter adapterDonVi = new ArrayAdapter(this, android.R.layout.simple_spinner_item, listDonVi);
-        adapterDonVi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter adapterDonVi = new ArrayAdapter(this, R.layout.spinner_item, listDonVi);
         spnDonViTinh.setAdapter(adapterDonVi);
-        ArrayAdapter adapterTheLoai = new ArrayAdapter(this, android.R.layout.simple_spinner_item, listTheLoai);
-        adapterDonVi.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter adapterTheLoai = new ArrayAdapter(this, R.layout.spinner_item, listTheLoai);
         spnDanhMuc.setAdapter(adapterTheLoai);
         spnDonViTinh.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

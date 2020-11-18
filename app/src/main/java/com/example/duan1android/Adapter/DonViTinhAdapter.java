@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -82,7 +83,8 @@ class DonViTinhAdapter extends BaseAdapter {
         viewHolder.imgUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog = new Dialog(context, android.R.style.Theme_NoTitleBar_Fullscreen);
+                dialog = new Dialog(context,android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+
                 dialog.setContentView(R.layout.activity_sua_don_vi_tinh);
                 dialog.show();
                 edSua = (EditText) dialog.findViewById(R.id.edSuaDonViTinh);

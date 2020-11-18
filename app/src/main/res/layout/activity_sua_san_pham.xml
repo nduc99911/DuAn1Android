@@ -98,7 +98,8 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
-
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -110,7 +111,7 @@
                     android:id="@+id/textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:text="Đơn vị tính" />
 
                 <Spinner
@@ -121,7 +122,8 @@
 
             </LinearLayout>
             <LinearLayout
-
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -133,7 +135,7 @@
                     android:id="@+id/textView1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:text="Danh Mục" />
 
                 <Spinner
