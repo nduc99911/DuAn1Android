@@ -16,22 +16,22 @@
             android:layout_height = "36dp"
             android:src ="@drawable/icon_toolbar"
             />
+
         <TextView
-            android:id = "@+id/toolbar_title"
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:textSize = "25dp"
-            android:textStyle = "bold"
-            android:layout_gravity = "center"
-            android:layout_marginLeft = "8dp"
-            android:text = "Thông Tin"
-            android:textColor = "#FFFFFF"
-            />
+            android:id="@+id/toolbar_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="3"
+            android:text="Thông Tin"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
         <ImageView
-            android:layout_marginLeft="160dp"
-            android:layout_width="36dp"
+            android:layout_width="0dp"
             android:layout_height="36dp"
+            android:layout_weight="1"
             android:src="@drawable/settings" />
     </LinearLayout>
 

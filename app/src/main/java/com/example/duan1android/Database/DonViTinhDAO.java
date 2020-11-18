@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.duan1android.Model.DonViTinh;
 import com.example.duan1android.Model.HoaDonChiTiet;
 
 import java.util.ArrayList;
@@ -34,6 +35,22 @@ class DonViTinhDAO {
     }
     public long deleteDonVi(String ten){
         return sqLiteDatabase.delete(TABLE_NAME,"tenDonVi = ?",new String[]{ten});
+    }
+    public List<DonViTinh> getAllDonViTinh2(){
+        List<DonViTinh> list = new ArrayList<>();
+        String query = "Select * from "+TABLE_NAME;
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            while (cursor.isAfterLast()==false){
+                String ten = cursor.getString(0);
+                DonViTinh donViTinh = new DonViTinh(ten);
+                list.add(donViTinh);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        return list;
     }
     public List<String> getAllDonViTinh(){
         List<String> list = new ArrayList<>();

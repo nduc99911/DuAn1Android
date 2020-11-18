@@ -2,6 +2,7 @@ package com.example.duan1android.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,10 +45,12 @@ public class ThemDonViTinh extends AppCompatActivity {
             return;
         }
         DonViTinhDAO donViTinhDAO=new DonViTinhDAO(this);
-        if(donViTinhDAO.addDonVi(donVi)>0){
+        long chk = donViTinhDAO.addDonVi(donVi);
+        if(chk>0){
             Toast.makeText(getApplicationContext(),"Thêm đơn vị thành công",Toast.LENGTH_LONG).show();
             finish();
-
+            Intent intent = new Intent(this,DonViTinhActivity.class);
+            startActivity(intent);
         }
         else {
             Toast.makeText(getApplicationContext(),"Thêm Không thành công",Toast.LENGTH_LONG).show();
