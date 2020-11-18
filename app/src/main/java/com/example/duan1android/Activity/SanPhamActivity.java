@@ -1,22 +1,36 @@
 package com.example.duan1android.Activity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.duan1android.Adapter.SanPhamAdapter;
 import com.example.duan1android.Database.SanPhamDAO;
+import com.example.duan1android.Model.SanPham;
 import com.example.duan1android.R;
+import com.google.android.material.snackbar.Snackbar;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,10 +40,9 @@ public class SanPhamActivity extends AppCompatActivity {
     ListView lvList;
     EditText edTimKiem;
     SanPhamDAO sanPhamDAO;
-    List list;
+    List<SanPham> list;
     SanPhamAdapter sanPhamAdapter;
-    EditText edMa, edTen, edSoLuong, edGiaBan, edGiaNhap;
-    String ma, ten, soLuong, giaBan, giaNhap, donViTinh, theLoai;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,20 +59,14 @@ public class SanPhamActivity extends AppCompatActivity {
         lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                onItemClickEvent();
+                Intent intent = new Intent(SanPhamActivity.this,ChiTietSanPhamActivity.class);
+                SanPham sanPham = list.get(i);
+                intent.putExtra("sanPham",sanPham.getMaSanPham());
+                intent.putExtra("pos",i);
+                startActivity(intent);
             }
         });
     }
-
-    private void onItemClickEvent() {
-        Context context;
-        Dialog dialog = new Dialog(this, android.R.style.Theme_NoTitleBar_Fullscreen);
-        dialog.setContentView(R.layout.activity_sua_san_pham);
-        dialog.show();
-        ImageView imgSuaSanPham = dialog.findViewById(R.id.imgLuuSuaSanPham);
-
-    }
-
     public void anhXaView() {
         imgSanPham = findViewById(R.id.imgThemSanPhamLuu);
         lvList = findViewById(R.id.lvSanPham_actSP);
@@ -69,7 +76,6 @@ public class SanPhamActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackPressed();
                 return true;
             default:
                 break;
@@ -81,6 +87,12 @@ public class SanPhamActivity extends AppCompatActivity {
     public void SanPhamThem(View view) {
         Intent intent = new Intent(this,ThemSanPhamActivity.class);
         startActivity(intent);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
     }
 }

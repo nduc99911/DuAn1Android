@@ -8,13 +8,11 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.CursorWindow;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,16 +26,13 @@ import android.widget.Toast;
 import com.example.duan1android.Database.DonViTinhDAO;
 import com.example.duan1android.Database.LoaiSanPhamDAO;
 import com.example.duan1android.Database.SanPhamDAO;
-import com.example.duan1android.Model.DonViTinh;
 import com.example.duan1android.Model.SanPham;
 import com.example.duan1android.R;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +47,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
     LinearLayout lnThem;
     byte[] hinhAnh;
     int REQUEST_CODE_FOLDER = 456;
-    final int REQUEST_CODE_GALLERY = 999;
+    int REQUEST_CODE_GALLERY = 999;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,22 +122,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
             }
 
             super.onActivityResult(requestCode, resultCode, data);
-//            try {
-//                InputStream inputStream = getContentResolver().openInputStream(uri);
-//                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-//                imgThemAnh.setImageBitmap(bitmap);
-            //
-//                BitmapFactory.Options options = new BitmapFactory.Options();
-//                options.inJustDecodeBounds = true;
-//                BitmapFactory.decodeStream(inputStream,null,options);
-//                options.inSampleSize = 2;
-            //
-//                Bitmap smallBitmap1 = BitmapFactory.decodeStream(inputStream, null, options);
 
-
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
         }
     }
 
@@ -162,7 +142,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
     //ánh xạ
     public void anhXaView() {
         imgThemAnh = findViewById(R.id.imgThemMatHang);
-        edMa = findViewById(R.id.edThemMaMatHang);
+        edMa = findViewById(R.id.edSuaMaMatHang);
         edTen = findViewById(R.id.edThemTenMatHang);
         edSoLuong = findViewById(R.id.edThemSoLuong);
         edGiaBan = findViewById(R.id.edThemGiaBan);
@@ -207,6 +187,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         long chk = sanPhamDAO.addSanPham(sanPham);
         if (chk > 0) {
             Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+            finish();
             Intent intent = new Intent(this, SanPhamActivity.class);
             startActivity(intent);
         } else {

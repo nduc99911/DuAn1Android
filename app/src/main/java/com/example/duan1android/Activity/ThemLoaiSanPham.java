@@ -10,13 +10,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.duan1android.Adapter.LoaiSanPhamAdapter;
 import com.example.duan1android.Database.LoaiSanPhamDAO;
 import com.example.duan1android.Model.LoaiSanPham;
 import com.example.duan1android.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ThemLoaiSanPham extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
@@ -48,7 +44,7 @@ public class ThemLoaiSanPham extends AppCompatActivity {
     }
     public void anhXaView() {
         imgThemLoaiSanPhamLuu=findViewById(R.id.imgThemLoaiSanPhamLuu);
-        edMa = findViewById(R.id.edThemMaMatHang);
+        edMa = findViewById(R.id.edSuaMaMatHang);
         edTen = findViewById(R.id.edThemTenMatHang);
         loaiSanPhamDAO = new LoaiSanPhamDAO(this);
     }

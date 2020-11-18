@@ -87,5 +87,24 @@ class SanPhamDAO {
         }
         return list;
     }
+    public SanPham getSanPhamTheoMa(String ma){
+        String query = "select * from "+TABLE_NAME+ " where maSanPham = '"+ma+"'";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        SanPham sanPham = null;
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            String maSP = cursor.getString(0);
+            String maLoai = cursor.getString(1);
+            String ten = cursor.getString(2);
+            String donVi = cursor.getString(3);
+            int soLuong = cursor.getInt(4);
+            double giaNhap = cursor.getDouble(5);
+            double giaBan = cursor.getDouble(6);
+            byte[] img = cursor.getBlob(7);
+            sanPham = new SanPham(maSP,maLoai,ten,donVi,soLuong,giaNhap,giaBan,img);
+        }
+        cursor.close();
+        return sanPham;
+    }
 
 }
