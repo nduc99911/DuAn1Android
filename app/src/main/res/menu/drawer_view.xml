@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <group android:checkableBehavior="single">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
         <item
-            android:id="@+id/nav_camera"
-            android:title="import" />
+            android:icon="@drawable/ic_plus"
+            android:id="@+id/nav_sendEmail"
+            android:title="Phản Hồi Ứng Dụng"
+            tools:ignore="AppCompatResource" />
         <item
             android:id="@+id/nav_gallery"
-
+            android:icon="@drawable/ic_plus"
             android:title="gallery" />
         <item
             android:id="@+id/nav_slideshow"
-
+            android:icon="@drawable/ic_plus"
             android:title="slideshow" />
         <item
+            android:icon="@drawable/ic_plus"
             android:id="@+id/nav_manage"
             android:title="tools" />
-    </group>
+
 </menu>
