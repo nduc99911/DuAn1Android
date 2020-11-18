@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.example.duan1android.Adapter.SanPhamAdapter;
 import com.example.duan1android.Database.SanPhamDAO;
+import com.example.duan1android.Fragment.FragmentThem;
 import com.example.duan1android.R;
 
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class SanPhamActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackPressed();
+                finish();
                 return true;
             default:
                 break;

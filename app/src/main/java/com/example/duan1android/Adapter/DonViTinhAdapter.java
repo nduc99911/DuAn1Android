@@ -2,6 +2,7 @@ package com.example.duan1android.Adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.example.duan1android.Database.DonViTinhDAO;
 import com.example.duan1android.Database.LoaiSanPhamDAO;
@@ -69,14 +72,34 @@ class DonViTinhAdapter extends BaseAdapter {
         viewHolder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                long chk = donViTinhDAO.deleteDonVi(donViTinh.getDonViTinh());
-                if(chk>0){
-                    Toast.makeText(context,"Xóa thành công",Toast.LENGTH_SHORT).show();
-                    list.remove(i);
-                    notifyDataSetChanged();
-                }else {
-                    Toast.makeText(context,"Xóa không thành công",Toast.LENGTH_SHORT).show();
-                }
+                AlertDialog.Builder b = new AlertDialog.Builder(context);
+//Thiết lập tiêu đề
+                b.setTitle("Xác nhận");
+                b.setMessage("Bạn có đồng ý xóa hóa đơn này không?");
+// Nút Ok
+                b.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        long chk = donViTinhDAO.deleteDonVi(donViTinh.getDonViTinh());
+                        if(chk>0){
+                            Toast.makeText(context,"Xóa thành công",Toast.LENGTH_SHORT).show();
+                            list.remove(i);
+                            notifyDataSetChanged();
+                        }else {
+                            Toast.makeText(context,"Xóa không thành công",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+//Nút Cancel
+                b.setNegativeButton("Không đồng ý", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+//Tạo dialog
+                AlertDialog al = b.create();
+//Hiển thị
+                al.show();
+
             }
         });
         viewHolder.imgUpdate.setOnClickListener(new View.OnClickListener() {
