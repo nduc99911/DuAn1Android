@@ -1,13 +1,16 @@
 package com.example.duan1android.Adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.duan1android.Database.DonViTinhDAO;
 import com.example.duan1android.Database.LoaiSanPhamDAO;
@@ -23,8 +26,9 @@ public
 class DonViTinhAdapter extends BaseAdapter {
     Context context;
     List<DonViTinh> list;
-    LinearLayout ln;
     DonViTinhDAO donViTinhDAO;
+    Dialog dialog;
+    EditText edSua;
 
     public DonViTinhAdapter(Context context, List<DonViTinh> list) {
         this.context = context;
@@ -65,21 +69,38 @@ class DonViTinhAdapter extends BaseAdapter {
         viewHolder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ln = view.findViewById(R.id.linearLSP);
                 long chk = donViTinhDAO.deleteDonVi(donViTinh.getDonViTinh());
                 if(chk>0){
-                    Snackbar.make(ln,"Xóa thành công", BaseTransientBottomBar.LENGTH_SHORT).show();
+                    Toast.makeText(context,"Xóa thành công",Toast.LENGTH_SHORT).show();
                     list.remove(i);
                     notifyDataSetChanged();
                 }else {
-                    Snackbar.make(ln,"Xóa không thành công", BaseTransientBottomBar.LENGTH_SHORT).show();
+                    Toast.makeText(context,"Xóa không thành công",Toast.LENGTH_SHORT).show();
                 }
             }
         });
         viewHolder.imgUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                dialog = new Dialog(context, android.R.style.Theme_NoTitleBar_Fullscreen);
+                dialog.setContentView(R.layout.activity_sua_don_vi_tinh);
+                dialog.show();
+                edSua = (EditText) dialog.findViewById(R.id.edSuaDonViTinh);
+                ImageView imgLuu = dialog.findViewById(R.id.imgLuuThayDoiDV);
+                imgLuu.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        try{
+                            donViTinhDAO.updateDonVi(edSua.getText().toString(),list.get(i).getDonViTinh());
+                            Toast.makeText(context,"Lưu thành công",Toast.LENGTH_SHORT).show();
+                            list.set(i,new DonViTinh(edSua.getText().toString()));
+                            notifyDataSetChanged();
+                            dialog.dismiss();
+                        }catch (Exception e){
+                            Toast.makeText(context,"Lưu thất bại, Đơn Vị đã tồn tại",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
         return view;
