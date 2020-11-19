@@ -9,14 +9,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.duan1android.Activity.MatHangActivity;
+
 public class GioiThieu2Activity extends AppCompatActivity {
 
-Button btnApp2;
 
+    Button btnApp2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgot_pass);
+        setContentView(R.layout.activity_register);
         btnApp2=findViewById(R.id.btnApp2);
         btnApp2.setOnClickListener(new View.OnClickListener() {
             @Override

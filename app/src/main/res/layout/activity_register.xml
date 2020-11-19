@@ -4,168 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:alpha="0.8"
-    android:background="@drawable/backgrond"
-    tools:context=".Activity.RegisterActivity">
+    android:background="@drawable/app2"
+    tools:context=".GioiThieu2Activity">
+
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="serif-monospace"
-        android:text="Register"
+        android:id="@+id/textView29"
+        android:layout_width="269dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="512dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginRight="94dp"
+        android:fontFamily="@font/hammersmith_one"
+        android:text="Dễ dàng quản lý,Dễ dàng sử dụng"
         android:textColor="#FFFFFF"
-        android:textSize="50dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="MissingConstraints">
-
-
-        <EditText
-            android:id="@+id/edUserName"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/border_edt"
-            android:ems="10"
-            android:hint="UserName"
-            android:inputType="textPersonName" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout6"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/edPassWord"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/border_edt"
-            android:ems="10"
-            android:hint="PassWord"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout7"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/edRePassWord"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/border_edt"
-            android:ems="10"
-            android:hint="Nhập lại PassWord"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout10"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/edEmail"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/border_edt"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout11"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/edPhone"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/border_edt"
-            android:ems="10"
-            android:hint="Số Điện Thoại"
-            android:inputType="phone" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout9"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout11"
-        tools:ignore="MissingConstraints">
-
-
-        <EditText
-            android:id="@+id/edHoTen"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/border_edt"
-            android:ems="10"
-            android:hint="Họ Và Tên"
-            android:inputType="phone" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="6dp"
+        android:id="@+id/btnApp2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="287dp"
+        android:layout_marginLeft="287dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/border_button"
-        android:text="OK"
-        android:textColor="#FFFF"
-        android:textStyle="bold"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout9" />
-
-
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
