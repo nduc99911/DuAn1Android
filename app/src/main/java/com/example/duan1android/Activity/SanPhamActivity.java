@@ -92,8 +92,4 @@ public class SanPhamActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        onBackPressed();
-    }
 }
