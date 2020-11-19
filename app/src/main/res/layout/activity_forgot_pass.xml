@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:alpha="0.8"
     android:background="@drawable/backgrond"
-    tools:context=".ForgotPassActivity">
+    tools:context=".Activity.ForgotPassActivity">
 
 
     <TextView

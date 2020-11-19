@@ -1,4 +1,4 @@
-package com.example.duan1android;
+package com.example.duan1android.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.duan1android.R;
 
 public class ForgotPassActivity extends AppCompatActivity {
 EditText edEmail,edPhone,edUserName;

@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.duan1android.Adapter.SanPhamAdapter;
 import com.example.duan1android.Database.SanPhamDAO;
+import com.example.duan1android.Fragment.FragmentThem;
 import com.example.duan1android.Model.SanPham;
 import com.example.duan1android.R;
 import com.google.android.material.snackbar.Snackbar;
@@ -76,6 +77,7 @@ public class SanPhamActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                onBackPressed();
                 return true;
             default:
                 break;
@@ -92,7 +94,6 @@ public class SanPhamActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-
+        onBackPressed();
     }
 }

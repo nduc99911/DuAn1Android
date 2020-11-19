@@ -1,10 +1,12 @@
-package com.example.duan1android;
+package com.example.duan1android.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.duan1android.R;
 
 public class RegisterActivity extends AppCompatActivity {
 EditText edUserName,edPassWord,edRePassWord,edHoTen,edEmail,edPhone;

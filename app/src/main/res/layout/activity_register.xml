@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:alpha="0.8"
     android:background="@drawable/backgrond"
-    tools:context=".RegisterActivity">
+    tools:context=".Activity.RegisterActivity">
 
     <TextView
         android:id="@+id/textView"

@@ -1,4 +1,4 @@
-package com.example.duan1android;
+package com.example.duan1android.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -21,6 +21,7 @@ import com.example.duan1android.Fragment.FragmentBanHang;
 import com.example.duan1android.Fragment.FragmentBaoCao;
 import com.example.duan1android.Fragment.FragmentHoaDon;
 import com.example.duan1android.Fragment.FragmentThem;
+import com.example.duan1android.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
