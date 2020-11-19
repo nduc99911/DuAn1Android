@@ -4,168 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:alpha="0.8"
-    android:background="@drawable/backgrond"
-    tools:context=".RegisterActivity">
+    android:background="@drawable/app3"
+    tools:context=".GioiThieu3Acitivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="serif-monospace"
-        android:text="Register"
-        android:textColor="#FFFFFF"
-        android:textSize="50dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="MissingConstraints">
-
-
-        <EditText
-            android:id="@+id/edUserName"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/border_edt"
-            android:ems="10"
-            android:hint="UserName"
-            android:inputType="textPersonName" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout6"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/edPassWord"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/border_edt"
-            android:ems="10"
-            android:hint="PassWord"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout7"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/edRePassWord"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/border_edt"
-            android:ems="10"
-            android:hint="Nhập lại PassWord"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout10"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/edEmail"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/border_edt"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout11"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/edPhone"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/border_edt"
-            android:ems="10"
-            android:hint="Số Điện Thoại"
-            android:inputType="phone" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout9"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout11"
-        tools:ignore="MissingConstraints">
-
-
-        <EditText
-            android:id="@+id/edHoTen"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:background="@drawable/border_edt"
-            android:ems="10"
-            android:hint="Họ Và Tên"
-            android:inputType="phone" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="6dp"
+        android:id="@+id/btnBengin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="287dp"
+        android:layout_marginLeft="287dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/border_button"
-        android:text="OK"
-        android:textColor="#FFFF"
-        android:textStyle="bold"
+        android:text="Bắt Đầu"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="295dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="552dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginRight="90dp"
+        android:fontFamily="@font/hammersmith_one"
+        android:text="Bắt đầu quản lý ngay bây giờ!"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout9" />
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

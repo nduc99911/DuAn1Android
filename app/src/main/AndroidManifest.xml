@@ -66,13 +66,13 @@
             android:name=".MatHangActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".GioiThieu3Acitivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ForgotPassActivity"
+            android:name=".GioiThieu2Activity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".GioiThieuActivity"
             android:windowSoftInputMode="stateHidden">
 
         </activity>
@@ -87,6 +87,9 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
     </application>
 

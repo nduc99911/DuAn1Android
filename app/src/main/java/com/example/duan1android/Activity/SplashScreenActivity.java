@@ -1,15 +1,11 @@
 package com.example.duan1android.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -17,8 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.duan1android.LoginActivity;
-import com.example.duan1android.MainActivity;
+import com.example.duan1android.GioiThieuActivity;
 import com.example.duan1android.R;
 
 import java.text.DateFormat;
@@ -79,7 +74,7 @@ linearLayout=findViewById(R.id.splashScreen);
                     waited += 100;
                 }
                 SplashScreenActivity.this.finish();
-                Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                Intent intent = new Intent(SplashScreenActivity.this, GioiThieuActivity.class);
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
