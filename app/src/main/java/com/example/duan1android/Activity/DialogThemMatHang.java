@@ -3,11 +3,7 @@ package com.example.duan1android.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.duan1android.R;
 

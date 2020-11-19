@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.duan1android.Database.DonViTinhDAO;
-import com.example.duan1android.Model.DonViTinh;
 import com.example.duan1android.R;
 import com.google.android.material.snackbar.Snackbar;
 

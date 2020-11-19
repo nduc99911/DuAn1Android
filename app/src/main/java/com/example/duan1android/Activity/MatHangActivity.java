@@ -1,21 +1,11 @@
 package com.example.duan1android.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.duan1android.Activity.BoLocActivity;
 import com.example.duan1android.Adapter.ViewPageAdapter;
 import com.example.duan1android.Fragment.FragmentBanHang;
 import com.example.duan1android.Fragment.FragmentBaoCao;
