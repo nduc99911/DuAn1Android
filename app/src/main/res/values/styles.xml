@@ -8,31 +8,50 @@
         <item name="colorControlNormal">#37f1ec</item>
         <item name="colorControlActivated">#d94ed0</item>
         <item name="colorControlHighlight">#d94ed0</item>
-
         <item name="tabIndicatorColor">@color/colorPrimary</item>
         <item name="tabIndicatorHeight">3dp</item>
         <item name="tabSelectedTextColor">@android:color/white</item>
 
     </style>
+
     <style name="margin8">
         <item name="android:layout_margin">8dp</item>
     </style>
+
     <style name="fontNormal">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">#000</item>
     </style>
+
     <style name="margin4">
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginBottom">8dp</item>
     </style>
+
     <style name="CusTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="background">@drawable/bg</item>
     </style>
+
     <style name="fontHienThi">
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:paddingBottom">5dp</item>
         <item name="android:layout_margin">4dp</item>
-    </style>
 
+    </style>
+    <style name="fontHienThi2">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:paddingLeft">10dp</item>
+
+    </style>
+    <style name="full_screen_dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
 </resources>

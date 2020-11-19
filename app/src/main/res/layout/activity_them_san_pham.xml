@@ -37,7 +37,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edThemMaMatHang"
+                    android:id="@+id/edSuaMaMatHang"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
                     android:background="@drawable/border_edt"
@@ -121,8 +121,6 @@
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:background="#FFFFFF"
-                    android:popupBackground="#FFFFFF"
                     android:id="@+id/spnThemDonViTinh"
                     android:layout_width="0dp"
                     android:layout_height="50dp"

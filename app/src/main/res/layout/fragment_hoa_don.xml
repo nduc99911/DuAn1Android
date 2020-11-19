@@ -30,8 +30,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             app:hintTextColor="#FFF"
@@ -42,6 +40,8 @@
                 android:id="@+id/edTimKiemHoaDon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_margin="8dp"
                 android:hint="Tìm kiếm Hóa Đơn"
                 android:textColor="#FFF"/>
         </com.google.android.material.textfield.TextInputLayout>

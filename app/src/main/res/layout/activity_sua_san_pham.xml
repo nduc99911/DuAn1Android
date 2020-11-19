@@ -22,11 +22,11 @@
             android:orientation="vertical" >
 
             <ImageView
-                android:background="@drawable/border_img"
-                android:layout_gravity="center"
-                android:id="@+id/imageView"
+                android:id="@+id/suaAnhSanPham"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:background="@drawable/border_img"
                 android:src="@drawable/ic_add" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -39,6 +39,7 @@
                     android:id="@+id/edSuaMaMatHang"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
+                    android:inputType="text"
                     android:background="@drawable/border_edt"
                     android:hint="Mã mặt hàng" />
 
@@ -51,9 +52,10 @@
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edThemTenMatHang"
+                    android:id="@+id/edSuaTenMatHang"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
+                    android:inputType="text"
                     android:background="@drawable/border_edt"
                     android:hint="Tên mặt hàng" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -67,6 +69,7 @@
                     android:id="@+id/edSuaSoLuong"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
+                    android:inputType="number"
                     android:background="@drawable/border_edt"
                     android:hint="Số lượng" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -80,6 +83,7 @@
                     android:id="@+id/edSuaGiaBan"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
+                    android:inputType="number"
                     android:background="@drawable/border_edt"
                     android:hint="Giá bán" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -93,12 +97,14 @@
                     android:id="@+id/edSuaGiaNhap"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
+                    android:inputType="number"
                     android:background="@drawable/border_edt"
                     android:hint="Giá nhập" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
-
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -110,18 +116,19 @@
                     android:id="@+id/textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:text="Đơn vị tính" />
 
                 <Spinner
-                    android:id="@+id/spnThemDonViTinh"
+                    android:id="@+id/spnSuaDonViTinh"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="3" />
 
             </LinearLayout>
             <LinearLayout
-
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -133,11 +140,11 @@
                     android:id="@+id/textView1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:text="Danh Mục" />
 
                 <Spinner
-                    android:id="@+id/spnThemDanhMuc"
+                    android:id="@+id/spnSuaDanhMuc"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="3" />
