@@ -40,6 +40,7 @@
                     android:id="@+id/edSuaMaMatHang"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
+                    android:inputType="text"
                     android:background="@drawable/border_edt"
                     android:hint="Mã mặt hàng" />
 
@@ -55,6 +56,7 @@
                     android:id="@+id/edThemTenMatHang"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
+                    android:inputType="text"
                     android:background="@drawable/border_edt"
                     android:hint="Tên mặt hàng" />
             </com.google.android.material.textfield.TextInputLayout>
