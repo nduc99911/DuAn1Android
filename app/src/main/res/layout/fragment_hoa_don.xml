@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/anh"
+    android:orientation="vertical"
     tools:context=".Fragment.FragmentHoaDon">
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerLayoutHoaDon"
         android:layout_width="match_parent"
@@ -18,87 +19,95 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="67dp"
             android:orientation="vertical">
-    <!-- TODO: Update blank fragment layout -->
-    <include layout="@layout/custom_toolbar_hoadon"></include>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <include layout="@layout/custom_toolbar_hoadon"></include>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            app:hintTextColor="#FFF"
-            android:background="@drawable/border_tim_kiem"
-            app:startIconDrawable="@drawable/ic_seach">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edTimKiemHoaDon"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_margin="8dp"
-                android:hint="Tìm kiếm Hóa Đơn"
-                android:textColor="#FFF"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="horizontal">
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:background="@drawable/border_filter"
-        style="@style/margin8"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/edTimKiemHoaDon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_loupe"
+                    android:drawableLeft="@drawable/ic_loupe"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/background_edit_search"
+                    android:padding="8dp"
+                    android:hint="Tìm kiếm tại đây"
+                    android:layout_marginBottom="16dp"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvTimeLoaiLoc"
-            style="@style/fontNormal"
+            <LinearLayout
+                style="@style/margin8"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/border_filter"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvTimeLoaiLoc"
+                    style="@style/fontNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tất cả : "
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvLoaiLoc"
+                    style="@style/fontNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:paddingLeft="18dp"
+                    android:text="TextView"
+                    android:textColor="#FF0000" />
+
+                <ImageView
+                    android:id="@+id/imgChonLoaiLoc"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:src="@drawable/filter" />
+            </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ListView
+                    android:id="@+id/lvListHoaDon"
+                    style="@style/margin8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/tvRongHoaDon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Không tìm thấy hóa đơn nào"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:gravity="center"
+                    android:visibility="invisible"
+                    style="@style/fontHienThi"/>
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/NavigationView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tất cả : "
-            android:textColor="#FFFFFF" />
-
-        <TextView
-            android:id="@+id/tvLoaiLoc"
-            style="@style/fontNormal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:paddingLeft="18dp"
-            android:text="TextView"
-            android:textColor="#FF0000" />
-
-        <ImageView
-            android:id="@+id/imgChonLoaiLoc"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:src="@drawable/filter" />
-    </LinearLayout>
-
-    <ListView
-        android:id="@+id/lvListHoaDon"
-        style="@style/margin8"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
-
-<com.google.android.material.navigation.NavigationView
-android:id="@+id/NavigationView"
-android:layout_width="wrap_content"
-android:layout_height="match_parent"
-android:layout_gravity="start"
-app:headerLayout="@layout/navheader"
-app:menu="@menu/drawer_view">
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/navheader"
+            app:menu="@menu/drawer_view">
 
 
-
-</com.google.android.material.navigation.NavigationView>
+        </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

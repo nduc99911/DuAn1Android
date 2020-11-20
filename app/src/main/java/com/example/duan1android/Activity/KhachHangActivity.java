@@ -10,22 +10,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.example.duan1android.Adapter.NguoiDungAdapter;
-import com.example.duan1android.Database.NguoiDungDAO;
-import com.example.duan1android.Model.NguoiDung;
+import com.example.duan1android.Adapter.KhachHangAdapter;
+import com.example.duan1android.Database.KhachHangDAO;
+import com.example.duan1android.Model.KhachHang;
 import com.example.duan1android.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NguoiDungActivity extends AppCompatActivity {
+public class KhachHangActivity extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
     ImageView imgNguoiDungThem;
     EditText edTimKiem;
     ListView lvList;
-    List<NguoiDung> list;
-    NguoiDungDAO nguoiDungDAO;
-    NguoiDungAdapter nguoiDungAdapter;
+    List<KhachHang> list;
+    KhachHangDAO khachHangDAO;
+    KhachHangAdapter khachHangAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +34,12 @@ public class NguoiDungActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         anhXaView();
-        list = nguoiDungDAO.getAllNguoiDung();
-        nguoiDungAdapter = new NguoiDungAdapter(this,list);
-        lvList.setAdapter(nguoiDungAdapter);
-
+        list = khachHangDAO.getAllKhachHang();
+        khachHangAdapter = new KhachHangAdapter(this,list);
+        lvList.setAdapter(khachHangAdapter);
     }
     public void NguoiDungThem(View view){
-        Intent intent=new Intent(NguoiDungActivity.this,ThemNguoiDungActivity.class);
+        Intent intent=new Intent(KhachHangActivity.this,ThemKhachHangActivity.class);
         startActivity(intent);
     }
     public void anhXaView() {
@@ -48,7 +47,7 @@ public class NguoiDungActivity extends AppCompatActivity {
        edTimKiem = findViewById(R.id.edTimKiemNguoiDung);
        lvList = findViewById(R.id.lvNguoiDung);
        list = new ArrayList<>();
-       nguoiDungDAO = new NguoiDungDAO(this);
+       khachHangDAO = new KhachHangDAO(this);
     }
 
     @Override

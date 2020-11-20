@@ -106,5 +106,27 @@ class SanPhamDAO {
         cursor.close();
         return sanPham;
     }
+    public List<SanPham> getAllSanPhamTheoMa(String ma){
+        List<SanPham> list = new ArrayList<>();
+        String query = "select * from "+TABLE_NAME+ " where maSanPham like '%"+ma+"%' or tenSanPham like '%"+ma+"%'";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        SanPham sanPham = null;
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            String maSP = cursor.getString(0);
+            String maLoai = cursor.getString(1);
+            String tensp = cursor.getString(2);
+            String donVi = cursor.getString(3);
+            int soLuong = cursor.getInt(4);
+            double giaNhap = cursor.getDouble(5);
+            double giaBan = cursor.getDouble(6);
+            byte[] img = cursor.getBlob(7);
+            sanPham = new SanPham(maSP,maLoai,tensp,donVi,soLuong,giaNhap,giaBan,img);
+            list.add(sanPham);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
 
 }

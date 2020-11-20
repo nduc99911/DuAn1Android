@@ -10,9 +10,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -22,13 +26,14 @@ import com.example.duan1android.R;
 
 
 public class FragmentHoaDon extends Fragment {
-    public TextView tvLoaiLoc,tvTimeLoaiLoc;
+    public TextView tvLoaiLoc, tvTimeLoaiLoc;
     ImageView imgBoLoc;
     ListView lvListHoaDon;
     androidx.appcompat.widget.Toolbar toolbar;
     DrawerLayout drawerLayout;
-    RadioButton rdoTatCa,rdoHomNay,rdoHomQua,rdoTuanNay,rdoTuanTruoc,rdoThangNay,rdoThangTruoc,rdoTatCaHd,rdoChuaThanhToan,rdoDaThanhToan;
-    TextView tvLuuBoLoc;
+    RadioButton rdoTatCa, rdoHomNay, rdoHomQua, rdoTuanNay, rdoTuanTruoc, rdoThangNay, rdoThangTruoc, rdoTatCaHd, rdoChuaThanhToan, rdoDaThanhToan;
+    TextView tvLuuBoLoc,tvTimKiem;
+    EditText edTimKiem;
 
     public FragmentHoaDon() {
         // Required empty public constructor
@@ -54,13 +59,9 @@ public class FragmentHoaDon extends Fragment {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-
-
-
         return view;
 
     }
-
 
 
     @Override
@@ -78,12 +79,27 @@ public class FragmentHoaDon extends Fragment {
                 tvLuuBoLoc.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        tvLoaiLoc.setText(""+luuChonHoaDon());
-                        tvTimeLoaiLoc.setText(""+luuChonTime());
+                        tvLoaiLoc.setText("" + luuChonHoaDon());
+                        tvTimeLoaiLoc.setText("" + luuChonTime());
                         dialog.dismiss();
                     }
                 });
+
+            }
+        });
+        edTimKiem.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
 
             }
         });
@@ -97,39 +113,44 @@ public class FragmentHoaDon extends Fragment {
         lvListHoaDon = view.findViewById(R.id.lvListHoaDon);
         toolbar = (Toolbar) view.findViewById(R.id.toolbar_hoa_don);
         drawerLayout = view.findViewById(R.id.drawerLayoutHoaDon);
-        tvTimeLoaiLoc=view.findViewById(R.id.tvTimeLoaiLoc);
+        tvTimeLoaiLoc = view.findViewById(R.id.tvTimeLoaiLoc);
+        tvTimKiem = view.findViewById(R.id.tvRongHoaDon);
+        edTimKiem = view.findViewById(R.id.edTimKiemHoaDon);
     }
-    public String luuChonTime(){
+
+    public String luuChonTime() {
         String luaChon = null;
-        if(rdoTatCa.isChecked()){
+        if (rdoTatCa.isChecked()) {
             luaChon = "Tất cả";
-        }else if(rdoHomQua.isChecked()){
+        } else if (rdoHomQua.isChecked()) {
             luaChon = "Hôm qua";
-        }else if(rdoHomNay.isChecked()){
+        } else if (rdoHomNay.isChecked()) {
             luaChon = "Hôm nay";
-        }else if(rdoThangNay.isChecked()){
-            luaChon= "Tháng này";
-        }else if(rdoThangTruoc.isChecked()){
+        } else if (rdoThangNay.isChecked()) {
+            luaChon = "Tháng này";
+        } else if (rdoThangTruoc.isChecked()) {
             luaChon = "Tháng trước";
-        }else if(rdoTuanTruoc.isChecked()){
+        } else if (rdoTuanTruoc.isChecked()) {
             luaChon = "Tuần trước";
-        }else if(rdoTuanNay.isChecked()){
+        } else if (rdoTuanNay.isChecked()) {
             luaChon = "Tuần này";
         }
         return luaChon;
     }
-    public String luuChonHoaDon(){
+
+    public String luuChonHoaDon() {
         String luaChon = null;
-        if(rdoTatCaHd.isChecked()){
+        if (rdoTatCaHd.isChecked()) {
             luaChon = "Tất cả";
-        }else if(rdoChuaThanhToan.isChecked()){
+        } else if (rdoChuaThanhToan.isChecked()) {
             luaChon = "Chưa Thanh Toán";
-        }else if(rdoDaThanhToan.isChecked()) {
+        } else if (rdoDaThanhToan.isChecked()) {
             luaChon = "Đã thanh toán";
         }
         return luaChon;
     }
-    public void anhXaViewDia(Dialog dialog){
+
+    public void anhXaViewDia(Dialog dialog) {
         rdoTatCa = dialog.findViewById(R.id.radTatCaThoiGian);
         rdoHomNay = dialog.findViewById(R.id.radHomNay);
         rdoHomQua = dialog.findViewById(R.id.radHomQua);

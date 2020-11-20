@@ -13,6 +13,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.duan1android.Activity.DonHangActivity;
 import com.example.duan1android.Adapter.SanPhamAdapter;
@@ -55,7 +58,7 @@ public class FragmentBanHang extends Fragment {
     SanPhamDAO sanPhamDAO;
     SanPhamAdapter sanPhamAdapter;
     Handler handler = new Handler();
-
+    TextView tvNull;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,11 +72,11 @@ public class FragmentBanHang extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
         //onClick item navigatinonView
-navigationView.getMenu().getItem(0).setIcon(R.drawable.ic_delete);
+        navigationView.getMenu().getItem(0).setIcon(R.drawable.ic_delete);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.nav_sendEmail:
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/html");
@@ -102,12 +105,9 @@ navigationView.getMenu().getItem(0).setIcon(R.drawable.ic_delete);
         anhXaView(view);
         sanPhamDAO = new SanPhamDAO(getActivity());
         list = new ArrayList<>();
-        list = sanPhamDAO.getAllSanPham();
-        sanPhamAdapter = new SanPhamAdapter(getContext(), list);
-        lvList.setAdapter(sanPhamAdapter);
+        doDuLieu();
         setHasOptionsMenu(true);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, danhSachLC);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnLocDanhSach.setAdapter(adapter);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,13 +116,38 @@ navigationView.getMenu().getItem(0).setIcon(R.drawable.ic_delete);
                 getActivity().startActivity(intent);
             }
         });
+        edTimKiem.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                List<SanPham> list = sanPhamDAO.getAllSanPhamTheoMa(edTimKiem.getText().toString());
+                SanPhamAdapter sanPhamAdapter = new SanPhamAdapter(getActivity(), list);
+                lvList.setAdapter(sanPhamAdapter);
+                tvNull.setVisibility(View.INVISIBLE);
+                if(edTimKiem.getText().toString().equalsIgnoreCase("")){
+                    doDuLieu();
+                }
+                if(list.size()<=0){
+                     tvNull.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     public void anhXaView(View view) {
-        edTimKiem = view.findViewById(R.id.edTimKiemMatHang);
+        edTimKiem = view.findViewById(R.id.edTimKiemSanPham);
         lvList = view.findViewById(R.id.lvListMatHang);
         spnLocDanhSach = view.findViewById(R.id.spnLocTimKiem);
-
+        tvNull = view.findViewById(R.id.tvNull);
 
     }
 
@@ -167,5 +192,9 @@ navigationView.getMenu().getItem(0).setIcon(R.drawable.ic_delete);
             constraintLayoutt.setBackgroundResource(R.drawable.mattrang);
         }
     }
-
+    public void doDuLieu(){
+        list = sanPhamDAO.getAllSanPham();
+        sanPhamAdapter = new SanPhamAdapter(getContext(), list);
+        lvList.setAdapter(sanPhamAdapter);
+    }
 }

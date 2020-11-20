@@ -17,17 +17,29 @@
             android:layout_width="70dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            tools:srcCompat="@drawable/iocnnguoidung" />
+            tools:srcCompat="@drawable/profile" />
 
-        <TextView
-            android:id="@+id/tvTenKhachHang"
-            style="@style/fontHienThi"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="3"
-            android:gravity="left"
-            android:text="Tên Khách Hàng" />
+            android:layout_weight="6"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTenKhachHang"
+                style="@style/fontHienThi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Tên Khách Hàng" />
+
+            <TextView
+                android:id="@+id/tvSDT"
+                style="@style/fontHienThi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </LinearLayout>
 
         <Button
 

@@ -17,7 +17,7 @@ class Mydatabase extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SanPhamDAO.SQL_SANPHAM);
         sqLiteDatabase.execSQL(HoaDonDAO.SQL_HOADON);
         sqLiteDatabase.execSQL(HoaDonChiTietDAO.SQL_HDCT);
-        sqLiteDatabase.execSQL(NguoiDungDAO.SQL_NGUOIDUNG);
+        sqLiteDatabase.execSQL(KhachHangDAO.SQL_NGUOIDUNG);
         sqLiteDatabase.execSQL(LoaiSanPhamDAO.SQL_LOAISANPHAM);
         sqLiteDatabase.execSQL(DonViTinhDAO.SQL_DONVI);
     }
@@ -27,7 +27,7 @@ class Mydatabase extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("Drop table "+SanPhamDAO.TABLE_NAME);
         sqLiteDatabase.execSQL("Drop table "+HoaDonDAO.TABLE_NAME);
         sqLiteDatabase.execSQL("Drop table "+HoaDonChiTietDAO.TABLE_NAME);
-        sqLiteDatabase.execSQL("Drop table "+NguoiDungDAO.TABLE_NAME);
+        sqLiteDatabase.execSQL("Drop table "+KhachHangDAO.TABLE_NAME);
         sqLiteDatabase.execSQL("Drop table "+LoaiSanPhamDAO.TABLE_NAME);
         sqLiteDatabase.execSQL("Drop table "+DonViTinhDAO.TABLE_NAME);
 

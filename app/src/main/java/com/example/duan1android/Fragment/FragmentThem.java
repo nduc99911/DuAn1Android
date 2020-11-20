@@ -20,8 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.duan1android.Activity.DonViTinhActivity;
+import com.example.duan1android.Activity.KhachHangActivity;
 import com.example.duan1android.Activity.LoaiSanPhamActivity;
-import com.example.duan1android.Activity.NguoiDungActivity;
 import com.example.duan1android.Activity.SanPhamActivity;
 import com.example.duan1android.R;
 
@@ -99,13 +99,13 @@ public class FragmentThem extends Fragment {
         imgNguoiDung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                chuyenAct(NguoiDungActivity.class);
+                chuyenAct(KhachHangActivity.class);
             }
         });
         tvNguoiDung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                chuyenAct(NguoiDungActivity.class);
+                chuyenAct(KhachHangActivity.class);
             }
         });
         return view;

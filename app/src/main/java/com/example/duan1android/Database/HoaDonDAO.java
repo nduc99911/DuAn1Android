@@ -60,4 +60,22 @@ class HoaDonDAO {
         }
         return list;
     }
+    public List<HoaDon> getAllHoaDonTheoMa(String ma){
+        List<HoaDon> list = new ArrayList<>();
+        String query = "Select * from "+TABLE_NAME+ " where maHoaDon like '%"+ma+"%'";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            while (cursor.isAfterLast()==false){
+                String maHD = cursor.getString(0);
+                String ngayBan = cursor.getString(1);
+                String tenKhach = cursor.getString(2);
+                HoaDon hoaDon = new HoaDon(maHD,ngayBan,tenKhach);
+                list.add(hoaDon);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        return list;
+    }
 }

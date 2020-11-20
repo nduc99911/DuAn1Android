@@ -2,7 +2,6 @@ package com.example.duan1android.Adapter;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -13,19 +12,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-
-import com.example.duan1android.Model.NguoiDung;
+import com.example.duan1android.Model.KhachHang;
 import com.example.duan1android.R;
 
 import java.util.List;
 
 public
-class NguoiDungAdapter extends BaseAdapter {
+class KhachHangAdapter extends BaseAdapter {
     Context context;
-    List<NguoiDung> list;
+    List<KhachHang> list;
 
-    public NguoiDungAdapter(Context context, List<NguoiDung> list) {
+    public KhachHangAdapter(Context context, List<KhachHang> list) {
         this.context = context;
         this.list = list;
     }
@@ -50,16 +47,19 @@ class NguoiDungAdapter extends BaseAdapter {
         ViewHolder viewHolder = null;
         if(view == null){
             viewHolder = new ViewHolder();
-            view = LayoutInflater.from(context).inflate(R.layout.item_thiet_lap_nguoi_dung, viewGroup, false);
+            view = LayoutInflater.from(context).inflate(R.layout.item_thiet_lap_khach_hang, viewGroup, false);
             viewHolder.imgHinhAnh = view.findViewById(R.id.imgNguoiDung);
             viewHolder.tvTen = view.findViewById(R.id.tvTenKhachHang);
             viewHolder.btnShowMore = view.findViewById(R.id.btnNext);
+            viewHolder.tvSDT = view.findViewById(R.id.tvSDT);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        NguoiDung nguoiDung = list.get(i);
-        viewHolder.tvTen.setText(""+nguoiDung.getTaiKhoan());
+        KhachHang khachHang = list.get(i);
+        viewHolder.tvTen.setText(""+khachHang.getTen());
+        viewHolder.tvSDT.setText(""+khachHang.getSoDienThoai());
+        viewHolder.imgHinhAnh.setImageResource(R.drawable.profile);
         viewHolder.btnShowMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,18 +68,12 @@ class NguoiDungAdapter extends BaseAdapter {
                 dialog.show();
             }
         });
-        byte[] img = nguoiDung.getHinhAnh();
-        try {
-            Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
-            viewHolder.imgHinhAnh.setImageBitmap(bitmap);
-        }catch (Exception e){
-            viewHolder.imgHinhAnh.setImageResource(R.drawable.iocnnguoidung);
-        }
+
         return view;
     }
     private class ViewHolder{
         ImageView imgHinhAnh;
-        TextView tvTen;
+        TextView tvTen,tvSDT;
         Button btnShowMore;
     }
 }
