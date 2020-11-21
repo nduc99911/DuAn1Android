@@ -46,6 +46,7 @@ class SanPhamAdapter extends BaseAdapter {
         if(view == null){
             view = LayoutInflater.from(context).inflate(R.layout.item_san_pham, viewGroup, false);
             viewHolder = new ViewHolder();
+            viewHolder.tvMa = view.findViewById(R.id.tvMa_ItemSp);
             viewHolder.tvSanPham = view.findViewById(R.id.tvTenSanPham_ItemSp);
             viewHolder.tvGia = view.findViewById(R.id.tvGiaBan_ItemSp);
             viewHolder.tvSoluong = view.findViewById(R.id.tvCon_ItemSp);
@@ -55,6 +56,7 @@ class SanPhamAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
         SanPham sanPham = list.get(i);
+        viewHolder.tvMa.setText("Mã : "+sanPham.getMaSanPham());
         viewHolder.tvSanPham.setText("Tên sản phẩm : "+sanPham.getTen());
         viewHolder.tvGia.setText("Giá bán : "+Math.round(sanPham.getGiaBan())+ " VNĐ");
         viewHolder.tvSoluong.setText("Còn : "+sanPham.getSoLuong());
@@ -65,7 +67,6 @@ class SanPhamAdapter extends BaseAdapter {
         }catch (Exception e){
             viewHolder.imgSanPham.setImageResource(R.drawable.ic_sanpham1);
         }
-
         return view;
     }
 

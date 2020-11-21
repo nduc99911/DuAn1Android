@@ -12,8 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.KhachHangActivity"></activity>
-        <activity android:name=".Activity.ThemKhachHangActivity"></activity>
+        <activity android:name=".Activity.ChiTietKhachHangActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".Activity.KhachHangActivity" />
+        <activity android:name=".Activity.ThemKhachHangActivity" />
         <activity android:name=".Activity.ChiTietSanPhamActivity" />
         <activity android:name=".Activity.SplashScreenActivity">
             <intent-filter>
@@ -58,12 +60,8 @@
         <activity
             android:name=".Activity.DonViTinhActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".Activity.ThemNguoiDungActivity" />
         <activity
             android:name=".Activity.SuaNguoiDungActivity"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".Activity.NguoiDungActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Activity.MatHangActivity"

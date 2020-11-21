@@ -108,7 +108,7 @@ class SanPhamDAO {
     }
     public List<SanPham> getAllSanPhamTheoMa(String ma){
         List<SanPham> list = new ArrayList<>();
-        String query = "select * from "+TABLE_NAME+ " where maSanPham like '%"+ma+"%' or tenSanPham like '%"+ma+"%'";
+        String query = "select DISTINCT * from "+TABLE_NAME+ " where maSanPham like '%"+ma+"%' or tenSanPham like '%"+ma+"%'";
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         SanPham sanPham = null;
         if(cursor.getCount()>0){

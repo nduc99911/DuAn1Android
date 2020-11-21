@@ -12,7 +12,7 @@ public class SuaNguoiDungActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sua_nguoi_dung);
+        setContentView(R.layout.dialog_sua_khach_hang);
         toolbar = findViewById(R.id.toolbar_ban_hang);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -23,8 +23,6 @@ public class SuaNguoiDungActivity extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 return true;
-
-
             default:
                 break;
         }

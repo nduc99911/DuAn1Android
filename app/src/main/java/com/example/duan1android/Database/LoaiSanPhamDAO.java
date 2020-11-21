@@ -71,4 +71,21 @@ class LoaiSanPhamDAO {
         }
         return list;
     }
+    public List<LoaiSanPham> getAllLoaiSanPhamTheoMa(String ma){
+        List<LoaiSanPham> list = new ArrayList<>();
+        String query = "Select DISTINCT * from "+TABLE_NAME+ " where maLoai like '%"+ma+"%' or tenLoai like '%"+ma+"%'";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            while (cursor.isAfterLast()==false){
+                String maLoai = cursor.getString(0);
+                String tenLoai = cursor.getString(1);
+                LoaiSanPham loaiSanPham = new LoaiSanPham(maLoai,tenLoai);
+                list.add(loaiSanPham);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        return list;
+    }
 }

@@ -20,9 +20,9 @@
             app:srcCompat="@drawable/sanpham" />
 
         <LinearLayout
-            style="@style/margin8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
             android:orientation="vertical">
 
 
@@ -33,7 +33,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="" />
-
+            <TextView
+                android:id="@+id/tvMa_ItemSp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/fontHienThi"
+                android:text="" />
             <TextView
 
                 android:id="@+id/tvGiaBan_ItemSp"

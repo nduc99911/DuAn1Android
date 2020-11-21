@@ -24,27 +24,27 @@
 
 
             <LinearLayout
-                android:layout_marginTop="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edTimKiemSanPham"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:drawableStart="@drawable/ic_loupe"
+                android:drawableLeft="@drawable/ic_loupe"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/background_edit_search"
+                android:padding="8dp"
+                android:hint="Tìm kiếm tại đây"
+                android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/edTimKiemSanPham"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_loupe"
-                    android:drawableLeft="@drawable/ic_loupe"
-                    android:drawablePadding="8dp"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@drawable/background_edit_search"
-                    android:padding="8dp"
-                    android:hint="Tìm kiếm tại đây"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
+        </LinearLayout>
 
             <LinearLayout
 
