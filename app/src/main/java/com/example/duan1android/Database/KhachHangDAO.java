@@ -113,8 +113,8 @@ class KhachHangDAO {
         String query = "Select DISTINCT * from " + TABLE_NAME + " where soDienThoai like '%"+text+"%' or hoTen like '%"+text+"%'"  ;
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
             while (cursor.isAfterLast()==false) {
-                cursor.moveToFirst();
                 String ten = cursor.getString(1);
                 String soDienThoai = cursor.getString(0);
                 String email = cursor.getString(2);
