@@ -29,7 +29,9 @@ class SanPhamDAO {
             "   soLuong number," +
             "   giaNhap number," +
             "   giaBan number," +
-            "   hinhAnh BLOB )";
+            "   hinhAnh BLOB, "+
+            "   con number)";
+
     private Mydatabase mydatabase;
     private SQLiteDatabase sqLiteDatabase;
 
@@ -47,6 +49,7 @@ class SanPhamDAO {
         contentValues.put("giaNhap",sanPham.getGiaNhap());
         contentValues.put("giaBan",sanPham.getGiaBan());
         contentValues.put("hinhAnh",sanPham.getImage());
+        contentValues.put("con",sanPham.getCon());
         return sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
     }
     public long updateSanPham(SanPham sanPham,String ma){
@@ -59,6 +62,7 @@ class SanPhamDAO {
         contentValues.put("giaNhap",sanPham.getGiaNhap());
         contentValues.put("giaBan",sanPham.getGiaBan());
         contentValues.put("hinhAnh",sanPham.getImage());
+        contentValues.put("con",sanPham.getCon());
         return sqLiteDatabase.update(TABLE_NAME,contentValues,"maSanPham = ?",new String[]{ma});
     }
     public long deleteSanPham(String ma){
@@ -79,7 +83,8 @@ class SanPhamDAO {
                 double giaNhap = cursor.getDouble(5);
                 double giaBan = cursor.getDouble(6);
                 byte[] img = cursor.getBlob(7);
-                SanPham sanPham = new SanPham(maSP,maLoai,ten,donVi,soLuong,giaNhap,giaBan,img);
+                int con=cursor.getInt(8);
+                SanPham sanPham = new SanPham(maSP,maLoai,ten,donVi,soLuong,giaNhap,giaBan,img,con);
                 list.add(sanPham);
                 cursor.moveToNext();
             }
@@ -101,7 +106,8 @@ class SanPhamDAO {
             double giaNhap = cursor.getDouble(5);
             double giaBan = cursor.getDouble(6);
             byte[] img = cursor.getBlob(7);
-            sanPham = new SanPham(maSP,maLoai,ten,donVi,soLuong,giaNhap,giaBan,img);
+            int con=cursor.getInt(8);
+            sanPham = new SanPham(maSP,maLoai,ten,donVi,soLuong,giaNhap,giaBan,img,con);
         }
         cursor.close();
         return sanPham;
@@ -121,7 +127,8 @@ class SanPhamDAO {
             double giaNhap = cursor.getDouble(5);
             double giaBan = cursor.getDouble(6);
             byte[] img = cursor.getBlob(7);
-            sanPham = new SanPham(maSP,maLoai,tensp,donVi,soLuong,giaNhap,giaBan,img);
+            int con=cursor.getInt(8);
+            sanPham = new SanPham(maSP,maLoai,tensp,donVi,soLuong,giaNhap,giaBan,img,con);
             list.add(sanPham);
             cursor.moveToNext();
         }

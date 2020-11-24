@@ -74,4 +74,13 @@ class SanPhamAdapter extends BaseAdapter {
         TextView tvMa, tvSanPham,tvGia, tvSoluong;
         ImageView imgSanPham;
     }
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+    }
+    public void changeDataSet(List<SanPham> listt){
+        this.list=listt;
+        notifyDataSetChanged();
+
+    }
 }

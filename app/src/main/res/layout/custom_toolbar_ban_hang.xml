@@ -1,22 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar
+<?xml version="1.0" encoding="UTF-8"?>
+
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar_ban_hang"
-    xmlns:android = "http://schemas.android.com/apk/res/android"
-    android:layout_height ="60dp"
-    android:background="#2C3C49"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="#2C3C49">
+
+
+    -
+
     <LinearLayout
-        android:layout_width = "match_parent"
-        android:layout_height = "wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerInParent="true">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
         <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/border_edt"
-            android:layout_marginTop="10dp"
-            android:layout_width = "36dp"
-            android:layout_height = "36dp"
-            android:src ="@drawable/icon_toolbar"
-            />
+            android:src="@drawable/shoppingbasket" />
 
         <TextView
             android:id="@+id/toolbar_title"
@@ -24,19 +30,48 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
+            android:layout_weight="2"
+            android:fontFamily="@font/black_ops_one"
             android:text="Bán Hàng"
             android:textColor="#FFFFFF"
-            android:textSize="25dp"
+            android:textSize="30dp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:background="@drawable/border_edt"
-            android:id="@+id/imgBanHang"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/shoppingcart" />
+
+        -
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="90dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgBanHang"
+                android:layout_width="45dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_edt"
+                android:src="@drawable/shoppingcart"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/tvSoLuongBanHang"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_button"
+                android:text="1"
+                android:textColor="#ffffff"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>

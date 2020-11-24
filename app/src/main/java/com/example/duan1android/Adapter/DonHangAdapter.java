@@ -57,7 +57,7 @@ class DonHangAdapter extends BaseAdapter {
         SanPham sanPham = list.get(i);
         viewHolder.tvSanPham.setText(""+sanPham.getTen());
         viewHolder.tvGia.setText(""+Math.round(sanPham.getGiaBan())+ " VNĐ");
-        viewHolder.tvSoluong.setText(""+sanPham.getSoLuong());
+        viewHolder.tvSoluong.setText(""+sanPham.getCon());
         return view;
     }
 

@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -59,6 +60,12 @@ public class FragmentBanHang extends Fragment {
     SanPhamAdapter sanPhamAdapter;
     Handler handler = new Handler();
     TextView tvNull;
+    TextView tvSoLuongBanHang;
+    ArrayList<String> maSanPham=new ArrayList<>();
+    int click = 0;
+    int soluong=0;
+    int j=0;
+    int sl2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -113,7 +120,43 @@ public class FragmentBanHang extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), DonHangActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putStringArrayList("key",maSanPham);
+                intent.putExtras(bundle);
                 getActivity().startActivity(intent);
+            }
+        });
+        list = sanPhamDAO.getAllSanPham();
+
+        lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                maSanPham.add(list.get(i).getMaSanPham());
+                tvSoLuongBanHang.setVisibility(View.VISIBLE);
+                click = 1 + click;
+               soluong=list.get(i).getSoLuong()-1;
+               tvSoLuongBanHang.setText(""+click);
+               //nếu sản phẩm <0
+               if(soluong<=0){
+                   sanPhamDAO.deleteSanPham(list.get(i).getMaSanPham());
+                   sanPhamAdapter=new SanPhamAdapter(getActivity(),list);
+                   lvList.setAdapter(sanPhamAdapter);
+
+               }
+               //cập nhật lại số lượng
+               String ma=list.get(i).getMaSanPham();
+               String maloai=list.get(i).getMaLoai();
+               String ten=list.get(i).getTen();
+                String donViTinh=list.get(i).getDonViTinh();
+                double giaNhap=list.get(i).getGiaNhap();
+                double giaBan=list.get(i).getGiaBan();
+                byte[] image=list.get(i).getImage();
+                SanPham sanPham=new SanPham(ma,maloai,ten,donViTinh,soluong,giaNhap,giaBan,image);
+                sanPhamDAO.updateSanPham(sanPham,ma);
+               list = sanPhamDAO.getAllSanPham();
+               sanPhamAdapter=new SanPhamAdapter(getActivity(),list);
+               lvList.setAdapter(sanPhamAdapter);
+
             }
         });
         edTimKiem.addTextChangedListener(new TextWatcher() {
@@ -148,6 +191,7 @@ public class FragmentBanHang extends Fragment {
         lvList = view.findViewById(R.id.lvListMatHang);
         spnLocDanhSach = view.findViewById(R.id.spnLocTimKiem);
         tvNull = view.findViewById(R.id.tvNull);
+        tvSoLuongBanHang = view.findViewById(R.id.tvSoLuongBanHang);
 
     }
 
@@ -184,7 +228,6 @@ public class FragmentBanHang extends Fragment {
         if (hour <= 12) {
             navUsername.setText("Chào Buổi Sáng");
             constraintLayoutt.setBackgroundResource(R.drawable.troisang);
-
         } else if (hour > 12) {
             navUsername.setText("Chào Buổi Chiều");
         } else if (hour > 18) {

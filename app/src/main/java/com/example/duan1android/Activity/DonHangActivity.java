@@ -4,10 +4,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,7 +18,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.duan1android.Adapter.DonHangAdapter;
+import com.example.duan1android.Adapter.SanPhamAdapter;
+import com.example.duan1android.Database.SanPhamDAO;
+import com.example.duan1android.Model.SanPham;
 import com.example.duan1android.R;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 
 public class DonHangActivity extends AppCompatActivity {
@@ -25,7 +41,15 @@ public class DonHangActivity extends AppCompatActivity {
     TextView tvChietKhau, tvTongTien;
     ImageView imgChietKhau, imgXoaDonHang;
     Button btnThanhToan;
-
+    SanPhamDAO sanPhamDAO;
+    DonHangAdapter donHangAdapter;
+    List<SanPham> list = new ArrayList<>();
+    String maSanPham;
+    int con;
+    List<SanPham> list1 = new ArrayList<>();
+    List<SanPham> list2 = new ArrayList<>();
+    int click=0;
+    ArrayList<String> ds = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +58,74 @@ public class DonHangActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar_ban_hang);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        List<SanPham> sanPhams = new ArrayList<>();
+        DonHangAdapter donHangAdapter = new DonHangAdapter(this, sanPhams);
+        lvList.setAdapter(donHangAdapter);
+//lấy dữ liệu
+
+        ds = bundle.getStringArrayList("key");
+        sanPhamDAO = new SanPhamDAO(this);
+        list = sanPhamDAO.getAllSanPham();
+
+
+        //xử lý số lượng sản phẩm
+        Set<String> set = new HashSet<>(ds);
+        ArrayList<String> temp_array = new ArrayList<>();
+        temp_array.addAll(set);
+        for (int i = 0; i < temp_array.size(); i++) {
+            Toast.makeText(getApplication(), "" + Collections.frequency(ds, temp_array.get(i)), Toast.LENGTH_SHORT).show();
+            con = Collections.frequency(ds, temp_array.get(i));
+            String ma = list.get(i).getMaSanPham();
+            String maloai = list.get(i).getMaLoai();
+            String ten = list.get(i).getTen();
+            String donViTinh = list.get(i).getDonViTinh();
+            double giaNhap = list.get(i).getGiaNhap();
+            double giaBan = list.get(i).getGiaBan();
+            byte[] image = list.get(i).getImage();
+            int soluong = list.get(i).getSoLuong();
+            SanPham sanPham = new SanPham(ma, maloai, ten, donViTinh, soluong, giaNhap, giaBan, image, con);
+            sanPhamDAO.updateSanPham(sanPham, ma);
+        }
+
+        //xóa các phần tử trùng
+        ArrayList<String> arrTemp = new ArrayList<>();
+        // thêm các phần tử của arrListNumber vào arrTemp
+        // nếu trong arrTemp đã tồn tại phần tử giống trong arrListNumber
+        // thì không thêm vào, ngược lại thêm bình thường
+        for (int i = 0; i < ds.size(); i++) {
+            if (!arrTemp.contains(ds.get(i))) {
+                arrTemp.add(ds.get(i));
+            }
+        }
+        // xóa các phần tử của arrListNumber
+        ds.clear();
+        // thêm tất cả các phần tử của arrTemp vào arrListNumber
+        // lúc này ta sẽ có 1 ArrayList arrListNumber
+        // không chứa các phần tử trùng nhau
+        ds.addAll(arrTemp);
+
+
+        sanPhamDAO = new SanPhamDAO(this);
+        for (int i = 0; i < ds.size(); i++) {
+            maSanPham = ds.get(i);
+            list1.add(sanPhamDAO.getSanPhamTheoMa(maSanPham));
+            donHangAdapter = new DonHangAdapter(this, list1);
+        }
+//        Toast.makeText(getApplication(),""+ds.size(),Toast.LENGTH_SHORT).show();
+        lvList.setAdapter(donHangAdapter);
+
+//sự kiện click lv
+        lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                SanPham sanPham = new SanPham();
+
+            }
+        });
+        //sư kiện clik them mat hang
+
 
     }
 
@@ -72,7 +164,7 @@ public class DonHangActivity extends AppCompatActivity {
 // Nút Ok
         b.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-
+list2.clear();
             }
         });
 //Nút Cancel
@@ -88,10 +180,36 @@ public class DonHangActivity extends AppCompatActivity {
     }
 
     public void ThemDonHang(View view) {
+
         LayoutInflater inflater = getLayoutInflater();
         final View alertLayout = inflater.inflate(R.layout.activity_dialog_them_mat_hang, null);
         final ImageView imgThoat = alertLayout.findViewById(R.id.imgDiaLogThemMatHangThoat);
-
+        final ListView lvDiaLogThemMatHang = alertLayout.findViewById(R.id.lvDiaLogThemMatHang);
+        sanPhamDAO = new SanPhamDAO(this);
+        final ArrayList<String> maSanPham=new ArrayList<>();
+        list = sanPhamDAO.getAllSanPham();
+        final SanPhamAdapter sanPhamAdapter = new SanPhamAdapter(this, list);
+        lvDiaLogThemMatHang.setAdapter(sanPhamAdapter);
+        lvDiaLogThemMatHang.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //cập nhật lại số lượng
+                maSanPham.add(list.get(i).getMaSanPham());
+                String ma=list.get(i).getMaSanPham();
+                String maloai=list.get(i).getMaLoai();
+                String ten=list.get(i).getTen();
+                String donViTinh=list.get(i).getDonViTinh();
+                double giaNhap=list.get(i).getGiaNhap();
+                double giaBan=list.get(i).getGiaBan();
+                byte[] image=list.get(i).getImage();
+                int soluong=list.get(i).getSoLuong()-1;
+                SanPham sanPham=new SanPham(ma,maloai,ten,donViTinh,soluong,giaNhap,giaBan,image);
+                sanPhamDAO.updateSanPham(sanPham,ma);
+                list = sanPhamDAO.getAllSanPham();
+                SanPhamAdapter sanPhamAdapter=new SanPhamAdapter(getApplication(),list);
+                lvDiaLogThemMatHang.setAdapter(sanPhamAdapter);
+            }
+        });
         final AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setView(alertLayout);
         alert.setCancelable(false);
@@ -107,7 +225,54 @@ public class DonHangActivity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // code for matching password
+
+//xử lý số lượng sản phẩm
+                maSanPham.addAll(ds);
+                Set<String> set = new HashSet<>(maSanPham);
+                ArrayList<String> temp_array = new ArrayList<>();
+                temp_array.addAll(set);
+                for (int i = 0; i < temp_array.size(); i++) {
+                    con = Collections.frequency(maSanPham, temp_array.get(i));
+                    Toast.makeText(getApplicationContext(),""+con,Toast.LENGTH_SHORT).show();
+                    String ma = list.get(i).getMaSanPham();
+                    String maloai = list.get(i).getMaLoai();
+                    String ten = list.get(i).getTen();
+                    String donViTinh = list.get(i).getDonViTinh();
+                    double giaNhap = list.get(i).getGiaNhap();
+                    double giaBan = list.get(i).getGiaBan();
+                    byte[] image = list.get(i).getImage();
+                    int soluong = list.get(i).getSoLuong();
+                    SanPham sanPham = new SanPham(ma, maloai, ten, donViTinh, soluong, giaNhap, giaBan, image, con);
+                    sanPhamDAO.updateSanPham(sanPham, ma);
+                }
+                //xóa các phần tử trùng
+                ArrayList<String> arrTemp = new ArrayList<>();
+                // thêm các phần tử của arrListNumber vào arrTemp
+                // nếu trong arrTemp đã tồn tại phần tử giống trong arrListNumber
+                // thì không thêm vào, ngược lại thêm bình thường
+                for (int i = 0; i < maSanPham.size(); i++) {
+                    if (!arrTemp.contains(maSanPham.get(i))) {
+                        arrTemp.add(maSanPham.get(i));
+                    }
+                }
+                // xóa các phần tử của arrListNumber
+                maSanPham.clear();
+                // thêm tất cả các phần tử của arrTemp vào arrListNumber
+                // lúc này ta sẽ có 1 ArrayList arrListNumber
+                // không chứa các phần tử trùng nhau
+                maSanPham.addAll(arrTemp);
+
+
+                sanPhamDAO = new SanPhamDAO(getApplicationContext());
+                for (int i = 0; i < maSanPham.size(); i++) {
+                   String ma = maSanPham.get(i);
+                    list2.add(sanPhamDAO.getSanPhamTheoMa(ma));
+                }
+
+                Toast.makeText(getApplicationContext(),""+list2.size(),Toast.LENGTH_SHORT).show();
+                donHangAdapter = new DonHangAdapter(getApplicationContext(), list2);
+                lvList.setAdapter(donHangAdapter);
+
 
             }
         });
@@ -121,5 +286,6 @@ public class DonHangActivity extends AppCompatActivity {
         });
         dialog.show();
     }
+
 
 }
