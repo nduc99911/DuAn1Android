@@ -133,14 +133,14 @@
                 android:src="@drawable/profile" />
 
             <TextView
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
                 android:id="@+id/tvNguoiDung"
-               android:layout_marginTop="10dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_weight="10"
-                android:text="Người dùng" />
+                android:text="Khách hàng"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

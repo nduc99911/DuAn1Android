@@ -50,30 +50,19 @@ class KhachHangAdapter extends BaseAdapter {
             view = LayoutInflater.from(context).inflate(R.layout.item_thiet_lap_khach_hang, viewGroup, false);
             viewHolder.imgHinhAnh = view.findViewById(R.id.imgNguoiDung);
             viewHolder.tvTen = view.findViewById(R.id.tvTenKhachHang);
-            viewHolder.btnShowMore = view.findViewById(R.id.btnNext);
             viewHolder.tvSDT = view.findViewById(R.id.tvSDT);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
         KhachHang khachHang = list.get(i);
-        viewHolder.tvTen.setText(""+khachHang.getTen());
-        viewHolder.tvSDT.setText(""+khachHang.getSoDienThoai());
+        viewHolder.tvTen.setText("Họ tên : "+khachHang.getTen());
+        viewHolder.tvSDT.setText("Số điện thoại : "+khachHang.getSoDienThoai());
         viewHolder.imgHinhAnh.setImageResource(R.drawable.profile);
-        viewHolder.btnShowMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Dialog dialog = new Dialog(context,android.R.style.Theme_Black_NoTitleBar_Fullscreen);
-                dialog.setContentView(R.layout.activity_sua_nguoi_dung);
-                dialog.show();
-            }
-        });
-
         return view;
     }
     private class ViewHolder{
         ImageView imgHinhAnh;
         TextView tvTen,tvSDT;
-        Button btnShowMore;
     }
 }

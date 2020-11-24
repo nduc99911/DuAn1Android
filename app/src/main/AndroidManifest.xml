@@ -12,9 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.DialogChinhSoLuong"></activity>
-        <activity android:name=".Activity.KhachHangActivity" />
-        <activity android:name=".Activity.ThemKhachHangActivity" />
+        <activity android:name=".Activity.KhachHangActivity"></activity>
+        <activity android:name=".Activity.ThemKhachHangActivity"></activity>
         <activity android:name=".Activity.ChiTietSanPhamActivity" />
         <activity android:name=".Activity.SplashScreenActivity">
             <intent-filter>

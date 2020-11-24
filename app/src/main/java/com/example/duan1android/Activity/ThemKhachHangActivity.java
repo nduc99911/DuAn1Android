@@ -45,6 +45,16 @@ public class ThemKhachHangActivity extends AppCompatActivity {
             Toast.makeText(ThemKhachHangActivity.this,"Tên , số điện thoại không được để trống",Toast.LENGTH_SHORT).show();
             return;
         }
+        String regexEmail = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+        if(!email.matches(regexEmail)){
+            Toast.makeText(ThemKhachHangActivity.this,"Email không dúng định dạng ",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String phoneNumberRegex = "^0[0-9]{8}$";
+        if(!soDienThoai.matches(phoneNumberRegex)){
+            Toast.makeText(ThemKhachHangActivity.this,"Số điện thoại không dúng định dạng ",Toast.LENGTH_SHORT).show();
+            return;
+        }
         KhachHang khachHang = new KhachHang(ten,email,soDienThoai,diaChi,0,0);
         long chk = khachHangDAO.addKhachHang(khachHang);
         if(chk>0){
