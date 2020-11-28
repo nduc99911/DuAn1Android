@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@drawable/anh"
-    tools:context=".Activity.ChiTietKhachHangActivity">
+    tools:context="vn.poly.quanlybanhang.Activity.ChiTietKhachHangActivity">
     <ImageView
         android:id="@+id/imgCTSP"
         android:layout_width="100dp"

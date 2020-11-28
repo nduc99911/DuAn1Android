@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/anh"
-    tools:context=".Activity.ThemLoaiSanPham">
+    tools:context="vn.poly.quanlybanhang.Activity.ThemLoaiSanPham">
     <include
         layout="@layout/custom_toolbar_them_danh_muc">
 

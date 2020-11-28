@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 android:background="@drawable/anh"
-    tools:context=".Activity.BoLocActivity">
+    tools:context="vn.poly.quanlybanhang.Activity.BoLocActivity">
 
     <include layout="@layout/custom_toolbar_bo_loc">
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/anh"
     android:orientation="vertical"
-    tools:context=".Activity.DonViTinhActivity">
+    tools:context="vn.poly.quanlybanhang.Activity.DonViTinhActivity">
     <include layout="@layout/custom_toolbar_don_vi_tinh">
 
     </include>

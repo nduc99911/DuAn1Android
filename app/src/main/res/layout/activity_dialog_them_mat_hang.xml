@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#2c3c49"
-    tools:context=".Activity.DialogThemMatHang" >
+    tools:context="vn.poly.quanlybanhang.Activity.DialogThemMatHang" >
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -12,10 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.KhachHangActivity"></activity>
-        <activity android:name=".Activity.ThemKhachHangActivity"></activity>
-        <activity android:name=".Activity.ChiTietSanPhamActivity" />
-        <activity android:name=".Activity.SplashScreenActivity">
+        <activity android:name="vn.poly.quanlybanhang.Activity.KhachHangActivity"></activity>
+        <activity android:name="vn.poly.quanlybanhang.Activity.ThemKhachHangActivity"></activity>
+        <activity android:name="vn.poly.quanlybanhang.Activity.ChiTietSanPhamActivity" />
+        <activity android:name="vn.poly.quanlybanhang.Activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,62 +23,62 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.BoLocActivity"
+            android:name="vn.poly.quanlybanhang.Activity.BoLocActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activity.DialogThemMatHang"
+            android:name="vn.poly.quanlybanhang.Activity.DialogThemMatHang"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activity.DonHangActivity"
+            android:name="vn.poly.quanlybanhang.Activity.DonHangActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activity.ThemSanPhamActivity"
+            android:name="vn.poly.quanlybanhang.Activity.ThemSanPhamActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activity.SanPhamActivity"
+            android:name="vn.poly.quanlybanhang.Activity.SanPhamActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activity.SuaSanPhamActivity"
+            android:name="vn.poly.quanlybanhang.Activity.SuaSanPhamActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activity.LoaiSanPhamActivity"
+            android:name="vn.poly.quanlybanhang.Activity.LoaiSanPhamActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activity.ThemLoaiSanPham"
+            android:name="vn.poly.quanlybanhang.Activity.ThemLoaiSanPham"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activity.SuaLoaiSanPhamActivity"
+            android:name="vn.poly.quanlybanhang.Activity.SuaLoaiSanPhamActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activity.ThemDonViTinh"
+            android:name="vn.poly.quanlybanhang.Activity.ThemDonViTinh"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activity.SuaDonViTinh"
+            android:name="vn.poly.quanlybanhang.Activity.SuaDonViTinh"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activity.DonViTinhActivity"
+            android:name="vn.poly.quanlybanhang.Activity.DonViTinhActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".Activity.ThemNguoiDungActivity" />
         <activity
-            android:name=".Activity.SuaNguoiDungActivity"
+            android:name="vn.poly.quanlybanhang.Activity.SuaNguoiDungActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Activity.NguoiDungActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activity.MatHangActivity"
+            android:name="vn.poly.quanlybanhang.Activity.MatHangActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".GioiThieuActivity"
+            android:name="vn.poly.quanlybanhang.GioiThieuActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".GioiThieu2Activity"
+            android:name="vn.poly.quanlybanhang.GioiThieu2Activity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".GioiThieu3Acitivity"
+            android:name="vn.poly.quanlybanhang.GioiThieu3Acitivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activity.MainActivity"
+            android:name="vn.poly.quanlybanhang.Activity.MainActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.facebook.FacebookActivity"

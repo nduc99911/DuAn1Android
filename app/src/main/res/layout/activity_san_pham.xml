@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/anh"
     android:orientation="vertical"
-    tools:context=".Activity.SanPhamActivity">
+    tools:context="vn.poly.quanlybanhang.Activity.SanPhamActivity">
 
     <include layout="@layout/custom_san_pham">
 

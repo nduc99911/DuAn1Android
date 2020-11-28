@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/anh"
     android:orientation="vertical"
-    tools:context=".Fragment.FragmentHoaDon">
+    tools:context="vn.poly.quanlybanhang.Fragment.FragmentHoaDon">
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerLayoutHoaDon"
