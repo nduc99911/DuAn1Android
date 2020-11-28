@@ -58,13 +58,10 @@
         <activity
             android:name="vn.poly.quanlybanhang.Activity.DonViTinhActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".Activity.ThemNguoiDungActivity" />
         <activity
             android:name="vn.poly.quanlybanhang.Activity.SuaNguoiDungActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".Activity.NguoiDungActivity"
-            android:windowSoftInputMode="stateHidden" />
+
         <activity
             android:name="vn.poly.quanlybanhang.Activity.MatHangActivity"
             android:windowSoftInputMode="stateHidden" />

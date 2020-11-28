@@ -31,7 +31,6 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="luuBoLoc"
             android:text="Lưu"
             android:textColor="#2196F3"
             android:textSize="24sp" />
