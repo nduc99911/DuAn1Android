@@ -45,12 +45,12 @@ public class ThemKhachHangActivity extends AppCompatActivity {
             Toast.makeText(ThemKhachHangActivity.this,"Tên , số điện thoại không được để trống",Toast.LENGTH_SHORT).show();
             return;
         }
-        String regexEmail = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+        String regexEmail = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
         if(!email.matches(regexEmail)){
             Toast.makeText(ThemKhachHangActivity.this,"Email không dúng định dạng ",Toast.LENGTH_SHORT).show();
             return;
         }
-        String phoneNumberRegex = "^0[0-9]{8}$";
+        String phoneNumberRegex = "^0[0-9]{9}$";
         if(!soDienThoai.matches(phoneNumberRegex)){
             Toast.makeText(ThemKhachHangActivity.this,"Số điện thoại không dúng định dạng ",Toast.LENGTH_SHORT).show();
             return;
