@@ -15,11 +15,11 @@ class DonViTinhDAO {
     public static final String TABLE_NAME = "DonViTinh";
     public static final String SQL_DONVI = "Create table if not exists DonViTinh (" +
             "   tenDonVi text primary key )";
-    private Mydatabase mydatabase;
-    private SQLiteDatabase sqLiteDatabase;
+
+    SQLiteDatabase sqLiteDatabase;
 
     public DonViTinhDAO(Context context) {
-        mydatabase = new Mydatabase(context);
+        Mydatabase mydatabase = new Mydatabase(context);
         sqLiteDatabase = mydatabase.getWritableDatabase();
     }
     public long addDonVi(String ten){

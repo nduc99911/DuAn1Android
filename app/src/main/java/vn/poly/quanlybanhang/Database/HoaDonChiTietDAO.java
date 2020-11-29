@@ -19,11 +19,11 @@ class HoaDonChiTietDAO {
             "   maSP text," +
             "   soLuong number," +
             "   tongTien number)";
-    private Mydatabase mydatabase;
+
     private SQLiteDatabase sqLiteDatabase;
 
     public HoaDonChiTietDAO(Context context) {
-        mydatabase = new Mydatabase(context);
+        Mydatabase mydatabase = new Mydatabase(context);
         sqLiteDatabase = mydatabase.getWritableDatabase();
     }
     public long addHDCT(HoaDonChiTiet hoaDon){

@@ -17,11 +17,11 @@ class HoaDonDAO {
             "   maHoaDon text primary key," +
             "   ngayBan date ," +
             "   tenKhachHang text)";
-    private Mydatabase mydatabase;
+
     private SQLiteDatabase sqLiteDatabase;
 
     public HoaDonDAO(Context context) {
-        mydatabase = new Mydatabase(context);
+        Mydatabase mydatabase = new Mydatabase(context);
         sqLiteDatabase = mydatabase.getWritableDatabase();
     }
     public long addHoaDon(HoaDon hoaDon){

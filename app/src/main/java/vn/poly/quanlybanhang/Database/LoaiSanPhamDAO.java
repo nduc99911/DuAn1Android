@@ -16,11 +16,11 @@ class LoaiSanPhamDAO {
     public static final String SQL_LOAISANPHAM = "Create table if not exists LoaiSanPham (" +
             "   maLoai text primary key," +
             "   tenLoai text)";
-    private Mydatabase mydatabase;
+
     private SQLiteDatabase sqLiteDatabase;
 
     public LoaiSanPhamDAO(Context context) {
-        mydatabase = new Mydatabase(context);
+        Mydatabase mydatabase = new Mydatabase(context);
         sqLiteDatabase = mydatabase.getWritableDatabase();
     }
     public long addLoaiSanPham(LoaiSanPham loaiSanPham){

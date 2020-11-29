@@ -7,17 +7,18 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import vn.poly.quanlybanhang.Model.SanPham;
 import com.example.duan1android.R;
 
 import java.util.List;
 
+import vn.poly.quanlybanhang.Model.GioHang;
+
 public
 class DonHangAdapter extends BaseAdapter {
     Context context;
-    List<SanPham> list;
+    List<GioHang> list;
 
-    public DonHangAdapter(Context context, List<SanPham> list) {
+    public DonHangAdapter(Context context, List<GioHang> list) {
         this.context = context;
         this.list = list;
     }
@@ -41,19 +42,19 @@ class DonHangAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder = null;
         if(view == null){
-            view = LayoutInflater.from(context).inflate(R.layout.item_san_pham, viewGroup, false);
+            view = LayoutInflater.from(context).inflate(R.layout.item_don_hang, viewGroup, false);
             viewHolder = new ViewHolder();
-            viewHolder.tvSanPham = view.findViewById(R.id.tvTenSanPham_ItemSp);
-            viewHolder.tvGia = view.findViewById(R.id.tvGiaBan_ItemSp);
-            viewHolder.tvSoluong = view.findViewById(R.id.tvCon_ItemSp);
+            viewHolder.tvSanPham = view.findViewById(R.id.tvSanPhamGH);
+            viewHolder.tvGia = view.findViewById(R.id.tvGiaGH);
+            viewHolder.tvSoluong = view.findViewById(R.id.tvSoLuongGH);
             view.setTag(viewHolder);
         }else{
             viewHolder = (ViewHolder) view.getTag();
         }
-        SanPham sanPham = list.get(i);
-        viewHolder.tvSanPham.setText(""+sanPham.getTen());
-        viewHolder.tvGia.setText(""+Math.round(sanPham.getGiaBan())+ " VNĐ");
-        viewHolder.tvSoluong.setText(""+sanPham.getCon());
+        GioHang gioHang = list.get(i);
+        viewHolder.tvSanPham.setText(""+gioHang.getTen());
+        viewHolder.tvGia.setText(""+Math.round(gioHang.getSoLuong()*gioHang.getGia()));
+        viewHolder.tvSoluong.setText(""+gioHang.getSoLuong());
         return view;
     }
 

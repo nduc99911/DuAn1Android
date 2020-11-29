@@ -34,12 +34,12 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/shoppingbasket" />
+
         <ImageView
-            android:onClick="XoaDonHang"
             android:id="@+id/imgxoaDonHang"
-            android:layout_marginLeft="20dp"
             android:layout_width="36dp"
             android:layout_height="36dp"
+            android:layout_marginLeft="20dp"
             android:src="@drawable/ic_delete" />
     </LinearLayout>
 

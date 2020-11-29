@@ -24,7 +24,7 @@ import java.util.Date;
 public class SplashScreenActivity extends AppCompatActivity {
     LinearLayout linearLayout;
     private ImageView imglogo,fly;
-    private Thread mThread;
+
     TextView tvLoading;
     AnimationDrawable rocketAnimation;
     @Override
@@ -60,7 +60,7 @@ linearLayout=findViewById(R.id.splashScreen);
         imglogo.setAnimation(rotate);
         fly.setAnimation(translate);
         tvLoading.setAnimation(translate);
-        mThread = new Thread() {
+        Thread mThread = new Thread() {
             @Override
             public void run() {
                 super.run();

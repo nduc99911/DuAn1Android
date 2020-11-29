@@ -22,11 +22,10 @@ class KhachHangDAO {
             "   tienDaMua number" +
             "   )";
 
-    private Mydatabase mydatabase;
     private SQLiteDatabase sqLiteDatabase;
 
     public KhachHangDAO(Context context) {
-        mydatabase = new Mydatabase(context);
+        Mydatabase mydatabase = new Mydatabase(context);
         sqLiteDatabase = mydatabase.getWritableDatabase();
     }
 

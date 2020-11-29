@@ -15,7 +15,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/border_filter"
-        app:srcCompat="@drawable/profile" />
+        app:srcCompat="@drawable/profile"
+         />
 
     <LinearLayout
         android:layout_width="match_parent"

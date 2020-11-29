@@ -1,5 +1,6 @@
 package vn.poly.quanlybanhang.Fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -15,35 +16,41 @@ import androidx.fragment.app.Fragment;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import vn.poly.quanlybanhang.Activity.DonHangActivity;
+import vn.poly.quanlybanhang.Activity.MatHangActivity;
 import vn.poly.quanlybanhang.Adapter.SanPhamAdapter;
 import vn.poly.quanlybanhang.Database.SanPhamDAO;
+import vn.poly.quanlybanhang.Model.GioHang;
 import vn.poly.quanlybanhang.Model.SanPham;
 import com.example.duan1android.R;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class FragmentBanHang extends Fragment {
 
 
     public FragmentBanHang() {
-        // Required empty public constructor
     }
 
     NavigationView navigationView;
@@ -52,19 +59,15 @@ public class FragmentBanHang extends Fragment {
     EditText edTimKiem;
     ListView lvList;
     Spinner spnLocDanhSach;
-    String danhSachLC[] = {"Theo tên", "Giá ↑", "Giá ↓"};
+    String[] danhSachLC = {"Theo tên", "Giá ↑", "Giá ↓"};
     ImageView imageView;
     List<SanPham> list;
     SanPhamDAO sanPhamDAO;
     SanPhamAdapter sanPhamAdapter;
-    Handler handler = new Handler();
     TextView tvNull;
+    int soLuong;
+    static int tong = 0;
     TextView tvSoLuongBanHang;
-    ArrayList<String> maSanPham=new ArrayList<>();
-    int click = 0;
-    int soluong=0;
-    int j=0;
-    int sl2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -94,11 +97,17 @@ public class FragmentBanHang extends Fragment {
                 return false;
             }
         });
-        time();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),DonHangActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -115,49 +124,115 @@ public class FragmentBanHang extends Fragment {
         setHasOptionsMenu(true);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, danhSachLC);
         spnLocDanhSach.setAdapter(adapter);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), DonHangActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putStringArrayList("key",maSanPham);
-                intent.putExtras(bundle);
-                getActivity().startActivity(intent);
-            }
-        });
-        list = sanPhamDAO.getAllSanPham();
 
+        timKiem();
+        themSanPhamVaoGio();
+    }
+    private void themSanPhamVaoGio(){
         lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                maSanPham.add(list.get(i).getMaSanPham());
-                tvSoLuongBanHang.setVisibility(View.VISIBLE);
-                click = 1 + click;
-               soluong=list.get(i).getSoLuong()-1;
-               tvSoLuongBanHang.setText(""+click);
-               //nếu sản phẩm <0
-               if(soluong<=0){
-                   sanPhamDAO.deleteSanPham(list.get(i).getMaSanPham());
-                   sanPhamAdapter=new SanPhamAdapter(getActivity(),list);
-                   lvList.setAdapter(sanPhamAdapter);
+            public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
+                if(list.get(i).getSoLuong()<=0){
+                    Toast.makeText(getContext(),"Mặt hàng này đã hết",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                final Dialog dialog = new Dialog(getContext(),android.R.style.Theme);
+                dialog.setContentView(R.layout.chon_so_luong_dialog);
+                dialog.show();
+                TextView tvTen = dialog.findViewById(R.id.tvTenSanPhamSL);
+                TextView tvSoLuongSP = dialog.findViewById(R.id.tvSoLuongSanPhamSL);
+                TextView tvGia = dialog.findViewById(R.id.tvGiaSanPhamSL);
+                ImageView imgCong = dialog.findViewById(R.id.imgCongSoLuong);
+                ImageView imgTru = dialog.findViewById(R.id.imgTruSoLuong);
+                Button btnOk = dialog.findViewById(R.id.btnThemVaoGio);
+                Button btnHuy = dialog.findViewById(R.id.btnHuyThemVaoGio);
+                soLuong = 1;
+                //số lượng là số lượng riêng của mỗi item  => settext cho tvSoLuong ben trong dialog
+                // tổng là tổng số lượng của tất cả các item được chọn => settext cho tv giỏ hàng ngoài fragment
+                final TextView tvSoLuongMua = dialog.findViewById(R.id.tvSoLuongChonMua);
+                tvTen.setText(""+list.get(i).getTen());
+                tvSoLuongSP.setText("Còn :"+list.get(i).getSoLuong());
+                tvGia.setText(""+list.get(i).getGiaBan()+ " VNĐ");
+                imgCong.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(soLuong>=list.get(i).getSoLuong()){
+                            soLuong=list.get(i).getSoLuong();
+                            tvSoLuongMua.setText(""+soLuong);
+                            Toast.makeText(getContext(),"Đã đạt giới hạn số lượng",Toast.LENGTH_SHORT).show();
+                            return;
+                        }else {
+                            soLuong++;
+                            tvSoLuongMua.setText("" + soLuong);
+                        }
+                    }
+                });
+                imgTru.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(soLuong<=0){
+                            soLuong = 0;
+                        }else {
+                            soLuong--;
 
-               }
-               //cập nhật lại số lượng
-               String ma=list.get(i).getMaSanPham();
-               String maloai=list.get(i).getMaLoai();
-               String ten=list.get(i).getTen();
-                String donViTinh=list.get(i).getDonViTinh();
-                double giaNhap=list.get(i).getGiaNhap();
-                double giaBan=list.get(i).getGiaBan();
-                byte[] image=list.get(i).getImage();
-                SanPham sanPham=new SanPham(ma,maloai,ten,donViTinh,soluong,giaNhap,giaBan,image);
-                sanPhamDAO.updateSanPham(sanPham,ma);
-               list = sanPhamDAO.getAllSanPham();
-               sanPhamAdapter=new SanPhamAdapter(getActivity(),list);
-               lvList.setAdapter(sanPhamAdapter);
+                        }
+                        tvSoLuongMua.setText(""+soLuong);
+                    }
+                });
+                btnHuy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                btnOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        tong+=soLuong;
+                        if(tong>0) {
+                            tvSoLuongBanHang.setText("" + tong);
+                            tvSoLuongBanHang.setVisibility(View.VISIBLE);
+                            boolean chk = false;
+                            if(MatHangActivity.gioHangList.size()>0){
+                                for(int j = 0;j<MatHangActivity.gioHangList.size();j++){
+                                    if(MatHangActivity.gioHangList.get(j).getMa() == list.get(i).getMaSanPham()){
+                                        MatHangActivity.gioHangList.get(j).setSoLuong(MatHangActivity.gioHangList.get(j).getSoLuong()+soLuong);
+                                        chk=true;
+                                    }
+                                }
+                                if(chk==false){
+                                    SanPham sanPham = list.get(i);
+                                    GioHang gioHang = new GioHang();
+                                    gioHang.setMa(sanPham.getMaSanPham());
+                                    gioHang.setTen(sanPham.getTen());
+                                    gioHang.setGia(sanPham.getGiaBan());
+                                    gioHang.setSoLuong(soLuong);
+                                    MatHangActivity.gioHangList.add(gioHang);
+                                }
+                            }else{
+                                SanPham sanPham = list.get(i);
+                                GioHang gioHang = new GioHang();
+                                gioHang.setMa(sanPham.getMaSanPham());
+                                gioHang.setTen(sanPham.getTen());
+                                gioHang.setGia(sanPham.getGiaBan());
+                                gioHang.setSoLuong(soLuong);
+                                MatHangActivity.gioHangList.add(gioHang);
+                            }
 
+                        }else {
+                            tvSoLuongBanHang.setVisibility(View.INVISIBLE);
+                        }
+                        list.get(i).setSoLuong(list.get(i).getSoLuong()-soLuong);
+                        SanPhamAdapter sanPhamAdapter = new SanPhamAdapter(getContext(),list);
+                        lvList.setAdapter(sanPhamAdapter);
+                        dialog.dismiss();
+                    }
+                });
             }
         });
+    }
+
+    private void timKiem(){
         edTimKiem.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -174,7 +249,7 @@ public class FragmentBanHang extends Fragment {
                     doDuLieu();
                 }
                 if(list.size()<=0){
-                     tvNull.setVisibility(View.VISIBLE);
+                    tvNull.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -194,46 +269,6 @@ public class FragmentBanHang extends Fragment {
 
     }
 
-    public void time() {
-
-        View headerView = navigationView.getHeaderView(0);
-        ImageView img = (ImageView) headerView.findViewById(R.id.image);
-        TextView navUsername = (TextView) headerView.findViewById(R.id.text);
-        TextView tvName = headerView.findViewById(R.id.tvNameNavi);
-        ConstraintLayout constraintLayoutt = headerView.findViewById(R.id.test);
-        TextView tvNgay = headerView.findViewById(R.id.tvNgay);
-        final TextView tvGio = headerView.findViewById(R.id.tvGio);
-        final Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH) + 1;
-        int date = c.get(Calendar.DATE);
-        final int hour = c.get(Calendar.HOUR_OF_DAY);
-        final int mintute = c.get(Calendar.MINUTE);
-        final int second = c.get(Calendar.SECOND);
-        tvNgay.setText(date + "/" + month + "/" + year);
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                final Calendar c = Calendar.getInstance();
-                int hour = c.get(Calendar.HOUR_OF_DAY);
-                int mintute = c.get(Calendar.MINUTE);
-                int second = c.get(Calendar.SECOND);
-                tvGio.setText(hour + "h:" + mintute + "m:" + second + "s");
-                handler.postDelayed(this, 0);
-            }
-        };
-        runnable.run();
-
-        if (hour <= 12) {
-            navUsername.setText("Chào Buổi Sáng");
-            constraintLayoutt.setBackgroundResource(R.drawable.troisang);
-        } else if (hour > 12) {
-            navUsername.setText("Chào Buổi Chiều");
-        } else if (hour > 18) {
-            navUsername.setText("Chào Buổi Tối");
-            constraintLayoutt.setBackgroundResource(R.drawable.mattrang);
-        }
-    }
     public void doDuLieu(){
         list = sanPhamDAO.getAllSanPham();
         sanPhamAdapter = new SanPhamAdapter(getContext(), list);

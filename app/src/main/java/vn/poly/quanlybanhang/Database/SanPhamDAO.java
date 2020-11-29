@@ -24,11 +24,11 @@ class SanPhamDAO {
             "   hinhAnh BLOB, "+
             "   con number)";
 
-    private Mydatabase mydatabase;
+
     private SQLiteDatabase sqLiteDatabase;
 
     public SanPhamDAO(Context context) {
-        mydatabase = new Mydatabase(context);
+        Mydatabase mydatabase = new Mydatabase(context);
         sqLiteDatabase = mydatabase.getWritableDatabase();
     }
     public long addSanPham(SanPham sanPham){
