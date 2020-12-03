@@ -32,10 +32,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import vn.poly.quanlybanhang.Activity.DonHangActivity;
+import vn.poly.quanlybanhang.Activity.HoaDonChiTiet;
 import vn.poly.quanlybanhang.Activity.MatHangActivity;
 import vn.poly.quanlybanhang.Adapter.SanPhamAdapter;
 import vn.poly.quanlybanhang.Database.SanPhamDAO;
 import vn.poly.quanlybanhang.Model.GioHang;
+import vn.poly.quanlybanhang.Model.HoaDon;
 import vn.poly.quanlybanhang.Model.SanPham;
 import com.example.duan1android.R;
 import com.google.android.material.navigation.NavigationView;
@@ -218,6 +220,8 @@ public class FragmentBanHang extends Fragment {
                                 gioHang.setSoLuong(soLuong);
                                 MatHangActivity.gioHangList.add(gioHang);
                             }
+
+
 
                         }else {
                             tvSoLuongBanHang.setVisibility(View.INVISIBLE);

@@ -57,6 +57,12 @@ class SanPhamDAO {
         contentValues.put("con",sanPham.getCon());
         return sqLiteDatabase.update(TABLE_NAME,contentValues,"maSanPham = ?",new String[]{ma});
     }
+    public long updateSLSanPham(SanPham sanPham,String ma){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("maSanPham",sanPham.getMaSanPham());
+        contentValues.put("soLuong",sanPham.getSoLuong());
+        return sqLiteDatabase.update(TABLE_NAME,contentValues,"maSanPham = ?",new String[]{ma});
+    }
     public long deleteSanPham(String ma){
         return sqLiteDatabase.delete(TABLE_NAME,"maSanPham = ?",new String[]{ma});
     }

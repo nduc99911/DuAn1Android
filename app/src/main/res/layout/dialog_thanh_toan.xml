@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/anh"
+    android:orientation="vertical"
+
+    >
+
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/textView32"
+        android:layout_width="188dp"
+        android:layout_height="41dp"
+        android:background="#FDFDFD"
+        android:text="  Thanh Toán"
+        android:textColor="#3CF807"
+        android:textSize="28dp" />
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/border_thanh">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Số tiền phải trả"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tvTongTien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="#FB0E0E" />
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/border_thanh">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Số tiền khách trả"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/edThanhToan"
+        android:layout_width="match_parent"
+        android:layout_height="157dp"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp" />
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/border_thanh">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView37"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Số tiền trả lại"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tvTienTra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="#ED0909" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnThanhToan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_button2"
+            android:text="Xác nhận" />
+
+        <Button
+            android:id="@+id/btnHuyCK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_button"
+            android:text="Hủy" />
+    </LinearLayout>
+</LinearLayout>

@@ -10,13 +10,14 @@ import android.widget.TextView;
 import vn.poly.quanlybanhang.Model.HoaDon;
 import com.example.duan1android.R;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public
 class HoaDonAdapter extends BaseAdapter {
     Context context;
     List<HoaDon> list;
-
+    SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-yyyy");
     public HoaDonAdapter(Context context, List<HoaDon> list) {
         this.context = context;
         this.list = list;
@@ -51,8 +52,8 @@ class HoaDonAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
         HoaDon hoaDon = list.get(i);
-        viewHolder.tvNgayMua.setText("Ngày bán : "+hoaDon.getNgayBan());
-        viewHolder.tvTongTien.setText("Tổng tiền : "+hoaDon.getMaHD());
+        viewHolder.tvNgayMua.setText("Ngày bán : "+simpleDateFormat.format(hoaDon.getNgayBan()));
+        viewHolder.tvTongTien.setText("Mã Hóa Đơn : "+hoaDon.getMaHD());
         return view;
     }
     private class ViewHolder{

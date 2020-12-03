@@ -1,17 +1,27 @@
 package vn.poly.quanlybanhang.Model;
 
+import java.util.Date;
+
 public
 class HoaDon {
-    private String maHD,ngayBan,tenKhachHang;
+    private String maHD,tenKhachHang;
+private Date ngayBan;
 
-    public HoaDon(String maHD, String ngayBan, String tenKhachHang) {
+    public HoaDon(String maHD, String tenKhachHang, Date ngayBan) {
         this.maHD = maHD;
-        this.ngayBan = ngayBan;
         this.tenKhachHang = tenKhachHang;
+        this.ngayBan = ngayBan;
+    }
+    public HoaDon(String maHD, String tenKhachHang) {
+        this.maHD = maHD;
+        this.tenKhachHang = tenKhachHang;
+
     }
 
     public HoaDon() {
+
     }
+
 
     public String getMaHD() {
         return maHD;
@@ -21,19 +31,19 @@ class HoaDon {
         this.maHD = maHD;
     }
 
-    public String getNgayBan() {
-        return ngayBan;
-    }
-
-    public void setNgayBan(String ngayBan) {
-        this.ngayBan = ngayBan;
-    }
-
     public String getTenKhachHang() {
         return tenKhachHang;
     }
 
     public void setTenKhachHang(String tenKhachHang) {
         this.tenKhachHang = tenKhachHang;
+    }
+
+    public Date getNgayBan() {
+        return ngayBan;
+    }
+
+    public void setNgayBan(Date ngayBan) {
+        this.ngayBan = ngayBan;
     }
 }

@@ -1,6 +1,7 @@
 package vn.poly.quanlybanhang.Fragment;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,6 +25,15 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.duan1android.R;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+
+import vn.poly.quanlybanhang.Activity.HoaDonChiTiet;
+import vn.poly.quanlybanhang.Adapter.HoaDonAdapter;
+import vn.poly.quanlybanhang.Database.HoaDonDAO;
+import vn.poly.quanlybanhang.Model.HoaDon;
 
 
 public class FragmentHoaDon extends Fragment {
@@ -34,7 +45,10 @@ public class FragmentHoaDon extends Fragment {
     RadioButton rdoTatCa, rdoHomNay, rdoHomQua, rdoTuanNay, rdoTuanTruoc, rdoThangNay, rdoThangTruoc, rdoTatCaHd, rdoChuaThanhToan, rdoDaThanhToan;
     TextView tvLuuBoLoc,tvTimKiem;
     EditText edTimKiem;
-
+    List<HoaDon> hoaDonList=new ArrayList<>();
+    HoaDonDAO hoaDonDAO;
+    HoaDonAdapter hoaDonAdapter;
+    String mahoadon;
     public FragmentHoaDon() {
         // Required empty public constructor
     }
@@ -57,6 +71,31 @@ public class FragmentHoaDon extends Fragment {
             @Override
             public void onClick(View view) {
                 drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        hoaDonDAO=new HoaDonDAO(getContext());
+        try {
+            hoaDonList=hoaDonDAO.getAllHoaDon();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        hoaDonAdapter=new HoaDonAdapter(getContext(),hoaDonList);
+        lvListHoaDon.setAdapter(hoaDonAdapter);
+        lvListHoaDon.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+Intent intent=new Intent(getActivity(), HoaDonChiTiet.class);
+Bundle bundle=new Bundle();
+                try {
+                    hoaDonList=hoaDonDAO.getAllHoaDon();
+                    mahoadon=hoaDonList.get(i).getMaHD();
+                    bundle.putString("mahoadon",mahoadon);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
         return view;

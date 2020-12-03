@@ -8,13 +8,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,14 +28,28 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import vn.poly.quanlybanhang.Adapter.DonHangAdapter;
+import vn.poly.quanlybanhang.Adapter.KhachHangAdapter;
 import vn.poly.quanlybanhang.Adapter.SanPhamAdapter;
+import vn.poly.quanlybanhang.Database.HoaDonChiTietDAO;
+import vn.poly.quanlybanhang.Database.HoaDonDAO;
+import vn.poly.quanlybanhang.Database.KhachHangDAO;
 import vn.poly.quanlybanhang.Database.SanPhamDAO;
+import vn.poly.quanlybanhang.Model.HoaDon;
+import vn.poly.quanlybanhang.Model.HoaDonChiTiet;
+import vn.poly.quanlybanhang.Model.KhachHang;
 import vn.poly.quanlybanhang.Model.SanPham;
 
 import com.example.duan1android.R;
 
+import java.sql.Savepoint;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -39,14 +58,17 @@ import java.util.Set;
 public class DonHangActivity extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
     ListView lvList;
-    EditText edMaDonHang, edKhachHang;
-    TextView tvChietKhau, tvTongTien;
-    ImageView imgChietKhau, imgXoaDonHang;
+    EditText edMaDonHang;
+    TextView tvChietKhau, tvTongTien,tvKhachHang;
+    ImageView imgChietKhau, imgXoaDonHang,imgChonKhachHang;
     Button btnThanhToan;
     DonHangAdapter donHangAdapter;
     ToggleButton toggleButton;
     EditText edChietKhau;
     int tongTien = 0;
+    String khachHang;
+    List<KhachHang> listKH;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,12 +88,13 @@ public class DonHangActivity extends AppCompatActivity {
     public void anhXaView() {
         lvList = findViewById(R.id.lvListHang_GH);
         edMaDonHang = findViewById(R.id.edMaDonHang_GH);
-        edKhachHang = findViewById(R.id.edKhachHang_GH);
+        tvKhachHang = findViewById(R.id.edKhachHang_GH);
         tvChietKhau = findViewById(R.id.tvChietKhau_GH);
         tvTongTien = findViewById(R.id.tvTongTien_GH);
         imgChietKhau = findViewById(R.id.imgChietKhau_GH);
         btnThanhToan = findViewById(R.id.btnThanhToan_GH);
         imgXoaDonHang = findViewById(R.id.imgxoaDonHang);
+        imgChonKhachHang=findViewById(R.id.imgChonKhachHang);
 
     }
     @Override
@@ -171,8 +194,129 @@ public class DonHangActivity extends AppCompatActivity {
             }
         });
     }
+public void ThanhToanDonHang(View view){
+    LayoutInflater inflater = getLayoutInflater();
+    View alertLayout = inflater.inflate(R.layout.dialog_thanh_toan, null);
+    final TextView tvTongTien = (TextView) alertLayout.findViewById(R.id.tvTongTien);
+    final EditText edTienTra = (EditText) alertLayout.findViewById(R.id.edThanhToan);
+    final TextView tvTienTra = (TextView) alertLayout.findViewById(R.id.tvTienTra);
+    final Button btnThanhToan = (Button) alertLayout.findViewById(R.id.btnThanhToan);
+    Date c = Calendar.getInstance().getTime();
+    final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+    final String formattedDate = df.format(c);
+    Toast.makeText(getApplicationContext(),""+formattedDate,Toast.LENGTH_SHORT).show();
+    btnThanhToan.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String mahoadon=edMaDonHang.getText().toString();
+            HoaDonDAO hoaDonDAO=new HoaDonDAO(getApplicationContext());
+            try {
+                HoaDon hoaDon=new HoaDon(mahoadon,khachHang,df.parse(formattedDate));
+                if(hoaDonDAO.addHoaDon(hoaDon)>0){
+                    SanPhamDAO sanPhamDAO=new SanPhamDAO(getApplicationContext());
+                            List<SanPham> sanPhamList=new ArrayList<>();
+                            sanPhamList=sanPhamDAO.getAllSanPham();
+                            //cập nhật lại số lượng đã bán
+                            for (int i = 0;i<MatHangActivity.gioHangList.size();i++){
+                                if(MatHangActivity.gioHangList.get(i).getMa().equals(sanPhamList.get(i).getMaSanPham())) {
+                                    int soluong = sanPhamList.get(i).getSoLuong() - MatHangActivity.gioHangList.get(i).getSoLuong();
+                                    SanPham sanPham = new SanPham(sanPhamList.get(i).getMaSanPham(), soluong);
+                                    sanPhamDAO.updateSLSanPham(sanPham, sanPhamList.get(i).getMaSanPham());}
+                            }
+
+//
 
 
+
+//                            SanPham sanPham1=sanPhamDAO.getSanPhamTheoMa(MatHangActivity.gioHangList.get(0).getMa());
+//                            HoaDonChiTiet hoaDonChiTiet=new HoaDonChiTiet(1,hoaDon,sanPham1,tongTien,MatHangActivity.gioHangList.get(i).getSoLuong());
+//                            if(hoaDonChiTietDAO.addHDCT(hoaDonChiTiet)>0){
+//                                Toast.makeText(getApplicationContext(),"Thêm HDCT thành công",Toast.LENGTH_SHORT).show();
+//                            }
+//                            else {
+//                                Toast.makeText(getApplicationContext(),"Thêm HDT không thành công",Toast.LENGTH_SHORT).show();
+//                            }
+//
+//                        }
+                    Toast.makeText(getApplicationContext(),"Thêm thành công",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"Thêm không thành công",Toast.LENGTH_SHORT).show();
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+    });
+    tvTongTien.setText(""+tongTien);
+
+    edTienTra.addTextChangedListener(new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            try {
+                final int tientra=tongTien-Integer.parseInt(edTienTra.getText().toString());
+                tvTienTra.setText(""+tientra);}
+            catch (Exception e){
+
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    });
+
+
+    AlertDialog.Builder alert = new AlertDialog.Builder(this);
+    alert.setView(alertLayout);
+    AlertDialog dialog = alert.create();
+    dialog.show();
+}
+public void ChonKhachHang(View view){
+    LayoutInflater inflater = getLayoutInflater();
+    View alertLayout = inflater.inflate(R.layout.dialog_khach_hang, null);
+    final ListView  listView= (ListView) alertLayout.findViewById(R.id.lvKhachHang);
+
+    KhachHangDAO khachHangDAO=new KhachHangDAO(this);
+     listKH=new ArrayList<>();
+    listKH=khachHangDAO.getAllKhachHang();
+    KhachHangAdapter khachHangAdapter=new KhachHangAdapter(this,listKH);
+    listView.setAdapter(khachHangAdapter);
+    AlertDialog.Builder alert = new AlertDialog.Builder(this);
+    alert.setView(alertLayout);
+    alert.setCancelable(false);
+    alert.setTitle("Danh Sach Khach Hàng");
+    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            khachHang=listKH.get(i).getTen();
+        }
+    });
+    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+        }
+    });
+
+    alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            tvKhachHang.setText(khachHang);
+
+        }
+    });
+    AlertDialog dialog = alert.create();
+    dialog.show();
+}
 //    public void ThemDonHang(View view) {
 //
 //        LayoutInflater inflater = getLayoutInflater();

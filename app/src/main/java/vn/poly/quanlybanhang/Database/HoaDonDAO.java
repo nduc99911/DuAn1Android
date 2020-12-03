@@ -7,17 +7,18 @@ import android.database.sqlite.SQLiteDatabase;
 
 import vn.poly.quanlybanhang.Model.HoaDon;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public
-class HoaDonDAO {
+public class HoaDonDAO {
     public static final String TABLE_NAME = "HoaDon";
     public static final String SQL_HOADON = "Create table if not exists HoaDon (" +
             "   maHoaDon text primary key," +
             "   ngayBan date ," +
             "   tenKhachHang text)";
-
+    SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-yyyy");
     private SQLiteDatabase sqLiteDatabase;
 
     public HoaDonDAO(Context context) {
@@ -27,21 +28,21 @@ class HoaDonDAO {
     public long addHoaDon(HoaDon hoaDon){
         ContentValues contentValues = new ContentValues();
         contentValues.put("maHoaDon",hoaDon.getMaHD());
-        contentValues.put("ngayBan",hoaDon.getNgayBan());
+        contentValues.put("ngayBan",simpleDateFormat.format(hoaDon.getNgayBan()));
         contentValues.put("tenKhachHang",hoaDon.getTenKhachHang());
         return sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
     }
     public long updateHoaDon(HoaDon hoaDon,String ma){
         ContentValues contentValues = new ContentValues();
         contentValues.put("maHoaDon",hoaDon.getMaHD());
-        contentValues.put("ngayBan",hoaDon.getNgayBan());
+        contentValues.put("ngayBan",simpleDateFormat.format(hoaDon.getNgayBan()));
         contentValues.put("tenKhachHang",hoaDon.getTenKhachHang());
         return sqLiteDatabase.update(TABLE_NAME,contentValues,"maHoaDon = ?",new String[]{ma});
     }
     public long deleteHoaDon(String ma){
         return sqLiteDatabase.delete(TABLE_NAME,"maHoaDon = ?",new String[]{ma});
     }
-    public List<HoaDon> getAllHoaDon(){
+    public List<HoaDon> getAllHoaDon() throws ParseException {
         List<HoaDon> list = new ArrayList<>();
         String query = "Select * from "+TABLE_NAME;
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
@@ -49,9 +50,10 @@ class HoaDonDAO {
             cursor.moveToFirst();
             while (cursor.isAfterLast()==false){
                 String maHD = cursor.getString(0);
+
                 String ngayBan = cursor.getString(1);
                 String tenKhach = cursor.getString(2);
-                HoaDon hoaDon = new HoaDon(maHD,ngayBan,tenKhach);
+                HoaDon hoaDon = new HoaDon(maHD,tenKhach,simpleDateFormat.parse(ngayBan));
                 list.add(hoaDon);
                 cursor.moveToNext();
             }
@@ -59,7 +61,7 @@ class HoaDonDAO {
         }
         return list;
     }
-    public List<HoaDon> getAllHoaDonTheoMa(String ma){
+    public List<HoaDon> getAllHoaDonTheoMa(String ma) throws ParseException {
         List<HoaDon> list = new ArrayList<>();
         String query = "Select * from "+TABLE_NAME+ " where maHoaDon like '%"+ma+"%'";
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
@@ -67,9 +69,9 @@ class HoaDonDAO {
             cursor.moveToFirst();
             while (cursor.isAfterLast()==false){
                 String maHD = cursor.getString(0);
-                String ngayBan = cursor.getString(1);
-                String tenKhach = cursor.getString(2);
-                HoaDon hoaDon = new HoaDon(maHD,ngayBan,tenKhach);
+                String tenKhach = cursor.getString(1);
+                String ngayBan = cursor.getString(2);
+                HoaDon hoaDon = new HoaDon(maHD,tenKhach,simpleDateFormat.parse(ngayBan));
                 list.add(hoaDon);
                 cursor.moveToNext();
             }
