@@ -8,15 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,21 +29,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import vn.poly.quanlybanhang.Activity.DonHangActivity;
-import vn.poly.quanlybanhang.Activity.HoaDonChiTiet;
 import vn.poly.quanlybanhang.Activity.MatHangActivity;
 import vn.poly.quanlybanhang.Adapter.SanPhamAdapter;
 import vn.poly.quanlybanhang.Database.SanPhamDAO;
 import vn.poly.quanlybanhang.Model.GioHang;
-import vn.poly.quanlybanhang.Model.HoaDon;
 import vn.poly.quanlybanhang.Model.SanPham;
 import com.example.duan1android.R;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 
 public class FragmentBanHang extends Fragment {

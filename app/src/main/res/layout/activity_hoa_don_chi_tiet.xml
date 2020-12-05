@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/anh"
     android:orientation="vertical"
-    tools:context="vn.poly.quanlybanhang.Activity.HoaDonChiTiet">
+    tools:context="vn.poly.quanlybanhang.Activity.HoaDonChiTietActivity">
 
     <LinearLayout
         android:layout_marginBottom="10dp"
@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/textView31"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Đơn Hàng"
@@ -24,7 +24,7 @@
 
         <TextView
             android:id="@+id/tvDonHangHDCT"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
@@ -40,15 +40,15 @@
 
         <TextView
             android:id="@+id/textView37"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Thời Gian"
             android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/textView35"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvThoiGianHDCT"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
@@ -63,15 +63,15 @@
 
         <TextView
             android:id="@+id/textView36"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Khách Hàng"
             android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/textView38"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvTenKhachHangHDCT"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
@@ -87,6 +87,7 @@
     </LinearLayout>
 
     <ListView
+        android:id="@+id/lvListHDCT"
         android:layout_width="match_parent"
         android:layout_height="400dp" />
     <LinearLayout
@@ -106,15 +107,15 @@
 
         <TextView
             android:id="@+id/textView41"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Chiết Khấu"
             android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/textView42"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvChietKhau"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
@@ -128,15 +129,15 @@
 
         <TextView
             android:id="@+id/textView46"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Khách Trả"
             android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/textView43"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvKhachTra"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
@@ -150,15 +151,15 @@
 
         <TextView
             android:id="@+id/textView414"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Trả Lại"
             android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/textView425"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvTraLaiHDCT"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
@@ -171,15 +172,15 @@
 
         <TextView
             android:id="@+id/textView416"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Tổng Tiền"
             android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/textView42"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvTongTienHDCT"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"

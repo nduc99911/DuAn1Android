@@ -14,10 +14,6 @@ class SanPham {
         return con;
     }
 
-    public SanPham(String maSanPham,int soLuong) {
-        this.maSanPham = maSanPham;
-        this.soLuong = soLuong;
-    }
 
     public void setCon(int con) {
         this.con = con;

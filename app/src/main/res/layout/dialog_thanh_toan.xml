@@ -34,10 +34,13 @@
 
     <TextView
         android:id="@+id/tvTongTien"
+        style="@style/fontHienThi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="TextView"
-        android:textColor="#FB0E0E" />
+        android:textColor="#FB0E0E"
+        android:textSize="24sp" />
     <LinearLayout
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"

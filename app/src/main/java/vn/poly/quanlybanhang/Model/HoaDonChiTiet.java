@@ -2,60 +2,44 @@ package vn.poly.quanlybanhang.Model;
 
 public
 class HoaDonChiTiet {
-    private int maHDCT;
-    HoaDon hoaDon;
-    SanPham sanPham;
-    private double tongTien;
-    private int soLuong;
+    private String maHoaDon,maHDCT;
+    private GioHang gioHang;
+
+    public HoaDonChiTiet(String maHoaDon, String maHDCT, GioHang gioHang) {
+        this.maHoaDon = maHoaDon;
+        this.maHDCT = maHDCT;
+        this.gioHang = gioHang;
+    }
+
+    public HoaDonChiTiet(String maHoaDon, GioHang gioHang) {
+        this.maHoaDon = maHoaDon;
+        this.gioHang = gioHang;
+    }
 
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(int maHDCT, HoaDon hoaDon, SanPham sanPham, double tongTien, int soLuong) {
-        this.maHDCT = maHDCT;
-        this.hoaDon = hoaDon;
-        this.sanPham = sanPham;
-        this.tongTien = tongTien;
-        this.soLuong = soLuong;
+    public String getMaHoaDon() {
+        return maHoaDon;
     }
 
-    public int getMaHDCT() {
+    public void setMaHoaDon(String maHoaDon) {
+        this.maHoaDon = maHoaDon;
+    }
+
+    public String getMaHDCT() {
         return maHDCT;
     }
 
-    public void setMaHDCT(int maHDCT) {
+    public void setMaHDCT(String maHDCT) {
         this.maHDCT = maHDCT;
     }
 
-    public HoaDon getHoaDon() {
-        return hoaDon;
+    public GioHang getGioHang() {
+        return gioHang;
     }
 
-    public void setHoaDon(HoaDon hoaDon) {
-        this.hoaDon = hoaDon;
-    }
-
-    public SanPham getSanPham() {
-        return sanPham;
-    }
-
-    public void setSanPham(SanPham sanPham) {
-        this.sanPham = sanPham;
-    }
-
-    public double getTongTien() {
-        return tongTien;
-    }
-
-    public void setTongTien(double tongTien) {
-        this.tongTien = tongTien;
-    }
-
-    public int getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
+    public void setGioHang(GioHang gioHang) {
+        this.gioHang = gioHang;
     }
 }

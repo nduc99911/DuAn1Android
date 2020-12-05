@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
- android:background="@drawable/anh"
-    tools:context="vn.poly.quanlybanhang.Activity.DonHangActivity"
-    android:orientation="vertical">
+    android:background="@drawable/anh"
+    android:orientation="vertical"
+    tools:context="vn.poly.quanlybanhang.Activity.DonHangActivity">
 
     <include layout="@layout/custom_toolbar_don_hang">
 
@@ -20,14 +20,14 @@
         android:orientation="horizontal">
 
         <TextView
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
             android:id="@+id/textView13"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="Đơn hàng"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:text="Đơn hàng" />
+            android:textStyle="bold" />
 
         <EditText
 
@@ -39,8 +39,7 @@
             android:ems="10"
             android:hint="Mã đơn hàng"
             android:inputType="textPersonName"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
     <LinearLayout
@@ -51,14 +50,14 @@
         android:orientation="horizontal">
 
         <TextView
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
             android:id="@+id/textView17"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:text="Khách hàng"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:text="Khách hàng" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/edKhachHang_GH"
@@ -75,20 +74,20 @@
             android:textColorHint="#FFFFFF" />
 
         <ImageView
-            android:onClick="ChonKhachHang"
             android:id="@+id/imgChonKhachHang"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
+            android:onClick="ChonKhachHang"
             app:srcCompat="@drawable/ic_button"
             tools:ignore="OnClick,VectorDrawableCompat" />
     </LinearLayout>
 
     <LinearLayout
-        android:background="@drawable/border_tieu_de"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:background="@drawable/border_tieu_de"
         android:orientation="horizontal">
 
         <TextView
@@ -96,8 +95,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Sản Phẩm"
             android:gravity="center"
+            android:text="Sản Phẩm"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -108,10 +107,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:text="Số lượng"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="Số lượng" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView24"
@@ -119,15 +118,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:text="Thành tiền"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="Thành tiền" />
+            android:textStyle="bold" />
     </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ListView
             android:id="@+id/lvListHang_GH"
             android:layout_width="match_parent"
@@ -136,10 +136,10 @@
             android:layout_margin="8dp" />
 
         <LinearLayout
-            android:background="@drawable/border_filter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:background="@drawable/border_filter"
             android:orientation="vertical">
 
             <LinearLayout
@@ -150,22 +150,22 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textColor="#ffffff"
                     android:id="@+id/textView19"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:text="Chiết khấu"
+                    android:textColor="#ffffff"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:textColor="#ffffff"
                     android:id="@+id/tvChietKhau_GH"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="right"
                     android:text="0"
+                    android:textColor="#ffffff"
                     android:textSize="18sp" />
 
                 <ImageView
@@ -178,24 +178,23 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textColor="#ffffff"
                     android:id="@+id/textView22"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Tổng tiền"
+                    android:textColor="#ffffff"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:textColor="#eb4c60"
                     android:id="@+id/tvTongTien_GH"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -204,12 +203,11 @@
                     android:gravity="right"
                     android:paddingRight="8dp"
                     android:text="0"
+                    android:textColor="#eb4c60"
                     android:textSize="25sp" />
             </LinearLayout>
 
             <Button
-                android:onClick="ThanhToanDonHang"
-android:textColor="#ffffff"
                 android:id="@+id/btnThanhToan_GH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -217,8 +215,10 @@ android:textColor="#ffffff"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/border_button"
+                android:onClick="ThanhToanDonHang"
                 android:text="Thanh toán"
                 android:textAllCaps="false"
+                android:textColor="#ffffff"
                 android:textSize="18sp"
                 tools:ignore="OnClick" />
 

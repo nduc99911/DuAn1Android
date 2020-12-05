@@ -13,6 +13,7 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,8 +60,8 @@ public class DonHangActivity extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
     ListView lvList;
     EditText edMaDonHang;
-    TextView tvChietKhau, tvTongTien,tvKhachHang;
-    ImageView imgChietKhau, imgXoaDonHang,imgChonKhachHang;
+    TextView tvChietKhau, tvTongTien, tvKhachHang;
+    ImageView imgChietKhau, imgXoaDonHang, imgChonKhachHang;
     Button btnThanhToan;
     DonHangAdapter donHangAdapter;
     ToggleButton toggleButton;
@@ -68,6 +69,9 @@ public class DonHangActivity extends AppCompatActivity {
     int tongTien = 0;
     String khachHang;
     List<KhachHang> listKH;
+    HoaDonChiTietDAO hoaDonChiTietDAO;
+    int chietKhau = 0;
+    int tienFinal = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +81,10 @@ public class DonHangActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar_ban_hang);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        donHangAdapter = new DonHangAdapter(DonHangActivity.this,MatHangActivity.gioHangList);
-        lvList.setAdapter(donHangAdapter);
+        if(MatHangActivity.gioHangList.size()>0) {
+            donHangAdapter = new DonHangAdapter(DonHangActivity.this, MatHangActivity.gioHangList);
+            lvList.setAdapter(donHangAdapter);
+        }
         getTongTien();
         addChietKhau();
         xoaDonHang();
@@ -94,9 +100,10 @@ public class DonHangActivity extends AppCompatActivity {
         imgChietKhau = findViewById(R.id.imgChietKhau_GH);
         btnThanhToan = findViewById(R.id.btnThanhToan_GH);
         imgXoaDonHang = findViewById(R.id.imgxoaDonHang);
-        imgChonKhachHang=findViewById(R.id.imgChonKhachHang);
-
+        imgChonKhachHang = findViewById(R.id.imgChonKhachHang);
+        hoaDonChiTietDAO = new HoaDonChiTietDAO(this);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -108,7 +115,8 @@ public class DonHangActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    private void addChietKhau(){
+
+    private void addChietKhau() {
         imgChietKhau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,32 +128,36 @@ public class DonHangActivity extends AppCompatActivity {
                 edChietKhau = dialog.findViewById(R.id.edChietKhau);
                 Button btnOk = dialog.findViewById(R.id.btnOkCK);
                 Button btnHuy = dialog.findViewById(R.id.btnHuyCK);
-            //   toogle true = tiền mặt ; false = %
+                //   toogle true = tiền mặt ; false = %
                 btnOk.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(edChietKhau.getText().toString().equalsIgnoreCase("")){
+                        if (edChietKhau.getText().toString().equalsIgnoreCase("")) {
                             tvChietKhau.setText("0");
                             dialog.dismiss();
                             return;
                         }
-                        if(toggleButton.isChecked()){
-                            if(Integer.parseInt(edChietKhau.getText().toString()) > tongTien){
-                                Toast.makeText(DonHangActivity.this,"Chiết khẩu không được lớn hơn số tiền thanh toán",Toast.LENGTH_SHORT).show();
+                        if (toggleButton.isChecked()) {
+                            if (Integer.parseInt(edChietKhau.getText().toString()) > tongTien) {
+                                Toast.makeText(DonHangActivity.this, "Chiết khẩu không được lớn hơn số tiền thanh toán", Toast.LENGTH_SHORT).show();
                                 edChietKhau.setText("");
                                 return;
-                            }else{
-                                tvChietKhau.setText(""+edChietKhau.getText().toString()+ " VNĐ");
-                                tvTongTien.setText(""+(tongTien-Integer.parseInt(edChietKhau.getText().toString()))+ " VNĐ");
+                            } else {
+                                chietKhau = Integer.parseInt(edChietKhau.getText().toString());
+                                tvChietKhau.setText("" + edChietKhau.getText().toString() + " VNĐ");
+                                tvTongTien.setText("" + (tongTien - Integer.parseInt(edChietKhau.getText().toString())) + " VNĐ");
+                                tienFinal = (tongTien - Integer.parseInt(edChietKhau.getText().toString()));
                             }
-                        }else {
-                            if(Integer.parseInt(edChietKhau.getText().toString())< 0 || Integer.parseInt(edChietKhau.getText().toString())> 100){
-                                Toast.makeText(DonHangActivity.this,"Chiết khẩu phải từ 0-100%",Toast.LENGTH_SHORT).show();
+                        } else {
+                            if (Integer.parseInt(edChietKhau.getText().toString()) < 0 || Integer.parseInt(edChietKhau.getText().toString()) > 100) {
+                                Toast.makeText(DonHangActivity.this, "Chiết khẩu phải từ 0-100%", Toast.LENGTH_SHORT).show();
                                 edChietKhau.setText("");
                                 return;
-                            }else{
-                                tvChietKhau.setText(""+edChietKhau.getText().toString() +" %");
-                                tvTongTien.setText(""+(tongTien-(tongTien*(Double.parseDouble(edChietKhau.getText().toString())/100))) + " VNĐ");
+                            } else {
+                                tvChietKhau.setText("" + edChietKhau.getText().toString() + " %");
+                                chietKhau = (tongTien * (Integer.parseInt(edChietKhau.getText().toString()) / 100));
+                                tvTongTien.setText("" + (tongTien - (tongTien * (Double.parseDouble(edChietKhau.getText().toString()) / 100))) + " VNĐ");
+                                tienFinal = (int) (tongTien - (tongTien * (Double.parseDouble(edChietKhau.getText().toString()) / 100)));
                             }
                         }
                         dialog.dismiss();
@@ -161,13 +173,16 @@ public class DonHangActivity extends AppCompatActivity {
             }
         });
     }
-    private void getTongTien(){
-        for (int i = 0;i<MatHangActivity.gioHangList.size();i++){
-            tongTien +=(MatHangActivity.gioHangList.get(i).getGia()*MatHangActivity.gioHangList.get(i).getSoLuong());
+
+    private void getTongTien() {
+        for (int i = 0; i < MatHangActivity.gioHangList.size(); i++) {
+            tongTien += (MatHangActivity.gioHangList.get(i).getGia() * MatHangActivity.gioHangList.get(i).getSoLuong());
         }
-        tvTongTien.setText(""+tongTien+ " VNĐ");
+        tvTongTien.setText("" + tongTien + " VNĐ");
+        tienFinal = tongTien;
     }
-    private void xoaDonHang(){
+
+    private void xoaDonHang() {
         imgXoaDonHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -179,7 +194,7 @@ public class DonHangActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
                         MatHangActivity.gioHangList.clear();
-                        DonHangAdapter donHangAdapter = new DonHangAdapter(DonHangActivity.this,MatHangActivity.gioHangList);
+                        DonHangAdapter donHangAdapter = new DonHangAdapter(DonHangActivity.this, MatHangActivity.gioHangList);
                         lvList.setAdapter(donHangAdapter);
                     }
                 });
@@ -194,236 +209,140 @@ public class DonHangActivity extends AppCompatActivity {
             }
         });
     }
-public void ThanhToanDonHang(View view){
-    LayoutInflater inflater = getLayoutInflater();
-    View alertLayout = inflater.inflate(R.layout.dialog_thanh_toan, null);
-    final TextView tvTongTien = (TextView) alertLayout.findViewById(R.id.tvTongTien);
-    final EditText edTienTra = (EditText) alertLayout.findViewById(R.id.edThanhToan);
-    final TextView tvTienTra = (TextView) alertLayout.findViewById(R.id.tvTienTra);
-    final Button btnThanhToan = (Button) alertLayout.findViewById(R.id.btnThanhToan);
-    Date c = Calendar.getInstance().getTime();
-    final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-    final String formattedDate = df.format(c);
-    Toast.makeText(getApplicationContext(),""+formattedDate,Toast.LENGTH_SHORT).show();
-    btnThanhToan.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            String mahoadon=edMaDonHang.getText().toString();
-            HoaDonDAO hoaDonDAO=new HoaDonDAO(getApplicationContext());
-            try {
-                HoaDon hoaDon=new HoaDon(mahoadon,khachHang,df.parse(formattedDate));
-                if(hoaDonDAO.addHoaDon(hoaDon)>0){
-                    SanPhamDAO sanPhamDAO=new SanPhamDAO(getApplicationContext());
-                            List<SanPham> sanPhamList=new ArrayList<>();
-                            sanPhamList=sanPhamDAO.getAllSanPham();
-                            //cập nhật lại số lượng đã bán
-                            for (int i = 0;i<MatHangActivity.gioHangList.size();i++){
-                                if(MatHangActivity.gioHangList.get(i).getMa().equals(sanPhamList.get(i).getMaSanPham())) {
-                                    int soluong = sanPhamList.get(i).getSoLuong() - MatHangActivity.gioHangList.get(i).getSoLuong();
-                                    SanPham sanPham = new SanPham(sanPhamList.get(i).getMaSanPham(), soluong);
-                                    sanPhamDAO.updateSLSanPham(sanPham, sanPhamList.get(i).getMaSanPham());}
+
+    public void ThanhToanDonHang(View view) {
+        String mahoadon = edMaDonHang.getText().toString();
+        if(mahoadon.equalsIgnoreCase("")){
+            Toast.makeText(DonHangActivity.this,"Mã đơn hàng không dược trống",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        final Dialog dialog = new Dialog(DonHangActivity.this, android.R.style.Theme);
+        dialog.setContentView(R.layout.dialog_thanh_toan);
+        dialog.show();
+        final TextView tvTongTien = (TextView) dialog.findViewById(R.id.tvTongTien);
+        final EditText edTienTra = (EditText) dialog.findViewById(R.id.edThanhToan);
+        final TextView tvTienTra = (TextView) dialog.findViewById(R.id.tvTienTra);
+        Button btnThanhToan = (Button) dialog.findViewById(R.id.btnThanhToan);
+        Button btnHuy = dialog.findViewById(R.id.btnHuyCK);
+        final Date c = Calendar.getInstance().getTime();
+        final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        final String formattedDate = df.format(c);
+        btnHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        btnThanhToan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                long chk = -1;
+                HoaDonDAO hoaDonDAO = new HoaDonDAO(getApplicationContext());
+                String mahoadon = edMaDonHang.getText().toString();
+                try {
+                    HoaDon hoaDon = new HoaDon(mahoadon, khachHang, df.parse(formattedDate));
+                    if (hoaDonDAO.addHoaDon(hoaDon) > 0) {
+                        SanPhamDAO sanPhamDAO = new SanPhamDAO(getApplicationContext());
+                        List<SanPham> sanPhamList = new ArrayList<>();
+                        sanPhamList = sanPhamDAO.getAllSanPham();
+                        //cập nhật lại số lượng đã bán
+                        for (int i = 0; i < MatHangActivity.gioHangList.size(); i++) {
+                            if (MatHangActivity.gioHangList.get(i).getMa().equalsIgnoreCase(sanPhamList.get(i).getMaSanPham())) {
+                                int soluong = sanPhamList.get(i).getSoLuong() - MatHangActivity.gioHangList.get(i).getSoLuong();
+                                sanPhamDAO.updateSLSanPham(soluong, sanPhamList.get(i).getMaSanPham());
+                                Log.e("Số lượng sau khi bán:", "" + sanPhamList.get(i).getSoLuong());
+                                HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet(mahoadon, MatHangActivity.gioHangList.get(i));
+                                chk = hoaDonChiTietDAO.addHDCT(hoaDonChiTiet);
                             }
-
-//
-
-
-
-//                            SanPham sanPham1=sanPhamDAO.getSanPhamTheoMa(MatHangActivity.gioHangList.get(0).getMa());
-//                            HoaDonChiTiet hoaDonChiTiet=new HoaDonChiTiet(1,hoaDon,sanPham1,tongTien,MatHangActivity.gioHangList.get(i).getSoLuong());
-//                            if(hoaDonChiTietDAO.addHDCT(hoaDonChiTiet)>0){
-//                                Toast.makeText(getApplicationContext(),"Thêm HDCT thành công",Toast.LENGTH_SHORT).show();
-//                            }
-//                            else {
-//                                Toast.makeText(getApplicationContext(),"Thêm HDT không thành công",Toast.LENGTH_SHORT).show();
-//                            }
-//
-//                        }
-                    Toast.makeText(getApplicationContext(),"Thêm thành công",Toast.LENGTH_SHORT).show();
+                        }
+                        if (chk > 0) {
+                            Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                            hoaDon.setKhachTra(Integer.parseInt(edTienTra.getText().toString()));
+                            hoaDon.setTraLai(Integer.parseInt(tvTienTra.getText().toString()));
+                            hoaDon.setChietKhau(chietKhau);
+                            hoaDon.setTongTien(tongTien);
+                            hoaDonDAO.updateHoaDon(hoaDon,hoaDon.getMaHD());
+                            Log.d("HoaDon",""+hoaDon);
+                            dialog.dismiss();
+                            Intent intent = new Intent(DonHangActivity.this,MatHangActivity.class);
+                            startActivity(intent);
+                            MatHangActivity.gioHangList.clear();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Thêm không thành công", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(DonHangActivity.this,"Mã hóa đơn đã tồn tại",Toast.LENGTH_SHORT).show();
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
-                else {
-                    Toast.makeText(getApplicationContext(),"Thêm không thành công",Toast.LENGTH_SHORT).show();
-                }
-            } catch (ParseException e) {
-                e.printStackTrace();
             }
-        }
-    });
-    tvTongTien.setText(""+tongTien);
-
-    edTienTra.addTextChangedListener(new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            try {
-                final int tientra=tongTien-Integer.parseInt(edTienTra.getText().toString());
-                tvTienTra.setText(""+tientra);}
-            catch (Exception e){
+        });
+        tvTongTien.setText("" + tienFinal);
+        edTienTra.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
-        }
 
-        @Override
-        public void afterTextChanged(Editable editable) {
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                try {
+                    int tientra = Integer.parseInt(edTienTra.getText().toString())-tienFinal;
+                    tvTienTra.setText("" + tientra);
+                } catch (Exception e) {
 
-        }
-    });
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
 
-    AlertDialog.Builder alert = new AlertDialog.Builder(this);
-    alert.setView(alertLayout);
-    AlertDialog dialog = alert.create();
-    dialog.show();
-}
-public void ChonKhachHang(View view){
-    LayoutInflater inflater = getLayoutInflater();
-    View alertLayout = inflater.inflate(R.layout.dialog_khach_hang, null);
-    final ListView  listView= (ListView) alertLayout.findViewById(R.id.lvKhachHang);
+    }
 
-    KhachHangDAO khachHangDAO=new KhachHangDAO(this);
-     listKH=new ArrayList<>();
-    listKH=khachHangDAO.getAllKhachHang();
-    KhachHangAdapter khachHangAdapter=new KhachHangAdapter(this,listKH);
-    listView.setAdapter(khachHangAdapter);
-    AlertDialog.Builder alert = new AlertDialog.Builder(this);
-    alert.setView(alertLayout);
-    alert.setCancelable(false);
-    alert.setTitle("Danh Sach Khach Hàng");
-    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            khachHang=listKH.get(i).getTen();
-        }
-    });
-    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+    public void ChonKhachHang(View view) {
+        LayoutInflater inflater = getLayoutInflater();
+        View alertLayout = inflater.inflate(R.layout.dialog_khach_hang, null);
+        final ListView listView = (ListView) alertLayout.findViewById(R.id.lvKhachHang);
 
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
-        }
-    });
+        KhachHangDAO khachHangDAO = new KhachHangDAO(this);
+        listKH = new ArrayList<>();
+        listKH = khachHangDAO.getAllKhachHang();
+        KhachHangAdapter khachHangAdapter = new KhachHangAdapter(this, listKH);
+        listView.setAdapter(khachHangAdapter);
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setView(alertLayout);
+        alert.setCancelable(false);
+        alert.setTitle("Danh Sach Khach Hàng");
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                khachHang = listKH.get(i).getTen();
+            }
+        });
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 
-    alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
 
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            tvKhachHang.setText(khachHang);
+        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
-        }
-    });
-    AlertDialog dialog = alert.create();
-    dialog.show();
-}
-//    public void ThemDonHang(View view) {
-//
-//        LayoutInflater inflater = getLayoutInflater();
-//        final View alertLayout = inflater.inflate(R.layout.activity_dialog_them_mat_hang, null);
-//        final ImageView imgThoat = alertLayout.findViewById(R.id.imgDiaLogThemMatHangThoat);
-//        final ListView lvDiaLogThemMatHang = alertLayout.findViewById(R.id.lvDiaLogThemMatHang);
-//        sanPhamDAO = new SanPhamDAO(this);
-//        final ArrayList<String> maSanPham = new ArrayList<>();
-//        list = sanPhamDAO.getAllSanPham();
-//        final SanPhamAdapter sanPhamAdapter = new SanPhamAdapter(this, list);
-//        lvDiaLogThemMatHang.setAdapter(sanPhamAdapter);
-//        lvDiaLogThemMatHang.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                //cập nhật lại số lượng
-//                maSanPham.add(list.get(i).getMaSanPham());
-//                String ma = list.get(i).getMaSanPham();
-//                String maloai = list.get(i).getMaLoai();
-//                String ten = list.get(i).getTen();
-//                String donViTinh = list.get(i).getDonViTinh();
-//                double giaNhap = list.get(i).getGiaNhap();
-//                double giaBan = list.get(i).getGiaBan();
-//                byte[] image = list.get(i).getImage();
-//                int soluong = list.get(i).getSoLuong() - 1;
-//                SanPham sanPham = new SanPham(ma, maloai, ten, donViTinh, soluong, giaNhap, giaBan, image);
-//                sanPhamDAO.updateSanPham(sanPham, ma);
-//                list = sanPhamDAO.getAllSanPham();
-//                SanPhamAdapter sanPhamAdapter = new SanPhamAdapter(getApplication(), list);
-//                lvDiaLogThemMatHang.setAdapter(sanPhamAdapter);
-//            }
-//        });
-//        final AlertDialog.Builder alert = new AlertDialog.Builder(this);
-//        alert.setView(alertLayout);
-//        alert.setCancelable(false);
-//        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                Toast.makeText(getBaseContext(), "Cancel clicked", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//
-////xử lý số lượng sản phẩm
-//                maSanPham.addAll(ds);
-//                Set<String> set = new HashSet<>(maSanPham);
-//                ArrayList<String> temp_array = new ArrayList<>();
-//                temp_array.addAll(set);
-//                for (int i = 0; i < temp_array.size(); i++) {
-//                    con = Collections.frequency(maSanPham, temp_array.get(i));
-//                    Toast.makeText(getApplicationContext(), "" + con, Toast.LENGTH_SHORT).show();
-//                    String ma = list.get(i).getMaSanPham();
-//                    String maloai = list.get(i).getMaLoai();
-//                    String ten = list.get(i).getTen();
-//                    String donViTinh = list.get(i).getDonViTinh();
-//                    double giaNhap = list.get(i).getGiaNhap();
-//                    double giaBan = list.get(i).getGiaBan();
-//                    byte[] image = list.get(i).getImage();
-//                    int soluong = list.get(i).getSoLuong();
-//                    SanPham sanPham = new SanPham(ma, maloai, ten, donViTinh, soluong, giaNhap, giaBan, image, con);
-//                    sanPhamDAO.updateSanPham(sanPham, ma);
-//                }
-//                //xóa các phần tử trùng
-//                ArrayList<String> arrTemp = new ArrayList<>();
-//                // thêm các phần tử của arrListNumber vào arrTemp
-//                // nếu trong arrTemp đã tồn tại phần tử giống trong arrListNumber
-//                // thì không thêm vào, ngược lại thêm bình thường
-//                for (int i = 0; i < maSanPham.size(); i++) {
-//                    if (!arrTemp.contains(maSanPham.get(i))) {
-//                        arrTemp.add(maSanPham.get(i));
-//                    }
-//                }
-//                // xóa các phần tử của arrListNumber
-//                maSanPham.clear();
-//                // thêm tất cả các phần tử của arrTemp vào arrListNumber
-//                // lúc này ta sẽ có 1 ArrayList arrListNumber
-//                // không chứa các phần tử trùng nhau
-//                maSanPham.addAll(arrTemp);
-//
-//
-//                sanPhamDAO = new SanPhamDAO(getApplicationContext());
-//                for (int i = 0; i < maSanPham.size(); i++) {
-//                    String ma = maSanPham.get(i);
-//                    list2.add(sanPhamDAO.getSanPhamTheoMa(ma));
-//                }
-//
-//                Toast.makeText(getApplicationContext(), "" + list2.size(), Toast.LENGTH_SHORT).show();
-//                donHangAdapter = new DonHangAdapter(getApplicationContext(), list2);
-//                lvList.setAdapter(donHangAdapter);
-//
-//
-//            }
-//        });
-//
-//        final AlertDialog dialog = alert.create();
-//        imgThoat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                dialog.dismiss();
-//            }
-//        });
-//        dialog.show();
-//    }
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                tvKhachHang.setText(khachHang);
+
+            }
+        });
+        AlertDialog dialog = alert.create();
+        dialog.show();
+    }
 
 
 }
