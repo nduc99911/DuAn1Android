@@ -114,11 +114,10 @@ public class FragmentBanHang extends Fragment {
         anhXaView(view);
         sanPhamDAO = new SanPhamDAO(getActivity());
         list = new ArrayList<>();
-        doDuLieu();
         setHasOptionsMenu(true);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, danhSachLC);
         spnLocDanhSach.setAdapter(adapter);
-
+        doDuLieuTheoSpinner();
         timKiem();
         themSanPhamVaoGio();
     }
@@ -269,5 +268,27 @@ public class FragmentBanHang extends Fragment {
         list = sanPhamDAO.getAllSanPham();
         sanPhamAdapter = new SanPhamAdapter(getContext(), list);
         lvList.setAdapter(sanPhamAdapter);
+
+    }
+    public void doDuLieuTheoSpinner(){
+        spnLocDanhSach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(adapterView.getItemAtPosition(i) == adapterView.getItemAtPosition(0)){
+                    list = sanPhamDAO.getAllSanPhamTheoTen();
+                }else if(adapterView.getItemAtPosition(i) == adapterView.getItemAtPosition(1)){
+                    list = sanPhamDAO.getAllSanPhamTheoGiaTangDan();
+                }else {
+                    list = sanPhamDAO.getAllSanPhamTheoGiaGiamDan();
+                }
+                sanPhamAdapter = new SanPhamAdapter(getContext(), list);
+                lvList.setAdapter(sanPhamAdapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 }

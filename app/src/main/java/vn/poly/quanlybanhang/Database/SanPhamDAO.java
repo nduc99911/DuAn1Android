@@ -132,5 +132,77 @@ class SanPhamDAO {
         cursor.close();
         return list;
     }
+    public List<SanPham> getAllSanPhamTheoTen(){
+        List<SanPham> list = new ArrayList<>();
+        String query = "Select * from "+TABLE_NAME+ " order by tenSanPham asc";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            while (cursor.isAfterLast()==false){
+                String maSP = cursor.getString(0);
+                String maLoai = cursor.getString(1);
+                String ten = cursor.getString(2);
+                String donVi = cursor.getString(3);
+                int soLuong = cursor.getInt(4);
+                double giaNhap = cursor.getDouble(5);
+                double giaBan = cursor.getDouble(6);
+                byte[] img = cursor.getBlob(7);
+                int con=cursor.getInt(8);
+                SanPham sanPham = new SanPham(maSP,maLoai,ten,donVi,soLuong,giaNhap,giaBan,img,con);
+                list.add(sanPham);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        return list;
+    }
+    public List<SanPham> getAllSanPhamTheoGiaTangDan(){
+        List<SanPham> list = new ArrayList<>();
+        String query = "Select * from "+TABLE_NAME+ " order by giaBan asc";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            while (cursor.isAfterLast()==false){
+                String maSP = cursor.getString(0);
+                String maLoai = cursor.getString(1);
+                String ten = cursor.getString(2);
+                String donVi = cursor.getString(3);
+                int soLuong = cursor.getInt(4);
+                double giaNhap = cursor.getDouble(5);
+                double giaBan = cursor.getDouble(6);
+                byte[] img = cursor.getBlob(7);
+                int con=cursor.getInt(8);
+                SanPham sanPham = new SanPham(maSP,maLoai,ten,donVi,soLuong,giaNhap,giaBan,img,con);
+                list.add(sanPham);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        return list;
+    }
+    public List<SanPham> getAllSanPhamTheoGiaGiamDan(){
+        List<SanPham> list = new ArrayList<>();
+        String query = "Select * from "+TABLE_NAME+ " order by giaBan desc";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            while (cursor.isAfterLast()==false){
+                String maSP = cursor.getString(0);
+                String maLoai = cursor.getString(1);
+                String ten = cursor.getString(2);
+                String donVi = cursor.getString(3);
+                int soLuong = cursor.getInt(4);
+                double giaNhap = cursor.getDouble(5);
+                double giaBan = cursor.getDouble(6);
+                byte[] img = cursor.getBlob(7);
+                int con=cursor.getInt(8);
+                SanPham sanPham = new SanPham(maSP,maLoai,ten,donVi,soLuong,giaNhap,giaBan,img,con);
+                list.add(sanPham);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        return list;
+    }
 
 }
