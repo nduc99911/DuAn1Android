@@ -155,9 +155,9 @@ public class DonHangActivity extends AppCompatActivity {
                                 return;
                             } else {
                                 tvChietKhau.setText("" + edChietKhau.getText().toString() + " %");
-                                chietKhau = (tongTien * (Integer.parseInt(edChietKhau.getText().toString()) / 100));
                                 tvTongTien.setText("" + (tongTien - (tongTien * (Double.parseDouble(edChietKhau.getText().toString()) / 100))) + " VNĐ");
                                 tienFinal = (int) (tongTien - (tongTien * (Double.parseDouble(edChietKhau.getText().toString()) / 100)));
+                                chietKhau = (int) (tongTien * (Double.parseDouble(edChietKhau.getText().toString()) / 100));
                             }
                         }
                         dialog.dismiss();
@@ -294,7 +294,6 @@ public class DonHangActivity extends AppCompatActivity {
 
                 }
             }
-
             @Override
             public void afterTextChanged(Editable editable) {
 
