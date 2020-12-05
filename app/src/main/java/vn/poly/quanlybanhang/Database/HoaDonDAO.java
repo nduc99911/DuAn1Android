@@ -122,4 +122,42 @@ public class HoaDonDAO {
         }
         return hoaDon;
     }
+    public double getDoanhThu(){
+        String query = "Select SUM(tongTien) from "+TABLE_NAME;
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        double tien = 0;
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()){
+                tien += cursor.getDouble(0);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        return tien;
+    }
+    public int getSoHoaDon(){
+        String query = "SELECT maHoaDon from "+TABLE_NAME;
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        int soLuong = 0;
+        if(cursor.getCount()>0){
+            while (!cursor.isAfterLast()){
+                soLuong++;
+                cursor.moveToNext();
+            }
+        }
+        cursor.close();
+        return soLuong;
+    }
+    public int getSoTienVon(){
+        String query = "SELECT SUM(SanPham.gianhap*HoaDonChiTiet.soluong) as tienVon from SanPham INNER JOIN HoaDonChiTiet ON SanPham.maSanPham = HoaDonChiTiet.masanpham";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        int tongTienVon = 0;
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            tongTienVon = cursor.getInt(0);
+        }
+        cursor.close();
+        return tongTienVon;
+    }
 }

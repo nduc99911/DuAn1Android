@@ -67,7 +67,7 @@ public class DonHangActivity extends AppCompatActivity {
     ToggleButton toggleButton;
     EditText edChietKhau;
     int tongTien = 0;
-    String khachHang;
+    String khachHang = "Khách lẻ";
     List<KhachHang> listKH;
     HoaDonChiTietDAO hoaDonChiTietDAO;
     int chietKhau = 0;
@@ -339,6 +339,7 @@ public class DonHangActivity extends AppCompatActivity {
 
             }
         });
+
         AlertDialog dialog = alert.create();
         dialog.show();
     }

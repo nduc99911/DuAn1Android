@@ -12,6 +12,8 @@
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal">
 
         <TextView
@@ -36,6 +38,7 @@
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:orientation="horizontal">
 
         <TextView
@@ -59,6 +62,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:orientation="horizontal">
 
         <TextView
@@ -79,30 +83,98 @@
 
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="18dp"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="3dp"
         android:background="@drawable/border_thanh">
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/border_tieu_de"
+        android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Sản Phẩm"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Số lượng"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Thành tiền"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
     <ListView
         android:id="@+id/lvListHDCT"
         android:layout_width="match_parent"
-        android:layout_height="400dp" />
+        android:layout_height="350dp"
+        android:layout_margin="8dp"
+        >
+
+    </ListView>
+
     <LinearLayout
-        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="18dp"
         android:background="@drawable/border_thanh">
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView416"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tổng Tiền"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvTongTienHDCT"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal">
 
         <TextView
@@ -122,7 +194,9 @@
             android:textColor="#FFFFFF" />
     </LinearLayout>
     <LinearLayout
-        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -144,7 +218,9 @@
             android:textColor="#FFFFFF" />
     </LinearLayout>
     <LinearLayout
-        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -165,27 +241,6 @@
             android:text="TextView"
             android:textColor="#FFFFFF" />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView416"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Tổng Tiền"
-            android:textColor="#FFFFFF" />
-
-        <TextView
-            android:id="@+id/tvTongTienHDCT"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView"
-            android:textColor="#FFFFFF" />
-    </LinearLayout>
 
     <Button
         android:layout_marginTop="10dp"
@@ -193,5 +248,7 @@
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
         android:text="Sửa" />
 </LinearLayout>

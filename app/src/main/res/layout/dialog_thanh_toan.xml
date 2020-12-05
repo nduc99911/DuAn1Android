@@ -9,14 +9,16 @@
     >
 
     <TextView
-        android:layout_gravity="center"
         android:id="@+id/textView32"
-        android:layout_width="188dp"
-        android:layout_height="41dp"
-        android:background="#FDFDFD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/border_tim_kiem"
+        android:gravity="center"
         android:text="  Thanh Toán"
         android:textColor="#3CF807"
-        android:textSize="28dp" />
+        android:textSize="28dp"
+        android:textStyle="bold" />
     <LinearLayout
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
@@ -27,6 +29,7 @@
 
     <TextView
         android:id="@+id/textView33"
+        style="@style/fontHienThi2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Số tiền phải trả"
@@ -40,7 +43,7 @@
         android:gravity="center"
         android:text="TextView"
         android:textColor="#FB0E0E"
-        android:textSize="24sp" />
+        android:textSize="30sp" />
     <LinearLayout
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
@@ -51,6 +54,7 @@
 
     <TextView
         android:id="@+id/textView35"
+        style="@style/fontHienThi2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Số tiền khách trả"
@@ -59,11 +63,11 @@
     <EditText
         android:id="@+id/edThanhToan"
         android:layout_width="match_parent"
-        android:layout_height="157dp"
+        android:layout_height="150dp"
         android:gravity="center"
         android:text="0"
-        android:textColor="#FFFFFF"
-        android:textSize="36sp" />
+        android:textColor="#1690F1"
+        android:textSize="30sp" />
     <LinearLayout
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
@@ -74,6 +78,7 @@
 
     <TextView
         android:id="@+id/textView37"
+        style="@style/fontHienThi2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Số tiền trả lại"
@@ -83,8 +88,10 @@
         android:id="@+id/tvTienTra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
         android:text="0"
-        android:textColor="#ED0909" />
+        android:textColor="#ED0909"
+        android:textSize="30sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
