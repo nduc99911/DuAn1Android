@@ -10,8 +10,8 @@
 
     <TextView
         android:id="@+id/textView29"
-        android:layout_width="269dp"
-        android:layout_height="82dp"
+        android:layout_width="292dp"
+        android:layout_height="79dp"
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
         android:layout_marginTop="512dp"

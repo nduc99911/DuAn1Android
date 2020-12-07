@@ -22,7 +22,7 @@ public class HoaDonDAO {
             "   khachTra number," +
             "   traLai number ," +
             "   tongTien number)";
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private SQLiteDatabase sqLiteDatabase;
 
     public HoaDonDAO(Context context) {
@@ -159,5 +159,17 @@ public class HoaDonDAO {
         }
         cursor.close();
         return tongTienVon;
+    }
+    public double getDoanhThuTheoThang(String thang) {
+        double doanhThu = 0;
+        String sSQL = "SELECT SUM(tongTien)  from HoaDon where strftime('%m',ngayBan)='"+thang+"' ";
+        Cursor c = sqLiteDatabase.rawQuery(sSQL, null);
+        c.moveToFirst();
+        while (c.isAfterLast() == false) {
+            doanhThu += c.getDouble(0);
+            c.moveToNext();
+        }
+        c.close();
+        return doanhThu;
     }
 }

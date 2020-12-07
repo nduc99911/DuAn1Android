@@ -8,6 +8,16 @@ class SanPham {
     private int soLuong;
     private int con;
 
+    public SanPham(String maSanPham) {
+        this.maSanPham = maSanPham;
+
+    }
+
+    public SanPham(String maSanPham, int soluong, int con) {
+        this.maSanPham = maSanPham;
+        this.soLuong = soluong;
+        this.con=con;
+    }
 
 
     public int getCon() {

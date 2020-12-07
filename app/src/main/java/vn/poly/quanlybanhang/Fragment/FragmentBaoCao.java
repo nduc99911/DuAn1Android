@@ -11,6 +11,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import vn.poly.quanlybanhang.Database.HoaDonDAO;
 
@@ -40,6 +42,7 @@ public class FragmentBaoCao extends Fragment {
     DrawerLayout drawerLayout;
     HoaDonDAO hoaDonDAO;
     private LineChart mChart;
+    double thang1,thang2,thang3,thang4,thang5,thang6,thang7,thang8,thang9,thang10,thang11,thang12;
     public FragmentBaoCao() {
         // Required empty public constructor
     }
@@ -68,6 +71,19 @@ public class FragmentBaoCao extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         anhXaView(view);
+        thang1=hoaDonDAO.getDoanhThuTheoThang("01");
+        thang2=hoaDonDAO.getDoanhThuTheoThang("02");
+        thang3=hoaDonDAO.getDoanhThuTheoThang("03");
+        thang4=hoaDonDAO.getDoanhThuTheoThang("04");
+        thang5=hoaDonDAO.getDoanhThuTheoThang("05");
+        thang6=hoaDonDAO.getDoanhThuTheoThang("06");
+        thang7=hoaDonDAO.getDoanhThuTheoThang("07");
+        thang8=hoaDonDAO.getDoanhThuTheoThang("08");
+        thang9=hoaDonDAO.getDoanhThuTheoThang("09");
+        thang10=hoaDonDAO.getDoanhThuTheoThang("10");
+        thang11=hoaDonDAO.getDoanhThuTheoThang("11");
+        thang12=hoaDonDAO.getDoanhThuTheoThang("12");
+        Log.d("Tháng",""+thang1);
         bieuDo();
         getBaoCao();
     }
@@ -96,10 +112,10 @@ public class FragmentBaoCao extends Fragment {
     }
     private void bieuDo(){
         LineDataSet lineDataSet=new LineDataSet(dataValue(),"Data set 1" );
-        LineDataSet lineDataSet1=new LineDataSet(dataValue1(),"Data set 2" );
+//        LineDataSet lineDataSet1=new LineDataSet(dataValue1(),"Data set 2" );
         ArrayList<ILineDataSet> dataSets=new ArrayList<>();
         dataSets.add(lineDataSet);
-        dataSets.add(lineDataSet1);
+//        dataSets.add(lineDataSet1);
 
         lineDataSet.setLineWidth(3);
         lineDataSet.setColor(Color.RED);
@@ -124,14 +140,22 @@ public class FragmentBaoCao extends Fragment {
         mChart.invalidate();
 
     }
+
     private ArrayList<Entry> dataValue(){
+
         ArrayList <Entry> data=new ArrayList<>();
-        data.add(new Entry(0,20));
-        data.add(new Entry(1,24));
-        data.add(new Entry(2,2));
-        data.add(new Entry(3,10));
-        data.add(new Entry(4,30));
-        data.add(new Entry(5,50));
+        data.add(new Entry(1, (float) thang1));
+        data.add(new Entry(2, (float) thang2));
+        data.add(new Entry(3, (float) thang3));
+        data.add(new Entry(4, (float) thang4));
+        data.add(new Entry(5, (float) thang5));
+        data.add(new Entry(6, (float) thang6));
+        data.add(new Entry(7, (float) thang7));
+        data.add(new Entry(8, (float) thang8));
+        data.add(new Entry(9, (float) thang9));
+        data.add(new Entry(10, (float) thang10));
+        data.add(new Entry(11, (float) thang11));
+        data.add(new Entry(12, (float) thang12));
         return data;
     }
     private ArrayList<Entry> dataValue1(){

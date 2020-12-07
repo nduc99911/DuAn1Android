@@ -37,15 +37,6 @@ linearLayout=findViewById(R.id.splashScreen);
         fly=findViewById(R.id.imgFlySplashScrenn);
         tvLoading= findViewById(R.id.tvSplashScren);
         startAnimation();
-        DateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd hhmmss");
-        dateFormatter.setLenient(false);
-        Date today = new Date();
-        Toast.makeText(getApplicationContext(),""+today,Toast.LENGTH_SHORT).show();
-        Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR) ;
-        int month= c.get(Calendar.MONTH) ;
-        int date=c.get(Calendar.DATE);
-        int sdk = Build.VERSION.SDK_INT;
         fly.setBackgroundResource(R.drawable.fly);
         rocketAnimation = (AnimationDrawable) fly.getBackground();
         rocketAnimation.start();
@@ -65,7 +56,7 @@ linearLayout=findViewById(R.id.splashScreen);
             public void run() {
                 super.run();
                 int waited = 0;
-                while (waited < 1000) {
+                while (waited < 4000) {
                     try {
                         sleep(100);
                     } catch (InterruptedException e) {
@@ -75,7 +66,6 @@ linearLayout=findViewById(R.id.splashScreen);
                 }
                 SplashScreenActivity.this.finish();
                 Intent intent = new Intent(SplashScreenActivity.this, GioiThieuActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
         };
