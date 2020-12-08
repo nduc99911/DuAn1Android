@@ -21,8 +21,8 @@ public class HoaDonDAO {
             "   chietKhau text," +
             "   khachTra number," +
             "   traLai number ," +
-            "   trangThai text ," +
-            "   tongTien number)";
+            "   tongTien number ," +
+            "   trangThai text)";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private SQLiteDatabase sqLiteDatabase;
 
@@ -219,13 +219,13 @@ public class HoaDonDAO {
         }
         //tuần trước
         if (time.equalsIgnoreCase("Tuần trước" ) && trangthaihd.equalsIgnoreCase("Tất cả") ) {
-            query = "Select * from " + TABLE_NAME + " where ngayBan < DATE('now', 'weekday 0', '-7 days') ";
+            query = "Select * from " + TABLE_NAME + " where strftime('%W',ngayBan) = (Select strftime('%W',now)-1)";
         }
         if (time.equalsIgnoreCase("Tuần trước" ) && trangthaihd.equalsIgnoreCase("Chưa thanh toán")) {
-            query = "Select * from " + TABLE_NAME + " where ngayBan < date('now','-7 day') and trangThai like 'Chưa Thanh Toán' ";
+            query = "Select * from " + TABLE_NAME + " where strftime('%W',ngayBan) = (Select strftime('%W',now)-1) and trangThai like 'Chưa Thanh Toán' ";
         }
         if (time.equalsIgnoreCase("Tuần trước" ) && trangthaihd.equalsIgnoreCase("đã thanh toán")) {
-            query = "Select * from " + TABLE_NAME + " where ngayBan < date('now','-7 day') and trangThai like 'Đã Thanh Toán' ";
+            query = "Select * from " + TABLE_NAME + " where strftime('%W',ngayBan) = (Select strftime('%W',now)-1) and trangThai like 'Đã Thanh Toán' ";
         }
         //tháng này
         if (time.equalsIgnoreCase("Tháng này" ) && trangthaihd.equalsIgnoreCase("Tất cả") ) {
@@ -263,9 +263,9 @@ public class HoaDonDAO {
         if (time.equalsIgnoreCase("tuần này" ) && trangthaihd.equalsIgnoreCase("")) {
             query = "Select * from " + TABLE_NAME + " where strftime('%W',ngayBan)= strftime('%W','now') ";
         }
-        //tuần này
+        //tuần trước
         if (time.equalsIgnoreCase("tuần trước" ) && trangthaihd.equalsIgnoreCase("")) {
-            query = "Select * from " + TABLE_NAME + " where ngayBan = date('now','-7 day') ";
+            query = "Select * from " + TABLE_NAME + " where strftime('%W',ngayBan) = (Select strftime('%W',now)-1) ";
         }
         //tháng này
         if (time.equalsIgnoreCase("tháng này" ) && trangthaihd.equalsIgnoreCase("")) {
