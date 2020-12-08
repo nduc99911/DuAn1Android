@@ -256,18 +256,27 @@ public class DonHangActivity extends AppCompatActivity {
                             }
                         }
                         if (chk > 0) {
+                            String trangthai = null;
                             Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                            if(Integer.parseInt(tvTienTra.getText().toString())>0){
+                                trangthai="Đã Thanh Toán";
+                            }
+                            if(Integer.parseInt(tvTienTra.getText().toString())<0){
+                                trangthai="Chưa Thanh Toán";
+                            }
                             hoaDon.setKhachTra(Integer.parseInt(edTienTra.getText().toString()));
                             hoaDon.setTraLai(Integer.parseInt(tvTienTra.getText().toString()));
                             hoaDon.setChietKhau(chietKhau);
                             hoaDon.setTongTien(tongTien);
+                            hoaDon.setTrangThai(trangthai);
                             hoaDonDAO.updateHoaDon(hoaDon,hoaDon.getMaHD());
                             Log.d("HoaDon",""+hoaDon);
                             dialog.dismiss();
                             Intent intent = new Intent(DonHangActivity.this,MatHangActivity.class);
                             startActivity(intent);
                             MatHangActivity.gioHangList.clear();
-                        } else {
+                        }
+                        else {
                             Toast.makeText(getApplicationContext(), "Thêm không thành công", Toast.LENGTH_SHORT).show();
                         }
                     }else{

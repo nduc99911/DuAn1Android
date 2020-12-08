@@ -1,5 +1,6 @@
 package vn.poly.quanlybanhang.Fragment;
 
+import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.duan1android.R;
@@ -28,20 +30,23 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import vn.poly.quanlybanhang.Adapter.HoaDonAdapter;
 import vn.poly.quanlybanhang.Database.HoaDonDAO;
 
 
 public class FragmentBaoCao extends Fragment {
-    TextView tvSoHoaDon,tvGiaTriHoaDon,tvTienBan,tvTienVon,tvBoLoc;
-    TextView tvLoiNhuan, tvDoanhThu;
+    TextView tvSoHoaDon,tvGiaTriHoaDon,tvTienBan,tvTienVon,tvLoaiLoc,tvTimeLoaiLoc;
+    TextView tvLoiNhuan, tvDoanhThu,tvLuuBoLoc;
     ImageView imgBoLoc;
     androidx.appcompat.widget.Toolbar toolbar;
     DrawerLayout drawerLayout;
     HoaDonDAO hoaDonDAO;
     private LineChart mChart;
+    RadioButton rdoTatCa, rdoHomNay, rdoHomQua, rdoTuanNay, rdoTuanTruoc, rdoThangNay, rdoThangTruoc, rdoTatCaHd, rdoChuaThanhToan, rdoDaThanhToan;
     double thang1,thang2,thang3,thang4,thang5,thang6,thang7,thang8,thang9,thang10,thang11,thang12;
     public FragmentBaoCao() {
         // Required empty public constructor
@@ -86,6 +91,25 @@ public class FragmentBaoCao extends Fragment {
         Log.d("Tháng",""+thang1);
         bieuDo();
         getBaoCao();
+        //chọn bộ lọc
+        imgBoLoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog dialog = new Dialog(getActivity(), android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+                dialog.setContentView(R.layout.activity_bo_loc);
+                dialog.show();
+                anhXaViewDia(dialog);
+                tvLuuBoLoc.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                            tvLoaiLoc.setText( luuChonHoaDon());
+                            tvTimeLoaiLoc.setText( luuChonTime());
+                        dialog.dismiss();
+                    }
+                });
+
+            }
+        });
     }
 
     public void anhXaView(View view){
@@ -93,7 +117,7 @@ public class FragmentBaoCao extends Fragment {
         tvGiaTriHoaDon = view.findViewById(R.id.tvGiaTriHoaDon);
         tvTienBan = view.findViewById(R.id.tvTienBan);
         tvTienVon = view.findViewById(R.id.tvTienVon);
-        tvBoLoc = view.findViewById(R.id.tvBoLocBaoCao);
+        tvLoaiLoc = view.findViewById(R.id.tvLoaiLocBC);
         tvLoiNhuan = view.findViewById(R.id.btnLoiNhuan);
         tvDoanhThu = view.findViewById(R.id.btnDoanhThu);
         imgBoLoc = view.findViewById(R.id.imgBoLocBaoCao);
@@ -101,6 +125,7 @@ public class FragmentBaoCao extends Fragment {
         drawerLayout = view.findViewById(R.id.drawerLayoutBaoCao);
         mChart =  view.findViewById(R.id.combinedChart);
         hoaDonDAO = new HoaDonDAO(getContext());
+        tvTimeLoaiLoc = view.findViewById(R.id.tvTimeLoaiLocBC);
     }
     private void getBaoCao(){
         tvDoanhThu.setText(""+Math.round(hoaDonDAO.getDoanhThu())+ "\nDoanh thu");
@@ -109,6 +134,51 @@ public class FragmentBaoCao extends Fragment {
         tvSoHoaDon.setText(""+hoaDonDAO.getSoHoaDon());
         tvTienVon.setText(""+hoaDonDAO.getSoTienVon()+ " VNĐ");
         tvLoiNhuan.setText(""+(Math.round(hoaDonDAO.getDoanhThu())-hoaDonDAO.getSoTienVon())+ "\nLợi nhuận");
+    }
+    public String luuChonTime() {
+        String luaChon = null;
+        if (rdoTatCa.isChecked()) {
+            luaChon = "Tất cả";
+        } else if (rdoHomQua.isChecked()) {
+            luaChon = "Hôm qua";
+        } else if (rdoHomNay.isChecked()) {
+            luaChon = "Hôm nay";
+        } else if (rdoThangNay.isChecked()) {
+            luaChon = "Tháng này";
+        } else if (rdoThangTruoc.isChecked()) {
+            luaChon = "Tháng trước";
+        } else if (rdoTuanTruoc.isChecked()) {
+            luaChon = "Tuần trước";
+        } else if (rdoTuanNay.isChecked()) {
+            luaChon = "Tuần này";
+        }
+        return luaChon;
+    }
+
+    public String luuChonHoaDon() {
+        String luaChon = null;
+        if (rdoTatCaHd.isChecked()) {
+            luaChon = "Tất cả";
+        } else if (rdoChuaThanhToan.isChecked()) {
+            luaChon = "Chưa Thanh Toán";
+        } else if (rdoDaThanhToan.isChecked()) {
+            luaChon = "Đã thanh toán";
+        }
+        return luaChon;
+    }
+    public void anhXaViewDia(Dialog dialog) {
+        rdoTatCa = dialog.findViewById(R.id.radTatCaThoiGian);
+        rdoHomNay = dialog.findViewById(R.id.radHomNay);
+        rdoHomQua = dialog.findViewById(R.id.radHomQua);
+        rdoTuanNay = dialog.findViewById(R.id.radTuanNay);
+        rdoTuanTruoc = dialog.findViewById(R.id.radTuanTruoc);
+        rdoThangNay = dialog.findViewById(R.id.radThangNay);
+        rdoThangTruoc = dialog.findViewById(R.id.radThangTruoc);
+        rdoTatCaHd = dialog.findViewById(R.id.radTatCaHoaDon);
+        rdoChuaThanhToan = dialog.findViewById(R.id.radChuaThanhToan);
+        rdoDaThanhToan = dialog.findViewById(R.id.radDaThanhToan);
+        tvLuuBoLoc = dialog.findViewById(R.id.tvLuuBoLocHD);
+
     }
     private void bieuDo(){
         LineDataSet lineDataSet=new LineDataSet(dataValue(),"Data set 1" );
@@ -168,4 +238,5 @@ public class FragmentBaoCao extends Fragment {
         data.add(new Entry(5,80));
         return data;
     }
+
 }

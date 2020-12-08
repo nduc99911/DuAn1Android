@@ -4,13 +4,23 @@ import java.util.Date;
 
 public
 class HoaDon {
-    private String maHD, tenKhachHang;
+    private String maHD;
+    private String tenKhachHang;
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    private String trangThai;
     private Date ngayBan;
     private int khachTra;
     private int traLai;
     private int tongTien;
     private int chietKhau;
-
 
 
     public HoaDon(String maHD, String tenKhachHang, Date ngayBan, int khachTra, int traLai, int tongTien, int chietKhau) {

@@ -49,7 +49,6 @@ public class FragmentHoaDon extends Fragment {
     List<HoaDon> hoaDonList = new ArrayList<>();
     HoaDonDAO hoaDonDAO;
     HoaDonAdapter hoaDonAdapter;
-    String mahoadon;
 
     public FragmentHoaDon() {
         // Required empty public constructor
@@ -112,8 +111,17 @@ public class FragmentHoaDon extends Fragment {
                 tvLuuBoLoc.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        tvLoaiLoc.setText("" + luuChonHoaDon());
-                        tvTimeLoaiLoc.setText("" + luuChonTime());
+
+                        try {
+                            tvLoaiLoc.setText( luuChonHoaDon());
+                            tvTimeLoaiLoc.setText( luuChonTime());
+                            HoaDonDAO hoaDonDAO=new HoaDonDAO(getContext());
+                            hoaDonList=hoaDonDAO.getAllHoaDonTime(tvTimeLoaiLoc.getText().toString(),tvLoaiLoc.getText().toString());
+                            HoaDonAdapter hoaDonAdapter=new HoaDonAdapter(getContext(),hoaDonList);
+                            lvListHoaDon.setAdapter(hoaDonAdapter);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
                         dialog.dismiss();
                     }
                 });
