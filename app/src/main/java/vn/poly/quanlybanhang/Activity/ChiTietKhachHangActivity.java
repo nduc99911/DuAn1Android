@@ -146,4 +146,9 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
         edTienDaMua = (EditText) dialog.findViewById(R.id.edSuaTienDaMua);
         imgLuu = dialog.findViewById(R.id.imgLuuKH);
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ChiTietKhachHangActivity.this,KhachHangActivity.class));
+    }
 }

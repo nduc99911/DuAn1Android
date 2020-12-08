@@ -107,9 +107,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-
         if (requestCode == REQUEST_CODE_FOLDER && resultCode == RESULT_OK && data != null) {
-
             Uri uri = data.getData();
             InputStream inputStream = null;
             try {
@@ -120,9 +118,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-
             super.onActivityResult(requestCode, resultCode, data);
-
         }
     }
 
@@ -137,6 +133,11 @@ public class ThemSanPhamActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ThemSanPhamActivity.this,SanPhamActivity.class));
     }
 
     //ánh xạ

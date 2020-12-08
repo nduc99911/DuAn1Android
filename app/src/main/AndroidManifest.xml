@@ -12,80 +12,103 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="vn.poly.quanlybanhang.Activity.HoaDonChiTietActivity"></activity>
-        <activity android:name="vn.poly.quanlybanhang.Activity.KhachHangActivity" />
-        <activity android:name="vn.poly.quanlybanhang.Activity.ChiTietKhachHangActivity"/>
-        <activity android:name="vn.poly.quanlybanhang.Activity.ThemKhachHangActivity" />
-        <activity android:name="vn.poly.quanlybanhang.Activity.ChiTietSanPhamActivity" />
-        <activity android:name="vn.poly.quanlybanhang.Activity.SplashScreenActivity">
+        <activity
+            android:name="vn.poly.quanlybanhang.Activity.SplashScreenActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="vn.poly.quanlybanhang.Activity.BoLocActivity"
+            android:name="vn.poly.quanlybanhang.Activity.HoaDonChiTietActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="vn.poly.quanlybanhang.Activity.KhachHangActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="vn.poly.quanlybanhang.Activity.DialogThemMatHang"
-            android:windowSoftInputMode="stateHidden" />
+            android:name="vn.poly.quanlybanhang.Activity.ChiTietKhachHangActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="vn.poly.quanlybanhang.Activity.ThemKhachHangActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="vn.poly.quanlybanhang.Activity.ChiTietSanPhamActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name="vn.poly.quanlybanhang.Activity.DonHangActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="vn.poly.quanlybanhang.Activity.ThemSanPhamActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="vn.poly.quanlybanhang.Activity.SanPhamActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="vn.poly.quanlybanhang.Activity.SuaSanPhamActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="vn.poly.quanlybanhang.Activity.LoaiSanPhamActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="vn.poly.quanlybanhang.Activity.ThemLoaiSanPham"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="vn.poly.quanlybanhang.Activity.SuaLoaiSanPhamActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="vn.poly.quanlybanhang.Activity.ThemDonViTinh"
-            android:windowSoftInputMode="stateHidden" />
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name="vn.poly.quanlybanhang.Activity.SuaDonViTinh"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="vn.poly.quanlybanhang.Activity.DonViTinhActivity"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="vn.poly.quanlybanhang.Activity.SuaNguoiDungActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="vn.poly.quanlybanhang.Activity.MatHangActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="vn.poly.quanlybanhang.GioiThieuActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="vn.poly.quanlybanhang.GioiThieu2Activity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="vn.poly.quanlybanhang.GioiThieu3Acitivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="vn.poly.quanlybanhang.Activity.MainActivity"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
 
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
     </application>
 
 </manifest>

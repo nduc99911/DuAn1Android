@@ -34,12 +34,9 @@ public class ThemLoaiSanPham extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 return true;
-
-
             default:
                 break;
         }
-
         return super.onOptionsItemSelected(item);
     }
     public void anhXaView() {
@@ -65,5 +62,10 @@ public class ThemLoaiSanPham extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Thêm thất bại,mã sản phẩm đã tồn tại",Toast.LENGTH_SHORT).show();
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ThemLoaiSanPham.this,LoaiSanPhamActivity.class));
     }
 }

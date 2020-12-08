@@ -93,4 +93,9 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
         imgSP = findViewById(R.id.imgCTSP);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ChiTietSanPhamActivity.this,SanPhamActivity.class);
+        startActivity(intent);
+    }
 }
