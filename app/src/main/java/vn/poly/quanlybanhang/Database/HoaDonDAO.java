@@ -219,7 +219,7 @@ public class HoaDonDAO {
         }
         //tuần trước
         if (time.equalsIgnoreCase("Tuần trước" ) && trangthaihd.equalsIgnoreCase("Tất cả") ) {
-            query = "Select * from " + TABLE_NAME + " where ngayBan <= date('now','weekday 0','-7 day') ";
+            query = "Select * from " + TABLE_NAME + " where ngayBan < DATE('now', 'weekday 0', '-7 days') ";
         }
         if (time.equalsIgnoreCase("Tuần trước" ) && trangthaihd.equalsIgnoreCase("Chưa thanh toán")) {
             query = "Select * from " + TABLE_NAME + " where ngayBan < date('now','-7 day') and trangThai like 'Chưa Thanh Toán' ";
@@ -239,13 +239,13 @@ public class HoaDonDAO {
         }
         //tháng trước
         if (time.equalsIgnoreCase("Tháng trước" ) && trangthaihd.equalsIgnoreCase("Tất cả") ) {
-            query = "Select * from " + TABLE_NAME + " where ngayBan < date('now','-30 day')";
+            query = "Select * from " + TABLE_NAME + " where ngayBan between date('now','-60 day') and date('now','-30 day') ";
         }
         if (time.equalsIgnoreCase("Tháng trước" ) && trangthaihd.equalsIgnoreCase("Chưa thanh toán")) {
-            query = "Select * from " + TABLE_NAME + " where ngayBan < date('now','-30 day') and trangThai like 'Chưa Thanh Toán' ";
+            query = "Select * from " + TABLE_NAME + " where ngayBan between date('now','-60 day') and date('now','-30 day') and trangThai like 'Chưa Thanh Toán' ";
         }
         if (time.equalsIgnoreCase("Tháng trước" ) && trangthaihd.equalsIgnoreCase("Đã thanh toán")) {
-            query = "Select * from " + TABLE_NAME + " where ngayBan < date('now','-30 day') and trangThai like 'Đã Thanh Toán' ";
+            query = "Select * from " + TABLE_NAME + " where ngayBan  between date('now','-60 day') and date('now','-30 day') and trangThai like 'Đã Thanh Toán' ";
         }
         //Tất cả time
         if (time.equalsIgnoreCase("Tất cả" ) && trangthaihd.equalsIgnoreCase("")) {
@@ -272,7 +272,7 @@ public class HoaDonDAO {
             query = "Select * from " + TABLE_NAME + " where strftime('%m',ngayBan) = strftime('%m','now')";
         }
         if (time.equalsIgnoreCase("Tháng trước" ) && trangthaihd.equalsIgnoreCase("") ) {
-             query = "Select * from " + TABLE_NAME + " where ngayBan < date('now','-30 day')";
+             query = "Select * from " + TABLE_NAME + " where ngayBan between date('now','-60 day') and date('now','-30 day')";
         }
         //trang thai hoa don
         if (time.equalsIgnoreCase("" ) && trangthaihd.equalsIgnoreCase("Tất cả") ) {
