@@ -21,6 +21,7 @@ public class HoaDonDAO {
             "   chietKhau text," +
             "   khachTra number," +
             "   traLai number ," +
+            "   trangThai text ," +
             "   tongTien number)";
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private SQLiteDatabase sqLiteDatabase;
@@ -39,7 +40,7 @@ public class HoaDonDAO {
         contentValues.put("khachTra", hoaDon.getKhachTra());
         contentValues.put("traLai", hoaDon.getTraLai());
         contentValues.put("tongTien", hoaDon.getTongTien());
-
+        contentValues.put("trangThai", hoaDon.getTrangThai());
         return sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
     }
 
@@ -52,6 +53,7 @@ public class HoaDonDAO {
         contentValues.put("khachTra", hoaDon.getKhachTra());
         contentValues.put("traLai", hoaDon.getTraLai());
         contentValues.put("tongTien", hoaDon.getTongTien());
+        contentValues.put("trangThai", hoaDon.getTrangThai());
         return sqLiteDatabase.update(TABLE_NAME, contentValues, "maHoaDon = ?", new String[]{ma});
     }
     public long deleteHoaDon(String ma) {
@@ -171,5 +173,134 @@ public class HoaDonDAO {
         }
         c.close();
         return doanhThu;
+    }
+    public List<HoaDon> getAllHoaDonTime(String time,String trangthaihd) throws ParseException {
+        String query = null;
+        List<HoaDon> list = new ArrayList<>();
+        //Tất cả
+        if (time .equalsIgnoreCase("Tất Cả") && trangthaihd.equalsIgnoreCase("Tất Cả") ) {
+            query = "Select * from " + TABLE_NAME ;
+        }
+        if (time.equalsIgnoreCase("Tất Cả")  && trangthaihd.equalsIgnoreCase("Chưa thanh Toán")) {
+            query = "Select * from " + TABLE_NAME + " where  trangThai like 'Chưa Thanh Toán'";
+        }
+        if (time.equalsIgnoreCase("Tất Cả")  && trangthaihd.equalsIgnoreCase("Đã thanh Toán")) {
+            query = "Select * from " + TABLE_NAME + " where  trangThai like 'Đã Thanh Toán'";
+        }
+        //Hôm nay
+        if (time == "Hôm nay" && trangthaihd == "Tất cả") {
+             query = "Select * from " + TABLE_NAME + " where strftime('%d',ngayBan) = strftime('%d','now') ";
+        }
+        if (time.equalsIgnoreCase("Hôm nay")  && trangthaihd.equalsIgnoreCase("Chưa thanh Toán")) {
+            query = "Select * from " + TABLE_NAME + " where strftime('%d',ngayBan) = strftime('%d','now') and trangThai like 'Chưa Thanh Toán'";
+        }
+        if (time.equalsIgnoreCase("Hôm nay")  && trangthaihd.equalsIgnoreCase("Đã thanh Toán")) {
+            query = "Select * from " + TABLE_NAME + " where strftime('%d',ngayBan) = strftime('%d','now') and trangThai like 'Đã Thanh Toán'";
+        }
+        //hôm qua
+        if (time.equalsIgnoreCase("Hôm qua" ) && trangthaihd.equalsIgnoreCase("Tất cả") ) {
+            query = "Select * from " + TABLE_NAME + " where  ngayBan = date('now','-1 day')";
+        }
+        if (time.equalsIgnoreCase("Hôm qua" ) && trangthaihd.equalsIgnoreCase("Chưa thanh toán")) {
+            query = "Select * from " + TABLE_NAME + " where ngayBan = date('now','-1 day') and trangThai like 'Chưa Thanh Toán' ";
+        }
+        if (time.equalsIgnoreCase("Hôm qua" ) && trangthaihd.equalsIgnoreCase("đã thanh toán")) {
+            query = "Select * from " + TABLE_NAME + " where ngayBan = date('now','-1 day') and trangThai like 'Đã Thanh Toán' ";
+        }
+        //tuần này
+        if (time.equalsIgnoreCase("Tuần này" ) && trangthaihd.equalsIgnoreCase("Tất cả") ) {
+            query = "Select * from " + TABLE_NAME + " where strftime('%W',ngayBan)= strftime('%W','now') ";
+        }
+        if (time.equalsIgnoreCase("Tuần này" ) && trangthaihd.equalsIgnoreCase("Chưa thanh toán")) {
+            query = "Select * from " + TABLE_NAME + " where strftime('%W',ngayBan)  and trangThai like 'Chưa Thanh Toán' ";
+        }
+        if (time.equalsIgnoreCase("Tuần này" ) && trangthaihd.equalsIgnoreCase("đã thanh toán")) {
+            query = "Select * from " + TABLE_NAME + " where strftime('%W',ngayBan) and trangThai like 'Đã Thanh Toán' ";
+        }
+        //tuần trước
+        if (time.equalsIgnoreCase("Tuần trước" ) && trangthaihd.equalsIgnoreCase("Tất cả") ) {
+            query = "Select * from " + TABLE_NAME + " where ngayBan <= date('now','weekday 0','-7 day') ";
+        }
+        if (time.equalsIgnoreCase("Tuần trước" ) && trangthaihd.equalsIgnoreCase("Chưa thanh toán")) {
+            query = "Select * from " + TABLE_NAME + " where ngayBan < date('now','-7 day') and trangThai like 'Chưa Thanh Toán' ";
+        }
+        if (time.equalsIgnoreCase("Tuần trước" ) && trangthaihd.equalsIgnoreCase("đã thanh toán")) {
+            query = "Select * from " + TABLE_NAME + " where ngayBan < date('now','-7 day') and trangThai like 'Đã Thanh Toán' ";
+        }
+        //tháng này
+        if (time.equalsIgnoreCase("Tháng này" ) && trangthaihd.equalsIgnoreCase("Tất cả") ) {
+            query = "Select * from " + TABLE_NAME + " where strftime('%m',ngayBan) = strftime('%m','now')";
+        }
+        if (time.equalsIgnoreCase(" tháng này" ) && trangthaihd.equalsIgnoreCase("Chưa thanh toán")) {
+            query = "Select * from " + TABLE_NAME + " where strftime('%m',ngayBan) and trangThai like 'Chưa Thanh Toán' ";
+        }
+        if (time.equalsIgnoreCase(" tháng này" ) && trangthaihd.equalsIgnoreCase("đã thanh toán")) {
+            query = "Select * from " + TABLE_NAME + " where strftime('%m',ngayBan) and trangThai like 'Đã Thanh Toán' ";
+        }
+        //tháng trước
+        if (time.equalsIgnoreCase("Tháng trước" ) && trangthaihd.equalsIgnoreCase("Tất cả") ) {
+            query = "Select * from " + TABLE_NAME + " where ngayBan < date('now','-30 day')";
+        }
+        if (time.equalsIgnoreCase("Tháng trước" ) && trangthaihd.equalsIgnoreCase("Chưa thanh toán")) {
+            query = "Select * from " + TABLE_NAME + " where ngayBan < date('now','-30 day') and trangThai like 'Chưa Thanh Toán' ";
+        }
+        if (time.equalsIgnoreCase("Tháng trước" ) && trangthaihd.equalsIgnoreCase("Đã thanh toán")) {
+            query = "Select * from " + TABLE_NAME + " where ngayBan < date('now','-30 day') and trangThai like 'Đã Thanh Toán' ";
+        }
+        //Tất cả time
+        if (time.equalsIgnoreCase("Tất cả" ) && trangthaihd.equalsIgnoreCase("")) {
+            query = "Select * from " + TABLE_NAME ;
+        }
+        // hôm nay
+        if (time.equalsIgnoreCase("Hôm Nay" ) && trangthaihd.equalsIgnoreCase("")) {
+            query = "Select * from " + TABLE_NAME + " where strftime('%d',ngayBan) = strftime('%d','now') ";
+        }
+        //hôm qua
+        if (time.equalsIgnoreCase("hôm qua" ) && trangthaihd.equalsIgnoreCase("")) {
+            query = "Select * from " + TABLE_NAME + " where  ngayBan = date('now','-1 day')";
+        }
+        //tuần này
+        if (time.equalsIgnoreCase("tuần này" ) && trangthaihd.equalsIgnoreCase("")) {
+            query = "Select * from " + TABLE_NAME + " where strftime('%W',ngayBan)= strftime('%W','now') ";
+        }
+        //tuần này
+        if (time.equalsIgnoreCase("tuần trước" ) && trangthaihd.equalsIgnoreCase("")) {
+            query = "Select * from " + TABLE_NAME + " where ngayBan = date('now','-7 day') ";
+        }
+        //tháng này
+        if (time.equalsIgnoreCase("tháng này" ) && trangthaihd.equalsIgnoreCase("")) {
+            query = "Select * from " + TABLE_NAME + " where strftime('%m',ngayBan) = strftime('%m','now')";
+        }
+        if (time.equalsIgnoreCase("Tháng trước" ) && trangthaihd.equalsIgnoreCase("") ) {
+             query = "Select * from " + TABLE_NAME + " where ngayBan < date('now','-30 day')";
+        }
+        //trang thai hoa don
+        if (time.equalsIgnoreCase("" ) && trangthaihd.equalsIgnoreCase("Tất cả") ) {
+            query = "Select * from " + TABLE_NAME ;
+        }
+        if (time.equalsIgnoreCase("" ) && trangthaihd.equalsIgnoreCase("Chưa thanh toán") ) {
+            query = "Select * from " + TABLE_NAME + " where trangThai like 'Chưa thanh toán' ";
+        }
+        if (time.equalsIgnoreCase("" ) && trangthaihd.equalsIgnoreCase("Đã thanh toán") ) {
+            query = "Select * from " + TABLE_NAME + " where trangThai like 'đã thanh toán'";
+        }
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            while (cursor.isAfterLast() == false) {
+                String maHD = cursor.getString(0);
+                String ngayBan = cursor.getString(1);
+                String tenKhach = cursor.getString(2);
+                int chietKhau = cursor.getInt(3);
+                int khachTra = cursor.getInt(4);
+                int traLai = cursor.getInt(5);
+                int tongTien = cursor.getInt(6);
+                HoaDon hoaDon = new HoaDon(maHD, tenKhach, simpleDateFormat.parse(ngayBan), khachTra, traLai, tongTien, chietKhau);
+                list.add(hoaDon);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        return list;
     }
 }
