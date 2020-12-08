@@ -128,7 +128,13 @@ public class FragmentHoaDon extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                try {
+                    hoaDonList = hoaDonDAO.getAllHoaDonTheoMa(edTimKiem.getText().toString());
+                    hoaDonAdapter = new HoaDonAdapter(getContext(),hoaDonList);
+                    lvListHoaDon.setAdapter(hoaDonAdapter);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
