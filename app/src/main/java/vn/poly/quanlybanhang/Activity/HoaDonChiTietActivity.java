@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.duan1android.R;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import vn.poly.quanlybanhang.Adapter.HoaDonChiTietAdaper;
@@ -29,7 +30,7 @@ public class HoaDonChiTietActivity extends AppCompatActivity {
     String mahoadon;
     ListView listView;
     TextView tvDonHang, tvThoiGian, tvKhachHang, tvChietKhau, tvKhachTra, tvTraLai, tvTongTien;
-
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,7 @@ public class HoaDonChiTietActivity extends AppCompatActivity {
     }
     public void dienThongTinHoaDon(HoaDon hoaDon){
         tvDonHang.setText(""+hoaDon.getMaHD());
-        tvThoiGian.setText(""+hoaDon.getNgayBan());
+        tvThoiGian.setText(""+simpleDateFormat.format(hoaDon.getNgayBan()));
         tvKhachHang.setText(""+hoaDon.getTenKhachHang());
         tvChietKhau.setText(""+hoaDon.getChietKhau());
         tvTraLai.setText(""+hoaDon.getTraLai());

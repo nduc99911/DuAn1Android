@@ -268,6 +268,7 @@ public class DonHangActivity extends AppCompatActivity {
                             hoaDon.setTraLai(Integer.parseInt(tvTienTra.getText().toString()));
                             hoaDon.setChietKhau(chietKhau);
                             hoaDon.setTongTien(tongTien);
+
                             hoaDon.setTrangThai(trangthai);
                             hoaDonDAO.updateHoaDon(hoaDon,hoaDon.getMaHD());
                             Log.d("HoaDon",""+hoaDon);
