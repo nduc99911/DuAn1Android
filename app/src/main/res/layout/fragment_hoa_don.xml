@@ -58,7 +58,7 @@
                     style="@style/fontNormal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tất cả : "
+                    android:text="Tất cả :"
                     android:textColor="#FFFFFF" />
 
                 <TextView
@@ -67,8 +67,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:paddingLeft="18dp"
-                    android:text="TextView"
+                    android:layout_marginLeft="18dp"
+                    android:text="Tất cả"
                     android:textColor="#FF0000" />
 
                 <ImageView

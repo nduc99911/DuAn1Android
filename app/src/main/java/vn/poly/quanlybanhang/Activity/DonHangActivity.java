@@ -81,7 +81,7 @@ public class DonHangActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar_ban_hang);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        if(MatHangActivity.gioHangList.size()>0) {
+        if (MatHangActivity.gioHangList.size() > 0) {
             donHangAdapter = new DonHangAdapter(DonHangActivity.this, MatHangActivity.gioHangList);
             lvList.setAdapter(donHangAdapter);
         }
@@ -211,9 +211,13 @@ public class DonHangActivity extends AppCompatActivity {
     }
 
     public void ThanhToanDonHang(View view) {
+        if(MatHangActivity.gioHangList.size()<=0){
+            Toast.makeText(getApplicationContext(),"Giỏ hàng rỗng , hãy thêm sản phẩm trước khi thanh toán",Toast.LENGTH_SHORT).show();
+            return;
+        }
         String mahoadon = edMaDonHang.getText().toString();
-        if(mahoadon.equalsIgnoreCase("")){
-            Toast.makeText(DonHangActivity.this,"Mã đơn hàng không dược trống",Toast.LENGTH_SHORT).show();
+        if (mahoadon.equalsIgnoreCase("")) {
+            Toast.makeText(DonHangActivity.this, "Mã đơn hàng không dược trống", Toast.LENGTH_SHORT).show();
             return;
         }
         final Dialog dialog = new Dialog(DonHangActivity.this, android.R.style.Theme);
@@ -241,51 +245,55 @@ public class DonHangActivity extends AppCompatActivity {
                 String mahoadon = edMaDonHang.getText().toString();
                 try {
                     HoaDon hoaDon = new HoaDon(mahoadon, khachHang, df.parse(formattedDate));
-                    if (hoaDonDAO.addHoaDon(hoaDon) > 0) {
+                    long chk1 = hoaDonDAO.addHoaDon(hoaDon);
+                    if (chk1 > 0) {
+                        //cập nhật lại số lượng đã bán
                         SanPhamDAO sanPhamDAO = new SanPhamDAO(getApplicationContext());
                         List<SanPham> sanPhamList = new ArrayList<>();
                         sanPhamList = sanPhamDAO.getAllSanPham();
-                        //cập nhật lại số lượng đã bán
+                        int soluong;
                         for (int i = 0; i < MatHangActivity.gioHangList.size(); i++) {
                             if (MatHangActivity.gioHangList.get(i).getMa().equalsIgnoreCase(sanPhamList.get(i).getMaSanPham())) {
-                                int soluong = sanPhamList.get(i).getSoLuong() - MatHangActivity.gioHangList.get(i).getSoLuong();
-                                sanPhamDAO.updateSLSanPham(soluong, sanPhamList.get(i).getMaSanPham());
-                                Log.e("Số lượng sau khi bán:", "" + sanPhamList.get(i).getSoLuong());
                                 HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet(mahoadon, MatHangActivity.gioHangList.get(i));
                                 chk = hoaDonChiTietDAO.addHDCT(hoaDonChiTiet);
+                                if (chk > 0) {
+                                    soluong = sanPhamList.get(i).getSoLuong() - MatHangActivity.gioHangList.get(i).getSoLuong();
+                                    sanPhamDAO.updateSLSanPham(soluong, sanPhamList.get(i).getMaSanPham());
+                                }
                             }
                         }
+
                         if (chk > 0) {
                             String trangthai = null;
                             Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                            if(Integer.parseInt(tvTienTra.getText().toString())>0){
-                                trangthai="Đã Thanh Toán";
+                            if (Integer.parseInt(edTienTra.getText().toString()) > 0) {
+                                trangthai = "Đã Thanh Toán";
                             }
-                            if(Integer.parseInt(tvTienTra.getText().toString())<0){
-                                trangthai="Chưa Thanh Toán";
+                            if (Integer.parseInt(edTienTra.getText().toString()) <= 0) {
+                                trangthai = "Chưa Thanh Toán";
                             }
                             hoaDon.setKhachTra(Integer.parseInt(edTienTra.getText().toString()));
                             hoaDon.setTraLai(Integer.parseInt(tvTienTra.getText().toString()));
                             hoaDon.setChietKhau(chietKhau);
                             hoaDon.setTongTien(tongTien);
-
                             hoaDon.setTrangThai(trangthai);
-                            hoaDonDAO.updateHoaDon(hoaDon,hoaDon.getMaHD());
-                            Log.d("HoaDon",""+hoaDon);
-                            dialog.dismiss();
-                            Intent intent = new Intent(DonHangActivity.this,MatHangActivity.class);
+                            hoaDonDAO.updateHoaDon(hoaDon, hoaDon.getMaHD());
+                            Intent intent = new Intent(DonHangActivity.this, MatHangActivity.class);
                             startActivity(intent);
                             MatHangActivity.gioHangList.clear();
-                        }
-                        else {
+                            dialog.dismiss();
+                        } else {
                             Toast.makeText(getApplicationContext(), "Thêm không thành công", Toast.LENGTH_SHORT).show();
+                            hoaDonDAO.deleteHoaDon(mahoadon);
                         }
-                    }else{
-                        Toast.makeText(DonHangActivity.this,"Mã hóa đơn đã tồn tại",Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(getApplicationContext(),"Thêm thất bại , mã hóa đơn đã tồn tại",Toast.LENGTH_SHORT).show();
                     }
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+
+                    } catch(ParseException e){
+                        e.printStackTrace();
+                    }
+
             }
         });
         tvTongTien.setText("" + tienFinal);
@@ -298,12 +306,13 @@ public class DonHangActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 try {
-                    int tientra = Integer.parseInt(edTienTra.getText().toString())-tienFinal;
+                    int tientra = Integer.parseInt(edTienTra.getText().toString()) - tienFinal;
                     tvTienTra.setText("" + tientra);
                 } catch (Exception e) {
 
                 }
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
 

@@ -113,8 +113,8 @@ public class FragmentHoaDon extends Fragment {
                     public void onClick(View view) {
 
                         try {
-                            tvLoaiLoc.setText( luuChonHoaDon());
-                            tvTimeLoaiLoc.setText( luuChonTime());
+                            tvLoaiLoc.setText(luuChonHoaDon());
+                            tvTimeLoaiLoc.setText(luuChonTime());
                             HoaDonDAO hoaDonDAO=new HoaDonDAO(getContext());
                             hoaDonList=hoaDonDAO.getAllHoaDonTime(tvTimeLoaiLoc.getText().toString(),tvLoaiLoc.getText().toString());
                             HoaDonAdapter hoaDonAdapter=new HoaDonAdapter(getContext(),hoaDonList);
