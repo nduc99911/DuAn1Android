@@ -102,10 +102,10 @@ class DonViTinhAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 dialog = new Dialog(context,android.R.style.Theme_Black_NoTitleBar_Fullscreen);
-
                 dialog.setContentView(R.layout.activity_sua_don_vi_tinh);
                 dialog.show();
                 edSua = (EditText) dialog.findViewById(R.id.edSuaDonViTinh);
+                edSua.setText(""+list.get(i).getDonViTinh());
                 ImageView imgLuu = dialog.findViewById(R.id.imgLuuThayDoiDV);
                 imgLuu.setOnClickListener(new View.OnClickListener() {
                     @Override

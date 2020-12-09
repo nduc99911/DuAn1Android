@@ -6,28 +6,6 @@ class SanPham {
     private double giaNhap,giaBan;
     private byte[] image;
     private int soLuong;
-    private int con;
-
-    public SanPham(String maSanPham) {
-        this.maSanPham = maSanPham;
-
-    }
-
-    public SanPham(String maSanPham, int soluong, int con) {
-        this.maSanPham = maSanPham;
-        this.soLuong = soluong;
-        this.con=con;
-    }
-
-
-    public int getCon() {
-        return con;
-    }
-
-
-    public void setCon(int con) {
-        this.con = con;
-    }
 
     public SanPham(String maSanPham, String maLoai, String ten, String donViTinh, int soLuong, double giaNhap, double giaBan, byte[] image) {
         this.maSanPham = maSanPham;
@@ -38,17 +16,6 @@ class SanPham {
         this.giaNhap = giaNhap;
         this.giaBan = giaBan;
         this.image = image;
-    }
-    public SanPham(String maSanPham, String maLoai, String ten, String donViTinh, int soLuong, double giaNhap, double giaBan, byte[] image,int con) {
-        this.maSanPham = maSanPham;
-        this.maLoai = maLoai;
-        this.ten = ten;
-        this.donViTinh = donViTinh;
-        this.soLuong = soLuong;
-        this.giaNhap = giaNhap;
-        this.giaBan = giaBan;
-        this.image = image;
-        this.con=con;
     }
 
     public byte[] getImage() {

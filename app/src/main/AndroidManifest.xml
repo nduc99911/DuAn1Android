@@ -80,11 +80,6 @@
             android:noHistory="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name="vn.poly.quanlybanhang.Activity.SuaDonViTinh"
-            android:noHistory="true"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
             android:name="vn.poly.quanlybanhang.Activity.DonViTinhActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"

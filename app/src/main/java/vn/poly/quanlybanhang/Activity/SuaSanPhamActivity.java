@@ -13,6 +13,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,6 +27,7 @@ import vn.poly.quanlybanhang.Database.DonViTinhDAO;
 import vn.poly.quanlybanhang.Database.LoaiSanPhamDAO;
 import vn.poly.quanlybanhang.Database.SanPhamDAO;
 import vn.poly.quanlybanhang.Model.SanPham;
+
 import com.example.duan1android.R;
 
 import java.io.ByteArrayOutputStream;
@@ -44,7 +46,6 @@ public class SuaSanPhamActivity extends AppCompatActivity {
     ImageView imgSuaSanPham;
     byte[] hinhAnh;
     int REQUEST_CODE_FOLDER = 456;
-    int REQUEST_CODE_GALLERY = 999;
     SanPhamDAO sanPhamDAO;
 
     @Override
@@ -56,6 +57,7 @@ public class SuaSanPhamActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         anhXaView();
         sanPhamDAO = new SanPhamDAO(this);
+        doDuLieu();
         //Đổ dữu liệu cho spinner:
         listDonVi = new ArrayList<>();
         listTheLoai = new ArrayList<>();
@@ -119,6 +121,11 @@ public class SuaSanPhamActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(SuaSanPhamActivity.this, SanPhamActivity.class));
+    }
+
     private void anhXaView() {
         imgSuaSanPham = findViewById(R.id.imgLuuSuaSanPham);
         imgThemAnh = findViewById(R.id.suaAnhSanPham);
@@ -160,20 +167,19 @@ public class SuaSanPhamActivity extends AppCompatActivity {
 
         }
         SanPham sanPham = new SanPham(ma, theLoai, ten, donViTinh, Integer.parseInt(soLuong), Double.parseDouble(giaNhap), Double.parseDouble(giaBan), hinhAnh);
-        List<SanPham> list = new ArrayList<>();
         Intent intent = getIntent();
         String ma = intent.getStringExtra("ma");
-            long chk = sanPhamDAO.updateSanPham(sanPham, ma);
-            if (chk > 0) {
-                Toast.makeText(SuaSanPhamActivity.this, "Lưu thành công", Toast.LENGTH_SHORT).show();
-                Intent myIten = new Intent(SuaSanPhamActivity.this, SanPhamActivity.class);
-                myIten.putExtra("maNew",sanPham.getMaSanPham());
-                startActivity(myIten);
-                finish();
-            } else {
-                Toast.makeText(getApplicationContext(), "Lưu thất bại , mã sản phẩm đã tồn tại", Toast.LENGTH_SHORT).show();
-            }
+        try {
+            sanPhamDAO.updateSanPham(sanPham, ma);
+            Toast.makeText(SuaSanPhamActivity.this, "Lưu thành công", Toast.LENGTH_SHORT).show();
+            Intent myIten = new Intent(SuaSanPhamActivity.this, SanPhamActivity.class);
+            myIten.putExtra("newMa",sanPham.getMaSanPham());
+            startActivity(myIten);
+            finish();
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Lưu thất bại , mã sản phẩm đã tồn tại", Toast.LENGTH_SHORT).show();
         }
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -205,6 +211,20 @@ public class SuaSanPhamActivity extends AppCompatActivity {
 
             super.onActivityResult(requestCode, resultCode, data);
 
+        }
+    }
+    private void doDuLieu(){
+        Intent intent = getIntent();
+        String ma = intent.getStringExtra("ma");
+        try {
+            SanPham sanPham = sanPhamDAO.getSanPhamTheoMa(ma);
+            edTen.setText(sanPham.getTen());
+            edGiaBan.setText(""+Math.round(sanPham.getGiaBan()));
+            edGiaNhap.setText(""+Math.round(sanPham.getGiaNhap()));
+            edMa.setText(sanPham.getMaSanPham());
+            edSoLuong.setText(""+sanPham.getSoLuong());
+        }catch (Exception e){
+            Toast.makeText(SuaSanPhamActivity.this,"Không lấy đc dữ liệu", Toast.LENGTH_SHORT).show();
         }
     }
 }

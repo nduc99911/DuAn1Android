@@ -47,7 +47,6 @@ public class SanPhamActivity extends AppCompatActivity {
                 Intent intent = new Intent(SanPhamActivity.this,ChiTietSanPhamActivity.class);
                 SanPham sanPham = list.get(i);
                 intent.putExtra("sanPham",sanPham.getMaSanPham());
-                intent.putExtra("pos",i);
                 startActivity(intent);
             }
         });
