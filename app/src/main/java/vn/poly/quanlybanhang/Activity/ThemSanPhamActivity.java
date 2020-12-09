@@ -170,9 +170,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
             ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG ,100, byteArray);
             hinhAnh = byteArray.toByteArray();
-//if(hinhAnh.length>2000000){
-//    Toast.makeText(getApplicationContext(),"Kích thước ảnh >2mb",Toast.LENGTH_SHORT).show();
-//}
+
             if (hinhAnh.length > 2000000) {
              Bitmap  bitmap1 = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
                 Bitmap resized = Bitmap.createScaledBitmap(bitmap1, (int) (bitmap1.getWidth() * 0.1), (int) (bitmap1.getHeight() * 0.1), true);

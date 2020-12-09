@@ -333,12 +333,14 @@
         </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView
-            android:id="@+id/NavigationView"
-            android:layout_width="wrap_content"
+            android:id="@+id/NavigationViewBaoCao"
+            android:layout_width="300dp"
+            android:background="#2c3c49"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:headerLayout="@layout/navheader"
-            app:menu="@menu/drawer_view">
+            app:menu="@menu/drawer_view"
+            android:fitsSystemWindows="false">
 
 
         </com.google.android.material.navigation.NavigationView>

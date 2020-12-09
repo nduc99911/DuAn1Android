@@ -12,12 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="vn.poly.quanlybanhang.Activity.HoaDonChiTietActivity"></activity>
-        <activity android:name="vn.poly.quanlybanhang.Activity.KhachHangActivity" />
-        <activity android:name="vn.poly.quanlybanhang.Activity.ChiTietKhachHangActivity"/>
-        <activity android:name="vn.poly.quanlybanhang.Activity.ThemKhachHangActivity" />
-        <activity android:name="vn.poly.quanlybanhang.Activity.ChiTietSanPhamActivity" />
-        <activity android:name="vn.poly.quanlybanhang.Activity.SplashScreenActivity">
+        <activity android:name="vn.poly.quanlybanhang.Activity.HoaDonChiTietActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name="vn.poly.quanlybanhang.Activity.KhachHangActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
+        <activity android:name="vn.poly.quanlybanhang.Activity.ChiTietKhachHangActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
+        <activity android:name="vn.poly.quanlybanhang.Activity.ThemKhachHangActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
+        <activity android:name="vn.poly.quanlybanhang.Activity.ChiTietSanPhamActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
+        <activity android:name="vn.poly.quanlybanhang.Activity.SplashScreenActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,66 +38,94 @@
         </activity>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.BoLocActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.DialogThemMatHang"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.DonHangActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.ThemSanPhamActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:excludeFromRecents="true"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.SanPhamActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:noHistory="true"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.SuaSanPhamActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.LoaiSanPhamActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.ThemLoaiSanPham"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.SuaLoaiSanPhamActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.ThemDonViTinh"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.SuaDonViTinh"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.DonViTinhActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.SuaNguoiDungActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.MatHangActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.GioiThieuActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"/>
         <activity
             android:name="vn.poly.quanlybanhang.GioiThieu2Activity"
-            android:windowSoftInputMode="stateHidden" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"/>
         <activity
             android:name="vn.poly.quanlybanhang.GioiThieu3Acitivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.MainActivity"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
+            android:windowSoftInputMode="stateHidden"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
 
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
     </application>
 
 </manifest>

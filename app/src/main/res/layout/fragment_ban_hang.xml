@@ -97,13 +97,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:headerLayout="@layout/navheader"
-            app:menu="@menu/drawer_view">
-            <ListView
-                android:id="@+id/listView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            app:menu="@menu/drawer_view"
+            android:fitsSystemWindows="false">
 
-            </ListView>
 
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>

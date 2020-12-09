@@ -9,16 +9,9 @@
             android:title="Phản Hồi Ứng Dụng"
             tools:ignore="AppCompatResource" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_thoat"
             android:icon="@drawable/ic_plus"
-            android:title="gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_plus"
-            android:title="slideshow" />
-        <item
-            android:icon="@drawable/ic_plus"
-            android:id="@+id/nav_manage"
-            android:title="tools" />
+            android:title="Thoát Ứng Dụng" />
+
 
 </menu>

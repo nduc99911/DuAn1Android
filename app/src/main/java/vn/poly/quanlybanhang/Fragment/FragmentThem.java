@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -22,6 +23,7 @@ import vn.poly.quanlybanhang.Activity.KhachHangActivity;
 import vn.poly.quanlybanhang.Activity.LoaiSanPhamActivity;
 import vn.poly.quanlybanhang.Activity.SanPhamActivity;
 import com.example.duan1android.R;
+import com.google.android.material.navigation.NavigationView;
 
 
 public class FragmentThem extends Fragment {
@@ -29,7 +31,7 @@ public class FragmentThem extends Fragment {
     ImageView imgMatHang, imgPhanLoai, imgDonViTinh, imgNguoiDung;
     androidx.appcompat.widget.Toolbar toolbar;
     DrawerLayout drawerLayout;
-
+    NavigationView navigationView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +52,26 @@ public class FragmentThem extends Fragment {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_sendEmail:
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("text/html");
+                        intent.putExtra(Intent.EXTRA_EMAIL, "nduc99911@gmail.com");
+                        intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+                        intent.putExtra(Intent.EXTRA_TEXT, "Phản Hồi Ứng Dụng");
+                        startActivity(Intent.createChooser(intent, "Phản Hồi"));
+                    case R.id.nav_thoat:
+                        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                        homeIntent.addCategory( Intent.CATEGORY_HOME );
+                        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(homeIntent);
+                }
+                return false;
+            }
+        });
         //chuyển sang sản phẩm activity
         imgMatHang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +147,7 @@ public class FragmentThem extends Fragment {
         imgNguoiDung = view.findViewById(R.id.imgNguoiDung);
         toolbar = (Toolbar) view.findViewById(R.id.toolbar_thong_tin);
         drawerLayout = view.findViewById(R.id.drawerLayoutThem);
+        navigationView = view.findViewById(R.id.NavigationViewThem);
     }
 
     public void chuyenAct(Class aClass) {
