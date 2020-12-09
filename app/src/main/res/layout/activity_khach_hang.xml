@@ -20,13 +20,14 @@
             android:orientation="vertical" >
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="370dp"
+                android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:layout_marginLeft="20dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edThemHoTenKH"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="text"
                     android:background="@drawable/border_edt"
@@ -34,13 +35,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="370dp"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
                 android:layout_marginLeft="20dp"
-                android:layout_height="75dp">
+                android:layout_marginRight="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edThemEmailKH"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="textEmailAddress"
                     android:background="@drawable/border_edt"
@@ -48,26 +50,28 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="370dp"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
                 android:layout_marginLeft="20dp"
-                android:layout_height="75dp">
+                android:layout_marginRight="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edThemSoDienThoaiKH"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="phone"
                     android:background="@drawable/border_edt"
                     android:hint="Số Điện Thoại" />
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="370dp"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
                 android:layout_marginLeft="20dp"
-                android:layout_height="75dp">
+                android:layout_marginRight="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edThemDiaChiKH"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="text"
                     android:background="@drawable/border_edt"
