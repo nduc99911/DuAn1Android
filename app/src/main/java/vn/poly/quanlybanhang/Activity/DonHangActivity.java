@@ -35,6 +35,7 @@ import vn.poly.quanlybanhang.Database.HoaDonChiTietDAO;
 import vn.poly.quanlybanhang.Database.HoaDonDAO;
 import vn.poly.quanlybanhang.Database.KhachHangDAO;
 import vn.poly.quanlybanhang.Database.SanPhamDAO;
+import vn.poly.quanlybanhang.Fragment.FragmentBanHang;
 import vn.poly.quanlybanhang.Model.HoaDon;
 import vn.poly.quanlybanhang.Model.HoaDonChiTiet;
 import vn.poly.quanlybanhang.Model.KhachHang;
@@ -81,10 +82,8 @@ public class DonHangActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar_ban_hang);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        if (MatHangActivity.gioHangList.size() > 0) {
-            donHangAdapter = new DonHangAdapter(DonHangActivity.this, MatHangActivity.gioHangList);
-            lvList.setAdapter(donHangAdapter);
-        }
+        donHangAdapter = new DonHangAdapter(DonHangActivity.this, MatHangActivity.gioHangList);
+        lvList.setAdapter(donHangAdapter);
         getTongTien();
         addChietKhau();
         xoaDonHang();
@@ -211,8 +210,8 @@ public class DonHangActivity extends AppCompatActivity {
     }
 
     public void ThanhToanDonHang(View view) {
-        if(MatHangActivity.gioHangList.size()<=0){
-            Toast.makeText(getApplicationContext(),"Giỏ hàng rỗng , hãy thêm sản phẩm trước khi thanh toán",Toast.LENGTH_SHORT).show();
+        if (MatHangActivity.gioHangList.size() <= 0) {
+            Toast.makeText(getApplicationContext(), "Giỏ hàng rỗng , hãy thêm sản phẩm trước khi thanh toán", Toast.LENGTH_SHORT).show();
             return;
         }
         String mahoadon = edMaDonHang.getText().toString();
@@ -286,13 +285,13 @@ public class DonHangActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Thêm không thành công", Toast.LENGTH_SHORT).show();
                             hoaDonDAO.deleteHoaDon(mahoadon);
                         }
-                    }else {
-                        Toast.makeText(getApplicationContext(),"Thêm thất bại , mã hóa đơn đã tồn tại",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Thêm thất bại , mã hóa đơn đã tồn tại", Toast.LENGTH_SHORT).show();
                     }
 
-                    } catch(ParseException e){
-                        e.printStackTrace();
-                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
@@ -323,44 +322,24 @@ public class DonHangActivity extends AppCompatActivity {
     }
 
     public void ChonKhachHang(View view) {
-        LayoutInflater inflater = getLayoutInflater();
-        View alertLayout = inflater.inflate(R.layout.dialog_khach_hang, null);
-        final ListView listView = (ListView) alertLayout.findViewById(R.id.lvKhachHang);
-
+        final Dialog dialog = new Dialog(DonHangActivity.this, android.R.style.Theme_NoTitleBar_Fullscreen);
+        dialog.setContentView(R.layout.dialog_khach_hang);
+        dialog.show();
+        ListView listView = (ListView) dialog.findViewById(R.id.lvKhachHang);
         KhachHangDAO khachHangDAO = new KhachHangDAO(this);
         listKH = new ArrayList<>();
         listKH = khachHangDAO.getAllKhachHang();
         KhachHangAdapter khachHangAdapter = new KhachHangAdapter(this, listKH);
         listView.setAdapter(khachHangAdapter);
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setView(alertLayout);
-        alert.setCancelable(false);
-        alert.setTitle("Danh Sach Khach Hàng");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 khachHang = listKH.get(i).getTen();
-            }
-        });
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+                tvKhachHang.setText("" + khachHang);
                 dialog.dismiss();
             }
         });
 
-        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                tvKhachHang.setText(khachHang);
-
-            }
-        });
-
-        AlertDialog dialog = alert.create();
-        dialog.show();
     }
 
 
