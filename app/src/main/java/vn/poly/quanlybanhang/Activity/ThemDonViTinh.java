@@ -61,12 +61,15 @@ public class ThemDonViTinh extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 return true;
-
-
             default:
                 break;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ThemDonViTinh.this,DonViTinhActivity.class);
+        startActivity(intent);
     }
 }

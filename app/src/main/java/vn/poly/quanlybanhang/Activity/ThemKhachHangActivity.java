@@ -1,10 +1,12 @@
 package vn.poly.quanlybanhang.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -17,6 +19,7 @@ public class ThemKhachHangActivity extends AppCompatActivity {
     EditText edTen,edSoDienThoai,edDiaChi,edEmail;
     Toolbar toolbar;
     KhachHangDAO khachHangDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,18 @@ public class ThemKhachHangActivity extends AppCompatActivity {
         anhXaView();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void anhXaView(){
@@ -64,5 +79,10 @@ public class ThemKhachHangActivity extends AppCompatActivity {
         }else {
             Toast.makeText(ThemKhachHangActivity.this,"Thêm thất bại , người dùng đã tồn tại",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ThemKhachHangActivity.this,KhachHangActivity.class));
     }
 }
