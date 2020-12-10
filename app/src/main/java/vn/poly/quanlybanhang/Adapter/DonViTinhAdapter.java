@@ -69,10 +69,8 @@ class DonViTinhAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder b = new AlertDialog.Builder(context);
-//Thiết lập tiêu đề
                 b.setTitle("Xác nhận");
                 b.setMessage("Bạn có đồng ý xóa hóa đơn này không?");
-// Nút Ok
                 b.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         long chk = donViTinhDAO.deleteDonVi(donViTinh.getDonViTinh());
@@ -85,15 +83,12 @@ class DonViTinhAdapter extends BaseAdapter {
                         }
                     }
                 });
-//Nút Cancel
                 b.setNegativeButton("Không đồng ý", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
                 });
-//Tạo dialog
                 AlertDialog al = b.create();
-//Hiển thị
                 al.show();
 
             }

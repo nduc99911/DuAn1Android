@@ -43,7 +43,7 @@ public class SuaSanPhamActivity extends AppCompatActivity {
     ImageView imgThemAnh;
     Spinner spnDonViTinh, spnDanhMuc;
     List<String> listDonVi, listTheLoai;
-    ImageView imgSuaSanPham;
+    ImageView imgSuaSanPham,imgThemSuaDanhMuc,imgThemSuaDonVi;
     byte[] hinhAnh;
     int REQUEST_CODE_FOLDER = 456;
     SanPhamDAO sanPhamDAO;
@@ -125,6 +125,20 @@ public class SuaSanPhamActivity extends AppCompatActivity {
     public void onBackPressed() {
         startActivity(new Intent(SuaSanPhamActivity.this, SanPhamActivity.class));
     }
+    private void themDanhMuc_DonVi(){
+        imgThemSuaDanhMuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SuaSanPhamActivity.this,ThemLoaiSanPham.class));
+            }
+        });
+        imgThemSuaDonVi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SuaSanPhamActivity.this,ThemDonViTinh.class));
+            }
+        });
+    }
 
     private void anhXaView() {
         imgSuaSanPham = findViewById(R.id.imgLuuSuaSanPham);
@@ -136,6 +150,8 @@ public class SuaSanPhamActivity extends AppCompatActivity {
         edGiaNhap = findViewById(R.id.edSuaGiaNhap);
         spnDonViTinh = findViewById(R.id.spnSuaDonViTinh);
         spnDanhMuc = findViewById(R.id.spnSuaDanhMuc);
+        imgThemSuaDanhMuc = findViewById(R.id.themDanhMucSuaSanPham);
+        imgThemSuaDonVi = findViewById(R.id.themDonViSuaSanPham);
     }
 
 

@@ -42,6 +42,7 @@
                 android:background="@drawable/background_edit_search"
                 android:padding="8dp"
                 android:hint="Tìm kiếm tại đây"
+                android:inputType="text"
                 android:textSize="18sp" />
 
         </LinearLayout>

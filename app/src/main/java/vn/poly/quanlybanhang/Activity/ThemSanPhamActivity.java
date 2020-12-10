@@ -38,7 +38,7 @@ import java.util.List;
 
 public class ThemSanPhamActivity extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
-    ImageView imgThemAnh;
+    ImageView imgThemAnh,imgThemDonVi,imgThemDanhMuc;
     Spinner spnDonViTinh, spnDanhMuc;
     EditText edMa, edTen, edSoLuong, edGiaBan, edGiaNhap;
     String ma, ten, soLuong, giaBan, giaNhap, donViTinh, theLoai;
@@ -47,7 +47,6 @@ public class ThemSanPhamActivity extends AppCompatActivity {
     LinearLayout lnThem;
     byte[] hinhAnh;
     int REQUEST_CODE_FOLDER = 456;
-    int REQUEST_CODE_GALLERY = 999;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,10 +73,8 @@ public class ThemSanPhamActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 donViTinh = (String) adapterView.getItemAtPosition(i);
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
         spnDanhMuc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -91,7 +88,6 @@ public class ThemSanPhamActivity extends AppCompatActivity {
 
             }
         });
-
         //sự kiện load ảnh
         imgThemAnh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +99,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
 
 
         });
+        themDanhMuc_DonVi();
     }
 
     @Override
@@ -151,6 +148,22 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         spnDonViTinh = findViewById(R.id.spnThemDonViTinh);
         spnDanhMuc = findViewById(R.id.spnThemDanhMuc);
         lnThem = findViewById(R.id.lnThem);
+        imgThemDanhMuc = findViewById(R.id.themDanhMucThemSanPham);
+        imgThemDonVi = findViewById(R.id.themDonViThemSanPham);
+    }
+    private void themDanhMuc_DonVi(){
+        imgThemDanhMuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ThemSanPhamActivity.this,ThemLoaiSanPham.class));
+            }
+        });
+        imgThemDonVi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ThemSanPhamActivity.this,ThemDonViTinh.class));
+            }
+        });
     }
 
     public void ThemSanPhamLuu(View view) {
