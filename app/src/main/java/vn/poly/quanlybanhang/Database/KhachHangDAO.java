@@ -62,7 +62,12 @@ class KhachHangDAO {
         contentValues.put("tienDaMua", khachHang.getTienDaMua());
         return sqLiteDatabase.update(TABLE_NAME, contentValues, "soDienThoai = ?", new String[]{sdt});
     }
-
+    public long updateTien(double tienNo,double tienMua,String sdt){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("tienNo",tienNo);
+        contentValues.put("tienDaMua",tienMua);
+        return sqLiteDatabase.update(TABLE_NAME, contentValues, "soDienThoai = ?", new String[]{sdt});
+    }
     public long deleteKhachHang(String sdt) {
         return sqLiteDatabase.delete(TABLE_NAME, "soDienThoai = ?", new String[]{sdt});
     }

@@ -82,12 +82,7 @@ public class FragmentBanHang extends Fragment {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_sendEmail:
-//                        Intent intent = new Intent(Intent.ACTION_SEND);
-//                        intent.setType("text/html");
-//                        intent.putExtra(Intent.EXTRA_EMAIL, "nduc99911@gmail.com");
-//                        intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
-//                        intent.putExtra(Intent.EXTRA_TEXT, "Phản Hồi Ứng Dụng");
-//                        startActivity(Intent.createChooser(intent, "Phản Hồi"));
+
                         Intent mailIntent = new Intent(Intent.ACTION_VIEW);
                         Uri data = Uri.parse("mailto:?subject=" + "Phản Hồi Ứng Dụng"+ "&body=" + "nội dung" + "&to=" + "nduc99911@gmail.com");
                         mailIntent.setData(data);

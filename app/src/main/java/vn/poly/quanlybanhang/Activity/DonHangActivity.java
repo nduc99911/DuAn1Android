@@ -73,8 +73,10 @@ public class DonHangActivity extends AppCompatActivity {
     List<KhachHang> listKH;
     HoaDonChiTietDAO hoaDonChiTietDAO;
     HoaDonDAO hoaDonDAO;
+    KhachHangDAO khachHangDAO;
     int chietKhau = 0;
     int tienFinal = 0;
+    KhachHang KH;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +106,7 @@ public class DonHangActivity extends AppCompatActivity {
         imgXoaDonHang = findViewById(R.id.imgxoaDonHang);
         imgChonKhachHang = findViewById(R.id.imgChonKhachHang);
         hoaDonChiTietDAO = new HoaDonChiTietDAO(this);
+        khachHangDAO = new KhachHangDAO(this);
     }
 
     @Override
@@ -243,7 +246,7 @@ public class DonHangActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 long chk = -1;
-                HoaDonDAO hoaDonDAO = new HoaDonDAO(getApplicationContext());
+                hoaDonDAO = new HoaDonDAO(getApplicationContext());
                 String mahoadon = edMaDonHang.getText().toString();
                 try {
                     HoaDon hoaDon = new HoaDon(mahoadon, khachHang, df.parse(formattedDate));
@@ -280,6 +283,19 @@ public class DonHangActivity extends AppCompatActivity {
                             hoaDon.setTongTien(tongTien);
                             hoaDon.setTrangThai(trangthai);
                             hoaDonDAO.updateHoaDon(hoaDon, hoaDon.getMaHD());
+                            try {
+                                if (khachHang.equalsIgnoreCase("Khách lẻ") == false) {
+                                    double tien = Double.parseDouble(edTienTra.getText().toString());
+                                    double tienNo = KH.getTienNo();
+                                    if (tienFinal - tien > 0) {
+                                        tienNo += (tienFinal - tien);
+                                    }
+                                    double tienDaMua = KH.getTienDaMua() + tongTien;
+                                    khachHangDAO.updateTien(tienNo, tienDaMua, KH.getSoDienThoai());
+                                }
+                            }catch (Exception e){
+
+                            }
                             Intent intent = new Intent(DonHangActivity.this, MatHangActivity.class);
                             startActivity(intent);
                             MatHangActivity.gioHangList.clear();
@@ -328,7 +344,7 @@ public class DonHangActivity extends AppCompatActivity {
         final Dialog dialog = new Dialog(DonHangActivity.this, android.R.style.Theme_NoTitleBar_Fullscreen);
         dialog.setContentView(R.layout.dialog_khach_hang);
         dialog.show();
-        ListView listView = (ListView) dialog.findViewById(R.id.lvKhachHang);
+        final ListView listView = (ListView) dialog.findViewById(R.id.lvKhachHang);
         KhachHangDAO khachHangDAO = new KhachHangDAO(this);
         listKH = new ArrayList<>();
         listKH = khachHangDAO.getAllKhachHang();
@@ -337,7 +353,8 @@ public class DonHangActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                khachHang = listKH.get(i).getTen();
+                KH = listKH.get(i);
+                khachHang = KH.getTen();
                 tvKhachHang.setText("" + khachHang);
                 dialog.dismiss();
             }
