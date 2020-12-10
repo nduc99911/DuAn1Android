@@ -27,6 +27,7 @@ import vn.poly.quanlybanhang.Database.DonViTinhDAO;
 import vn.poly.quanlybanhang.Database.LoaiSanPhamDAO;
 import vn.poly.quanlybanhang.Database.SanPhamDAO;
 import vn.poly.quanlybanhang.Model.SanPham;
+
 import com.example.duan1android.R;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -38,7 +39,7 @@ import java.util.List;
 
 public class ThemSanPhamActivity extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
-    ImageView imgThemAnh,imgThemDonVi,imgThemDanhMuc;
+    ImageView imgThemAnh, imgThemDonVi, imgThemDanhMuc;
     Spinner spnDonViTinh, spnDanhMuc;
     EditText edMa, edTen, edSoLuong, edGiaBan, edGiaNhap;
     String ma, ten, soLuong, giaBan, giaNhap, donViTinh, theLoai;
@@ -73,6 +74,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 donViTinh = (String) adapterView.getItemAtPosition(i);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
@@ -134,7 +136,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(ThemSanPhamActivity.this,SanPhamActivity.class));
+        startActivity(new Intent(ThemSanPhamActivity.this, SanPhamActivity.class));
     }
 
     //ánh xạ
@@ -151,17 +153,18 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         imgThemDanhMuc = findViewById(R.id.themDanhMucThemSanPham);
         imgThemDonVi = findViewById(R.id.themDonViThemSanPham);
     }
-    private void themDanhMuc_DonVi(){
+
+    private void themDanhMuc_DonVi() {
         imgThemDanhMuc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ThemSanPhamActivity.this,ThemLoaiSanPham.class));
+                startActivity(new Intent(ThemSanPhamActivity.this, ThemLoaiSanPham.class));
             }
         });
         imgThemDonVi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ThemSanPhamActivity.this,ThemDonViTinh.class));
+                startActivity(new Intent(ThemSanPhamActivity.this, ThemDonViTinh.class));
             }
         });
     }
@@ -172,23 +175,24 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         soLuong = edSoLuong.getText().toString();
         giaBan = edGiaBan.getText().toString();
         giaNhap = edGiaNhap.getText().toString();
-        if (ma.equalsIgnoreCase("") || ten.equalsIgnoreCase("")) {
+        if (ma.equalsIgnoreCase("") || ten.equalsIgnoreCase("") || soLuong.equalsIgnoreCase("")
+                || giaBan.equalsIgnoreCase("") || giaNhap.equalsIgnoreCase("")) {
             Snackbar snackbar = Snackbar
                     .make(lnThem, "Vui lòng điền chính xác thông tin", Snackbar.LENGTH_LONG);
             snackbar.show();
-
+            return;
         }
         try {
             BitmapDrawable bitmapDrawable = (BitmapDrawable) imgThemAnh.getDrawable();
             Bitmap bitmap = bitmapDrawable.getBitmap();
             ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG ,100, byteArray);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArray);
             hinhAnh = byteArray.toByteArray();
 //if(hinhAnh.length>2000000){
 //    Toast.makeText(getApplicationContext(),"Kích thước ảnh >2mb",Toast.LENGTH_SHORT).show();
 //}
             if (hinhAnh.length > 2000000) {
-             Bitmap  bitmap1 = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
+                Bitmap bitmap1 = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
                 Bitmap resized = Bitmap.createScaledBitmap(bitmap1, (int) (bitmap1.getWidth() * 0.1), (int) (bitmap1.getHeight() * 0.1), true);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 resized.compress(Bitmap.CompressFormat.JPEG, 100, stream);

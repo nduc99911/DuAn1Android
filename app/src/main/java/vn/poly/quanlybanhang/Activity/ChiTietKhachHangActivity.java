@@ -1,9 +1,11 @@
 package vn.poly.quanlybanhang.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,13 +48,30 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                long chk = khachHangDAO.deleteKhachHang(khachHang.getSoDienThoai());
-                if (chk > 0) {
-                    Toast.makeText(ChiTietKhachHangActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(ChiTietKhachHangActivity.this, KhachHangActivity.class));
-                } else {
-                    Toast.makeText(ChiTietKhachHangActivity.this, "Xóa thất bại", Toast.LENGTH_SHORT).show();
-                }
+                AlertDialog.Builder b = new AlertDialog.Builder(context);
+                b.setTitle("Xác nhận");
+                b.setMessage("Bạn có đồng ý xóa khách hàng này không?");
+                b.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        long chk = khachHangDAO.deleteKhachHang(khachHang.getSoDienThoai());
+                        if (chk > 0) {
+                            Toast.makeText(ChiTietKhachHangActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(ChiTietKhachHangActivity.this, KhachHangActivity.class));
+                            dialog.dismiss();
+                            startActivity(new Intent(ChiTietKhachHangActivity.this,KhachHangActivity.class));
+                        } else {
+                            Toast.makeText(ChiTietKhachHangActivity.this, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                b.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog al = b.create();
+                al.show();
+
             }
         });
         btnUpdate.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +132,10 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         String no = edSuaNo.getText().toString();
+                        if(no.equals("")){
+                            Toast.makeText(ChiTietKhachHangActivity.this,"Vui lòng nhập số tiền ",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         khachHang.setTienNo(Double.parseDouble(no));
                         long chk = khachHangDAO.updateTienNo(khachHang, phone);
                         if (chk > 0) {

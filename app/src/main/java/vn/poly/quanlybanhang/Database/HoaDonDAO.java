@@ -143,6 +143,7 @@ public class HoaDonDAO {
         } else {
             query = "Select SUM(tongTien) from " + TABLE_NAME + " where  ngayban >= date('now','start of month','-1 month') AND ngayban < date('now','start of month') ";
         }
+        
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         double tien = 0;
         if (cursor.getCount() > 0) {

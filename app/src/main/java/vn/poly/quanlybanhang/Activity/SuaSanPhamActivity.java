@@ -29,6 +29,7 @@ import vn.poly.quanlybanhang.Database.SanPhamDAO;
 import vn.poly.quanlybanhang.Model.SanPham;
 
 import com.example.duan1android.R;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -43,7 +44,7 @@ public class SuaSanPhamActivity extends AppCompatActivity {
     ImageView imgThemAnh;
     Spinner spnDonViTinh, spnDanhMuc;
     List<String> listDonVi, listTheLoai;
-    ImageView imgSuaSanPham,imgThemSuaDanhMuc,imgThemSuaDonVi;
+    ImageView imgSuaSanPham, imgThemSuaDanhMuc, imgThemSuaDonVi;
     byte[] hinhAnh;
     int REQUEST_CODE_FOLDER = 456;
     SanPhamDAO sanPhamDAO;
@@ -125,17 +126,18 @@ public class SuaSanPhamActivity extends AppCompatActivity {
     public void onBackPressed() {
         startActivity(new Intent(SuaSanPhamActivity.this, SanPhamActivity.class));
     }
-    private void themDanhMuc_DonVi(){
+
+    private void themDanhMuc_DonVi() {
         imgThemSuaDanhMuc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SuaSanPhamActivity.this,ThemLoaiSanPham.class));
+                startActivity(new Intent(SuaSanPhamActivity.this, ThemLoaiSanPham.class));
             }
         });
         imgThemSuaDonVi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SuaSanPhamActivity.this,ThemDonViTinh.class));
+                startActivity(new Intent(SuaSanPhamActivity.this, ThemDonViTinh.class));
             }
         });
     }
@@ -161,8 +163,9 @@ public class SuaSanPhamActivity extends AppCompatActivity {
         soLuong = edSoLuong.getText().toString();
         giaBan = edGiaBan.getText().toString();
         giaNhap = edGiaNhap.getText().toString();
-        if (ma.equalsIgnoreCase("") || ten.equalsIgnoreCase("")) {
-            Toast.makeText(this, "Vui lòng nhập đủ dữ liệu", Toast.LENGTH_SHORT).show();
+        if (ma.equalsIgnoreCase("") || ten.equalsIgnoreCase("") || soLuong.equalsIgnoreCase("")
+                || giaBan.equalsIgnoreCase("") || giaNhap.equalsIgnoreCase("")) {
+            Toast.makeText(SuaSanPhamActivity.this, "Vui lòng điền đủ dữ liệu", Toast.LENGTH_SHORT).show();
             return;
         }
         try {
@@ -189,7 +192,7 @@ public class SuaSanPhamActivity extends AppCompatActivity {
             sanPhamDAO.updateSanPham(sanPham, ma);
             Toast.makeText(SuaSanPhamActivity.this, "Lưu thành công", Toast.LENGTH_SHORT).show();
             Intent myIten = new Intent(SuaSanPhamActivity.this, SanPhamActivity.class);
-            myIten.putExtra("newMa",sanPham.getMaSanPham());
+            myIten.putExtra("newMa", sanPham.getMaSanPham());
             startActivity(myIten);
             finish();
         } catch (Exception e) {
@@ -229,18 +232,19 @@ public class SuaSanPhamActivity extends AppCompatActivity {
 
         }
     }
-    private void doDuLieu(){
+
+    private void doDuLieu() {
         Intent intent = getIntent();
         String ma = intent.getStringExtra("ma");
         try {
             SanPham sanPham = sanPhamDAO.getSanPhamTheoMa(ma);
             edTen.setText(sanPham.getTen());
-            edGiaBan.setText(""+Math.round(sanPham.getGiaBan()));
-            edGiaNhap.setText(""+Math.round(sanPham.getGiaNhap()));
+            edGiaBan.setText("" + Math.round(sanPham.getGiaBan()));
+            edGiaNhap.setText("" + Math.round(sanPham.getGiaNhap()));
             edMa.setText(sanPham.getMaSanPham());
-            edSoLuong.setText(""+sanPham.getSoLuong());
-        }catch (Exception e){
-            Toast.makeText(SuaSanPhamActivity.this,"Không lấy đc dữ liệu", Toast.LENGTH_SHORT).show();
+            edSoLuong.setText("" + sanPham.getSoLuong());
+        } catch (Exception e) {
+            Toast.makeText(SuaSanPhamActivity.this, "Không lấy đc dữ liệu", Toast.LENGTH_SHORT).show();
         }
     }
 }
