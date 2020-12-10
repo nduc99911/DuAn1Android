@@ -1,5 +1,6 @@
 package vn.poly.quanlybanhang.Database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -23,6 +24,7 @@ public class HoaDonDAO {
             "   traLai number ," +
             "   tongTien number ," +
             "   trangThai text)";
+    @SuppressLint("SimpleDateFormat")
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private SQLiteDatabase sqLiteDatabase;
 
@@ -372,6 +374,7 @@ public class HoaDonDAO {
         }
         return list;
     }
+
 
 
 }

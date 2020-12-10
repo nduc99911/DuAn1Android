@@ -15,7 +15,7 @@
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
         android:src="@drawable/ic_half_circle"
-        />
+        android:contentDescription="TODO" />
 
     <ImageView
         android:id="@+id/imgFlySplashScrenn"
@@ -24,7 +24,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="150dp"
 
-        />
+        android:contentDescription="TODO" />
 <TextView
     android:id="@+id/tvSplashScren"
     android:layout_marginRight="150dp"

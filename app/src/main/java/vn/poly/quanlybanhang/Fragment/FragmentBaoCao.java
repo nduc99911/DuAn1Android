@@ -1,6 +1,7 @@
 package vn.poly.quanlybanhang.Fragment;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -29,6 +31,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.google.android.material.navigation.NavigationView;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -44,6 +47,7 @@ public class FragmentBaoCao extends Fragment {
     ImageView imgBoLoc;
     androidx.appcompat.widget.Toolbar toolbar;
     DrawerLayout drawerLayout;
+    NavigationView navigationView;
     HoaDonDAO hoaDonDAO;
     private LineChart mChart;
     RadioButton rdoTatCa, rdoHomNay, rdoHomQua, rdoTuanNay, rdoTuanTruoc, rdoThangNay, rdoThangTruoc, rdoTatCaHd, rdoChuaThanhToan, rdoDaThanhToan;
@@ -111,6 +115,27 @@ public class FragmentBaoCao extends Fragment {
 
             }
         });
+        //
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_sendEmail:
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("text/html");
+                        intent.putExtra(Intent.EXTRA_EMAIL, "nduc99911@gmail.com");
+                        intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+                        intent.putExtra(Intent.EXTRA_TEXT, "Phản Hồi Ứng Dụng");
+                        startActivity(Intent.createChooser(intent, "Phản Hồi"));
+                    case R.id.nav_thoat:
+                        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                        homeIntent.addCategory( Intent.CATEGORY_HOME );
+                        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(homeIntent);
+                }
+                return false;
+            }
+        });
     }
 
     public void anhXaView(View view) {
@@ -127,6 +152,7 @@ public class FragmentBaoCao extends Fragment {
         hoaDonDAO = new HoaDonDAO(getContext());
         tvLoaiLoc = view.findViewById(R.id.tvLoaiLocBC);
         tvLuuBoLoc = view.findViewById(R.id.tvLuuBoLocHD);
+        navigationView = view.findViewById(R.id.NavigationViewBaoCao);
     }
 
 

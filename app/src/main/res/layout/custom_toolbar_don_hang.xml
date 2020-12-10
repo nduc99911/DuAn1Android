@@ -31,7 +31,8 @@
             android:layout_weight="1"
             android:layout_gravity="right"
             android:layout_marginLeft="20dp"
-            android:src="@drawable/ic_delete" />
+            android:src="@drawable/ic_delete"
+            android:contentDescription="TODO" />
     </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>

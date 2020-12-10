@@ -16,6 +16,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -26,6 +27,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.duan1android.R;
+import com.google.android.material.navigation.NavigationView;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -43,6 +45,7 @@ public class FragmentHoaDon extends Fragment {
     ListView lvListHoaDon;
     androidx.appcompat.widget.Toolbar toolbar;
     DrawerLayout drawerLayout;
+    NavigationView navigationView;
     RadioButton rdoTatCa, rdoHomNay, rdoHomQua, rdoTuanNay, rdoTuanTruoc, rdoThangNay, rdoThangTruoc, rdoTatCaHd, rdoChuaThanhToan, rdoDaThanhToan;
     TextView tvLuuBoLoc, tvTimKiem;
     EditText edTimKiem;
@@ -89,6 +92,26 @@ public class FragmentHoaDon extends Fragment {
                Intent intent = new Intent(getActivity(),HoaDonChiTietActivity.class);
                intent.putExtra("maHD",hoaDonList.get(i).getMaHD());
                startActivity(intent);
+            }
+        });
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_sendEmail:
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("text/html");
+                        intent.putExtra(Intent.EXTRA_EMAIL, "nduc99911@gmail.com");
+                        intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+                        intent.putExtra(Intent.EXTRA_TEXT, "Phản Hồi Ứng Dụng");
+                        startActivity(Intent.createChooser(intent, "Phản Hồi"));
+                    case R.id.nav_thoat:
+                        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                        homeIntent.addCategory( Intent.CATEGORY_HOME );
+                        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(homeIntent);
+                }
+                return false;
             }
         });
         return view;
@@ -163,6 +186,7 @@ public class FragmentHoaDon extends Fragment {
         tvTimeLoaiLoc = view.findViewById(R.id.tvTimeLoaiLoc);
         tvTimKiem = view.findViewById(R.id.tvRongHoaDon);
         edTimKiem = view.findViewById(R.id.edTimKiemHoaDon);
+        navigationView = view.findViewById(R.id.NavigationViewHoaDon);
     }
 
     public String luuChonTime() {
@@ -215,4 +239,17 @@ public class FragmentHoaDon extends Fragment {
 //        tvLoaiLoc.setText(""+luuChon());
 //
 //    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        hoaDonList.clear();
+        try {
+            hoaDonList = hoaDonDAO.getAllHoaDon();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        hoaDonAdapter.changeDataSet(hoaDonList);
+    }
+
 }

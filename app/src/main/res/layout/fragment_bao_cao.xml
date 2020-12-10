@@ -48,7 +48,8 @@
                     android:layout_weight="5"
                     android:paddingLeft="18dp"
                     android:text="Tất cả"
-                    android:textColor="#FF0000" />
+                    android:textColor="#FF0000"
+                    tools:ignore="RtlSymmetry" />
 
                 <ImageView
                     android:id="@+id/imgBoLocBaoCao"
@@ -56,7 +57,8 @@
                     android:layout_height="25dp"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:src="@drawable/filter" />
+                    android:src="@drawable/filter"
+                    android:contentDescription="TODO" />
             </LinearLayout>
 
             <ScrollView
@@ -124,7 +126,7 @@
                         android:layout_margin="1dp"
                         android:text="Hóa đơn "
                         android:textColor="#FFFFFF"
-                        android:textSize="15dp" />
+                        android:textSize="15sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -165,7 +167,8 @@
                                     android:layout_width="55dp"
                                     android:layout_height="45dp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/invoice" />
+                                    android:src="@drawable/invoice"
+                                    android:contentDescription="TODO" />
 
                                 <TextView
                                     android:id="@+id/textView12"
@@ -199,7 +202,8 @@
                                     android:layout_width="55dp"
                                     android:layout_height="45dp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/payment" />
+                                    android:src="@drawable/payment"
+                                    android:contentDescription="TODO" />
 
                                 <TextView
                                     android:id="@+id/textView18"
@@ -221,7 +225,7 @@
                             android:layout_margin="1dp"
                             android:text="Tiền Tệ "
                             android:textColor="#FFFFFF"
-                            android:textSize="15dp" />
+                            android:textSize="15sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -255,7 +259,8 @@
                                     android:layout_width="55dp"
                                     android:layout_height="45dp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/cash" />
+                                    android:src="@drawable/cash"
+                                    android:contentDescription="TODO" />
 
                                 <TextView
                                     android:id="@+id/textView20"
@@ -288,7 +293,8 @@
                                     android:layout_width="55dp"
                                     android:layout_height="45dp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/dollar" />
+                                    android:src="@drawable/dollar"
+                                    android:contentDescription="TODO" />
 
                                 <TextView
 
@@ -311,7 +317,7 @@
                             android:layout_margin="1dp"
                             android:text="Biểu đồ thống kê"
                             android:textColor="#FFFFFF"
-                            android:textSize="15dp" />
+                            android:textSize="15sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -333,12 +339,14 @@
         </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView
-            android:id="@+id/NavigationView"
-            android:layout_width="wrap_content"
+            android:id="@+id/NavigationViewBaoCao"
+            android:layout_width="300dp"
+            android:background="#2c3c49"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:headerLayout="@layout/navheader"
-            app:menu="@menu/drawer_view">
+            app:menu="@menu/drawer_view"
+            android:fitsSystemWindows="false">
 
 
         </com.google.android.material.navigation.NavigationView>

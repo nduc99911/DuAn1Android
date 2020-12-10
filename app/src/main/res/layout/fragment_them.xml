@@ -17,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="50dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="ExtraText">
     <!-- TODO: Update blank fragment layout -->
     <include layout="@layout/custom_toolbar_them">
 
@@ -55,7 +56,8 @@
                 android:layout_width="55dp"
                 android:layout_height="45dp"
                 android:layout_weight="1"
-                android:src="@drawable/goods" />
+                android:src="@drawable/goods"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:textStyle="bold"
@@ -80,7 +82,8 @@
                 android:layout_width="55dp"
                 android:layout_height="45dp"
                 android:layout_weight="1"
-                android:src="@drawable/groceries" />
+                android:src="@drawable/groceries"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:layout_marginTop="10dp"
@@ -105,7 +108,8 @@
                 android:layout_width="55dp"
                 android:layout_height="44dp"
                 android:layout_weight="1"
-                android:src="@drawable/justicescale" />
+                android:src="@drawable/justicescale"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:layout_marginTop="10dp"
@@ -130,7 +134,8 @@
                 android:layout_width="55dp"
                 android:layout_height="45dp"
                 android:layout_weight="1"
-                android:src="@drawable/profile" />
+                android:src="@drawable/profile"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:id="@+id/tvNguoiDung"
@@ -145,12 +150,14 @@
     </LinearLayout>
 </LinearLayout>
         <com.google.android.material.navigation.NavigationView
-            android:id="@+id/NavigationView"
-            android:layout_width="wrap_content"
+            android:id="@+id/NavigationViewThem"
+            android:layout_width="300dp"
+            android:background="#2c3c49"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:headerLayout="@layout/navheader"
-            app:menu="@menu/drawer_view">
+            app:menu="@menu/drawer_view"
+            android:fitsSystemWindows="false">
 
 
 

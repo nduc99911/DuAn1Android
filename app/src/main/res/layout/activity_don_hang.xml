@@ -65,13 +65,13 @@
             android:layout_width="2dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:autoText="false"
             android:ems="10"
             android:hint="Khách hàng"
             android:inputType="textPersonName"
             android:text="Khách lẻ"
             android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            android:textColorHint="#FFFFFF"
+            tools:ignore="TextViewEdits" />
 
         <ImageView
             android:id="@+id/imgChonKhachHang"
@@ -80,7 +80,8 @@
             android:layout_weight="1"
             android:onClick="ChonKhachHang"
             app:srcCompat="@drawable/ic_button"
-            tools:ignore="OnClick,VectorDrawableCompat" />
+            tools:ignore="OnClick,VectorDrawableCompat"
+            android:contentDescription="TODO" />
     </LinearLayout>
 
     <LinearLayout
@@ -174,7 +175,8 @@
                     android:layout_height="20dp"
                     android:layout_weight="1"
                     android:paddingTop="5dp"
-                    android:src="@drawable/ic_plus" />
+                    android:src="@drawable/ic_plus"
+                    android:contentDescription="TODO" />
             </LinearLayout>
 
             <LinearLayout
@@ -204,7 +206,8 @@
                     android:paddingRight="8dp"
                     android:text="0"
                     android:textColor="#eb4c60"
-                    android:textSize="25sp" />
+                    android:textSize="25sp"
+                    tools:ignore="RtlSymmetry" />
             </LinearLayout>
 
             <Button

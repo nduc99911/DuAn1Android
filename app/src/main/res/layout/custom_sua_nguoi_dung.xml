@@ -28,7 +28,8 @@
             android:layout_width="0dp"
             android:layout_height="36dp"
             android:layout_weight="1"
-            android:src="@drawable/ic_diskette" />
+            android:src="@drawable/ic_diskette"
+            android:contentDescription="TODO" />
     </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>

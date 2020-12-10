@@ -30,7 +30,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="36dp"
-            android:src="@drawable/ic_add_file" />
+            android:src="@drawable/ic_add_file"
+            android:contentDescription="TODO" />
     </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>

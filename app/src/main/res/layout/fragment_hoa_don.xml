@@ -20,7 +20,7 @@
             android:layout_marginBottom="67dp"
             android:orientation="vertical">
 
-            <include layout="@layout/custom_toolbar_hoadon"></include>
+            <include layout="@layout/custom_toolbar_hoadon" />
 
             <LinearLayout
                 android:layout_marginTop="20dp"
@@ -77,7 +77,8 @@
                     android:layout_height="25dp"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:src="@drawable/filter" />
+                    android:src="@drawable/filter"
+                    android:contentDescription="TODO" />
             </LinearLayout>
             <FrameLayout
                 android:layout_width="match_parent"
@@ -101,12 +102,14 @@
         </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView
-            android:id="@+id/NavigationView"
-            android:layout_width="wrap_content"
+            android:id="@+id/NavigationViewHoaDon"
+            android:layout_width="300dp"
+            android:background="#2c3c49"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:headerLayout="@layout/navheader"
-            app:menu="@menu/drawer_view">
+            app:menu="@menu/drawer_view"
+            android:fitsSystemWindows="false">
 
 
         </com.google.android.material.navigation.NavigationView>

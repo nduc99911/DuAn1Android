@@ -16,7 +16,8 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/border_filter"
         app:srcCompat="@drawable/profile"
-         />
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -99,7 +100,8 @@
             android:layout_margin="16dp"
             android:layout_weight="1"
             android:background="@drawable/border_button2"
-            android:text="Chỉnh sửa"></Button>
+            android:text="Chỉnh sửa"
+            tools:ignore="ButtonStyle"></Button>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"

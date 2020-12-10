@@ -75,7 +75,7 @@ public class FragmentBanHang extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
         //onClick item navigatinonView
-        navigationView.getMenu().getItem(0).setIcon(R.drawable.ic_delete);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -87,6 +87,11 @@ public class FragmentBanHang extends Fragment {
                         intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
                         intent.putExtra(Intent.EXTRA_TEXT, "Phản Hồi Ứng Dụng");
                         startActivity(Intent.createChooser(intent, "Phản Hồi"));
+                    case R.id.nav_thoat:
+                        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                        homeIntent.addCategory( Intent.CATEGORY_HOME );
+                        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(homeIntent);
                 }
                 return false;
             }
