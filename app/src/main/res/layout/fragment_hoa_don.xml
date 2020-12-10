@@ -20,7 +20,7 @@
             android:layout_marginBottom="67dp"
             android:orientation="vertical">
 
-            <include layout="@layout/custom_toolbar_hoadon"></include>
+            <include layout="@layout/custom_toolbar_hoadon" />
 
             <LinearLayout
                 android:layout_marginTop="20dp"
@@ -77,7 +77,8 @@
                     android:layout_height="25dp"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:src="@drawable/filter" />
+                    android:src="@drawable/filter"
+                    android:contentDescription="TODO" />
             </LinearLayout>
             <FrameLayout
                 android:layout_width="match_parent"

@@ -20,7 +20,7 @@
             android:orientation="vertical">
 
 
-            <include layout="@layout/custom_toolbar_ban_hang"></include>
+            <include layout="@layout/custom_toolbar_ban_hang" />
 
 
             <LinearLayout

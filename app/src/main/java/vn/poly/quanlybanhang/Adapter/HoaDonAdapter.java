@@ -1,5 +1,6 @@
 package vn.poly.quanlybanhang.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ public
 class HoaDonAdapter extends BaseAdapter {
     Context context;
     List<HoaDon> list;
+    @SuppressLint("SimpleDateFormat")
     SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-yyyy");
     public HoaDonAdapter(Context context, List<HoaDon> list) {
         this.context = context;
@@ -59,5 +61,13 @@ class HoaDonAdapter extends BaseAdapter {
     private class ViewHolder{
         TextView tvNgayMua, tvTongTien,tvShowHDCT;
 
+    }
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+    }
+    public void changeDataSet(List<HoaDon> arrHoaDon){
+        this.list=arrHoaDon;
+        notifyDataSetChanged();
     }
 }

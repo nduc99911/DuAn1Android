@@ -239,4 +239,17 @@ public class FragmentHoaDon extends Fragment {
 //        tvLoaiLoc.setText(""+luuChon());
 //
 //    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        hoaDonList.clear();
+        try {
+            hoaDonList = hoaDonDAO.getAllHoaDon();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        hoaDonAdapter.changeDataSet(hoaDonList);
+    }
+
 }

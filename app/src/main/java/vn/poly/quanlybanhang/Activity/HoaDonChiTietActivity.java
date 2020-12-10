@@ -3,10 +3,12 @@ package vn.poly.quanlybanhang.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,12 +26,14 @@ import vn.poly.quanlybanhang.Model.HoaDon;
 import vn.poly.quanlybanhang.Model.HoaDonChiTiet;
 
 public class HoaDonChiTietActivity extends AppCompatActivity {
+    Button btnSuaHoaDonButton;
     HoaDonChiTietDAO hoaDonChiTietDAO;
     HoaDonDAO hoaDonDAO;
     List<HoaDonChiTiet> hoaDonChiTiets;
     String mahoadon;
     ListView listView;
     TextView tvDonHang, tvThoiGian, tvKhachHang, tvChietKhau, tvKhachTra, tvTraLai, tvTongTien;
+    @SuppressLint("SimpleDateFormat")
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,8 @@ public class HoaDonChiTietActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         doDuLieu(hoaDonChiTiets);
+
+
     }
 
 
@@ -60,6 +66,7 @@ public class HoaDonChiTietActivity extends AppCompatActivity {
         listView = findViewById(R.id.lvListHDCT);
         hoaDonChiTietDAO = new HoaDonChiTietDAO(this);
         hoaDonDAO = new HoaDonDAO(this);
+        btnSuaHoaDonButton=findViewById(R.id.btnSuaHoaDon);
     }
     public void dienThongTinHoaDon(HoaDon hoaDon){
         tvDonHang.setText(""+hoaDon.getMaHD());
@@ -73,5 +80,10 @@ public class HoaDonChiTietActivity extends AppCompatActivity {
     public void doDuLieu(List<HoaDonChiTiet> hoaDonChiTiets){
         HoaDonChiTietAdaper  hoaDonChiTietAdaper = new HoaDonChiTietAdaper(this,hoaDonChiTiets);
         listView.setAdapter(hoaDonChiTietAdaper);
+    }
+    public void suaHoaDon(View view){
+        hoaDonDAO =new HoaDonDAO(this);
+        hoaDonDAO.deleteHoaDon(mahoadon);
+        finish();
     }
 }

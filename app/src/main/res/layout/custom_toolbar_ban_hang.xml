@@ -6,7 +6,8 @@
     android:id="@+id/toolbar_ban_hang"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:background="#2C3C49">
+    android:background="#2C3C49"
+    tools:ignore="ExtraText">
 
 
     -
@@ -22,7 +23,8 @@
             android:layout_height="36dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/border_edt"
-            android:src="@drawable/shoppingbasket" />
+            android:src="@drawable/shoppingbasket"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/toolbar_title"
@@ -34,7 +36,7 @@
             android:fontFamily="@font/black_ops_one"
             android:text="Bán Hàng"
             android:textColor="#FFFFFF"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +53,8 @@
                 android:src="@drawable/shoppingcart"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="0dp" />
+                tools:layout_editor_absoluteY="0dp"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:id="@+id/tvSoLuongBanHang"

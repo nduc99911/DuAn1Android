@@ -21,7 +21,7 @@
             android:gravity="left"
             android:text="Bộ lọc tìm kiếm"
             android:textColor="#ffffff"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView

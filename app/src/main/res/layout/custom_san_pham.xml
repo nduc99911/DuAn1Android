@@ -30,7 +30,8 @@
             android:layout_weight="1"
             android:onClick="SanPhamThem"
             android:padding="15dp"
-            android:src="@drawable/ic_add" />
+            android:src="@drawable/ic_add"
+            android:contentDescription="TODO" />
     </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>

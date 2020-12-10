@@ -30,7 +30,8 @@
             android:layout_height="36dp"
             android:layout_weight="1"
             android:onClick="ThemSanPhamLuu"
-            android:src="@drawable/ic_checked" />
+            android:src="@drawable/ic_checked"
+            android:contentDescription="TODO" />
     </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>

@@ -17,7 +17,7 @@
             android:layout_weight="1"
             android:text="Sản Phẩm"
             android:textColor="#DC074F"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
@@ -27,7 +27,7 @@
             android:layout_weight="1"
             android:text="Số Lượng"
             android:textColor="#DC074F"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
@@ -37,7 +37,7 @@
             android:layout_weight="1"
             android:text="Gia"
             android:textColor="#DC074F"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
     </LinearLayout>

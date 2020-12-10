@@ -3,6 +3,7 @@ package vn.poly.quanlybanhang.Activity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -71,6 +72,7 @@ public class DonHangActivity extends AppCompatActivity {
     String khachHang = "Khách lẻ";
     List<KhachHang> listKH;
     HoaDonChiTietDAO hoaDonChiTietDAO;
+    HoaDonDAO hoaDonDAO;
     int chietKhau = 0;
     int tienFinal = 0;
 
@@ -87,6 +89,7 @@ public class DonHangActivity extends AppCompatActivity {
         getTongTien();
         addChietKhau();
         xoaDonHang();
+
     }
 
 
@@ -228,7 +231,7 @@ public class DonHangActivity extends AppCompatActivity {
         Button btnThanhToan = (Button) dialog.findViewById(R.id.btnThanhToan);
         Button btnHuy = dialog.findViewById(R.id.btnHuyCK);
         final Date c = Calendar.getInstance().getTime();
-        final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        @SuppressLint("SimpleDateFormat") final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         final String formattedDate = df.format(c);
         btnHuy.setOnClickListener(new View.OnClickListener() {
             @Override
