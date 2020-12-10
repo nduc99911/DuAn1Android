@@ -32,13 +32,14 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginLeft="20dp"
-                android:layout_width="370dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="75dp"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edSuaMaMatHang"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="text"
                     android:background="@drawable/border_edt"
@@ -47,14 +48,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-
                 android:layout_marginLeft="20dp"
-                android:layout_width="370dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edThemTenMatHang"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="text"
                     android:background="@drawable/border_edt"
@@ -63,12 +64,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginLeft="20dp"
-                android:layout_width="370dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edThemSoLuong"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="number"
                     android:background="@drawable/border_edt"
@@ -77,12 +79,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginLeft="20dp"
-                android:layout_width="370dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edThemGiaBan"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="number"
                     android:background="@drawable/border_edt"
@@ -91,12 +94,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginLeft="20dp"
-                android:layout_width="370dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edThemGiaNhap"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="number"
                     android:background="@drawable/border_edt"
@@ -116,7 +120,7 @@
                     android:id="@+id/textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:paddingLeft="5dp"
                     android:text="Đơn vị tính"
                     android:textSize="20dp"
@@ -126,8 +130,14 @@
                     android:id="@+id/spnThemDonViTinh"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
-                    android:layout_weight="2" />
-
+                    android:layout_weight="3" />
+                <ImageView
+                    android:id="@+id/themDonViThemSanPham"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_plus"/>
             </LinearLayout>
 
             <LinearLayout
@@ -143,7 +153,7 @@
                     android:id="@+id/textView1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:paddingLeft="5dp"
                     android:text="Danh Mục"
                     android:textSize="20dp"
@@ -153,8 +163,14 @@
                     android:id="@+id/spnThemDanhMuc"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
-                    android:layout_weight="2" />
-
+                    android:layout_weight="3" />
+                <ImageView
+                    android:id="@+id/themDanhMucThemSanPham"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_plus"/>
             </LinearLayout>
 
         </LinearLayout>

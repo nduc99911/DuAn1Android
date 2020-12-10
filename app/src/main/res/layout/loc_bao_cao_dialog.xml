@@ -13,12 +13,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
+            android:background="#3A91D6"
+            android:gravity="left"
+            android:paddingLeft="8dp"
             android:text="Thời Gian"
             android:textColor="#FFFFFF"
             android:textSize="25dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
 
         <RadioGroup
             android:layout_width="match_parent"

@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/anh">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#25283E"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:textSize="28sp"
+            android:layout_marginLeft="8dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="#FFF"
+            android:text="Chọn khách hàng"/>
+        <ImageView
+            android:id="@+id/imgThemKhachHang"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_plus"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="right"/>
+    </LinearLayout>
     <ListView
         android:id="@+id/lvKhachHang"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

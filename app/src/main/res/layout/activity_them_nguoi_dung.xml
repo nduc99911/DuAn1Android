@@ -30,12 +30,13 @@ android:layout_height="match_parent">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_marginLeft="20dp"
-            android:layout_width="370dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
             android:layout_height="75dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edThemTenDangNhap"
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/border_edt"
                 android:hint="Tên Đăng Nhập" />
@@ -44,12 +45,13 @@ android:layout_height="match_parent">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_marginLeft="20dp"
-            android:layout_width="370dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
             android:layout_height="75dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edThemPassword"
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/border_edt"
                 android:inputType="textPassword"
@@ -58,12 +60,13 @@ android:layout_height="match_parent">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_marginLeft="20dp"
-            android:layout_width="370dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
             android:layout_height="75dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edThemRePassword"
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:inputType="textPassword"
                 android:background="@drawable/border_edt"
@@ -85,26 +88,28 @@ android:layout_height="match_parent">
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="370dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
             android:layout_height="75dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edThemSoDienThoai"
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/border_edt"
                 android:hint="Số Điện Thoại" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="370dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
             android:layout_height="75dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edThemHoTen"
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/border_edt"
                 android:hint="Họ Tên" />

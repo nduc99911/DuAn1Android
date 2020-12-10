@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#2c3c49"
+    android:background="@drawable/anh"
     android:orientation="vertical"
 
     android:layout_height="match_parent">
@@ -31,13 +31,14 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginLeft="20dp"
-                android:layout_width="370dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="75dp"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edSuaMaMatHang"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="text"
                     android:background="@drawable/border_edt"
@@ -46,14 +47,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-
                 android:layout_marginLeft="20dp"
-                android:layout_width="370dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edSuaTenMatHang"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="text"
                     android:background="@drawable/border_edt"
@@ -62,12 +63,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginLeft="20dp"
-                android:layout_width="370dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edSuaSoLuong"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="number"
                     android:background="@drawable/border_edt"
@@ -76,12 +78,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginLeft="20dp"
-                android:layout_width="370dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edSuaGiaBan"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="number"
                     android:background="@drawable/border_edt"
@@ -90,12 +93,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginLeft="20dp"
-                android:layout_width="370dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edSuaGiaNhap"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="number"
                     android:background="@drawable/border_edt"
@@ -124,7 +128,13 @@
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="3" />
-
+                <ImageView
+                    android:id="@+id/themDonViSuaSanPham"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_plus"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_marginRight="16dp"
@@ -148,6 +158,13 @@
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="3" />
+                <ImageView
+                    android:id="@+id/themDanhMucSuaSanPham"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_plus"/>
 
             </LinearLayout>
 

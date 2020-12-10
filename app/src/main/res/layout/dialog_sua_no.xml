@@ -10,11 +10,14 @@
         android:layout_width="match_parent"
         android:gravity="center"
         android:layout_gravity="center"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edSuaTienNoRieng"
-            android:layout_width="360dp"
+            android:layout_width="match_parent"
+
             android:layout_height="50dp"
             android:inputType="number"
             android:background="@drawable/border_edt"

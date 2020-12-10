@@ -42,12 +42,9 @@ public class DonViTinhActivity extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 return true;
-
-
             default:
                 break;
         }
-
         return super.onOptionsItemSelected(item);
     }
     public void anhXaView() {

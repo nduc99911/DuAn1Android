@@ -59,7 +59,6 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
                 int i = intent.getIntExtra("pos",-1);
                 Intent intent1 = new Intent(ChiTietSanPhamActivity.this,SuaSanPhamActivity.class);
                 intent1.putExtra("ma",ma);
-                intent1.putExtra("pos",i);
                 startActivity(intent1);
                 finish();
             }

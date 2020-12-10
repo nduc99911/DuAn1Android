@@ -24,14 +24,14 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-
+                android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_width="370dp"
+                android:layout_width="match_parent"
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edThemDonViTinh"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/border_edt"
                     android:hint="Đơn Vị Tính" />

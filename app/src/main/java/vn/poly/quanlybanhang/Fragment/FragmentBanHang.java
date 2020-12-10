@@ -125,6 +125,10 @@ public class FragmentBanHang extends Fragment {
         doDuLieuTheoSpinner();
         timKiem();
         themSanPhamVaoGio();
+        if(MatHangActivity.gioHangList.size()<=0){
+            tong = 0;
+            soLuong = 0;
+        }
     }
     private void themSanPhamVaoGio(){
         lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

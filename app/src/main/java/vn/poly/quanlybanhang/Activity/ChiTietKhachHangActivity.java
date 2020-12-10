@@ -16,17 +16,19 @@ import android.widget.Toast;
 
 import vn.poly.quanlybanhang.Database.KhachHangDAO;
 import vn.poly.quanlybanhang.Model.KhachHang;
+
 import com.example.duan1android.R;
 
 public class ChiTietKhachHangActivity extends AppCompatActivity {
     TextView tvTen, tvSDT, tvDiaChi, tvEmail, tvTienNo, tvTienDaMua;
     KhachHangDAO khachHangDAO;
-    Button btnUpdate,btnDelete,btnSuaNo;
+    Button btnUpdate, btnDelete, btnSuaNo;
     KhachHang khachHang;
     Context context = this;
-    EditText edTen,edSoDienThoai,edEmail,edDiaChi,edTienNo,edTienDaMua;
+    EditText edTen, edSoDienThoai, edEmail, edDiaChi, edTienNo, edTienDaMua;
     ImageView imgLuu;
     String phone;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,6 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
         anhXaView();
         Intent intent = getIntent();
         phone = intent.getStringExtra("phoneNumber");
-        Log.e("PhoneNhan", phone);
         khachHang = khachHangDAO.getKhachHangBySDT(phone);
         tvTen.setText("Tên khách hàng : " + khachHang.getTen());
         tvSDT.setText("Số điện thoại : " + khachHang.getSoDienThoai());
@@ -46,11 +47,11 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 long chk = khachHangDAO.deleteKhachHang(khachHang.getSoDienThoai());
-                if(chk>0){
-                    Toast.makeText(ChiTietKhachHangActivity.this,"Xóa thành công", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(ChiTietKhachHangActivity.this,KhachHangActivity.class));
-                }else{
-                    Toast.makeText(ChiTietKhachHangActivity.this,"Xóa thất bại", Toast.LENGTH_SHORT).show();
+                if (chk > 0) {
+                    Toast.makeText(ChiTietKhachHangActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(ChiTietKhachHangActivity.this, KhachHangActivity.class));
+                } else {
+                    Toast.makeText(ChiTietKhachHangActivity.this, "Xóa thất bại", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -74,19 +75,21 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
                         String diaChi = edDiaChi.getText().toString();
                         String email = edEmail.getText().toString();
                         String tienNo = edTienNo.getText().toString();
-                        if(ten.equalsIgnoreCase("") || soDienThoai.equalsIgnoreCase("") ){
-                            Toast.makeText(context,"Tên , số điện thoại không được để trống",Toast.LENGTH_SHORT).show();
+                        if (ten.equalsIgnoreCase("") || soDienThoai.equalsIgnoreCase("")) {
+                            Toast.makeText(context, "Tên , số điện thoại không được để trống", Toast.LENGTH_SHORT).show();
                             return;
                         }
 
-                        KhachHang khachHang = new KhachHang(ten,email,soDienThoai,diaChi,Integer.parseInt(tienNo),khachHangDAO.getKhachHangBySDT(phone).getTienDaMua());
-                        long chk = khachHangDAO.updateKhacHang(khachHang,phone);
-                        if(chk>0){
-                            Toast.makeText(context,"Lưu thành công",Toast.LENGTH_SHORT).show();
+                        KhachHang khachHang = new KhachHang(ten, email, soDienThoai, diaChi, Integer.parseInt(tienNo), khachHangDAO.getKhachHangBySDT(phone).getTienDaMua());
+                        try {
+                            khachHangDAO.updateKhacHang(khachHang, phone);
+                            Toast.makeText(context, "Lưu thành công", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
-                        }else {
-                            Toast.makeText(context,"Lưu thất bại , số điện thoại bị trùng với người dùng khác",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(ChiTietKhachHangActivity.this,KhachHangActivity.class));
+                        } catch (Exception e) {
+                            Toast.makeText(context, "Lưu thất bại , số điện thoại này đã tồn tại", Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 });
             }
@@ -111,13 +114,13 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         String no = edSuaNo.getText().toString();
                         khachHang.setTienNo(Double.parseDouble(no));
-                        long chk = khachHangDAO.updateTienNo(khachHang,phone);
-                        if(chk>0){
-                            Toast.makeText(context,"Lưu thành công",Toast.LENGTH_SHORT).show();
-                            tvTienNo.setText("Tiền còn nợ : "+no+ " VNĐ");
+                        long chk = khachHangDAO.updateTienNo(khachHang, phone);
+                        if (chk > 0) {
+                            Toast.makeText(context, "Lưu thành công", Toast.LENGTH_SHORT).show();
+                            tvTienNo.setText("Tiền còn nợ : " + no + " VNĐ");
                             dialog.dismiss();
-                        }else {
-                            Toast.makeText(context,"Lưu thất bại",Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Lưu thất bại", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -137,7 +140,8 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
         btnDelete = findViewById(R.id.btnXoaKH);
         btnSuaNo = findViewById(R.id.btnSuaNo);
     }
-    private  void anhXaViewDia(Dialog dialog){
+
+    private void anhXaViewDia(Dialog dialog) {
         edTen = (EditText) dialog.findViewById(R.id.edSuaHoTenKH);
         edSoDienThoai = (EditText) dialog.findViewById(R.id.edSuaSoDienThoaiKH);
         edEmail = (EditText) dialog.findViewById(R.id.edSuaEmailKH);
@@ -149,6 +153,6 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(ChiTietKhachHangActivity.this,KhachHangActivity.class));
+        startActivity(new Intent(ChiTietKhachHangActivity.this, KhachHangActivity.class));
     }
 }

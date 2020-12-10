@@ -19,6 +19,7 @@
             android:id="@+id/imageView3"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginLeft="8dp"
             android:src="@drawable/ic_sanpham1" />
 
         <LinearLayout
