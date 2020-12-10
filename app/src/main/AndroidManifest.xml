@@ -110,17 +110,17 @@
             android:name="vn.poly.quanlybanhang.GioiThieuActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"
-            android:noHistory="true"/>
+           />
         <activity
             android:name="vn.poly.quanlybanhang.GioiThieu2Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"
-            android:noHistory="true"/>
+            />
         <activity
             android:name="vn.poly.quanlybanhang.GioiThieu3Acitivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"
-            android:noHistory="true"/>
+        />
 
     </application>
 

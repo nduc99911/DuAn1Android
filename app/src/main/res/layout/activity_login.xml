@@ -8,6 +8,7 @@
     tools:context="vn.poly.quanlybanhang.GioiThieuActivity">
 
     <Button
+
         android:id="@+id/btnApp1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,26 +16,27 @@
         android:text="Next"
         android:layout_gravity="bottom|right"
         android:layout_marginBottom="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="16dp"
          />
 
     <TextView
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
         android:id="@+id/textView3"
-        android:layout_width="400dp"
-        android:layout_height="90dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/arbutus"
         android:text="DVNK-Ứng Dụng Quản Lý Bán Hàng"
         android:textColor="#FFFFFF"
-        android:textSize="30dp"
-        android:layout_marginTop="50dp"
-         />
+        android:textSize="30dp" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="150dp"
         android:text="Cùng bạn làm giàu!"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
