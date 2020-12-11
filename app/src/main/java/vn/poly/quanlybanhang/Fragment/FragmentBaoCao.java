@@ -14,16 +14,13 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-
 import com.example.duan1android.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
@@ -33,12 +30,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.navigation.NavigationView;
-
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.logging.Logger;
-
-import vn.poly.quanlybanhang.Adapter.HoaDonAdapter;
 import vn.poly.quanlybanhang.Database.HoaDonDAO;
 
 
@@ -51,7 +43,7 @@ public class FragmentBaoCao extends Fragment {
     NavigationView navigationView;
     HoaDonDAO hoaDonDAO;
     private LineChart mChart;
-    RadioButton rdoTatCa, rdoHomNay, rdoHomQua, rdoTuanNay, rdoTuanTruoc, rdoThangNay, rdoThangTruoc, rdoTatCaHd, rdoChuaThanhToan, rdoDaThanhToan;
+    RadioButton rdoTatCa, rdoHomNay, rdoHomQua, rdoTuanNay, rdoTuanTruoc, rdoThangNay, rdoThangTruoc;
     double thang1, thang2, thang3, thang4, thang5, thang6, thang7, thang8, thang9, thang10, thang11, thang12;
     String time;
     double doanhThu;
@@ -97,7 +89,19 @@ public class FragmentBaoCao extends Fragment {
         thang12 = hoaDonDAO.getDoanhThuTheoThang("12");
         bieuDo();
         getBaoCao();
-        //chọn bộ lọc
+        boLoc();
+        navDrawer();
+        //
+
+    }
+
+    @Override
+    public void onResume() {
+        getBaoCao();
+        super.onResume();
+    }
+
+    public void boLoc(){
         imgBoLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,7 +120,8 @@ public class FragmentBaoCao extends Fragment {
 
             }
         });
-        //
+    }
+    public void navDrawer(){
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -138,7 +143,6 @@ public class FragmentBaoCao extends Fragment {
             }
         });
     }
-
     public void anhXaView(View view) {
         tvSoHoaDon = view.findViewById(R.id.tvSoHoaDon);
         tvGiaTriHoaDon = view.findViewById(R.id.tvGiaTriHoaDon);
@@ -147,7 +151,7 @@ public class FragmentBaoCao extends Fragment {
         tvLoiNhuan = view.findViewById(R.id.btnLoiNhuan);
         tvDoanhThu = view.findViewById(R.id.btnDoanhThu);
         imgBoLoc = view.findViewById(R.id.imgBoLocBaoCao);
-        toolbar = (Toolbar) view.findViewById(R.id.toolbar_bao_cao);
+        toolbar = view.findViewById(R.id.toolbar_bao_cao);
         drawerLayout = view.findViewById(R.id.drawerLayoutBaoCao);
         mChart = view.findViewById(R.id.combinedChart);
         hoaDonDAO = new HoaDonDAO(getContext());
@@ -246,17 +250,6 @@ public class FragmentBaoCao extends Fragment {
         data.add(new Entry(10, (float) thang10));
         data.add(new Entry(11, (float) thang11));
         data.add(new Entry(12, (float) thang12));
-        return data;
-    }
-
-    private ArrayList<Entry> dataValue1() {
-        ArrayList<Entry> data = new ArrayList<>();
-        data.add(new Entry(0, 10));
-        data.add(new Entry(2, 74));
-        data.add(new Entry(3, 20));
-        data.add(new Entry(8, 80));
-        data.add(new Entry(9, 40));
-        data.add(new Entry(5, 80));
         return data;
     }
 

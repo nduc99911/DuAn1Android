@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@drawable/anh"
     android:orientation="vertical"
@@ -26,7 +27,8 @@
                 android:layout_gravity="center"
                 android:background="@drawable/border_img"
                 android:src="@drawable/ic_add"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                tools:ignore="ContentDescription" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginLeft="20dp"
@@ -116,7 +118,6 @@
                     android:textColor="#ffffff"
                     android:textStyle="bold"
                     android:textSize="20sp"
-                    android:id="@+id/textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -133,7 +134,8 @@
                     android:layout_height="30dp"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_plus"/>
+                    android:src="@drawable/ic_plus"
+                    tools:ignore="ContentDescription" />
             </LinearLayout>
             <LinearLayout
                 android:layout_marginRight="16dp"
@@ -146,7 +148,6 @@
                     android:textColor="#ffffff"
                     android:textStyle="bold"
                     android:textSize="20sp"
-                    android:id="@+id/textView1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -163,7 +164,8 @@
                     android:layout_height="30dp"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_plus"/>
+                    android:src="@drawable/ic_plus"
+                    tools:ignore="ContentDescription" />
 
             </LinearLayout>
 

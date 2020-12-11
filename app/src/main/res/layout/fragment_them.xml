@@ -27,7 +27,6 @@
     <TextView
         android:textStyle="bold"
         android:textColor="#FFFFFF"
-        android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -57,7 +56,8 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:src="@drawable/goods"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:textStyle="bold"
@@ -83,7 +83,8 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:src="@drawable/groceries"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:layout_marginTop="10dp"
@@ -109,7 +110,8 @@
                 android:layout_height="44dp"
                 android:layout_weight="1"
                 android:src="@drawable/justicescale"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:layout_marginTop="10dp"
@@ -135,7 +137,8 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:src="@drawable/profile"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/tvNguoiDung"

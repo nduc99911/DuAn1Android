@@ -15,8 +15,8 @@ import vn.poly.quanlybanhang.Model.GioHang;
 
 public
 class DonHangAdapter extends BaseAdapter {
-    Context context;
-    List<GioHang> list;
+    final Context context;
+    final List<GioHang> list;
 
     public DonHangAdapter(Context context, List<GioHang> list) {
         this.context = context;
@@ -40,7 +40,7 @@ class DonHangAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if(view == null){
             view = LayoutInflater.from(context).inflate(R.layout.item_don_hang, viewGroup, false);
             viewHolder = new ViewHolder();
@@ -59,7 +59,7 @@ class DonHangAdapter extends BaseAdapter {
     }
 
 
-    private class ViewHolder{
+    private static class ViewHolder{
         TextView tvSanPham,tvSoluong,tvGia;
     }
 

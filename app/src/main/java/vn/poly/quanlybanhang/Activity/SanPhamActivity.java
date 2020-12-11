@@ -13,11 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import vn.poly.quanlybanhang.Adapter.SanPhamAdapter;
 import vn.poly.quanlybanhang.Database.SanPhamDAO;
-import vn.poly.quanlybanhang.Fragment.FragmentBanHang;
-import vn.poly.quanlybanhang.Fragment.FragmentThem;
 import vn.poly.quanlybanhang.Model.SanPham;
 import com.example.duan1android.R;
 import java.util.ArrayList;
@@ -25,7 +22,6 @@ import java.util.List;
 
 public class SanPhamActivity extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
-    ImageView imgSanPham;
     ListView lvList;
     EditText edTimKiem;
     SanPhamDAO sanPhamDAO;
@@ -79,24 +75,21 @@ public class SanPhamActivity extends AppCompatActivity {
 
     }
     public void anhXaView() {
-        imgSanPham = findViewById(R.id.imgThemSanPhamLuu);
         lvList = findViewById(R.id.lvSanPham_actSP);
         edTimKiem = findViewById(R.id.edTimKiemSanPham1);
         tvKhongTimThay = findViewById(R.id.tvKhongTimThay);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                finish();
-                return true;
-            default:
-                break;
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            finish();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
     //chuyển sang activity thêm sản phẩm
     public void SanPhamThem(View view) {
         Intent intent = new Intent(this,ThemSanPhamActivity.class);

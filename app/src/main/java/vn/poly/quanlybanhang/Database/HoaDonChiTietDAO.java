@@ -4,15 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-
 import vn.poly.quanlybanhang.Model.GioHang;
-import vn.poly.quanlybanhang.Model.HoaDon;
 import vn.poly.quanlybanhang.Model.HoaDonChiTiet;
-import vn.poly.quanlybanhang.Model.SanPham;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +19,7 @@ class HoaDonChiTietDAO {
             "   maSanPham text," +
             "   soLuong number," +
             "   gia number)";
-    private SQLiteDatabase sqLiteDatabase;
+    private final SQLiteDatabase sqLiteDatabase;
 
     public HoaDonChiTietDAO(Context context) {
         Mydatabase mydatabase = new Mydatabase(context);
@@ -64,7 +57,7 @@ class HoaDonChiTietDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            while (cursor.isAfterLast() == false) {
+            while (!cursor.isAfterLast()) {
                 String maHd = cursor.getString(3);
                 String maSP = cursor.getString(3);
                 String ten = cursor.getString(2);

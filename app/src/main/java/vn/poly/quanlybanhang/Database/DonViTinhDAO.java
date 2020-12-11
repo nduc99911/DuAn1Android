@@ -16,7 +16,7 @@ class DonViTinhDAO {
     public static final String SQL_DONVI = "Create table if not exists DonViTinh (" +
             "   tenDonVi text primary key )";
 
-    SQLiteDatabase sqLiteDatabase;
+    final SQLiteDatabase sqLiteDatabase;
 
     public DonViTinhDAO(Context context) {
         Mydatabase mydatabase = new Mydatabase(context);
@@ -41,7 +41,7 @@ class DonViTinhDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
-            while (cursor.isAfterLast()==false){
+            while (!cursor.isAfterLast()){
                 String ten = cursor.getString(0);
                 DonViTinh donViTinh = new DonViTinh(ten);
                 list.add(donViTinh);
@@ -57,7 +57,7 @@ class DonViTinhDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
-            while (cursor.isAfterLast()==false){
+            while (!cursor.isAfterLast()){
                 String ten = cursor.getString(0);
                 list.add(ten);
                 cursor.moveToNext();

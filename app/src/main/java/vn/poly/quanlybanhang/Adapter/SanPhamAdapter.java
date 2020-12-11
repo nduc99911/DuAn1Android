@@ -17,7 +17,7 @@ import java.util.List;
 
 public
 class SanPhamAdapter extends BaseAdapter {
-    Context context;
+    final Context context;
     List<SanPham> list;
 
     public SanPhamAdapter(Context context, List<SanPham> list) {
@@ -42,7 +42,7 @@ class SanPhamAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if(view == null){
             view = LayoutInflater.from(context).inflate(R.layout.item_san_pham, viewGroup, false);
             viewHolder = new ViewHolder();
@@ -71,17 +71,8 @@ class SanPhamAdapter extends BaseAdapter {
     }
 
 
-    private class ViewHolder{
+    private static class ViewHolder{
         TextView tvMa, tvSanPham,tvGia, tvSoluong;
         ImageView imgSanPham;
-    }
-    @Override
-    public void notifyDataSetChanged() {
-        super.notifyDataSetChanged();
-    }
-    public void changeDataSet(List<SanPham> listt){
-        this.list=listt;
-        notifyDataSetChanged();
-
     }
 }

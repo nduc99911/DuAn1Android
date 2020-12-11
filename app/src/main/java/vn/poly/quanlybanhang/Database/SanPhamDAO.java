@@ -23,7 +23,7 @@ class SanPhamDAO {
             "   giaBan number," +
             "   hinhAnh BLOB)";
 
-    private SQLiteDatabase sqLiteDatabase;
+    private final SQLiteDatabase sqLiteDatabase;
 
     public SanPhamDAO(Context context) {
         Mydatabase mydatabase = new Mydatabase(context);
@@ -67,7 +67,7 @@ class SanPhamDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
-            while (cursor.isAfterLast()==false){
+            while (!cursor.isAfterLast()){
                 String maSP = cursor.getString(0);
                 String maLoai = cursor.getString(1);
                 String ten = cursor.getString(2);
@@ -107,7 +107,7 @@ class SanPhamDAO {
         List<SanPham> list = new ArrayList<>();
         String query = "select DISTINCT * from "+TABLE_NAME+ " where maSanPham like '%"+ma+"%' or tenSanPham like '%"+ma+"%'";
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
-        SanPham sanPham = null;
+        SanPham sanPham;
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             String maSP = cursor.getString(0);
@@ -131,7 +131,7 @@ class SanPhamDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
-            while (cursor.isAfterLast()==false){
+            while (!cursor.isAfterLast()){
                 String maSP = cursor.getString(0);
                 String maLoai = cursor.getString(1);
                 String ten = cursor.getString(2);
@@ -154,7 +154,7 @@ class SanPhamDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
-            while (cursor.isAfterLast()==false){
+            while (!cursor.isAfterLast()){
                 String maSP = cursor.getString(0);
                 String maLoai = cursor.getString(1);
                 String ten = cursor.getString(2);
@@ -177,7 +177,7 @@ class SanPhamDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
-            while (cursor.isAfterLast()==false){
+            while (!cursor.isAfterLast()){
                 String maSP = cursor.getString(0);
                 String maLoai = cursor.getString(1);
                 String ten = cursor.getString(2);

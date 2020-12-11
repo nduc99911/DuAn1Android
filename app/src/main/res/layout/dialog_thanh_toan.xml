@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/anh"
@@ -8,7 +9,6 @@
     >
 
     <TextView
-        android:id="@+id/textView32"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -16,7 +16,7 @@
         android:gravity="center"
         android:text="  Thanh Toán"
         android:textColor="#FFF"
-        android:textSize="28dp"
+        android:textSize="28sp"
         android:textStyle="bold" />
     <LinearLayout
         android:layout_marginTop="30dp"
@@ -27,7 +27,6 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView33"
         style="@style/fontHienThi2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,7 +52,6 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView35"
         style="@style/fontHienThi2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,7 +66,9 @@
         android:gravity="center"
         android:text="0"
         android:textColor="#1690F1"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:inputType="number"
+        tools:ignore="LabelFor" />
     <LinearLayout
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
@@ -78,7 +78,6 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView37"
         style="@style/fontHienThi2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

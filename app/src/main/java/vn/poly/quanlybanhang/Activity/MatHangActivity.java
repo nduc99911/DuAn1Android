@@ -12,8 +12,6 @@ import vn.poly.quanlybanhang.Fragment.FragmentBaoCao;
 import vn.poly.quanlybanhang.Fragment.FragmentHoaDon;
 import vn.poly.quanlybanhang.Fragment.FragmentThem;
 import vn.poly.quanlybanhang.Model.GioHang;
-import vn.poly.quanlybanhang.Model.SanPham;
-
 import com.example.duan1android.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -22,26 +20,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MatHangActivity extends AppCompatActivity {
-    androidx.appcompat.widget.Toolbar toolbar;
-    NavigationView navigationView;
-    ListView listView;
-    DrawerLayout drawerLayout;
     ViewPager viewPager;
    public TabLayout tabLayout;
    public static List<GioHang> gioHangList;
-    String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mat_hang);
-        navigationView=findViewById(R.id.NavigationView);
-        listView=findViewById(R.id.listView);
-        drawerLayout=findViewById(R.id.drawerLayout);
         tabLayout=findViewById(R.id.TabLayout);
         viewPager=findViewById(R.id.viewPage);
-        if(gioHangList!= null){
-
-        }else {
+        if(gioHangList == null){
             gioHangList = new ArrayList<>();
         }
 //        View headerView = navigationView.getHeaderView(1);

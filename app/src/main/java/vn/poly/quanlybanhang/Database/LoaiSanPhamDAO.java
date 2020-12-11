@@ -17,7 +17,7 @@ class LoaiSanPhamDAO {
             "   maLoai text primary key," +
             "   tenLoai text)";
 
-    private SQLiteDatabase sqLiteDatabase;
+    private final SQLiteDatabase sqLiteDatabase;
 
     public LoaiSanPhamDAO(Context context) {
         Mydatabase mydatabase = new Mydatabase(context);
@@ -44,7 +44,7 @@ class LoaiSanPhamDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
-            while (cursor.isAfterLast()==false){
+            while (!cursor.isAfterLast()){
                 String maLoai = cursor.getString(0);
                 String tenLoai = cursor.getString(1);
                 LoaiSanPham loaiSanPham = new LoaiSanPham(maLoai,tenLoai);
@@ -61,7 +61,7 @@ class LoaiSanPhamDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
-            while (cursor.isAfterLast()==false){
+            while (!cursor.isAfterLast()){
                 String ten = cursor.getString(0);
                 list.add(ten);
                 cursor.moveToNext();
@@ -76,7 +76,7 @@ class LoaiSanPhamDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
-            while (cursor.isAfterLast()==false){
+            while (!cursor.isAfterLast()){
                 String maLoai = cursor.getString(0);
                 String tenLoai = cursor.getString(1);
                 LoaiSanPham loaiSanPham = new LoaiSanPham(maLoai,tenLoai);

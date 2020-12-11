@@ -16,7 +16,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView31"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -41,7 +40,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView37"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -65,7 +63,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView36"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -96,7 +93,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView21"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -107,7 +103,6 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView23"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -118,7 +113,6 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView24"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -152,7 +146,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView416"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -177,7 +170,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView41"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -201,7 +193,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView46"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -225,7 +216,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView414"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

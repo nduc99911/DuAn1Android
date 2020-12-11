@@ -1,10 +1,8 @@
 package vn.poly.quanlybanhang.Fragment;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,10 +10,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,14 +22,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-
 import com.example.duan1android.R;
 import com.google.android.material.navigation.NavigationView;
-
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-
 import vn.poly.quanlybanhang.Activity.HoaDonChiTietActivity;
 import vn.poly.quanlybanhang.Adapter.HoaDonAdapter;
 import vn.poly.quanlybanhang.Database.HoaDonDAO;
@@ -84,7 +77,6 @@ public class FragmentHoaDon extends Fragment {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Log.e("SIZE hoa don",""+hoaDonList.size());
         hoaDonAdapter = new HoaDonAdapter(getContext(), hoaDonList);
         lvListHoaDon.setAdapter(hoaDonAdapter);
         lvListHoaDon.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -124,6 +116,8 @@ public class FragmentHoaDon extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         anhXaView(view);
+        tvTimKiem.setVisibility(View.INVISIBLE);
+        lvListHoaDon.setVisibility(View.VISIBLE);
         //chọn bộ lọc
         imgBoLoc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,8 +156,15 @@ public class FragmentHoaDon extends Fragment {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 try {
                     hoaDonList = hoaDonDAO.getAllHoaDonTheoMa(edTimKiem.getText().toString());
-                    hoaDonAdapter = new HoaDonAdapter(getContext(),hoaDonList);
-                    lvListHoaDon.setAdapter(hoaDonAdapter);
+                    if(hoaDonList.size()>0) {
+                        lvListHoaDon.setVisibility(View.VISIBLE);
+                        tvTimKiem.setVisibility(View.INVISIBLE);
+                        hoaDonAdapter = new HoaDonAdapter(getContext(), hoaDonList);
+                        lvListHoaDon.setAdapter(hoaDonAdapter);
+                    }else {
+                        lvListHoaDon.setVisibility(View.INVISIBLE);
+                        tvTimKiem.setVisibility(View.VISIBLE);
+                    }
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -182,7 +183,7 @@ public class FragmentHoaDon extends Fragment {
         tvLoaiLoc = view.findViewById(R.id.tvLoaiLoc);
         imgBoLoc = view.findViewById(R.id.imgChonLoaiLoc);
         lvListHoaDon = view.findViewById(R.id.lvListHoaDon);
-        toolbar = (Toolbar) view.findViewById(R.id.toolbar_hoa_don);
+        toolbar = view.findViewById(R.id.toolbar_hoa_don);
         drawerLayout = view.findViewById(R.id.drawerLayoutHoaDon);
         tvTimeLoaiLoc = view.findViewById(R.id.tvTimeLoaiLoc);
         tvTimKiem = view.findViewById(R.id.tvRongHoaDon);

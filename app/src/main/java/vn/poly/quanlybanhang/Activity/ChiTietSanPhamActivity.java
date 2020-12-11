@@ -33,9 +33,6 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
         anhXaView();
         intent = getIntent();
         ma = intent.getStringExtra("sanPham");
-        if (ma.equalsIgnoreCase("")) {
-            ma = intent.getStringExtra("maNew");
-        }
         final SanPhamDAO sanPhamDAO = new SanPhamDAO(this);
         SanPham sanPham = sanPhamDAO.getSanPhamTheoMa(ma);
         tvMa.setText("Mã mặt hàng : " + sanPham.getMaSanPham());
@@ -59,7 +56,6 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ma = intent.getStringExtra("sanPham");
-                int i = intent.getIntExtra("pos", -1);
                 Intent intent1 = new Intent(ChiTietSanPhamActivity.this, SuaSanPhamActivity.class);
                 intent1.putExtra("ma", ma);
                 startActivity(intent1);

@@ -79,7 +79,8 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:src="@drawable/filter"
-                    android:contentDescription="TODO" />
+                    android:contentDescription="TODO"
+                    tools:ignore="ContentDescription" />
             </LinearLayout>
             <FrameLayout
                 android:layout_width="match_parent"

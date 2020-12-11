@@ -97,7 +97,6 @@
                 android:layout_height="75dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edSuaTienDaMua"
                     android:layout_width="360dp"
                     android:layout_height="50dp"
                     android:inputType="text"

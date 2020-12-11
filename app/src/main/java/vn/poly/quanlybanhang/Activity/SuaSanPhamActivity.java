@@ -13,7 +13,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,15 +21,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import vn.poly.quanlybanhang.Database.DonViTinhDAO;
 import vn.poly.quanlybanhang.Database.LoaiSanPhamDAO;
 import vn.poly.quanlybanhang.Database.SanPhamDAO;
 import vn.poly.quanlybanhang.Model.SanPham;
-
 import com.example.duan1android.R;
-import com.google.android.material.snackbar.Snackbar;
-
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -46,7 +41,7 @@ public class SuaSanPhamActivity extends AppCompatActivity {
     List<String> listDonVi, listTheLoai;
     ImageView imgSuaSanPham, imgThemSuaDanhMuc, imgThemSuaDonVi;
     byte[] hinhAnh;
-    int REQUEST_CODE_FOLDER = 456;
+    final int REQUEST_CODE_FOLDER = 456;
     SanPhamDAO sanPhamDAO;
 
     @Override
@@ -59,6 +54,7 @@ public class SuaSanPhamActivity extends AppCompatActivity {
         anhXaView();
         sanPhamDAO = new SanPhamDAO(this);
         doDuLieu();
+        themDanhMuc_DonVi();
         //Đổ dữu liệu cho spinner:
         listDonVi = new ArrayList<>();
         listTheLoai = new ArrayList<>();
@@ -112,12 +108,9 @@ public class SuaSanPhamActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            default:
-                break;
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -192,7 +185,6 @@ public class SuaSanPhamActivity extends AppCompatActivity {
             sanPhamDAO.updateSanPham(sanPham, ma);
             Toast.makeText(SuaSanPhamActivity.this, "Lưu thành công", Toast.LENGTH_SHORT).show();
             Intent myIten = new Intent(SuaSanPhamActivity.this, SanPhamActivity.class);
-            myIten.putExtra("newMa", sanPham.getMaSanPham());
             startActivity(myIten);
             finish();
         } catch (Exception e) {
@@ -200,6 +192,7 @@ public class SuaSanPhamActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

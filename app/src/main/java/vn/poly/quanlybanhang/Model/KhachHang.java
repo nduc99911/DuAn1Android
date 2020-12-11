@@ -14,39 +14,21 @@ class KhachHang {
         this.tienDaMua = tienDaMua;
     }
 
-    public KhachHang() {
-    }
 
     public String getTen() {
         return ten;
-    }
-
-    public void setTen(String ten) {
-        this.ten = ten;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getSoDienThoai() {
         return soDienThoai;
     }
 
-    public void setSoDienThoai(String soDienThoai) {
-        this.soDienThoai = soDienThoai;
-    }
-
     public String getDiaChi() {
         return diaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
     }
 
     public double getTienNo() {
@@ -61,7 +43,4 @@ class KhachHang {
         return tienDaMua;
     }
 
-    public void setTienDaMua(double tienDaMua) {
-        this.tienDaMua = tienDaMua;
-    }
 }

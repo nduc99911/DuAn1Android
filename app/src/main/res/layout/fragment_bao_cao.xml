@@ -33,7 +33,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvTimeLoaiLocBC"
                     style="@style/fontNormal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -58,7 +57,8 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:src="@drawable/filter"
-                    android:contentDescription="TODO" />
+                    android:contentDescription="TODO"
+                    tools:ignore="ContentDescription" />
             </LinearLayout>
 
             <ScrollView
@@ -78,7 +78,8 @@
                         android:layout_marginTop="30dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginBottom="30dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
 
                         <LinearLayout
 
@@ -120,7 +121,6 @@
 
                     <TextView
 
-                        android:id="@+id/textView8"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
@@ -144,7 +144,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="16dp">
+                            android:layout_margin="16dp"
+                            android:baselineAligned="false">
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -163,15 +164,14 @@
                                      />
 
                                 <ImageView
-                                    android:id="@+id/imageView7"
                                     android:layout_width="55dp"
                                     android:layout_height="45dp"
                                     android:layout_gravity="center"
                                     android:src="@drawable/invoice"
-                                    android:contentDescription="TODO" />
+                                    android:contentDescription="TODO"
+                                    tools:ignore="ContentDescription" />
 
                                 <TextView
-                                    android:id="@+id/textView12"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
@@ -198,15 +198,14 @@
                                      />
 
                                 <ImageView
-                                    android:id="@+id/imageView8"
                                     android:layout_width="55dp"
                                     android:layout_height="45dp"
                                     android:layout_gravity="center"
                                     android:src="@drawable/payment"
-                                    android:contentDescription="TODO" />
+                                    android:contentDescription="TODO"
+                                    tools:ignore="ContentDescription" />
 
                                 <TextView
-                                    android:id="@+id/textView18"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
@@ -219,7 +218,6 @@
 
                         <TextView
 
-                            android:id="@+id/textView9"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"
@@ -237,7 +235,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="16dp">
+                            android:layout_margin="16dp"
+                            android:baselineAligned="false">
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -255,15 +254,14 @@
                                     android:text="" />
 
                                 <ImageView
-                                    android:id="@+id/imageView10"
                                     android:layout_width="55dp"
                                     android:layout_height="45dp"
                                     android:layout_gravity="center"
                                     android:src="@drawable/cash"
-                                    android:contentDescription="TODO" />
+                                    android:contentDescription="TODO"
+                                    tools:ignore="ContentDescription" />
 
                                 <TextView
-                                    android:id="@+id/textView20"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
@@ -289,16 +287,15 @@
                                      />
 
                                 <ImageView
-                                    android:id="@+id/imageView9"
                                     android:layout_width="55dp"
                                     android:layout_height="45dp"
                                     android:layout_gravity="center"
                                     android:src="@drawable/dollar"
-                                    android:contentDescription="TODO" />
+                                    android:contentDescription="TODO"
+                                    tools:ignore="ContentDescription" />
 
                                 <TextView
 
-                                    android:id="@+id/textView15"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
@@ -311,7 +308,6 @@
 
                         <TextView
 
-                            android:id="@+id/textView10"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="1dp"

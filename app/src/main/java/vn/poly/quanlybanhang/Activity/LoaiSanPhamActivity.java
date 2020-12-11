@@ -24,7 +24,6 @@ import java.util.List;
 
 public class LoaiSanPhamActivity extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
-    ImageView imgLoaiSanPhamThem;
     EditText edTimKiem;
     ListView lvList;
     List<LoaiSanPham> list;
@@ -72,20 +71,16 @@ public class LoaiSanPhamActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
 
-                return true;
-            default:
-                break;
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
     public void anhXaView() {
-        imgLoaiSanPhamThem = findViewById(R.id.imgLoaiSanPhamThem);
         lvList = findViewById(R.id.lvLoaiSanPham);
         edTimKiem = findViewById(R.id.edTimKiemLoaiSanPham);
         tvKhongDuLieu = findViewById(R.id.tvRongLoaiSanPham);

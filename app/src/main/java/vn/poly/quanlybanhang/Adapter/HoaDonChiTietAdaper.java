@@ -6,18 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
 import com.example.duan1android.R;
-
 import java.util.List;
-
-import vn.poly.quanlybanhang.Model.GioHang;
 import vn.poly.quanlybanhang.Model.HoaDonChiTiet;
 
 public
 class HoaDonChiTietAdaper extends BaseAdapter {
-    Context context;
-    List<HoaDonChiTiet> list;
+    final Context context;
+    final List<HoaDonChiTiet> list;
 
     public HoaDonChiTietAdaper(Context context, List<HoaDonChiTiet> list) {
         this.context = context;
@@ -41,7 +37,7 @@ class HoaDonChiTietAdaper extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if(view == null){
             view = LayoutInflater.from(context).inflate(R.layout.item_don_hang, viewGroup, false);
             viewHolder = new ViewHolder();
@@ -58,7 +54,7 @@ class HoaDonChiTietAdaper extends BaseAdapter {
         viewHolder.tvSoluong.setText(""+hoaDonChiTiet.getGioHang().getSoLuong());
         return view;
     }
-   private class ViewHolder{
+   private static class ViewHolder{
        TextView tvSanPham,tvSoluong,tvGia;
    }
 }

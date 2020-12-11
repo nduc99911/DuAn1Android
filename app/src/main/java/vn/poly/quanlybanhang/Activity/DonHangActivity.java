@@ -5,23 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.InputFilter;
-import android.text.InputType;
 import android.text.TextWatcher;
-import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -31,7 +23,6 @@ import android.widget.ToggleButton;
 
 import vn.poly.quanlybanhang.Adapter.DonHangAdapter;
 import vn.poly.quanlybanhang.Adapter.KhachHangAdapter;
-import vn.poly.quanlybanhang.Adapter.SanPhamAdapter;
 import vn.poly.quanlybanhang.Database.HoaDonChiTietDAO;
 import vn.poly.quanlybanhang.Database.HoaDonDAO;
 import vn.poly.quanlybanhang.Database.KhachHangDAO;
@@ -44,18 +35,12 @@ import vn.poly.quanlybanhang.Model.SanPham;
 
 import com.example.duan1android.R;
 
-import java.sql.Savepoint;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 
 public class DonHangActivity extends AppCompatActivity {
@@ -63,8 +48,7 @@ public class DonHangActivity extends AppCompatActivity {
     ListView lvList;
     EditText edMaDonHang;
     TextView tvChietKhau, tvTongTien, tvKhachHang;
-    ImageView imgChietKhau, imgXoaDonHang, imgChonKhachHang;
-    Button btnThanhToan;
+    ImageView imgChietKhau, imgXoaDonHang;
     DonHangAdapter donHangAdapter;
     ToggleButton toggleButton;
     EditText edChietKhau;
@@ -102,24 +86,21 @@ public class DonHangActivity extends AppCompatActivity {
         tvChietKhau = findViewById(R.id.tvChietKhau_GH);
         tvTongTien = findViewById(R.id.tvTongTien_GH);
         imgChietKhau = findViewById(R.id.imgChietKhau_GH);
-        btnThanhToan = findViewById(R.id.btnThanhToan_GH);
         imgXoaDonHang = findViewById(R.id.imgxoaDonHang);
-        imgChonKhachHang = findViewById(R.id.imgChonKhachHang);
         hoaDonChiTietDAO = new HoaDonChiTietDAO(this);
         khachHangDAO = new KhachHangDAO(this);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            default:
-                break;
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 
     private void addChietKhau() {
         imgChietKhau.setOnClickListener(new View.OnClickListener() {
@@ -199,6 +180,7 @@ public class DonHangActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
                         MatHangActivity.gioHangList.clear();
+                        tvTongTien.setText("0");
                         DonHangAdapter donHangAdapter = new DonHangAdapter(DonHangActivity.this, MatHangActivity.gioHangList);
                         lvList.setAdapter(donHangAdapter);
                     }
@@ -228,10 +210,10 @@ public class DonHangActivity extends AppCompatActivity {
         final Dialog dialog = new Dialog(DonHangActivity.this, android.R.style.Theme);
         dialog.setContentView(R.layout.dialog_thanh_toan);
         dialog.show();
-        final TextView tvTongTien = (TextView) dialog.findViewById(R.id.tvTongTien);
-        final EditText edTienTra = (EditText) dialog.findViewById(R.id.edThanhToan);
-        final TextView tvTienTra = (TextView) dialog.findViewById(R.id.tvTienTra);
-        Button btnThanhToan = (Button) dialog.findViewById(R.id.btnThanhToan);
+        final TextView tvTongTien = dialog.findViewById(R.id.tvTongTien);
+        final EditText edTienTra = dialog.findViewById(R.id.edThanhToan);
+        final TextView tvTienTra = dialog.findViewById(R.id.tvTienTra);
+        Button btnThanhToan = dialog.findViewById(R.id.btnThanhToan);
         Button btnHuy = dialog.findViewById(R.id.btnHuyCK);
         final Date c = Calendar.getInstance().getTime();
         @SuppressLint("SimpleDateFormat") final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
@@ -254,7 +236,7 @@ public class DonHangActivity extends AppCompatActivity {
                     if (chk1 > 0) {
                         //cập nhật lại số lượng đã bán
                         SanPhamDAO sanPhamDAO = new SanPhamDAO(getApplicationContext());
-                        List<SanPham> sanPhamList = new ArrayList<>();
+                        List<SanPham> sanPhamList;
                         sanPhamList = sanPhamDAO.getAllSanPham();
                         int soluong;
                         for (int i = 0; i < MatHangActivity.gioHangList.size(); i++) {
@@ -284,7 +266,7 @@ public class DonHangActivity extends AppCompatActivity {
                             hoaDon.setTrangThai(trangthai);
                             hoaDonDAO.updateHoaDon(hoaDon, hoaDon.getMaHD());
                             try {
-                                if (khachHang.equalsIgnoreCase("Khách lẻ") == false) {
+                                if (!khachHang.equalsIgnoreCase("Khách lẻ")) {
                                     double tien = Double.parseDouble(edTienTra.getText().toString());
                                     double tienNo = KH.getTienNo();
                                     if (tienFinal - tien > 0) {
@@ -293,7 +275,7 @@ public class DonHangActivity extends AppCompatActivity {
                                     double tienDaMua = KH.getTienDaMua() + tongTien;
                                     khachHangDAO.updateTien(tienNo, tienDaMua, KH.getSoDienThoai());
                                 }
-                            }catch (Exception e){
+                            }catch (Exception ignored){
 
                             }
                             Intent intent = new Intent(DonHangActivity.this, MatHangActivity.class);
@@ -326,7 +308,7 @@ public class DonHangActivity extends AppCompatActivity {
                 try {
                     int tientra = Integer.parseInt(edTienTra.getText().toString()) - tienFinal;
                     tvTienTra.setText("" + tientra);
-                } catch (Exception e) {
+                } catch (Exception ignored) {
 
                 }
             }
@@ -344,7 +326,7 @@ public class DonHangActivity extends AppCompatActivity {
         final Dialog dialog = new Dialog(DonHangActivity.this, android.R.style.Theme_NoTitleBar_Fullscreen);
         dialog.setContentView(R.layout.dialog_khach_hang);
         dialog.show();
-        final ListView listView = (ListView) dialog.findViewById(R.id.lvKhachHang);
+        final ListView listView = dialog.findViewById(R.id.lvKhachHang);
         KhachHangDAO khachHangDAO = new KhachHangDAO(this);
         listKH = new ArrayList<>();
         listKH = khachHangDAO.getAllKhachHang();

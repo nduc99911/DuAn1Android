@@ -25,8 +25,9 @@ public class HoaDonDAO {
             "   tongTien number ," +
             "   trangThai text)";
     @SuppressLint("SimpleDateFormat")
+    final
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    private SQLiteDatabase sqLiteDatabase;
+    private final SQLiteDatabase sqLiteDatabase;
 
     public HoaDonDAO(Context context) {
         Mydatabase mydatabase = new Mydatabase(context);
@@ -57,7 +58,7 @@ public class HoaDonDAO {
         contentValues.put("tongTien", hoaDon.getTongTien());
         contentValues.put("trangThai", hoaDon.getTrangThai());
         return sqLiteDatabase.update(TABLE_NAME, contentValues, "maHoaDon = ?", new String[]{ma});
-    }
+}
 
     public long deleteHoaDon(String ma) {
         return sqLiteDatabase.delete(TABLE_NAME, "maHoaDon = ?", new String[]{ma});
@@ -69,7 +70,7 @@ public class HoaDonDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            while (cursor.isAfterLast() == false) {
+            while (!cursor.isAfterLast()) {
                 String maHD = cursor.getString(0);
                 String ngayBan = cursor.getString(1);
                 String tenKhach = cursor.getString(2);
@@ -92,7 +93,7 @@ public class HoaDonDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            while (cursor.isAfterLast() == false) {
+            while (!cursor.isAfterLast()) {
                 String maHD = cursor.getString(0);
                 String ngayBan = cursor.getString(1);
                 String tenKhach = cursor.getString(2);
@@ -129,7 +130,7 @@ public class HoaDonDAO {
     }
 
     public double getDoanhThu(String time) {
-        String query = null;
+        String query;
         if (time.equalsIgnoreCase("Tất Cả")) {
             query = "Select SUM(tongTien) from " + TABLE_NAME;
         } else if (time.equalsIgnoreCase("Hôm nay")) {
@@ -160,7 +161,7 @@ public class HoaDonDAO {
     }
 
     public int getSoHoaDon(String time) {
-        String query = null;
+        String query;
         if (time.equalsIgnoreCase("Tất Cả")) {
             query = "Select maHoaDon from " + TABLE_NAME;
         } else if (time.equalsIgnoreCase("Hôm nay")) {
@@ -191,7 +192,7 @@ public class HoaDonDAO {
 
     public int getSoTienVon(String time) {
         //String query = "SELECT SUM(SanPham.gianhap*HoaDonChiTiet.soluong) as tienVon from SanPham INNER JOIN HoaDonChiTiet ON SanPham.maSanPham = HoaDonChiTiet.masanpham";
-        String query = null;
+        String query;
         if (time.equalsIgnoreCase("Tất Cả")) {
             query = "SELECT SUM(SanPham.gianhap*HoaDonChiTiet.soluong) as tienVon from SanPham INNER JOIN HoaDonChiTiet" +
                     " ON SanPham.maSanPham = HoaDonChiTiet.maSanPham JOIN HoaDon ON HoaDonChiTiet.maHoaDon = HoaDon.maHoaDon";
@@ -235,7 +236,7 @@ public class HoaDonDAO {
         String sSQL = "SELECT SUM(tongTien)  from HoaDon where strftime('%m',ngayBan)='" + thang + "' ";
         Cursor c = sqLiteDatabase.rawQuery(sSQL, null);
         c.moveToFirst();
-        while (c.isAfterLast() == false) {
+        while (!c.isAfterLast()) {
             doanhThu += c.getDouble(0);
             c.moveToNext();
         }
@@ -257,7 +258,7 @@ public class HoaDonDAO {
             query = "Select * from " + TABLE_NAME + " where  trangThai like 'Đã Thanh Toán'";
         }
         //Hôm nay
-        if (time == "Hôm nay" && trangthaihd == "Tất cả") {
+        if (time.equalsIgnoreCase("Hôm nay") && trangthaihd.equalsIgnoreCase("Tất cả")) {
             query = "Select * from " + TABLE_NAME + " where strftime('%d',ngayBan) = strftime('%d','now') ";
         }
         if (time.equalsIgnoreCase("Hôm nay") && trangthaihd.equalsIgnoreCase("Chưa thanh Toán")) {
@@ -358,7 +359,7 @@ public class HoaDonDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            while (cursor.isAfterLast() == false) {
+            while (!cursor.isAfterLast()) {
                 String maHD = cursor.getString(0);
                 String ngayBan = cursor.getString(1);
                 String tenKhach = cursor.getString(2);

@@ -16,7 +16,6 @@ import com.example.duan1android.R;
 
 public class ThemLoaiSanPham extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
-    ImageView imgThemLoaiSanPhamLuu;
     EditText edMa,edTen;
     LoaiSanPhamDAO loaiSanPhamDAO;
     @Override
@@ -30,17 +29,13 @@ public class ThemLoaiSanPham extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            default:
-                break;
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
     public void anhXaView() {
-        imgThemLoaiSanPhamLuu=findViewById(R.id.imgThemLoaiSanPhamLuu);
         edMa = findViewById(R.id.edSuaMaMatHang);
         edTen = findViewById(R.id.edThemTenMatHang);
         loaiSanPhamDAO = new LoaiSanPhamDAO(this);

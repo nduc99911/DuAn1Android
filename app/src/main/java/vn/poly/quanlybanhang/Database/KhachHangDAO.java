@@ -22,7 +22,7 @@ class KhachHangDAO {
             "   tienDaMua number" +
             "   )";
 
-    private SQLiteDatabase sqLiteDatabase;
+    private final SQLiteDatabase sqLiteDatabase;
 
     public KhachHangDAO(Context context) {
         Mydatabase mydatabase = new Mydatabase(context);
@@ -57,11 +57,7 @@ class KhachHangDAO {
         return sqLiteDatabase.update(TABLE_NAME, contentValues, "soDienThoai = ?", new String[]{sdt});
     }
 
-    public long updateTienDaMua(KhachHang khachHang, String sdt) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("tienDaMua", khachHang.getTienDaMua());
-        return sqLiteDatabase.update(TABLE_NAME, contentValues, "soDienThoai = ?", new String[]{sdt});
-    }
+
     public long updateTien(double tienNo,double tienMua,String sdt){
         ContentValues contentValues = new ContentValues();
         contentValues.put("tienNo",tienNo);
@@ -78,7 +74,7 @@ class KhachHangDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            while (cursor.isAfterLast() == false) {
+            while (!cursor.isAfterLast()) {
                 String ten = cursor.getString(1);
                 String soDienThoai = cursor.getString(0);
                 String email = cursor.getString(2);
@@ -118,7 +114,7 @@ class KhachHangDAO {
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            while (cursor.isAfterLast()==false) {
+            while (!cursor.isAfterLast()) {
                 String ten = cursor.getString(1);
                 String soDienThoai = cursor.getString(0);
                 String email = cursor.getString(2);

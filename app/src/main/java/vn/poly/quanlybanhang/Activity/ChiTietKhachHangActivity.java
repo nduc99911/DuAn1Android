@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,8 +25,8 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
     KhachHangDAO khachHangDAO;
     Button btnUpdate, btnDelete, btnSuaNo;
     KhachHang khachHang;
-    Context context = this;
-    EditText edTen, edSoDienThoai, edEmail, edDiaChi, edTienNo, edTienDaMua;
+    final Context context = this;
+    EditText edTen, edSoDienThoai, edEmail, edDiaChi, edTienNo;
     ImageView imgLuu;
     String phone;
 
@@ -58,7 +57,7 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
                             Toast.makeText(ChiTietKhachHangActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(ChiTietKhachHangActivity.this, KhachHangActivity.class));
                             dialog.dismiss();
-                            startActivity(new Intent(ChiTietKhachHangActivity.this,KhachHangActivity.class));
+                            startActivity(new Intent(ChiTietKhachHangActivity.this, KhachHangActivity.class));
                         } else {
                             Toast.makeText(ChiTietKhachHangActivity.this, "Xóa thất bại", Toast.LENGTH_SHORT).show();
                         }
@@ -104,7 +103,7 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
                             khachHangDAO.updateKhacHang(khachHang, phone);
                             Toast.makeText(context, "Lưu thành công", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
-                            startActivity(new Intent(ChiTietKhachHangActivity.this,KhachHangActivity.class));
+                            startActivity(new Intent(ChiTietKhachHangActivity.this, KhachHangActivity.class));
                         } catch (Exception e) {
                             Toast.makeText(context, "Lưu thất bại , số điện thoại này đã tồn tại", Toast.LENGTH_SHORT).show();
                         }
@@ -121,7 +120,7 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
                 dialog.show();
                 Button btnLuu = dialog.findViewById(R.id.btnLuuNo);
                 Button btnnHuy = dialog.findViewById(R.id.btnHuySuaNo);
-                final EditText edSuaNo = (EditText) dialog.findViewById(R.id.edSuaTienNoRieng);
+                final EditText edSuaNo = dialog.findViewById(R.id.edSuaTienNoRieng);
                 btnnHuy.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -132,8 +131,8 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         String no = edSuaNo.getText().toString();
-                        if(no.equals("")){
-                            Toast.makeText(ChiTietKhachHangActivity.this,"Vui lòng nhập số tiền ",Toast.LENGTH_SHORT).show();
+                        if (no.equals("")) {
+                            Toast.makeText(ChiTietKhachHangActivity.this, "Vui lòng nhập số tiền ", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         khachHang.setTienNo(Double.parseDouble(no));
@@ -165,12 +164,11 @@ public class ChiTietKhachHangActivity extends AppCompatActivity {
     }
 
     private void anhXaViewDia(Dialog dialog) {
-        edTen = (EditText) dialog.findViewById(R.id.edSuaHoTenKH);
-        edSoDienThoai = (EditText) dialog.findViewById(R.id.edSuaSoDienThoaiKH);
-        edEmail = (EditText) dialog.findViewById(R.id.edSuaEmailKH);
-        edDiaChi = (EditText) dialog.findViewById(R.id.edSuaDiaChiKH);
-        edTienNo = (EditText) dialog.findViewById(R.id.edSuaTienNo);
-        edTienDaMua = (EditText) dialog.findViewById(R.id.edSuaTienDaMua);
+        edTen = dialog.findViewById(R.id.edSuaHoTenKH);
+        edSoDienThoai = dialog.findViewById(R.id.edSuaSoDienThoaiKH);
+        edEmail = dialog.findViewById(R.id.edSuaEmailKH);
+        edDiaChi = dialog.findViewById(R.id.edSuaDiaChiKH);
+        edTienNo = dialog.findViewById(R.id.edSuaTienNo);
         imgLuu = dialog.findViewById(R.id.imgLuuKH);
     }
 

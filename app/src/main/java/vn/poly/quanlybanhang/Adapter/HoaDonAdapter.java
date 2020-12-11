@@ -16,9 +16,10 @@ import java.util.List;
 
 public
 class HoaDonAdapter extends BaseAdapter {
-    Context context;
+    final Context context;
     List<HoaDon> list;
     @SuppressLint("SimpleDateFormat")
+    final
     SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-yyyy");
     public HoaDonAdapter(Context context, List<HoaDon> list) {
         this.context = context;
@@ -42,12 +43,11 @@ class HoaDonAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if(view == null){
             view = LayoutInflater.from(context).inflate(R.layout.item_hoa_don, viewGroup, false);
             viewHolder = new ViewHolder();
             viewHolder.tvNgayMua = view.findViewById(R.id.tvNgayMua);
-            viewHolder.tvShowHDCT = view.findViewById(R.id.tvShowHDCT);
             viewHolder.tvTongTien = view.findViewById(R.id.tvTongTien);
             view.setTag(viewHolder);
         }else {
@@ -58,14 +58,11 @@ class HoaDonAdapter extends BaseAdapter {
         viewHolder.tvTongTien.setText("Mã Hóa Đơn : "+hoaDon.getMaHD());
         return view;
     }
-    private class ViewHolder{
+    private static class ViewHolder{
         TextView tvNgayMua, tvTongTien,tvShowHDCT;
 
     }
-    @Override
-    public void notifyDataSetChanged() {
-        super.notifyDataSetChanged();
-    }
+
     public void changeDataSet(List<HoaDon> arrHoaDon){
         this.list=arrHoaDon;
         notifyDataSetChanged();

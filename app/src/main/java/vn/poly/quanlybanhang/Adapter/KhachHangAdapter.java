@@ -15,8 +15,8 @@ import java.util.List;
 
 public
 class KhachHangAdapter extends BaseAdapter {
-    Context context;
-    List<KhachHang> list;
+    final Context context;
+    final List<KhachHang> list;
 
     public KhachHangAdapter(Context context, List<KhachHang> list) {
         this.context = context;
@@ -40,7 +40,7 @@ class KhachHangAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if(view == null){
             viewHolder = new ViewHolder();
             view = LayoutInflater.from(context).inflate(R.layout.item_thiet_lap_khach_hang, viewGroup, false);
@@ -57,7 +57,7 @@ class KhachHangAdapter extends BaseAdapter {
         viewHolder.imgHinhAnh.setImageResource(R.drawable.profile);
         return view;
     }
-    private class ViewHolder{
+    private static class ViewHolder{
         ImageView imgHinhAnh;
         TextView tvTen,tvSDT;
     }

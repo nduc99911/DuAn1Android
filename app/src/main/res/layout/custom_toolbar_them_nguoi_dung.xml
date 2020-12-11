@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar
-android:id="@+id/toolbar_them_nguoi_dung"
+<androidx.appcompat.widget.Toolbar xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar_them_nguoi_dung"
 xmlns:android = "http://schemas.android.com/apk/res/android"
 android:layout_height ="60dp"
 android:background = "#2c3c49"
@@ -13,7 +13,6 @@ android:layout_width="match_parent">
 
 
     <TextView
-        android:id="@+id/toolbar_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
@@ -24,13 +23,13 @@ android:layout_width="match_parent">
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/imgThemNguoiDungLuu"
         android:layout_width="0dp"
         android:layout_height="36dp"
         android:layout_weight="1"
         android:layout_gravity="center_vertical"
         android:onClick="ThemNguoiDungLuu"
-        android:src="@drawable/ic_checked" />
+        android:src="@drawable/ic_checked"
+        tools:ignore="ContentDescription" />
 </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>

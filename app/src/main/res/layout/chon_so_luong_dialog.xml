@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@drawable/anh"
     android:layout_height="match_parent"
@@ -15,11 +16,11 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView3"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/ic_sanpham1" />
+            android:src="@drawable/ic_sanpham1"
+            tools:ignore="ContentDescription" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,7 +54,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="6dp"
-                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <TextView
@@ -77,7 +77,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@drawable/ic_tru" />
+                        android:src="@drawable/ic_tru"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/tvSoLuongChonMua"
@@ -94,7 +95,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@drawable/ic_plus" />
+                        android:src="@drawable/ic_plus"
+                        tools:ignore="ContentDescription" />
                 </LinearLayout>
             </LinearLayout>
 

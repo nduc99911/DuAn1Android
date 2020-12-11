@@ -24,10 +24,10 @@
             android:layout_marginTop="0dp"
 
             android:contentDescription="TODO"
-            android:src="@drawable/shoppingbasket" />
+            android:src="@drawable/shoppingbasket"
+            tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/toolbar_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -51,7 +51,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/border_edt"
                 android:src="@drawable/shoppingcart"
-                tools:ignore="MissingConstraints"
+                tools:ignore="ContentDescription,MissingConstraints"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="0dp"
                 android:contentDescription="TODO" />

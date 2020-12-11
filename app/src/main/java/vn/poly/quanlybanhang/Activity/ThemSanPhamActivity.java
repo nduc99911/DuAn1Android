@@ -47,7 +47,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
     SanPhamDAO sanPhamDAO;
     LinearLayout lnThem;
     byte[] hinhAnh;
-    int REQUEST_CODE_FOLDER = 456;
+    final int REQUEST_CODE_FOLDER = 456;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +108,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == REQUEST_CODE_FOLDER && resultCode == RESULT_OK && data != null) {
             Uri uri = data.getData();
-            InputStream inputStream = null;
+            InputStream inputStream;
             try {
                 inputStream = getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
@@ -124,18 +124,16 @@ public class ThemSanPhamActivity extends AppCompatActivity {
     //sự kiên action bar
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            default:
-                break;
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onBackPressed() {
+        finish();
         startActivity(new Intent(ThemSanPhamActivity.this, SanPhamActivity.class));
     }
 
@@ -196,7 +194,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
                 resized.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 hinhAnh = stream.toByteArray();
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
         SanPham sanPham = new SanPham(ma, theLoai, ten, donViTinh, Integer.parseInt(soLuong), Double.parseDouble(giaNhap), Double.parseDouble(giaBan), hinhAnh);
@@ -212,17 +210,17 @@ public class ThemSanPhamActivity extends AppCompatActivity {
 
     }
 
-    private byte[] imagemTratada(byte[] imagem_img) {
-        while (imagem_img.length > 2000) {
-            Bitmap bitmap = BitmapFactory.decodeByteArray(imagem_img, 0, imagem_img.length);
-            Bitmap resized = Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * 0.8), (int) (bitmap.getHeight() * 0.8), true);
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            resized.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            imagem_img = stream.toByteArray();
-        }
-        return imagem_img;
-
-    }
+//    private byte[] imagemTratada(byte[] imagem_img) {
+//        while (imagem_img.length > 2000) {
+//            Bitmap bitmap = BitmapFactory.decodeByteArray(imagem_img, 0, imagem_img.length);
+//            Bitmap resized = Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * 0.8), (int) (bitmap.getHeight() * 0.8), true);
+//            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//            resized.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//            imagem_img = stream.toByteArray();
+//        }
+//        return imagem_img;
+//
+//    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -231,6 +229,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
+                //noinspection deprecation
                 startActivityForResult(intent, REQUEST_CODE_FOLDER);
             }
         }

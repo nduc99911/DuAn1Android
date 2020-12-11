@@ -23,8 +23,8 @@ import java.util.List;
 
 public
 class DonViTinhAdapter extends BaseAdapter {
-    Context context;
-    List<DonViTinh> list;
+    final Context context;
+    final List<DonViTinh> list;
     DonViTinhDAO donViTinhDAO;
     Dialog dialog;
     EditText edSua;
@@ -51,7 +51,7 @@ class DonViTinhAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
-    ViewHolder viewHolder = null;
+    ViewHolder viewHolder;
         if(view==null) {
             view = LayoutInflater.from(context).inflate(R.layout.item_loai_san_pham, viewGroup, false);
             viewHolder = new ViewHolder();
@@ -99,7 +99,7 @@ class DonViTinhAdapter extends BaseAdapter {
                 dialog = new Dialog(context,android.R.style.Theme_Black_NoTitleBar_Fullscreen);
                 dialog.setContentView(R.layout.activity_sua_don_vi_tinh);
                 dialog.show();
-                edSua = (EditText) dialog.findViewById(R.id.edSuaDonViTinh);
+                edSua = dialog.findViewById(R.id.edSuaDonViTinh);
                 edSua.setText(""+list.get(i).getDonViTinh());
                 ImageView imgLuu = dialog.findViewById(R.id.imgLuuThayDoiDV);
                 imgLuu.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +120,7 @@ class DonViTinhAdapter extends BaseAdapter {
         });
         return view;
     }
-    private class ViewHolder{
+    private static class ViewHolder{
         TextView tvTen;
         ImageView imgDelete,imgUpdate;
     }

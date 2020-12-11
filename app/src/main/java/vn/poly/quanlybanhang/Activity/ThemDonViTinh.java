@@ -17,7 +17,6 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class ThemDonViTinh extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
-    ImageView imgThemDonViTinhLuu;
     EditText edThemDonViTinh;
     LinearLayout linearLayout;
     @Override
@@ -30,7 +29,6 @@ public class ThemDonViTinh extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     public void anhXaView() {
-        imgThemDonViTinhLuu=findViewById(R.id.imgThemDonViTinhLuu);
         edThemDonViTinh=findViewById(R.id.edThemDonViTinh);
         linearLayout=findViewById(R.id.lnThemDonViTinh);
 
@@ -57,12 +55,9 @@ public class ThemDonViTinh extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            default:
-                break;
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

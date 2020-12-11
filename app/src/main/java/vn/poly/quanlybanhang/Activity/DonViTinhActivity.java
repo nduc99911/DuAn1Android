@@ -19,7 +19,6 @@ import java.util.List;
 
 public class DonViTinhActivity extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
-    ImageView imgDonViTinhThem;
     ListView lvList;
     DonViTinhAdapter donViTinhAdapter;
     DonViTinhDAO donViTinhDAO;
@@ -38,17 +37,13 @@ public class DonViTinhActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            default:
-                break;
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
     public void anhXaView() {
-        imgDonViTinhThem=findViewById(R.id.imgDonViTinhThem);
         lvList = findViewById(R.id.lvDonViTinh);
         donViTinhDAO = new DonViTinhDAO(this);
         list = new ArrayList<>();

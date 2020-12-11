@@ -23,8 +23,8 @@ import java.util.List;
 
 public
 class LoaiSanPhamAdapter extends BaseAdapter {
-    Context context;
-    List<LoaiSanPham> list;
+    final Context context;
+    final List<LoaiSanPham> list;
     EditText edMa, edTen;
 
     public LoaiSanPhamAdapter(Context context, List<LoaiSanPham> list) {
@@ -50,7 +50,7 @@ class LoaiSanPhamAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.item_loai_san_pham, viewGroup, false);
             viewHolder = new ViewHolder();
@@ -97,11 +97,11 @@ class LoaiSanPhamAdapter extends BaseAdapter {
                 final Dialog dialog = new Dialog(context, android.R.style.Theme_NoTitleBar_Fullscreen);
                 dialog.setContentView(R.layout.activity_sua_loai_san_pham);
                 dialog.show();
-                edMa = (EditText) dialog.findViewById(R.id.edSuaMaMatHang);
-                edTen = (EditText) dialog.findViewById(R.id.edSuaTenMatHang);
+                edMa = dialog.findViewById(R.id.edSuaMaMatHang);
+                edTen = dialog.findViewById(R.id.edSuaTenMatHang);
                 edMa.setText("" + list.get(i).getMaLoai());
                 edTen.setText("" + list.get(i).getTenLoai());
-                ImageView imgLuu = (ImageView) dialog.findViewById(R.id.imgLuuSuaLSP);
+                ImageView imgLuu = dialog.findViewById(R.id.imgLuuSuaLSP);
                 imgLuu.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -128,7 +128,7 @@ class LoaiSanPhamAdapter extends BaseAdapter {
         return view;
     }
 
-    private class ViewHolder {
+    private static class ViewHolder {
         TextView tvTen;
         ImageView imgDelete, imgUpdate;
     }

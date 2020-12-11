@@ -4,25 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import vn.poly.quanlybanhang.GioiThieuActivity;
 import com.example.duan1android.R;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 public class SplashScreenActivity extends AppCompatActivity {
-    LinearLayout linearLayout;
     private ImageView imglogo,fly;
 
     TextView tvLoading;
@@ -31,9 +22,8 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-linearLayout=findViewById(R.id.splashScreen);
         setContentView(R.layout.activity_splash_screen);
-        imglogo = (ImageView) findViewById(R.id.imageSplashScrenn);
+        imglogo = findViewById(R.id.imageSplashScrenn);
         fly=findViewById(R.id.imgFlySplashScrenn);
         tvLoading= findViewById(R.id.tvSplashScren);
         startAnimation();

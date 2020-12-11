@@ -146,7 +146,7 @@ public class FragmentThem extends Fragment {
         imgPhanLoai = view.findViewById(R.id.imgPhanLoai);
         imgDonViTinh = view.findViewById(R.id.imgDonViTinh);
         imgNguoiDung = view.findViewById(R.id.imgNguoiDung);
-        toolbar = (Toolbar) view.findViewById(R.id.toolbar_thong_tin);
+        toolbar = view.findViewById(R.id.toolbar_thong_tin);
         drawerLayout = view.findViewById(R.id.drawerLayoutThem);
         navigationView = view.findViewById(R.id.NavigationViewThem);
     }

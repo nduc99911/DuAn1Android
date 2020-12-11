@@ -11,9 +11,5 @@ public class DonViTinh {
         return donViTinh;
     }
 
-    public void setDonViTinh(String donViTinh) {
-        this.donViTinh = donViTinh;
-    }
-
 
 }

@@ -5,67 +5,52 @@
     android:background="@drawable/anh"
     android:orientation="vertical">
 
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_margin="30dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/custom_toggle_button"
+        android:checked="true"
+        android:textOff=""
+        android:textOn="" />
+
+    <EditText
+        android:id="@+id/edChietKhau"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/border_edt"
+        android:hint="Nhập chiết khấu"
+        android:inputType="number" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnOkCK"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_button2"
+            android:text="Xác nhận" />
 
-            <ToggleButton
-                android:id="@+id/toggleButton"
-                android:layout_width="240dp"
-                android:layout_height="60dp"
-                android:checked="true"
-                android:background="@drawable/custom_toggle_button"
-                android:textOff=""
-                android:textOn=""
-                android:layout_margin="30dp"
-                />
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/edChietKhau"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="20dp"
-            android:inputType="number"
-            android:background="@drawable/border_edt"
-            android:hint="Nhập chiết khấu" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnHuyCK"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnOkCK"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/border_button2"
-                android:text="Xác nhận" />
-
-            <Button
-                android:id="@+id/btnHuyCK"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/border_button"
-                android:text="Hủy" />
-        </LinearLayout>
-
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_button"
+            android:text="Hủy" />
     </LinearLayout>
-
 
 </LinearLayout>

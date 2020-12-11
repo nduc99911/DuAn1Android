@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar
+<androidx.appcompat.widget.Toolbar xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar_nguoi_dung"
     xmlns:android = "http://schemas.android.com/apk/res/android"
     android:layout_height ="60dp"
@@ -13,7 +13,6 @@
 
 
         <TextView
-            android:id="@+id/toolbar_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
@@ -26,11 +25,11 @@
 
         <ImageView
             android:onClick="NguoiDungThem"
-            android:id="@+id/imgNguoiDungThem"
             android:layout_width="0dp"
             android:layout_height="36dp"
             android:layout_weight="1"
-            android:src="@drawable/ic_follow" />
+            android:src="@drawable/ic_follow"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
 </androidx.appcompat.widget.Toolbar>

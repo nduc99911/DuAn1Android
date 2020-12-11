@@ -20,7 +20,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView13"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -50,7 +49,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView17"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -74,13 +72,12 @@
             tools:ignore="TextViewEdits" />
 
         <ImageView
-            android:id="@+id/imgChonKhachHang"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
             android:onClick="ChonKhachHang"
             app:srcCompat="@drawable/ic_button"
-            tools:ignore="OnClick,VectorDrawableCompat"
+            tools:ignore="ContentDescription,OnClick,VectorDrawableCompat"
             android:contentDescription="TODO" />
     </LinearLayout>
 
@@ -92,7 +89,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView21"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -103,7 +99,6 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView23"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -114,7 +109,6 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView24"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -151,7 +145,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView19"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
@@ -176,7 +169,8 @@
                     android:layout_weight="1"
                     android:paddingTop="5dp"
                     android:src="@drawable/ic_plus"
-                    android:contentDescription="TODO" />
+                    android:contentDescription="TODO"
+                    tools:ignore="ContentDescription" />
             </LinearLayout>
 
             <LinearLayout
@@ -188,7 +182,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView22"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -211,7 +204,6 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/btnThanhToan_GH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"

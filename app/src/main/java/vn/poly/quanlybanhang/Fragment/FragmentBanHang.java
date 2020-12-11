@@ -54,7 +54,7 @@ public class FragmentBanHang extends Fragment {
     EditText edTimKiem;
     ListView lvList;
     Spinner spnLocDanhSach;
-    String[] danhSachLC = {"Theo tên", "Giá ↑", "Giá ↓"};
+    final String[] danhSachLC = {"Theo tên", "Giá ↑", "Giá ↓"};
     ImageView imageView;
     List<SanPham> list;
     SanPhamDAO sanPhamDAO;
@@ -68,7 +68,7 @@ public class FragmentBanHang extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ban_hang, container, false);
-        toolbar = (Toolbar) view.findViewById(R.id.toolbar_ban_hang);
+        toolbar = view.findViewById(R.id.toolbar_ban_hang);
         imageView = view.findViewById(R.id.imgBanHang);
         navigationView = view.findViewById(R.id.NavigationViewBanHang);
         drawerLayout = view.findViewById(R.id.drawerLayoutBanHang);
@@ -127,11 +127,21 @@ public class FragmentBanHang extends Fragment {
         doDuLieuTheoSpinner();
         timKiem();
         themSanPhamVaoGio();
+
+    }
+
+
+    @Override
+    public void onResume() {
         if(MatHangActivity.gioHangList.size()<=0){
             tong = 0;
             soLuong = 0;
+            tvSoLuongBanHang.setVisibility(View.INVISIBLE);
+            doDuLieu();
         }
+        super.onResume();
     }
+
     private void themSanPhamVaoGio(){
         lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -164,7 +174,6 @@ public class FragmentBanHang extends Fragment {
                             soLuong=list.get(i).getSoLuong();
                             tvSoLuongMua.setText(""+soLuong);
                             Toast.makeText(getContext(),"Đã đạt giới hạn số lượng",Toast.LENGTH_SHORT).show();
-                            return;
                         }else {
                             soLuong++;
                             tvSoLuongMua.setText("" + soLuong);
@@ -199,12 +208,12 @@ public class FragmentBanHang extends Fragment {
                             boolean chk = false;
                             if(MatHangActivity.gioHangList.size()>0){
                                 for(int j = 0;j<MatHangActivity.gioHangList.size();j++){
-                                    if(MatHangActivity.gioHangList.get(j).getMa() == list.get(i).getMaSanPham()){
+                                    if(MatHangActivity.gioHangList.get(j).getMa().equals(list.get(i).getMaSanPham())){
                                         MatHangActivity.gioHangList.get(j).setSoLuong(MatHangActivity.gioHangList.get(j).getSoLuong()+soLuong);
                                         chk=true;
                                     }
                                 }
-                                if(chk==false){
+                                if(!chk){
                                     SanPham sanPham = list.get(i);
                                     GioHang gioHang = new GioHang();
                                     gioHang.setMa(sanPham.getMaSanPham());

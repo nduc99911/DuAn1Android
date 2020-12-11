@@ -26,7 +26,6 @@ import java.util.List;
 
 public class KhachHangActivity extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
-    ImageView imgNguoiDungThem;
     EditText edTimKiem;
     ListView lvList;
     List<KhachHang> list;
@@ -91,7 +90,6 @@ public class KhachHangActivity extends AppCompatActivity {
     }
 
     public void anhXaView() {
-        imgNguoiDungThem = findViewById(R.id.imgNguoiDungThem);
         edTimKiem = findViewById(R.id.edTimKiemNguoiDung);
         lvList = findViewById(R.id.lvNguoiDung);
         list = new ArrayList<>();
@@ -101,14 +99,9 @@ public class KhachHangActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-
-            default:
-                break;
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
