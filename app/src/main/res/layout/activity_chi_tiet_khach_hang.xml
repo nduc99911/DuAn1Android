@@ -101,7 +101,7 @@
             android:layout_weight="1"
             android:background="@drawable/border_button2"
             android:text="Chỉnh sửa"
-            tools:ignore="ButtonStyle"></Button>
+            tools:ignore="ButtonStyle" />
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -109,6 +109,7 @@
             android:layout_margin="16dp"
             android:background="@drawable/border_button"
             android:text="Xóa Khách Hàng"
-            android:id="@+id/btnXoaKH"/>
+            android:id="@+id/btnXoaKH"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 </LinearLayout>

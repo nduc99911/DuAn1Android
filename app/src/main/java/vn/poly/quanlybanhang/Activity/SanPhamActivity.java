@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import vn.poly.quanlybanhang.Adapter.SanPhamAdapter;
 import vn.poly.quanlybanhang.Database.SanPhamDAO;
+import vn.poly.quanlybanhang.Fragment.FragmentBanHang;
+import vn.poly.quanlybanhang.Fragment.FragmentThem;
 import vn.poly.quanlybanhang.Model.SanPham;
 import com.example.duan1android.R;
 import java.util.ArrayList;
@@ -87,6 +89,7 @@ public class SanPhamActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                finish();
                 return true;
             default:
                 break;

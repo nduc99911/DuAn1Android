@@ -21,10 +21,10 @@
         <ImageView
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/border_edt"
-            android:src="@drawable/shoppingbasket"
-            android:contentDescription="TODO" />
+            android:layout_marginTop="0dp"
+
+            android:contentDescription="TODO"
+            android:src="@drawable/shoppingbasket" />
 
         <TextView
             android:id="@+id/toolbar_title"
@@ -36,7 +36,7 @@
             android:fontFamily="@font/black_ops_one"
             android:text="Bán Hàng"
             android:textColor="#FFFFFF"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
         <androidx.constraintlayout.widget.ConstraintLayout

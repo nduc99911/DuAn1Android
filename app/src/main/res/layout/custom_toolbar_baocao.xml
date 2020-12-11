@@ -11,12 +11,13 @@
         android:orientation="horizontal"
         android:layout_centerInParent="true">
         <ImageView
-            android:background="@drawable/border_edt"
+
             android:layout_width = "36dp"
             android:layout_height = "36dp"
-            android:src ="@drawable/icon_toolbar"
+            android:src ="@drawable/ic_profits"
             android:contentDescription="TODO" />
         <TextView
+            android:fontFamily="@font/black_ops_one"
             android:id = "@+id/toolbar_title"
             android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"

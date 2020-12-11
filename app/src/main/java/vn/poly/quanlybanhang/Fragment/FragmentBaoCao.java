@@ -202,7 +202,7 @@ public class FragmentBaoCao extends Fragment {
     }
 
     private void bieuDo() {
-        LineDataSet lineDataSet = new LineDataSet(dataValue(), "Data set 1");
+        LineDataSet lineDataSet = new LineDataSet(dataValue(), "Doanh Thu Theo Tháng");
 //        LineDataSet lineDataSet1=new LineDataSet(dataValue1(),"Data set 2" );
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet);
@@ -210,12 +210,11 @@ public class FragmentBaoCao extends Fragment {
 
         lineDataSet.setLineWidth(3);
         lineDataSet.setColor(Color.RED);
-
+        mChart.animateY(5000);
         mChart.setBackgroundColor(Color.parseColor("#2c3c49"));
         mChart.setNoDataText("No Data");
         mChart.setDrawBorders(true);
         mChart.setBorderColor(Color.parseColor("#37f1ec"));
-
         Description description = new Description();
         description.setText("Tháng");
         description.setTextSize(15);

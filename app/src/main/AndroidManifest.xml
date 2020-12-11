@@ -50,7 +50,6 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name="vn.poly.quanlybanhang.Activity.ThemSanPhamActivity"
-            android:excludeFromRecents="true"
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>
         <activity

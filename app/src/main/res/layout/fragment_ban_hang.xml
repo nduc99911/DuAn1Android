@@ -24,7 +24,7 @@
 
 
             <LinearLayout
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -56,7 +56,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-
+android:layout_marginTop="2dp"
                     android:layout_marginLeft="15dp"
                     android:id="@+id/textView6"
                     android:layout_width="0dp"
@@ -71,7 +71,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:spinnerMode="dialog" />
+                    android:spinnerMode="dropdown" />
             </LinearLayout>
             <FrameLayout
                 android:layout_width="match_parent"

@@ -1,9 +1,11 @@
 package vn.poly.quanlybanhang.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +21,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import vn.poly.quanlybanhang.Adapter.DonHangAdapter;
 import vn.poly.quanlybanhang.Adapter.HoaDonChiTietAdaper;
 import vn.poly.quanlybanhang.Database.HoaDonChiTietDAO;
 import vn.poly.quanlybanhang.Database.HoaDonDAO;
@@ -82,8 +85,27 @@ public class HoaDonChiTietActivity extends AppCompatActivity {
         listView.setAdapter(hoaDonChiTietAdaper);
     }
     public void suaHoaDon(View view){
-        hoaDonDAO =new HoaDonDAO(this);
-        hoaDonDAO.deleteHoaDon(mahoadon);
-        finish();
+        AlertDialog.Builder builder = new AlertDialog.Builder(HoaDonChiTietActivity.this);
+        builder.setTitle("Cảnh báo");
+        builder.setMessage("Bạn có chắc muốn xóa hóa đơn này ?");
+        builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                hoaDonDAO =new HoaDonDAO(HoaDonChiTietActivity.this);
+                hoaDonDAO.deleteHoaDon(mahoadon);
+                finish();
+                Toast.makeText(getApplicationContext(),"Xóa Thành Công",Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("Không đồng ý", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
+
+
 }

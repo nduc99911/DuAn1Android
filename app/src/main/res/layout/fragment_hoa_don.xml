@@ -23,7 +23,7 @@
             <include layout="@layout/custom_toolbar_hoadon" />
 
             <LinearLayout
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -42,18 +42,19 @@
                     android:background="@drawable/background_edit_search"
                     android:padding="8dp"
                     android:hint="Tìm kiếm tại đây"
-                    android:layout_marginBottom="16dp"
+                    android:inputType="text"
                     android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
                 style="@style/margin8"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
                 android:background="@drawable/border_filter"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:layout_marginTop="2dp"
                     android:id="@+id/tvTimeLoaiLoc"
                     style="@style/fontNormal"
                     android:layout_width="wrap_content"

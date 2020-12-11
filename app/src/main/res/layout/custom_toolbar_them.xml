@@ -11,13 +11,14 @@
         android:orientation="horizontal"
         android:layout_centerInParent="true">
         <ImageView
-            android:background="@drawable/border_edt"
+            android:layout_marginRight="10dp"
             android:layout_width = "36dp"
             android:layout_height = "36dp"
-            android:src ="@drawable/icon_toolbar"
+            android:src ="@drawable/ic_distribution"
             />
 
         <TextView
+            android:fontFamily="@font/black_ops_one"
             android:id="@+id/toolbar_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -26,6 +27,7 @@
             android:text="Thông Tin"
             android:textColor="#FFFFFF"
             android:textSize="25dp"
+            android:layout_marginTop="2dp"
             android:textStyle="bold" />
 
 
