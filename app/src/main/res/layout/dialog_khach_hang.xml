@@ -21,15 +21,7 @@
             android:layout_gravity="center"
             android:textColor="#FFF"
             android:text="Chọn khách hàng"/>
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:src="@drawable/ic_plus"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:gravity="right"
-            tools:ignore="ContentDescription" />
+
     </LinearLayout>
     <ListView
         android:id="@+id/lvKhachHang"

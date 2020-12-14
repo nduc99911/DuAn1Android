@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -230,8 +231,13 @@ public class DonHangActivity extends AppCompatActivity {
                 long chk = -1;
                 hoaDonDAO = new HoaDonDAO(getApplicationContext());
                 String mahoadon = edMaDonHang.getText().toString();
+                HoaDon hoaDon = null;
+
                 try {
-                    HoaDon hoaDon = new HoaDon(mahoadon, khachHang, df.parse(formattedDate));
+                    hoaDon = new HoaDon(mahoadon, khachHang, df.parse(formattedDate));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                     long chk1 = hoaDonDAO.addHoaDon(hoaDon);
                     if (chk1 > 0) {
                         //cập nhật lại số lượng đã bán
@@ -240,12 +246,14 @@ public class DonHangActivity extends AppCompatActivity {
                         sanPhamList = sanPhamDAO.getAllSanPham();
                         int soluong;
                         for (int i = 0; i < MatHangActivity.gioHangList.size(); i++) {
-                            if (MatHangActivity.gioHangList.get(i).getMa().equalsIgnoreCase(sanPhamList.get(i).getMaSanPham())) {
-                                HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet(mahoadon, MatHangActivity.gioHangList.get(i));
-                                chk = hoaDonChiTietDAO.addHDCT(hoaDonChiTiet);
-                                if (chk > 0) {
-                                    soluong = sanPhamList.get(i).getSoLuong() - MatHangActivity.gioHangList.get(i).getSoLuong();
-                                    sanPhamDAO.updateSLSanPham(soluong, sanPhamList.get(i).getMaSanPham());
+                            for (SanPham sanPham : sanPhamList) {
+                                if (MatHangActivity.gioHangList.get(i).getMa().equalsIgnoreCase(sanPham.getMaSanPham())) {
+                                    HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet(mahoadon, MatHangActivity.gioHangList.get(i));
+                                    chk = hoaDonChiTietDAO.addHDCT(hoaDonChiTiet);
+                                    if (chk > 0) {
+                                        soluong = sanPhamList.get(i).getSoLuong() - MatHangActivity.gioHangList.get(i).getSoLuong();
+                                        sanPhamDAO.updateSLSanPham(soluong, sanPhamList.get(i).getMaSanPham());
+                                    }
                                 }
                             }
                         }
@@ -290,9 +298,7 @@ public class DonHangActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Thêm thất bại , mã hóa đơn đã tồn tại", Toast.LENGTH_SHORT).show();
                     }
 
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                
 
             }
         });
