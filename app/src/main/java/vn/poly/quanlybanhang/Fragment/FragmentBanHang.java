@@ -237,8 +237,14 @@ public class FragmentBanHang extends Fragment {
                             tvSoLuongBanHang.setVisibility(View.INVISIBLE);
                         }
                         list.get(i).setSoLuong(list.get(i).getSoLuong()-soLuong);
-                        SanPhamAdapter sanPhamAdapter = new SanPhamAdapter(getContext(),list);
-                        lvList.setAdapter(sanPhamAdapter);
+                        String txt = edTimKiem.getText().toString();
+                        if(txt.equals("")) {
+                            doDuLieu();
+                        }else{
+                            list = sanPhamDAO.getAllSanPhamTheoMa(txt);
+                            sanPhamAdapter = new SanPhamAdapter(getContext(), list);
+                            lvList.setAdapter(sanPhamAdapter);
+                        }
                         dialog.dismiss();
                     }
                 });
