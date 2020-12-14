@@ -1,17 +1,17 @@
 package vn.poly.quanlybanhang.Adapter;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+        import android.content.Context;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.BaseAdapter;
+        import android.widget.TextView;
 
-import com.example.duan1android.R;
+        import com.example.duan1android.R;
 
-import java.util.List;
+        import java.util.List;
 
-import vn.poly.quanlybanhang.Model.GioHang;
+        import vn.poly.quanlybanhang.Model.GioHang;
 
 public
 class DonHangAdapter extends BaseAdapter {

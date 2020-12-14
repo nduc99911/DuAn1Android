@@ -6,22 +6,12 @@ public
 class HoaDon {
     private String maHD;
     private String tenKhachHang;
-
-    public String getTrangThai() {
-        return trangThai;
-    }
-
-    public void setTrangThai(String trangThai) {
-        this.trangThai = trangThai;
-    }
-
     private String trangThai;
     private Date ngayBan;
     private int khachTra;
     private int traLai;
     private int tongTien;
     private int chietKhau;
-
 
     public HoaDon(String maHD, String tenKhachHang, Date ngayBan, int khachTra, int traLai, int tongTien, int chietKhau) {
         this.maHD = maHD;
@@ -33,17 +23,43 @@ class HoaDon {
         this.chietKhau = chietKhau;
     }
 
-    public int getChietKhau() {
-        return chietKhau;
-    }
-
-    public void setChietKhau(int chietKhau) {
-        this.chietKhau = chietKhau;
-    }
-
     public HoaDon(String maHD, String tenKhachHang, Date ngayBan) {
         this.maHD = maHD;
         this.tenKhachHang = tenKhachHang;
+        this.ngayBan = ngayBan;
+    }
+
+
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public String getMaHD() {
+        return maHD;
+    }
+
+    public void setMaHD(String maHD) {
+        this.maHD = maHD;
+    }
+
+    public String getTenKhachHang() {
+        return tenKhachHang;
+    }
+
+    public void setTenKhachHang(String tenKhachHang) {
+        this.tenKhachHang = tenKhachHang;
+    }
+
+    public Date getNgayBan() {
+        return ngayBan;
+    }
+
+    public void setNgayBan(Date ngayBan) {
         this.ngayBan = ngayBan;
     }
 
@@ -71,38 +87,13 @@ class HoaDon {
         this.tongTien = tongTien;
     }
 
-    public HoaDon(String maHD, String tenKhachHang) {
-        this.maHD = maHD;
-        this.tenKhachHang = tenKhachHang;
-
+    public int getChietKhau() {
+        return chietKhau;
     }
 
-    public HoaDon() {
-
-    }
-
-
-    public String getMaHD() {
-        return maHD;
-    }
-
-    public void setMaHD(String maHD) {
-        this.maHD = maHD;
-    }
-
-    public String getTenKhachHang() {
-        return tenKhachHang;
-    }
-
-    public void setTenKhachHang(String tenKhachHang) {
-        this.tenKhachHang = tenKhachHang;
-    }
-
-    public Date getNgayBan() {
-        return ngayBan;
-    }
-
-    public void setNgayBan(Date ngayBan) {
-        this.ngayBan = ngayBan;
+    public void setChietKhau(int chietKhau) {
+        this.chietKhau = chietKhau;
     }
 }
+
+

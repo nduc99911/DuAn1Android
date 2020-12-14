@@ -9,7 +9,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("deprecation")
 public class ViewPageAdapter extends FragmentPagerAdapter {
     private final List<Fragment> fragmentList=new ArrayList<>();
     private final List<String> titleList=new ArrayList<>();

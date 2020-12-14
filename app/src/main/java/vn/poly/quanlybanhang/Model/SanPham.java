@@ -1,13 +1,13 @@
 package vn.poly.quanlybanhang.Model;
 
-public
-class SanPham {
-    private String maSanPham,maLoai,ten,donViTinh;
-    private double giaNhap,giaBan;
+public class SanPham {
+    private String maSanPham, maLoai, ten, donViTinh;
+    private double giaNhap, giaBan;
     private byte[] image;
     private int soLuong;
 
-    public SanPham(String maSanPham, String maLoai, String ten, String donViTinh, int soLuong, double giaNhap, double giaBan, byte[] image) {
+    public SanPham(String maSanPham, String maLoai, String ten, String donViTinh, int soLuong,
+                   double giaNhap, double giaBan, byte[] image) {
         this.maSanPham = maSanPham;
         this.maLoai = maLoai;
         this.ten = ten;
@@ -22,11 +22,9 @@ class SanPham {
         return image;
     }
 
-
     public String getMaSanPham() {
         return maSanPham;
     }
-
 
     public String getMaLoai() {
         return maLoai;

@@ -32,11 +32,7 @@ public class MatHangActivity extends AppCompatActivity {
         if(gioHangList == null){
             gioHangList = new ArrayList<>();
         }
-//        View headerView = navigationView.getHeaderView(1);
-//        TextView navUsername = (TextView) headerView.findViewById(R.id.text);
-//        navUsername.setText("Hi");
-//        imageView=findViewById(R.id.imageView5);
-////        imageView.setImageResource(R.drawable.anh1);
+
 
         ViewPageAdapter viewPageAdapter=new ViewPageAdapter(getSupportFragmentManager());
         viewPageAdapter.addFragment(new FragmentBanHang(),"Bán Hàng");

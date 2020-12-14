@@ -1,5 +1,4 @@
 package vn.poly.quanlybanhang.Database;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,9 +8,7 @@ import vn.poly.quanlybanhang.Model.SanPham;
 
 import java.util.ArrayList;
 import java.util.List;
-
-public
-class SanPhamDAO {
+public class SanPhamDAO {
     public static final String TABLE_NAME = "SanPham";
     public static final String SQL_SANPHAM = "Create table if not exists SanPham(" +
             "   maSanPham text primary key," +

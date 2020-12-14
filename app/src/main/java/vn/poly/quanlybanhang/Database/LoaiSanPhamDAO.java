@@ -1,5 +1,4 @@
 package vn.poly.quanlybanhang.Database;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,8 +9,7 @@ import vn.poly.quanlybanhang.Model.LoaiSanPham;
 import java.util.ArrayList;
 import java.util.List;
 
-public
-class LoaiSanPhamDAO {
+public class LoaiSanPhamDAO {
     public static final String TABLE_NAME = "LoaiSanPham";
     public static final String SQL_LOAISANPHAM = "Create table if not exists LoaiSanPham (" +
             "   maLoai text primary key," +

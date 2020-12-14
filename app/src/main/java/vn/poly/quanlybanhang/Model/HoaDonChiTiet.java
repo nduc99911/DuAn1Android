@@ -5,12 +5,6 @@ class HoaDonChiTiet {
     private String maHoaDon,maHDCT;
     private GioHang gioHang;
 
-    public HoaDonChiTiet(String maHoaDon, String maHDCT, GioHang gioHang) {
-        this.maHoaDon = maHoaDon;
-        this.maHDCT = maHDCT;
-        this.gioHang = gioHang;
-    }
-
     public HoaDonChiTiet(String maHoaDon, GioHang gioHang) {
         this.maHoaDon = maHoaDon;
         this.gioHang = gioHang;

@@ -6,8 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public
-class Mydatabase extends SQLiteOpenHelper {
+public class Mydatabase extends SQLiteOpenHelper {
     public Mydatabase(@Nullable Context context) {
         super(context, "data", null, 1);
     }
