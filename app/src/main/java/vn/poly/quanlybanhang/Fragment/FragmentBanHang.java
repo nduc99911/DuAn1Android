@@ -133,7 +133,7 @@ public class FragmentBanHang extends Fragment {
             tong = 0;
             soLuong = 0;
             tvSoLuongBanHang.setVisibility(View.INVISIBLE);
-            doDuLieu();
+            doDuLieuTheoSpinner();
         }
         super.onResume();
     }
@@ -239,7 +239,7 @@ public class FragmentBanHang extends Fragment {
                         list.get(i).setSoLuong(list.get(i).getSoLuong()-soLuong);
                         String txt = edTimKiem.getText().toString();
                         if(txt.equals("")) {
-                            doDuLieu();
+                            doDuLieuTheoSpinner();
                         }else{
                             list = sanPhamDAO.getAllSanPhamTheoMa(txt);
                             sanPhamAdapter = new SanPhamAdapter(getContext(), list);
@@ -266,7 +266,7 @@ public class FragmentBanHang extends Fragment {
                 lvList.setAdapter(sanPhamAdapter);
                 tvNull.setVisibility(View.INVISIBLE);
                 if(edTimKiem.getText().toString().equalsIgnoreCase("")){
-                    doDuLieu();
+                    doDuLieuTheoSpinner();
                 }
                 if(list.size()<=0){
                     tvNull.setVisibility(View.VISIBLE);
@@ -287,11 +287,11 @@ public class FragmentBanHang extends Fragment {
         tvSoLuongBanHang = view.findViewById(R.id.tvSoLuongBanHang);
     }
 
-    public void doDuLieu(){
-        list = sanPhamDAO.getAllSanPham();
-        sanPhamAdapter = new SanPhamAdapter(getContext(), list);
-        lvList.setAdapter(sanPhamAdapter);
-    }
+//    public void doDuLieu(){
+//        list = sanPhamDAO.getAllSanPham();
+//        sanPhamAdapter = new SanPhamAdapter(getContext(), list);
+//        lvList.setAdapter(sanPhamAdapter);
+//    }
     public void doDuLieuTheoSpinner(){
         spnLocDanhSach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
