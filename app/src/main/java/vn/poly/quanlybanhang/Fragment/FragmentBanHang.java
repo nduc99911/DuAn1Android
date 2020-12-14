@@ -2,6 +2,8 @@ package vn.poly.quanlybanhang.Fragment;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -152,10 +154,18 @@ public class FragmentBanHang extends Fragment {
                 TextView tvGia = dialog.findViewById(R.id.tvGiaSanPhamSL);
                 ImageView imgCong = dialog.findViewById(R.id.imgCongSoLuong);
                 ImageView imgTru = dialog.findViewById(R.id.imgTruSoLuong);
+                ImageView imgSPDia = dialog.findViewById(R.id.imgSPDia);
                 Button btnOk = dialog.findViewById(R.id.btnThemVaoGio);
                 Button btnHuy = dialog.findViewById(R.id.btnHuyThemVaoGio);
                 soLuong = 1;
                 final TextView tvSoLuongMua = dialog.findViewById(R.id.tvSoLuongChonMua);
+                byte[] image = list.get(i).getImage();
+                try {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                    imgSPDia.setImageBitmap(bitmap);
+                }catch (Exception e){
+                    imgSPDia.setImageResource(R.drawable.ic_sanpham1);
+                }
                 tvTen.setText(""+list.get(i).getTen());
                 tvSoLuongSP.setText("Còn :"+list.get(i).getSoLuong());
                 tvGia.setText(""+list.get(i).getGiaBan()+ " VNĐ");
